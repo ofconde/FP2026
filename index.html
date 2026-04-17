@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CFI - Dashboard Aprobados 2026</title>
+<style>
+* {margin:0;padding:0;box-sizing:border-box}
+body {font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif;background:#f5f7fa;color:#2c3e50;padding:20px}
+.container {max-width:1400px;margin:0 auto}
+.header {background:linear-gradient(135deg,#1a2744 0%,#2c3e50 100%);color:white;padding:30px;border-radius:12px;margin-bottom:20px;box-shadow:0 4px 15px rgba(0,0,0,.15)}
+.header h1 {font-size:2rem;font-weight:700;margin-bottom:8px}
+.header .subtitle {font-size:.9rem;opacity:.8}
+.progress-panel {background:white;border-radius:12px;padding:35px;margin-bottom:20px;box-shadow:0 2px 12px rgba(0,0,0,.08)}
+.progress-title {font-size:.85rem;text-transform:uppercase;letter-spacing:1px;color:#7f8c8d;margin-bottom:15px;font-weight:600}
+.progress-numbers {display:flex;gap:30px;align-items:flex-end;margin-bottom:20px;flex-wrap:wrap}
+.progress-num {display:flex;flex-direction:column}
+.progress-num .value {font-size:2.5rem;font-weight:800;color:#27ae60;line-height:1}
+.progress-num .label {font-size:.8rem;color:#95a5a6;margin-top:5px}
+.progress-sep {font-size:2rem;color:#ddd;padding-bottom:10px}
+.progress-bar-container {background:#ecf0f1;border-radius:20px;height:24px;overflow:hidden;margin-bottom:10px}
+.progress-bar {height:100%;background:linear-gradient(90deg,#27ae60,#2ecc71);border-radius:20px;transition:width 1s ease;position:relative}
+.progress-bar::after {content:'';position:absolute;top:0;left:0;right:0;bottom:0;background:linear-gradient(90deg,transparent,rgba(255,255,255,.3),transparent);animation:shimmer 2s infinite}
+@keyframes shimmer {0%{transform:translateX(-100%)}100%{transform:translateX(100%)}}
+.progress-labels {display:flex;justify-content:space-between;font-size:.75rem;color:#95a5a6}
+.stats-grid {display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:15px;margin-top:20px}
+.stat-card {background:#f8f9fa;border-radius:8px;padding:15px}
+.stat-card .value {font-size:1.4rem;font-weight:700;color:#2c3e50}
+.stat-card .label {font-size:.75rem;color:#7f8c8d;text-transform:uppercase;letter-spacing:.5px;margin-top:5px}
+.stat-card .sublabel {font-size:.8rem;margin-top:3px}
+.stat-good {color:#27ae60;font-weight:600}
+.stat-bad {color:#e74c3c;font-weight:600}
+.stat-neutral {color:#f39c12;font-weight:600}
+.section {background:white;border-radius:12px;padding:25px;margin-bottom:20px;box-shadow:0 2px 12px rgba(0,0,0,.08)}
+.section-title {font-size:1.1rem;font-weight:600;color:#2c3e50;margin-bottom:20px;padding-bottom:10px;border-bottom:2px solid #ecf0f1}
+.semaforo-grid {display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:15px}
+.sem-card {border-radius:10px;padding:18px;border-left:6px solid #95a5a6;background:#fafbfc;transition:transform .2s,box-shadow .2s}
+.sem-card:hover {transform:translateY(-2px);box-shadow:0 4px 12px rgba(0,0,0,.1)}
+.sem-card.verde {border-left-color:#27ae60;background:#f0fff4}
+.sem-card.amarillo {border-left-color:#f39c12;background:#fffbf0}
+.sem-card.rojo {border-left-color:#e74c3c;background:#fff5f5}
+.sem-card.gris {border-left-color:#95a5a6;background:#f8f9fb}
+.sem-prov {font-size:.75rem;font-weight:700;color:#555;text-transform:uppercase;letter-spacing:.5px}
+.sem-icon {font-size:1.8rem;line-height:1;margin:8px 0}
+.sem-mensaje {font-size:.85rem;font-weight:600;color:#555;margin:10px 0;line-height:1.4}
+.sem-details {font-size:.75rem;color:#666;line-height:1.6}
+.sem-details strong {color:#444}
+.sem-delta {font-weight:700;margin-top:6px;display:block}
+.sem-delta.verde {color:#27ae60}
+.sem-delta.amarillo {color:#f39c12}
+.sem-delta.rojo {color:#e74c3c}
+.sem-meta {font-size:.7rem;color:#999;margin-top:8px;padding-top:8px;border-top:1px solid #eee}
+.footer {text-align:center;padding:20px;font-size:.8rem;color:#95a5a6;margin-top:20px}
+.loading {text-align:center;padding:60px 20px;font-size:1.2rem;color:#7f8c8d}
+.error {background:#fff5f5;border:2px solid #e74c3c;border-radius:10px;padding:20px;margin:20px 0;color:#c0392b}
+@media (max-width:768px) {
+  .progress-numbers {flex-direction:column;align-items:flex-start;gap:15px}
+  .progress-num {width:100%}
+  .stats-grid {grid-template-columns:1fr}
+  .semaforo-grid {grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+  <div class="header">
+    <h1>🏦 CFI - Créditos Aprobados 2026</h1>
+    <div class="subtitle">Dashboard de seguimiento - Aprobación por Directorio</div>
+  </div>
+
+  <div class="loading" id="loading">⏳ Cargando datos...</div>
+
+  <div id="dashboard" style="display:none;">
+    <div class="progress-panel">
+      <div class="progress-title">🎯 Objetivo Anual 2026</div>
+      <div class="progress-numbers">
+        <div class="progress-num">
+          <div class="value" id="montoActual">$0M</div>
+          <div class="label">Aprobado 2026</div>
+        </div>
+        <div class="progress-sep">→</div>
+        <div class="progress-num">
+          <div class="value" style="color:#3498db;">$207.006M</div>
+          <div class="label">Meta Anual</div>
+        </div>
+        <div class="progress-num" style="margin-left:auto;">
+          <div class="value" style="color:#f39c12; font-size:3rem;" id="porcentaje">0%</div>
+          <div class="label">Progreso</div>
+        </div>
+      </div>
+      <div class="progress-bar-container">
+        <div class="progress-bar" id="progressBar" style="width:0%"></div>
+      </div>
+      <div class="progress-labels">
+        <span>$0</span><span>25%</span><span>50%</span><span>75%</span><span>META</span>
+      </div>
+
+      <div class="stats-grid">
+        <div class="stat-card">
+          <div class="value" id="totalCreditos">0</div>
+          <div class="label">Total Créditos</div>
+          <div class="sublabel">Aprobados en 2026</div>
+        </div>
+        <div class="stat-card">
+          <div class="value" id="faltaMonto">$0M</div>
+          <div class="label">Falta para la meta</div>
+          <div class="sublabel" id="mesesRestantes">—</div>
+        </div>
+        <div class="stat-card">
+          <div class="value" id="promedioMensual">$0M</div>
+          <div class="label">Promedio mensual 2026</div>
+          <div class="sublabel" id="estadoRitmo" class="stat-neutral">—</div>
+        </div>
+        <div class="stat-card">
+          <div class="value" id="necesarioPorMes">$0M</div>
+          <div class="label">Necesario por mes</div>
+          <div class="sublabel">Para cumplir meta</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="section-title">🚦 Semáforo por Provincia - 2026</div>
+      <div class="semaforo-grid" id="semaforoGrid"></div>
+    </div>
+  </div>
+
+  <div class="footer" id="footer">
+    Consejo Federal de Inversiones — Financiamiento Productivo
+  </div>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', cargarDatos);
+
+async function cargarDatos() {
+  try {
+    const response = await fetch('datos.json');
+    if (!response.ok) throw new Error('No se pudo cargar datos.json');
+    
+    const datos = await response.json();
+    document.getElementById('loading').style.display = 'none';
+    document.getElementById('dashboard').style.display = 'block';
+    actualizarDashboard(datos);
+    
+  } catch (error) {
+    document.getElementById('loading').innerHTML = `
+      <div class="error">
+        ❌ Error al cargar los datos: ${error.message}<br>
+        Verificá que el archivo datos.json esté en la misma carpeta.
+      </div>
+    `;
+  }
+}
+
+function actualizarDashboard(datos) {
+  const total = datos.total;
+  
+  document.getElementById('montoActual').textContent = '$' + total.monto + 'M';
+  document.getElementById('porcentaje').textContent = total.porcentaje + '%';
+  document.getElementById('progressBar').style.width = Math.min(total.porcentaje, 100) + '%';
+  document.getElementById('totalCreditos').textContent = total.creditos;
+  document.getElementById('faltaMonto').textContent = '$' + total.falta + 'M';
+  document.getElementById('mesesRestantes').textContent = total.meses_restantes + ' meses restantes';
+  document.getElementById('promedioMensual').textContent = '$' + total.promedio_mensual + 'M';
+  document.getElementById('necesarioPorMes').textContent = '$' + total.necesario_por_mes + 'M';
+  
+  const estadoRitmo = document.getElementById('estadoRitmo');
+  if (total.ritmo_ok) {
+    estadoRitmo.innerHTML = '<span class="stat-good">🟢 Por encima del ritmo</span>';
+  } else {
+    estadoRitmo.innerHTML = '<span class="stat-bad">🔴 Por debajo del ritmo</span>';
+  }
+  
+  actualizarSemaforo(datos.provincias);
+  document.getElementById('footer').textContent = `Última actualización: ${datos.fecha_actualizacion}`;
+}
+
+function actualizarSemaforo(provincias) {
+  const grid = document.getElementById('semaforoGrid');
+  grid.innerHTML = '';
+  
+  provincias.forEach(prov => {
+    const card = document.createElement('div');
+    card.className = `sem-card ${prov.estado}`;
+    
+    let deltaHTML = '';
+    if (prov.diferencia !== 0) {
+      const signo = prov.diferencia > 0 ? '↑' : '↓';
+      const clase = prov.estado;
+      deltaHTML = `<span class="sem-delta ${clase}">${signo} $${Math.abs(prov.diferencia)}M</span>`;
+    }
+    
+    card.innerHTML = `
+      <div class="sem-prov">${prov.nombre}</div>
+      <div class="sem-icon">${prov.icono}</div>
+      <div class="sem-mensaje">${prov.mensaje}</div>
+      <div class="sem-details">
+        <strong>Real:</strong> $${prov.monto}M (${prov.cantidad} créd.)<br>
+        ${prov.objetivo_mes > 0 ? `<strong>Objetivo:</strong> $${prov.objetivo_mes}M<br>` : ''}
+        ${deltaHTML}
+      </div>
+      ${prov.meta_anual > 0 ? `<div class="sem-meta">Meta anual: $${prov.meta_anual}M</div>` : ''}
+    `;
+    
+    grid.appendChild(card);
+  });
+}
+</script>
+
+</body>
+</html>
