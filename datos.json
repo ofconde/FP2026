@@ -1,5 +1,5 @@
 {
-  "fecha_actualizacion": "2026-04-17 18:45:50",
+  "fecha_actualizacion": "2026-04-17 19:09:30",
   "total": {
     "monto": 23642.7,
     "creditos": 301,
@@ -194,18 +194,6 @@
       "mensaje": "Falta 75% para el objetivo"
     },
     {
-      "codigo": "CH",
-      "nombre": "Chaco",
-      "monto": 304.4,
-      "cantidad": 11,
-      "meta_anual": 4334,
-      "objetivo_mes": 1444.7,
-      "diferencia": -1140.2,
-      "estado": "rojo",
-      "icono": "🔴",
-      "mensaje": "Falta 79% para el objetivo"
-    },
-    {
       "codigo": "SJ",
       "nombre": "San Juan",
       "monto": 300.0,
@@ -231,15 +219,15 @@
     },
     {
       "codigo": "CB",
-      "nombre": "Córdoba",
+      "nombre": "Chubut",
       "monto": 120.0,
       "cantidad": 1,
-      "meta_anual": 20755,
-      "objetivo_mes": 6918.3,
-      "diferencia": -6798.3,
+      "meta_anual": 3527,
+      "objetivo_mes": 1175.7,
+      "diferencia": -1055.7,
       "estado": "rojo",
       "icono": "🔴",
-      "mensaje": "Falta 98% para el objetivo"
+      "mensaje": "Falta 90% para el objetivo"
     },
     {
       "codigo": "CA",
@@ -278,25 +266,13 @@
       "mensaje": "Falta 97% para el objetivo"
     },
     {
-      "codigo": "CS",
-      "nombre": "Corrientes",
+      "codigo": "HA",
+      "nombre": "Chaco",
       "monto": 0.0,
       "cantidad": 0,
-      "meta_anual": 10326,
-      "objetivo_mes": 3442.0,
-      "diferencia": -3442.0,
-      "estado": "gris",
-      "icono": "⚫",
-      "mensaje": "Sin aprobaciones en 2026"
-    },
-    {
-      "codigo": "HU",
-      "nombre": "Chubut",
-      "monto": 0.0,
-      "cantidad": 0,
-      "meta_anual": 3527,
-      "objetivo_mes": 1175.7,
-      "diferencia": -1175.7,
+      "meta_anual": 4334,
+      "objetivo_mes": 1444.7,
+      "diferencia": -1444.7,
       "estado": "gris",
       "icono": "⚫",
       "mensaje": "Sin aprobaciones en 2026"
@@ -309,18 +285,6 @@
       "meta_anual": 1350,
       "objetivo_mes": 450.0,
       "diferencia": -450.0,
-      "estado": "gris",
-      "icono": "⚫",
-      "mensaje": "Sin aprobaciones en 2026"
-    },
-    {
-      "codigo": "HA",
-      "nombre": "Chaco",
-      "monto": 0.0,
-      "cantidad": 0,
-      "meta_anual": 4334,
-      "objetivo_mes": 1444.7,
-      "diferencia": -1444.7,
       "estado": "gris",
       "icono": "⚫",
       "mensaje": "Sin aprobaciones en 2026"
