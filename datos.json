@@ -1,5 +1,5 @@
 {
-  "fecha_actualizacion": "2026-04-17 19:09:30",
+  "fecha_actualizacion": "2026-04-17 19:18:14",
   "total": {
     "monto": 23642.7,
     "creditos": 301,
@@ -194,6 +194,18 @@
       "mensaje": "Falta 75% para el objetivo"
     },
     {
+      "codigo": "HA",
+      "nombre": "Chaco",
+      "monto": 304.4,
+      "cantidad": 11,
+      "meta_anual": 4334,
+      "objetivo_mes": 1444.7,
+      "diferencia": -1140.2,
+      "estado": "rojo",
+      "icono": "🔴",
+      "mensaje": "Falta 79% para el objetivo"
+    },
+    {
       "codigo": "SJ",
       "nombre": "San Juan",
       "monto": 300.0,
@@ -264,18 +276,6 @@
       "estado": "rojo",
       "icono": "🔴",
       "mensaje": "Falta 97% para el objetivo"
-    },
-    {
-      "codigo": "HA",
-      "nombre": "Chaco",
-      "monto": 0.0,
-      "cantidad": 0,
-      "meta_anual": 4334,
-      "objetivo_mes": 1444.7,
-      "diferencia": -1444.7,
-      "estado": "gris",
-      "icono": "⚫",
-      "mensaje": "Sin aprobaciones en 2026"
     },
     {
       "codigo": "SC",
