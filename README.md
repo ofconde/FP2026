@@ -41,7 +41,7 @@ dashboard-aprobados/
 
 ✅ El dashboard estará disponible en:
 ```
-https://ofconde.github.io/dashboard-aprobados/
+https://ofconde.github.io/fp2026
 ```
 
 ### 3. Subir los archivos iniciales
