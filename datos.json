@@ -1,5 +1,5 @@
 {
-  "fecha_actualizacion": "2026-04-20 21:47:25",
+  "fecha_actualizacion": "2026-04-20 21:50:41",
   "total": {
     "monto": 24183.3,
     "creditos": 314,
@@ -24,7 +24,7 @@
       "porcentaje": 34.6,
       "estado": "rojo",
       "icono": "🔴",
-      "mensaje": "Falta 65% para objetivo"
+      "mensaje": "Bajo ritmo 35%"
     },
     {
       "codigo": "SF",
@@ -37,7 +37,7 @@
       "porcentaje": 35.9,
       "estado": "rojo",
       "icono": "🔴",
-      "mensaje": "Falta 64% para objetivo"
+      "mensaje": "Bajo ritmo 36%"
     },
     {
       "codigo": "ER",
@@ -48,9 +48,9 @@
       "objetivo_mes": 4355.3,
       "diferencia": -1883.7,
       "porcentaje": 56.7,
-      "estado": "rojo",
-      "icono": "🔴",
-      "mensaje": "Falta 43% para objetivo"
+      "estado": "amarillo",
+      "icono": "🟡",
+      "mensaje": "Ritmo medio 57%"
     },
     {
       "codigo": "CO",
@@ -63,7 +63,7 @@
       "porcentaje": 33.2,
       "estado": "rojo",
       "icono": "🔴",
-      "mensaje": "Falta 67% para objetivo"
+      "mensaje": "Bajo ritmo 33%"
     },
     {
       "codigo": "MZ",
@@ -76,7 +76,7 @@
       "porcentaje": 35.9,
       "estado": "rojo",
       "icono": "🔴",
-      "mensaje": "Falta 64% para objetivo"
+      "mensaje": "Bajo ritmo 36%"
     },
     {
       "codigo": "MI",
@@ -87,9 +87,9 @@
       "objetivo_mes": 1478.3,
       "diferencia": -196.7,
       "porcentaje": 86.7,
-      "estado": "rojo",
-      "icono": "🔴",
-      "mensaje": "Falta 13% para objetivo"
+      "estado": "verde",
+      "icono": "🟢",
+      "mensaje": "Buen ritmo 87%"
     },
     {
       "codigo": "TU",
@@ -100,9 +100,9 @@
       "objetivo_mes": 1436.7,
       "diferencia": -311.7,
       "porcentaje": 78.3,
-      "estado": "rojo",
-      "icono": "🔴",
-      "mensaje": "Falta 22% para objetivo"
+      "estado": "amarillo",
+      "icono": "🟡",
+      "mensaje": "Ritmo medio 78%"
     },
     {
       "codigo": "RN",
@@ -113,9 +113,9 @@
       "objetivo_mes": 1188.3,
       "diferencia": -158.3,
       "porcentaje": 86.7,
-      "estado": "rojo",
-      "icono": "🔴",
-      "mensaje": "Falta 13% para objetivo"
+      "estado": "verde",
+      "icono": "🟢",
+      "mensaje": "Buen ritmo 87%"
     },
     {
       "codigo": "NQ",
@@ -128,7 +128,7 @@
       "porcentaje": 31.3,
       "estado": "rojo",
       "icono": "🔴",
-      "mensaje": "Falta 69% para objetivo"
+      "mensaje": "Bajo ritmo 31%"
     },
     {
       "codigo": "CT",
@@ -141,7 +141,7 @@
       "porcentaje": 24.3,
       "estado": "rojo",
       "icono": "🔴",
-      "mensaje": "Falta 76% para objetivo"
+      "mensaje": "Bajo ritmo 24%"
     },
     {
       "codigo": "SA",
@@ -152,9 +152,9 @@
       "objetivo_mes": 1381.0,
       "diferencia": -674.3,
       "porcentaje": 51.2,
-      "estado": "rojo",
-      "icono": "🔴",
-      "mensaje": "Falta 49% para objetivo"
+      "estado": "amarillo",
+      "icono": "🟡",
+      "mensaje": "Ritmo medio 51%"
     },
     {
       "codigo": "JU",
@@ -165,9 +165,9 @@
       "objetivo_mes": 1143.3,
       "diferencia": -524.3,
       "porcentaje": 54.1,
-      "estado": "rojo",
-      "icono": "🔴",
-      "mensaje": "Falta 46% para objetivo"
+      "estado": "amarillo",
+      "icono": "🟡",
+      "mensaje": "Ritmo medio 54%"
     },
     {
       "codigo": "SL",
@@ -180,7 +180,7 @@
       "porcentaje": 25.4,
       "estado": "rojo",
       "icono": "🔴",
-      "mensaje": "Falta 75% para objetivo"
+      "mensaje": "Bajo ritmo 25%"
     },
     {
       "codigo": "LR",
@@ -193,7 +193,7 @@
       "porcentaje": 22.9,
       "estado": "rojo",
       "icono": "🔴",
-      "mensaje": "Falta 77% para objetivo"
+      "mensaje": "Bajo ritmo 23%"
     },
     {
       "codigo": "LP",
@@ -206,7 +206,7 @@
       "porcentaje": 25.3,
       "estado": "rojo",
       "icono": "🔴",
-      "mensaje": "Falta 75% para objetivo"
+      "mensaje": "Bajo ritmo 25%"
     },
     {
       "codigo": "HA",
@@ -219,7 +219,7 @@
       "porcentaje": 21.1,
       "estado": "rojo",
       "icono": "🔴",
-      "mensaje": "Falta 79% para objetivo"
+      "mensaje": "Bajo ritmo 21%"
     },
     {
       "codigo": "SJ",
@@ -232,7 +232,7 @@
       "porcentaje": 37.2,
       "estado": "rojo",
       "icono": "🔴",
-      "mensaje": "Falta 63% para objetivo"
+      "mensaje": "Bajo ritmo 37%"
     },
     {
       "codigo": "CB",
@@ -245,7 +245,7 @@
       "porcentaje": 10.9,
       "estado": "rojo",
       "icono": "🔴",
-      "mensaje": "Falta 89% para objetivo"
+      "mensaje": "Bajo ritmo 11%"
     },
     {
       "codigo": "TF",
@@ -258,7 +258,7 @@
       "porcentaje": 9.2,
       "estado": "rojo",
       "icono": "🔴",
-      "mensaje": "Falta 91% para objetivo"
+      "mensaje": "Bajo ritmo 9%"
     },
     {
       "codigo": "CA",
@@ -271,7 +271,7 @@
       "porcentaje": 12.2,
       "estado": "rojo",
       "icono": "🔴",
-      "mensaje": "Falta 88% para objetivo"
+      "mensaje": "Bajo ritmo 12%"
     },
     {
       "codigo": "SE",
@@ -284,7 +284,7 @@
       "porcentaje": 18.1,
       "estado": "rojo",
       "icono": "🔴",
-      "mensaje": "Falta 82% para objetivo"
+      "mensaje": "Bajo ritmo 18%"
     },
     {
       "codigo": "FO",
@@ -297,7 +297,7 @@
       "porcentaje": 2.7,
       "estado": "rojo",
       "icono": "🔴",
-      "mensaje": "Falta 97% para objetivo"
+      "mensaje": "Bajo ritmo 3%"
     },
     {
       "codigo": "SC",
