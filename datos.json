@@ -1,14 +1,14 @@
 {
-  "fecha_actualizacion": "2026-04-17 19:18:14",
+  "fecha_actualizacion": "2026-04-20 21:47:25",
   "total": {
-    "monto": 23642.7,
-    "creditos": 301,
-    "porcentaje": 11.4,
+    "monto": 24183.3,
+    "creditos": 314,
+    "porcentaje": 11.7,
     "meta": 207006,
-    "falta": 183363.3,
+    "falta": 182822.7,
     "meses_restantes": 8,
-    "promedio_mensual": 5910.7,
-    "necesario_por_mes": 22920.4,
+    "promedio_mensual": 6045.8,
+    "necesario_por_mes": 22852.8,
     "ritmo_ok": false,
     "ultimo_mes": 4
   },
@@ -21,21 +21,23 @@
       "meta_anual": 56830,
       "objetivo_mes": 18943.3,
       "diferencia": -12391.4,
+      "porcentaje": 34.6,
       "estado": "rojo",
       "icono": "🔴",
-      "mensaje": "Falta 65% para el objetivo"
+      "mensaje": "Falta 65% para objetivo"
     },
     {
       "codigo": "SF",
       "nombre": "Santa Fe",
-      "monto": 2536.2,
-      "cantidad": 34,
+      "monto": 2571.2,
+      "cantidad": 36,
       "meta_anual": 21510,
       "objetivo_mes": 7170.0,
-      "diferencia": -4633.8,
+      "diferencia": -4598.8,
+      "porcentaje": 35.9,
       "estado": "rojo",
       "icono": "🔴",
-      "mensaje": "Falta 65% para el objetivo"
+      "mensaje": "Falta 64% para objetivo"
     },
     {
       "codigo": "ER",
@@ -45,69 +47,75 @@
       "meta_anual": 13066,
       "objetivo_mes": 4355.3,
       "diferencia": -1883.7,
+      "porcentaje": 56.7,
       "estado": "rojo",
       "icono": "🔴",
-      "mensaje": "Falta 43% para el objetivo"
+      "mensaje": "Falta 43% para objetivo"
     },
     {
       "codigo": "CO",
       "nombre": "Córdoba",
-      "monto": 2167.4,
-      "cantidad": 26,
+      "monto": 2297.8,
+      "cantidad": 28,
       "meta_anual": 20755,
       "objetivo_mes": 6918.3,
-      "diferencia": -4750.9,
+      "diferencia": -4620.5,
+      "porcentaje": 33.2,
       "estado": "rojo",
       "icono": "🔴",
-      "mensaje": "Falta 69% para el objetivo"
+      "mensaje": "Falta 67% para objetivo"
     },
     {
       "codigo": "MZ",
       "nombre": "Mendoza",
-      "monto": 1302.0,
-      "cantidad": 12,
+      "monto": 1412.0,
+      "cantidad": 13,
       "meta_anual": 11812,
       "objetivo_mes": 3937.3,
-      "diferencia": -2635.3,
+      "diferencia": -2525.3,
+      "porcentaje": 35.9,
       "estado": "rojo",
       "icono": "🔴",
-      "mensaje": "Falta 67% para el objetivo"
+      "mensaje": "Falta 64% para objetivo"
     },
     {
       "codigo": "MI",
       "nombre": "Misiones",
-      "monto": 1214.6,
-      "cantidad": 20,
+      "monto": 1281.6,
+      "cantidad": 21,
       "meta_anual": 4435,
       "objetivo_mes": 1478.3,
-      "diferencia": -263.7,
+      "diferencia": -196.7,
+      "porcentaje": 86.7,
       "estado": "rojo",
       "icono": "🔴",
-      "mensaje": "Falta 18% para el objetivo"
+      "mensaje": "Falta 13% para objetivo"
     },
     {
       "codigo": "TU",
       "nombre": "Tucumán",
-      "monto": 1087.7,
-      "cantidad": 9,
+      "monto": 1125.0,
+      "cantidad": 10,
       "meta_anual": 4310,
       "objetivo_mes": 1436.7,
-      "diferencia": -349.0,
+      "diferencia": -311.7,
+      "porcentaje": 78.3,
       "estado": "rojo",
       "icono": "🔴",
-      "mensaje": "Falta 24% para el objetivo"
+      "mensaje": "Falta 22% para objetivo"
     },
     {
       "codigo": "RN",
       "nombre": "Río Negro",
-      "monto": 1029.9,
-      "cantidad": 17,
+      "monto": 1030.0,
+      "cantidad": 18,
       "meta_anual": 3565,
       "objetivo_mes": 1188.3,
-      "diferencia": -158.4,
+      "diferencia": -158.3,
+      "porcentaje": 86.7,
       "estado": "rojo",
       "icono": "🔴",
-      "mensaje": "Falta 13% para el objetivo"
+      "mensaje": "Falta 13% para objetivo"
     },
     {
       "codigo": "NQ",
@@ -117,21 +125,36 @@
       "meta_anual": 9053,
       "objetivo_mes": 3017.7,
       "diferencia": -2074.1,
+      "porcentaje": 31.3,
       "estado": "rojo",
       "icono": "🔴",
-      "mensaje": "Falta 69% para el objetivo"
+      "mensaje": "Falta 69% para objetivo"
     },
     {
       "codigo": "CT",
       "nombre": "Corrientes",
-      "monto": 789.1,
-      "cantidad": 18,
+      "monto": 835.1,
+      "cantidad": 21,
       "meta_anual": 10326,
       "objetivo_mes": 3442.0,
-      "diferencia": -2652.9,
+      "diferencia": -2606.9,
+      "porcentaje": 24.3,
       "estado": "rojo",
       "icono": "🔴",
-      "mensaje": "Falta 77% para el objetivo"
+      "mensaje": "Falta 76% para objetivo"
+    },
+    {
+      "codigo": "SA",
+      "nombre": "Salta",
+      "monto": 706.7,
+      "cantidad": 11,
+      "meta_anual": 4143,
+      "objetivo_mes": 1381.0,
+      "diferencia": -674.3,
+      "porcentaje": 51.2,
+      "estado": "rojo",
+      "icono": "🔴",
+      "mensaje": "Falta 49% para objetivo"
     },
     {
       "codigo": "JU",
@@ -141,21 +164,10 @@
       "meta_anual": 3430,
       "objetivo_mes": 1143.3,
       "diferencia": -524.3,
+      "porcentaje": 54.1,
       "estado": "rojo",
       "icono": "🔴",
-      "mensaje": "Falta 46% para el objetivo"
-    },
-    {
-      "codigo": "SA",
-      "nombre": "Salta",
-      "monto": 599.7,
-      "cantidad": 10,
-      "meta_anual": 4143,
-      "objetivo_mes": 1381.0,
-      "diferencia": -781.3,
-      "estado": "rojo",
-      "icono": "🔴",
-      "mensaje": "Falta 57% para el objetivo"
+      "mensaje": "Falta 46% para objetivo"
     },
     {
       "codigo": "SL",
@@ -165,9 +177,10 @@
       "meta_anual": 5743,
       "objetivo_mes": 1914.3,
       "diferencia": -1427.4,
+      "porcentaje": 25.4,
       "estado": "rojo",
       "icono": "🔴",
-      "mensaje": "Falta 75% para el objetivo"
+      "mensaje": "Falta 75% para objetivo"
     },
     {
       "codigo": "LR",
@@ -177,9 +190,10 @@
       "meta_anual": 5373,
       "objetivo_mes": 1791.0,
       "diferencia": -1381.7,
+      "porcentaje": 22.9,
       "estado": "rojo",
       "icono": "🔴",
-      "mensaje": "Falta 77% para el objetivo"
+      "mensaje": "Falta 77% para objetivo"
     },
     {
       "codigo": "LP",
@@ -189,9 +203,10 @@
       "meta_anual": 4206,
       "objetivo_mes": 1402.0,
       "diferencia": -1047.7,
+      "porcentaje": 25.3,
       "estado": "rojo",
       "icono": "🔴",
-      "mensaje": "Falta 75% para el objetivo"
+      "mensaje": "Falta 75% para objetivo"
     },
     {
       "codigo": "HA",
@@ -201,9 +216,10 @@
       "meta_anual": 4334,
       "objetivo_mes": 1444.7,
       "diferencia": -1140.2,
+      "porcentaje": 21.1,
       "estado": "rojo",
       "icono": "🔴",
-      "mensaje": "Falta 79% para el objetivo"
+      "mensaje": "Falta 79% para objetivo"
     },
     {
       "codigo": "SJ",
@@ -213,9 +229,23 @@
       "meta_anual": 2418,
       "objetivo_mes": 806.0,
       "diferencia": -506.0,
+      "porcentaje": 37.2,
       "estado": "rojo",
       "icono": "🔴",
-      "mensaje": "Falta 63% para el objetivo"
+      "mensaje": "Falta 63% para objetivo"
+    },
+    {
+      "codigo": "CB",
+      "nombre": "Chubut",
+      "monto": 127.9,
+      "cantidad": 2,
+      "meta_anual": 3527,
+      "objetivo_mes": 1175.7,
+      "diferencia": -1047.8,
+      "porcentaje": 10.9,
+      "estado": "rojo",
+      "icono": "🔴",
+      "mensaje": "Falta 89% para objetivo"
     },
     {
       "codigo": "TF",
@@ -225,21 +255,10 @@
       "meta_anual": 4118,
       "objetivo_mes": 1372.7,
       "diferencia": -1246.7,
+      "porcentaje": 9.2,
       "estado": "rojo",
       "icono": "🔴",
-      "mensaje": "Falta 91% para el objetivo"
-    },
-    {
-      "codigo": "CB",
-      "nombre": "Chubut",
-      "monto": 120.0,
-      "cantidad": 1,
-      "meta_anual": 3527,
-      "objetivo_mes": 1175.7,
-      "diferencia": -1055.7,
-      "estado": "rojo",
-      "icono": "🔴",
-      "mensaje": "Falta 90% para el objetivo"
+      "mensaje": "Falta 91% para objetivo"
     },
     {
       "codigo": "CA",
@@ -249,9 +268,10 @@
       "meta_anual": 2937,
       "objetivo_mes": 979.0,
       "diferencia": -860.0,
+      "porcentaje": 12.2,
       "estado": "rojo",
       "icono": "🔴",
-      "mensaje": "Falta 88% para el objetivo"
+      "mensaje": "Falta 88% para objetivo"
     },
     {
       "codigo": "SE",
@@ -261,9 +281,10 @@
       "meta_anual": 1660,
       "objetivo_mes": 553.3,
       "diferencia": -453.3,
+      "porcentaje": 18.1,
       "estado": "rojo",
       "icono": "🔴",
-      "mensaje": "Falta 82% para el objetivo"
+      "mensaje": "Falta 82% para objetivo"
     },
     {
       "codigo": "FO",
@@ -273,9 +294,10 @@
       "meta_anual": 1098,
       "objetivo_mes": 366.0,
       "diferencia": -356.0,
+      "porcentaje": 2.7,
       "estado": "rojo",
       "icono": "🔴",
-      "mensaje": "Falta 97% para el objetivo"
+      "mensaje": "Falta 97% para objetivo"
     },
     {
       "codigo": "SC",
@@ -285,9 +307,10 @@
       "meta_anual": 1350,
       "objetivo_mes": 450.0,
       "diferencia": -450.0,
+      "porcentaje": 0.0,
       "estado": "gris",
       "icono": "⚫",
-      "mensaje": "Sin aprobaciones en 2026"
+      "mensaje": "Sin aprobaciones 2026"
     }
   ],
   "evolucion": [
@@ -312,8 +335,8 @@
     {
       "mes": 4,
       "nombre": "Abril",
-      "monto": 5635.3,
-      "cantidad": 69
+      "monto": 6175.9,
+      "cantidad": 82
     }
   ]
 }
