@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard CFI - Financiamiento Productivo 2026</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Raleway:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Raleway', sans-serif; background: #FAFAFA; color: #1C2443; }
+    .header { background: linear-gradient(90deg, #1C2443 0%, #151827 100%); padding: 20px 40px; display: flex; align-items: center; justify-content: space-between; }
+    .logo-section { display: flex; align-items: center; gap: 20px; }
+    .logo-cfi { position: relative; width: 50px; height: 50px; }
+    .logo-circle-outer { position: absolute; width: 50px; height: 50px; border: 3px solid #00A7E1; border-radius: 50%; }
+    .logo-circle-inner { position: absolute; top: 7px; left: 7px; width: 36px; height: 36px; border: 2px solid #96C9DA; border-radius: 50%; }
+    .logo-dot-1 { position: absolute; top: 17px; left: 17px; width: 6px; height: 6px; background: #00A7E1; border-radius: 50%; }
+    .logo-dot-2 { position: absolute; top: 27px; left: 27px; width: 6px; height: 6px; background: #00A7E1; border-radius: 50%; }
+    .logo-text h1 { font-family: 'Bebas Neue', sans-serif; font-size: 32px; letter-spacing: 3px; color: #FAFAFA; margin: 0; line-height: 1; }
+    .logo-text p { font-size: 9px; color: #96C9DA; letter-spacing: 1px; margin-top: 2px; }
+    .header-right h2 { font-size: 16px; font-weight: 700; color: #FAFAFA; text-align: right; margin: 0; }
+    .header-right p { font-size: 10px; color: #96C9DA; text-align: right; margin-top: 2px; }
+    .container { max-width: 1400px; margin: 0 auto; padding: 30px 40px; }
+    .score-card { background: linear-gradient(180deg, #00A7E1 0%, #008AC1 100%); border-radius: 12px; padding: 40px; text-align: center; margin-bottom: 30px; position: relative; overflow: hidden; }
+    .score-card::before { content: ''; position: absolute; top: 0; left: 20%; width: 200px; height: 100px; border: 2px solid rgba(150, 201, 218, 0.3); border-radius: 0 0 100px 100px; border-top: none; }
+    .score-label { font-size: 11px; font-weight: 700; letter-spacing: 2px; color: rgba(255, 255, 255, 0.85); margin-bottom: 15px; }
+    .score-value { font-family: 'Bebas Neue', sans-serif; font-size: 96px; color: #FFFFFF; line-height: 1; margin-bottom: 10px; text-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); }
+    .score-subtitle { font-size: 16px; color: rgba(255, 255, 255, 0.9); margin-bottom: 10px; }
+    .score-update { font-size: 10px; color: rgba(255, 255, 255, 0.75); }
+    .badge-live { position: absolute; top: 20px; right: 20px; background: rgba(255, 255, 255, 0.25); padding: 6px 16px; border-radius: 20px; font-size: 10px; font-weight: 700; color: #FFFFFF; letter-spacing: 1px; }
+    .progress-bar { height: 12px; background: #DBDCDE; border-radius: 6px; margin-bottom: 30px; overflow: hidden; }
+    .progress-fill { height: 100%; background: #47B067; border-radius: 6px; transition: width 1s ease-out; }
+    .kpi-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; margin-bottom: 40px; }
+    .kpi-card { background: #FFFFFF; border: 1px solid #DBDCDE; border-radius: 8px; overflow: hidden; }
+    .kpi-accent { height: 5px; }
+    .kpi-content { padding: 20px; }
+    .kpi-label { font-size: 10px; font-weight: 700; letter-spacing: 1px; color: #1C2443; margin-bottom: 12px; }
+    .kpi-value { font-family: 'Bebas Neue', sans-serif; font-size: 32px; margin-bottom: 5px; }
+    .kpi-meta { font-size: 11px; color: #96C9DA; margin-bottom: 3px; }
+    .kpi-detail { font-size: 9px; color: #1C2443; opacity: 0.6; }
+    .section-title { font-family: 'Bebas Neue', sans-serif; font-size: 22px; color: #1C2443; margin-bottom: 10px; display: flex; align-items: center; gap: 10px; }
+    .semaforo-note { font-size: 10px; color: #96C9DA; margin-bottom: 20px; font-style: italic; }
+    .badge-status { background: #47B067; color: #FFFFFF; font-size: 9px; font-weight: 700; padding: 6px 14px; border-radius: 20px; margin-left: auto; }
+    .semaforo-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 20px; margin-bottom: 30px; }
+    .provincia-card { background: #FFFFFF; border: 1px solid #DBDCDE; border-radius: 10px; overflow: hidden; transition: transform 0.2s; }
+    .provincia-card:hover { transform: translateY(-2px); box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08); }
+    .provincia-accent { height: 6px; }
+    .provincia-content { padding: 20px; text-align: center; }
+    .provincia-nombre { font-size: 12px; font-weight: 700; color: #1C2443; margin-bottom: 12px; }
+    .provincia-icono { font-size: 48px; margin-bottom: 10px; }
+    .provincia-mensaje { font-size: 12px; font-weight: 700; margin-bottom: 8px; }
+    .provincia-monto { font-size: 10px; color: #1C2443; margin-bottom: 5px; }
+    .provincia-cantidad { font-size: 9px; color: #96C9DA; margin-top: 3px; }
+    .provincia-diferencia { font-size: 9px; font-weight: 700; margin-top: 5px; }
+    .vitals-panel { background: #FFFFFF; border: 1px solid #DBDCDE; border-radius: 10px; padding: 30px; margin-bottom: 30px; }
+    .vitals-title { font-family: 'Bebas Neue', sans-serif; font-size: 16px; color: #1C2443; text-align: center; margin-bottom: 30px; }
+    .vitals-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 40px; }
+    .vital-item { text-align: center; }
+    .vital-label { font-size: 10px; font-weight: 700; color: #1C2443; margin-bottom: 12px; }
+    .vital-bar { height: 10px; background: #DBDCDE; border-radius: 5px; margin: 0 auto 12px; max-width: 200px; overflow: hidden; }
+    .vital-fill { height: 100%; border-radius: 5px; transition: width 1s ease-out; }
+    .vital-value { font-family: 'Bebas Neue', sans-serif; font-size: 28px; margin-bottom: 3px; }
+    .vital-description { font-size: 8px; color: #96C9DA; }
+    .footer { background: #1C2443; padding: 15px; text-align: center; color: #96C9DA; font-size: 9px; margin-top: 40px; }
+    .color-verde { background: #47B067; } .color-amarillo { background: #E99505; } .color-rojo { background: #E6431A; } .color-gris { background: #96C9DA; } .color-celeste { background: #00A7E1; } .color-teal { background: #0C8395; }
+    .text-verde { color: #47B067; } .text-amarillo { color: #E99505; } .text-rojo { color: #E6431A; } .text-gris { color: #96C9DA; } .text-celeste { color: #00A7E1; } .text-teal { color: #0C8395; }
+    @media (max-width: 768px) { .container { padding: 20px; } .score-value { font-size: 64px; } .kpi-grid, .semaforo-grid { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <div class="logo-section">
+      <div class="logo-cfi"><div class="logo-circle-outer"></div><div class="logo-circle-inner"></div><div class="logo-dot-1"></div><div class="logo-dot-2"></div></div>
+      <div class="logo-text"><h1>CFI</h1><p>CONSEJO FEDERAL DE INVERSIONES</p></div>
+    </div>
+    <div class="header-right"><h2>DASHBOARD</h2><p>Financiamiento Productivo</p></div>
+  </div>
+  <div class="container">
+    <div class="score-card">
+      <div class="badge-live">LIVE</div>
+      <div class="score-label">OBJETIVO ANUAL 2026</div>
+      <div class="score-value" id="scoreValue">11.7%</div>
+      <div class="score-subtitle">de $<span id="metaTotal">207.006</span> millones</div>
+      <div class="score-update">Actualizado: <span id="fechaActual">20 de abril de 2026</span> • Director Rec. Financieros</div>
+    </div>
+    <div class="progress-bar"><div class="progress-fill" id="progressFill" style="width: 11.7%"></div></div>
+    <div class="kpi-grid">
+      <div class="kpi-card"><div class="kpi-accent color-verde"></div><div class="kpi-content"><div class="kpi-label">APROBADO</div><div class="kpi-value text-celeste">$<span id="montoAprobado">24183.3</span>M</div><div class="kpi-meta"><span id="creditosTotal">314</span> créditos</div><div class="kpi-detail">Ene-Abr 2026</div></div></div>
+      <div class="kpi-card"><div class="kpi-accent color-rojo"></div><div class="kpi-content"><div class="kpi-label">FALTA</div><div class="kpi-value text-rojo">$<span id="montoFalta">182822.7</span>M</div><div class="kpi-meta">Para cumplir</div><div class="kpi-detail"><span id="mesesRestantes">8</span> meses restantes</div></div></div>
+      <div class="kpi-card"><div class="kpi-accent color-teal"></div><div class="kpi-content"><div class="kpi-label">PROMEDIO</div><div class="kpi-value text-teal">$<span id="promedioMensual">6045.8</span>M</div><div class="kpi-meta">Por mes</div><div class="kpi-detail">Ritmo actual</div></div></div>
+      <div class="kpi-card"><div class="kpi-accent color-amarillo"></div><div class="kpi-content"><div class="kpi-label">NECESARIO</div><div class="kpi-value text-amarillo">$<span id="necesarioPorMes">22852.8</span>M</div><div class="kpi-meta">Por mes</div><div class="kpi-detail">Para meta 2026</div></div></div>
+    </div>
+    <div class="section-title">🚦 SEMÁFORO PROVINCIAL<span class="badge-status">LIVE</span></div>
+    <div class="semaforo-note">🟢 Verde: ≥80% del objetivo • 🟡 Amarillo: 50-80% • 🔴 Rojo: &lt;50% • ⚫ Sin datos</div>
+    <div class="semaforo-grid" id="semaforoGrid"></div>
+    <div class="vitals-panel">
+      <div class="vitals-title">INDICADORES DE CUMPLIMIENTO</div>
+      <div class="vitals-grid">
+        <div class="vital-item"><div class="vital-label">Ritmo de aprobación</div><div class="vital-bar"><div class="vital-fill color-rojo" id="ritmoBar" style="width: 26%"></div></div><div class="vital-value text-rojo"><span id="ritmoValor">26</span>%</div><div class="vital-description">Del necesario mensual</div></div>
+        <div class="vital-item"><div class="vital-label">Cobertura anual</div><div class="vital-bar"><div class="vital-fill color-amarillo" id="coberturaBar" style="width: 11.7%"></div></div><div class="vital-value text-amarillo"><span id="coberturaValor">11.7</span>%</div><div class="vital-description">Del objetivo anual</div></div>
+      </div>
+    </div>
+  </div>
+  <div class="footer">Consejo Federal de Inversiones • Financiamiento Productivo • Actualizado: <span id="footerFecha">20 de abril de 2026</span></div>
+  <script>
+
+const DATOS_CFI = {
+  "fecha_actualizacion": "2026-04-20 21:50:41",
+  "total": {
+    "monto": 24183.3,
+    "creditos": 314,
+    "porcentaje": 11.7,
+    "meta": 207006,
+    "falta": 182822.7,
+    "meses_restantes": 8,
+    "promedio_mensual": 6045.8,
+    "necesario_por_mes": 22852.8,
+    "ritmo_ok": false,
+    "ultimo_mes": 4
+  },
+  "provincias": [
+    {
+      "codigo": "BA",
+      "nombre": "Buenos Aires",
+      "monto": 6551.9,
+      "cantidad": 64,
+      "meta_anual": 56830,
+      "objetivo_mes": 18943.3,
+      "diferencia": -12391.4,
+      "porcentaje": 34.6,
+      "estado": "rojo",
+      "icono": "🔴",
+      "mensaje": "Bajo ritmo 35%"
+    },
+    {
+      "codigo": "SF",
+      "nombre": "Santa Fe",
+      "monto": 2571.2,
+      "cantidad": 36,
+      "meta_anual": 21510,
+      "objetivo_mes": 7170.0,
+      "diferencia": -4598.8,
+      "porcentaje": 35.9,
+      "estado": "rojo",
+      "icono": "🔴",
+      "mensaje": "Bajo ritmo 36%"
+    },
+    {
+      "codigo": "ER",
+      "nombre": "Entre Ríos",
+      "monto": 2471.6,
+      "cantidad": 22,
+      "meta_anual": 13066,
+      "objetivo_mes": 4355.3,
+      "diferencia": -1883.7,
+      "porcentaje": 56.7,
+      "estado": "amarillo",
+      "icono": "🟡",
+      "mensaje": "Ritmo medio 57%"
+    },
+    {
+      "codigo": "CO",
+      "nombre": "Córdoba",
+      "monto": 2297.8,
+      "cantidad": 28,
+      "meta_anual": 20755,
+      "objetivo_mes": 6918.3,
+      "diferencia": -4620.5,
+      "porcentaje": 33.2,
+      "estado": "rojo",
+      "icono": "🔴",
+      "mensaje": "Bajo ritmo 33%"
+    },
+    {
+      "codigo": "MZ",
+      "nombre": "Mendoza",
+      "monto": 1412.0,
+      "cantidad": 13,
+      "meta_anual": 11812,
+      "objetivo_mes": 3937.3,
+      "diferencia": -2525.3,
+      "porcentaje": 35.9,
+      "estado": "rojo",
+      "icono": "🔴",
+      "mensaje": "Bajo ritmo 36%"
+    },
+    {
+      "codigo": "MI",
+      "nombre": "Misiones",
+      "monto": 1281.6,
+      "cantidad": 21,
+      "meta_anual": 4435,
+      "objetivo_mes": 1478.3,
+      "diferencia": -196.7,
+      "porcentaje": 86.7,
+      "estado": "verde",
+      "icono": "🟢",
+      "mensaje": "Buen ritmo 87%"
+    },
+    {
+      "codigo": "TU",
+      "nombre": "Tucumán",
+      "monto": 1125.0,
+      "cantidad": 10,
+      "meta_anual": 4310,
+      "objetivo_mes": 1436.7,
+      "diferencia": -311.7,
+      "porcentaje": 78.3,
+      "estado": "amarillo",
+      "icono": "🟡",
+      "mensaje": "Ritmo medio 78%"
+    },
+    {
+      "codigo": "RN",
+      "nombre": "Río Negro",
+      "monto": 1030.0,
+      "cantidad": 18,
+      "meta_anual": 3565,
+      "objetivo_mes": 1188.3,
+      "diferencia": -158.3,
+      "porcentaje": 86.7,
+      "estado": "verde",
+      "icono": "🟢",
+      "mensaje": "Buen ritmo 87%"
+    },
+    {
+      "codigo": "NQ",
+      "nombre": "Neuquén",
+      "monto": 943.5,
+      "cantidad": 9,
+      "meta_anual": 9053,
+      "objetivo_mes": 3017.7,
+      "diferencia": -2074.1,
+      "porcentaje": 31.3,
+      "estado": "rojo",
+      "icono": "🔴",
+      "mensaje": "Bajo ritmo 31%"
+    },
+    {
+      "codigo": "CT",
+      "nombre": "Corrientes",
+      "monto": 835.1,
+      "cantidad": 21,
+      "meta_anual": 10326,
+      "objetivo_mes": 3442.0,
+      "diferencia": -2606.9,
+      "porcentaje": 24.3,
+      "estado": "rojo",
+      "icono": "🔴",
+      "mensaje": "Bajo ritmo 24%"
+    },
+    {
+      "codigo": "SA",
+      "nombre": "Salta",
+      "monto": 706.7,
+      "cantidad": 11,
+      "meta_anual": 4143,
+      "objetivo_mes": 1381.0,
+      "diferencia": -674.3,
+      "porcentaje": 51.2,
+      "estado": "amarillo",
+      "icono": "🟡",
+      "mensaje": "Ritmo medio 51%"
+    },
+    {
+      "codigo": "JU",
+      "nombre": "Jujuy",
+      "monto": 619.0,
+      "cantidad": 8,
+      "meta_anual": 3430,
+      "objetivo_mes": 1143.3,
+      "diferencia": -524.3,
+      "porcentaje": 54.1,
+      "estado": "amarillo",
+      "icono": "🟡",
+      "mensaje": "Ritmo medio 54%"
+    },
+    {
+      "codigo": "SL",
+      "nombre": "San Luis",
+      "monto": 486.9,
+      "cantidad": 13,
+      "meta_anual": 5743,
+      "objetivo_mes": 1914.3,
+      "diferencia": -1427.4,
+      "porcentaje": 25.4,
+      "estado": "rojo",
+      "icono": "🔴",
+      "mensaje": "Bajo ritmo 25%"
+    },
+    {
+      "codigo": "LR",
+      "nombre": "La Rioja",
+      "monto": 409.3,
+      "cantidad": 10,
+      "meta_anual": 5373,
+      "objetivo_mes": 1791.0,
+      "diferencia": -1381.7,
+      "porcentaje": 22.9,
+      "estado": "rojo",
+      "icono": "🔴",
+      "mensaje": "Bajo ritmo 23%"
+    },
+    {
+      "codigo": "LP",
+      "nombre": "La Pampa",
+      "monto": 354.3,
+      "cantidad": 7,
+      "meta_anual": 4206,
+      "objetivo_mes": 1402.0,
+      "diferencia": -1047.7,
+      "porcentaje": 25.3,
+      "estado": "rojo",
+      "icono": "🔴",
+      "mensaje": "Bajo ritmo 25%"
+    },
+    {
+      "codigo": "HA",
+      "nombre": "Chaco",
+      "monto": 304.4,
+      "cantidad": 11,
+      "meta_anual": 4334,
+      "objetivo_mes": 1444.7,
+      "diferencia": -1140.2,
+      "porcentaje": 21.1,
+      "estado": "rojo",
+      "icono": "🔴",
+      "mensaje": "Bajo ritmo 21%"
+    },
+    {
+      "codigo": "SJ",
+      "nombre": "San Juan",
+      "monto": 300.0,
+      "cantidad": 2,
+      "meta_anual": 2418,
+      "objetivo_mes": 806.0,
+      "diferencia": -506.0,
+      "porcentaje": 37.2,
+      "estado": "rojo",
+      "icono": "🔴",
+      "mensaje": "Bajo ritmo 37%"
+    },
+    {
+      "codigo": "CB",
+      "nombre": "Chubut",
+      "monto": 127.9,
+      "cantidad": 2,
+      "meta_anual": 3527,
+      "objetivo_mes": 1175.7,
+      "diferencia": -1047.8,
+      "porcentaje": 10.9,
+      "estado": "rojo",
+      "icono": "🔴",
+      "mensaje": "Bajo ritmo 11%"
+    },
+    {
+      "codigo": "TF",
+      "nombre": "Tierra del Fuego",
+      "monto": 126.0,
+      "cantidad": 3,
+      "meta_anual": 4118,
+      "objetivo_mes": 1372.7,
+      "diferencia": -1246.7,
+      "porcentaje": 9.2,
+      "estado": "rojo",
+      "icono": "🔴",
+      "mensaje": "Bajo ritmo 9%"
+    },
+    {
+      "codigo": "CA",
+      "nombre": "Catamarca",
+      "monto": 119.0,
+      "cantidad": 3,
+      "meta_anual": 2937,
+      "objetivo_mes": 979.0,
+      "diferencia": -860.0,
+      "porcentaje": 12.2,
+      "estado": "rojo",
+      "icono": "🔴",
+      "mensaje": "Bajo ritmo 12%"
+    },
+    {
+      "codigo": "SE",
+      "nombre": "Santiago del Estero",
+      "monto": 100.0,
+      "cantidad": 1,
+      "meta_anual": 1660,
+      "objetivo_mes": 553.3,
+      "diferencia": -453.3,
+      "porcentaje": 18.1,
+      "estado": "rojo",
+      "icono": "🔴",
+      "mensaje": "Bajo ritmo 18%"
+    },
+    {
+      "codigo": "FO",
+      "nombre": "Formosa",
+      "monto": 10.0,
+      "cantidad": 1,
+      "meta_anual": 1098,
+      "objetivo_mes": 366.0,
+      "diferencia": -356.0,
+      "porcentaje": 2.7,
+      "estado": "rojo",
+      "icono": "🔴",
+      "mensaje": "Bajo ritmo 3%"
+    },
+    {
+      "codigo": "SC",
+      "nombre": "Santa Cruz",
+      "monto": 0.0,
+      "cantidad": 0,
+      "meta_anual": 1350,
+      "objetivo_mes": 450.0,
+      "diferencia": -450.0,
+      "porcentaje": 0.0,
+      "estado": "gris",
+      "icono": "⚫",
+      "mensaje": "Sin aprobaciones 2026"
+    }
+  ],
+  "evolucion": [
+    {
+      "mes": 1,
+      "nombre": "Enero",
+      "monto": 7765.2,
+      "cantidad": 94
+    },
+    {
+      "mes": 2,
+      "nombre": "Febrero",
+      "monto": 2534.6,
+      "cantidad": 33
+    },
+    {
+      "mes": 3,
+      "nombre": "Marzo",
+      "monto": 7707.7,
+      "cantidad": 105
+    },
+    {
+      "mes": 4,
+      "nombre": "Abril",
+      "monto": 6175.9,
+      "cantidad": 82
+    }
+  ]
+};
+
+function actualizarDashboard(datos) {
+  const total = datos.total;
+  const provincias = datos.provincias;
+  
+  document.getElementById('scoreValue').textContent = total.porcentaje.toFixed(1) + '%';
+  document.getElementById('metaTotal').textContent = total.meta.toLocaleString('es-AR');
+  document.getElementById('montoAprobado').textContent = total.monto.toFixed(1);
+  document.getElementById('creditosTotal').textContent = total.creditos;
+  document.getElementById('montoFalta').textContent = total.falta.toFixed(1);
+  document.getElementById('mesesRestantes').textContent = total.meses_restantes;
+  document.getElementById('promedioMensual').textContent = total.promedio_mensual.toFixed(1);
+  document.getElementById('necesarioPorMes').textContent = total.necesario_por_mes.toFixed(1);
+  
+  setTimeout(() => { document.getElementById('progressFill').style.width = total.porcentaje + '%'; }, 100);
+  
+  const ritmo = Math.round((total.promedio_mensual / total.necesario_por_mes) * 100);
+  document.getElementById('ritmoValor').textContent = ritmo;
+  document.getElementById('coberturaValor').textContent = total.porcentaje.toFixed(1);
+  
+  setTimeout(() => {
+    document.getElementById('ritmoBar').style.width = Math.min(ritmo, 100) + '%';
+    document.getElementById('coberturaBar').style.width = total.porcentaje + '%';
+  }, 200);
+  
+  const fecha = new Date(datos.fecha_actualizacion);
+  const opciones = { day: 'numeric', month: 'long', year: 'numeric' };
+  document.getElementById('fechaActual').textContent = fecha.toLocaleDateString('es-AR', opciones);
+  document.getElementById('footerFecha').textContent = fecha.toLocaleDateString('es-AR', opciones);
+  
+  renderizarProvincias(provincias);
+}
+
+function renderizarProvincias(provincias) {
+  const grid = document.getElementById('semaforoGrid');
+  grid.innerHTML = '';
+  
+  provincias.forEach(prov => {
+    const card = document.createElement('div');
+    card.className = 'provincia-card';
+    
+    const colorMap = { 'verde': 'color-verde', 'amarillo': 'color-amarillo', 'rojo': 'color-rojo', 'gris': 'color-gris' };
+    const textColorMap = { 'verde': 'text-verde', 'amarillo': 'text-amarillo', 'rojo': 'text-rojo', 'gris': 'text-gris' };
+    
+    card.innerHTML = `
+      <div class="provincia-accent ${colorMap[prov.estado]}"></div>
+      <div class="provincia-content">
+        <div class="provincia-nombre">${prov.nombre.toUpperCase()}</div>
+        <div class="provincia-icono">${prov.icono}</div>
+        <div class="provincia-mensaje ${textColorMap[prov.estado]}">${prov.mensaje}</div>
+        <div class="provincia-monto">${prov.monto.toFixed(1)}M de ${prov.objetivo_mes.toFixed(1)}M</div>
+        <div class="provincia-cantidad">${prov.cantidad} crédito${prov.cantidad !== 1 ? 's' : ''}</div>
+        <div class="provincia-diferencia ${textColorMap[prov.estado]}">
+          ${prov.diferencia >= 0 ? '↑' : '↓'} ${Math.abs(prov.diferencia).toFixed(1)}M
+        </div>
+      </div>
+    `;
+    
+    grid.appendChild(card);
+  });
+}
+
+// Ejecutar al cargar la página
+document.addEventListener('DOMContentLoaded', () => actualizarDashboard(DATOS_CFI));
+
+  </script>
+</body>
+</html>
