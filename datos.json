@@ -1,14 +1,14 @@
 {
-  "fecha_actualizacion": "2026-04-21 11:12:15",
+  "fecha_actualizacion": "2026-04-21 14:11:57",
   "total": {
-    "monto": 24183.3,
-    "creditos": 314,
-    "porcentaje": 11.7,
+    "monto": 24973.0,
+    "creditos": 321,
+    "porcentaje": 12.1,
     "meta": 207006,
-    "falta": 182822.7,
+    "falta": 182033.0,
     "meses_restantes": 8,
-    "promedio_mensual": 6045.8,
-    "necesario_por_mes": 22852.8,
+    "promedio_mensual": 6243.3,
+    "necesario_por_mes": 22754.1,
     "ritmo_ok": false,
     "ultimo_mes": 4
   },
@@ -16,12 +16,12 @@
     {
       "codigo": "BA",
       "nombre": "Buenos Aires",
-      "monto": 6551.9,
-      "cantidad": 64,
+      "monto": 6701.9,
+      "cantidad": 65,
       "meta_anual": 56830,
       "objetivo_mes": 18943.3,
-      "diferencia": -12391.4,
-      "porcentaje": 34.6,
+      "diferencia": -12241.4,
+      "porcentaje": 35.4,
       "estado": "rojo",
       "icono": "🔴",
       "mensaje": "Bajo ritmo 35%"
@@ -68,28 +68,28 @@
     {
       "codigo": "MZ",
       "nombre": "Mendoza",
-      "monto": 1412.0,
-      "cantidad": 13,
+      "monto": 1958.7,
+      "cantidad": 17,
       "meta_anual": 11812,
       "objetivo_mes": 3937.3,
-      "diferencia": -2525.3,
-      "porcentaje": 35.9,
+      "diferencia": -1978.6,
+      "porcentaje": 49.7,
       "estado": "rojo",
       "icono": "🔴",
-      "mensaje": "Bajo ritmo 36%"
+      "mensaje": "Bajo ritmo 50%"
     },
     {
       "codigo": "MI",
       "nombre": "Misiones",
-      "monto": 1281.6,
-      "cantidad": 21,
+      "monto": 1324.6,
+      "cantidad": 22,
       "meta_anual": 4435,
       "objetivo_mes": 1478.3,
-      "diferencia": -196.7,
-      "porcentaje": 86.7,
+      "diferencia": -153.7,
+      "porcentaje": 89.6,
       "estado": "verde",
       "icono": "🟢",
-      "mensaje": "Buen ritmo 87%"
+      "mensaje": "Buen ritmo 90%"
     },
     {
       "codigo": "TU",
@@ -107,15 +107,15 @@
     {
       "codigo": "RN",
       "nombre": "Río Negro",
-      "monto": 1030.0,
-      "cantidad": 18,
+      "monto": 1080.0,
+      "cantidad": 19,
       "meta_anual": 3565,
       "objetivo_mes": 1188.3,
-      "diferencia": -158.3,
-      "porcentaje": 86.7,
+      "diferencia": -108.3,
+      "porcentaje": 90.9,
       "estado": "verde",
       "icono": "🟢",
-      "mensaje": "Buen ritmo 87%"
+      "mensaje": "Buen ritmo 91%"
     },
     {
       "codigo": "NQ",
@@ -335,8 +335,8 @@
     {
       "mes": 4,
       "nombre": "Abril",
-      "monto": 6175.9,
-      "cantidad": 82
+      "monto": 6965.6,
+      "cantidad": 89
     }
   ]
 }
