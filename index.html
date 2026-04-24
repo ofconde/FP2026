@@ -8,26 +8,26 @@
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body { font-family: 'Raleway', sans-serif; background: #FAFAFA; color: #1C2443; }
-    .header { background: linear-gradient(90deg, #1C2443 0%, #151827 100%); padding: 20px 40px; display: flex; align-items: center; justify-content: space-between; }
+    .header { background: linear-gradient(90deg, #1C2443 0%, #151827 100%); padding: 20px 40px; display: flex; align-items: center; justify-content: space-between; gap: 20px; }
     .logo-section { display: flex; align-items: center; gap: 20px; }
-    .logo-cfi { position: relative; width: 50px; height: 50px; }
+    .logo-cfi { position: relative; width: 50px; height: 50px; flex-shrink: 0; }
     .logo-circle-outer { position: absolute; width: 50px; height: 50px; border: 3px solid #00A7E1; border-radius: 50%; }
     .logo-circle-inner { position: absolute; top: 7px; left: 7px; width: 36px; height: 36px; border: 2px solid #96C9DA; border-radius: 50%; }
     .logo-dot-1 { position: absolute; top: 17px; left: 17px; width: 6px; height: 6px; background: #00A7E1; border-radius: 50%; }
     .logo-dot-2 { position: absolute; top: 27px; left: 27px; width: 6px; height: 6px; background: #00A7E1; border-radius: 50%; }
-    .logo-text h1 { font-family: 'Bebas Neue', sans-serif; font-size: 32px; letter-spacing: 3px; color: #FAFAFA; margin: 0; line-height: 1; }
+    .logo-text h1 { font-family: 'Bebas Neue', sans-serif; font-size: 32px; letter-spacing: 3px; color: #FAFAFA; line-height: 1; }
     .logo-text p { font-size: 9px; color: #96C9DA; letter-spacing: 1px; margin-top: 2px; }
-    .header-right h2 { font-size: 16px; font-weight: 700; color: #FAFAFA; text-align: right; margin: 0; }
+    .header-right h2 { font-size: 16px; font-weight: 700; color: #FAFAFA; text-align: right; }
     .header-right p { font-size: 10px; color: #96C9DA; text-align: right; margin-top: 2px; }
     .container { max-width: 1400px; margin: 0 auto; padding: 30px 40px; }
-    .score-card { background: linear-gradient(180deg, #00A7E1 0%, #008AC1 100%); border-radius: 12px; padding: 40px; text-align: center; margin-bottom: 30px; position: relative; }
+    .score-card { background: linear-gradient(180deg, #00A7E1 0%, #008AC1 100%); border-radius: 12px; padding: 40px; text-align: center; margin-bottom: 30px; position: relative; color: #FFFFFF; }
     .score-label { font-size: 11px; font-weight: 700; letter-spacing: 2px; color: rgba(255, 255, 255, 0.85); margin-bottom: 15px; }
-    .score-value { font-family: 'Bebas Neue', sans-serif; font-size: 96px; color: #FFFFFF; line-height: 1; margin-bottom: 10px; }
+    .score-value { font-family: 'Bebas Neue', sans-serif; font-size: 96px; line-height: 1; margin-bottom: 10px; }
     .score-subtitle { font-size: 16px; color: rgba(255, 255, 255, 0.9); margin-bottom: 10px; }
     .score-update { font-size: 10px; color: rgba(255, 255, 255, 0.75); }
     .badge-live { position: absolute; top: 20px; right: 20px; background: rgba(255, 255, 255, 0.25); padding: 6px 16px; border-radius: 20px; font-size: 10px; font-weight: 700; color: #FFFFFF; }
     .progress-bar { height: 12px; background: #DBDCDE; border-radius: 6px; margin-bottom: 30px; overflow: hidden; }
-    .progress-fill { height: 100%; background: #47B067; border-radius: 6px; width: 12.1%; transition: width 1s ease-out; }
+    .progress-fill { height: 100%; background: #47B067; border-radius: 6px; width: 0; transition: width 1s ease-out; }
     .kpi-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; margin-bottom: 40px; }
     .kpi-card { background: #FFFFFF; border: 1px solid #DBDCDE; border-radius: 8px; overflow: hidden; }
     .kpi-accent { height: 5px; }
@@ -36,7 +36,7 @@
     .kpi-value { font-family: 'Bebas Neue', sans-serif; font-size: 32px; margin-bottom: 5px; }
     .kpi-meta { font-size: 11px; color: #96C9DA; margin-bottom: 3px; }
     .kpi-detail { font-size: 9px; color: #1C2443; opacity: 0.6; }
-    .section-title { font-family: 'Bebas Neue', sans-serif; font-size: 22px; color: #1C2443; margin-bottom: 10px; display: flex; align-items: center; gap: 10px; }
+    .section-title { font-family: 'Bebas Neue', sans-serif; font-size: 22px; color: #1C2443; margin-bottom: 10px; display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
     .semaforo-note { font-size: 10px; color: #96C9DA; margin-bottom: 20px; font-style: italic; }
     .badge-status { background: #47B067; color: #FFFFFF; font-size: 9px; font-weight: 700; padding: 6px 14px; border-radius: 20px; margin-left: auto; }
     .semaforo-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 20px; margin-bottom: 30px; }
@@ -44,7 +44,7 @@
     .provincia-card:hover { transform: translateY(-2px); box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08); }
     .provincia-accent { height: 6px; }
     .provincia-content { padding: 20px; text-align: center; }
-    .provincia-nombre { font-size: 12px; font-weight: 700; color: #1C2443; margin-bottom: 12px; }
+    .provincia-nombre { font-size: 12px; font-weight: 700; color: #1C2443; margin-bottom: 12px; text-transform: uppercase; }
     .provincia-icono { font-size: 48px; margin-bottom: 10px; }
     .provincia-mensaje { font-size: 12px; font-weight: 700; margin-bottom: 8px; }
     .provincia-monto { font-size: 10px; color: #1C2443; margin-bottom: 5px; }
@@ -59,300 +59,272 @@
     .vital-fill { height: 100%; border-radius: 5px; }
     .vital-value { font-family: 'Bebas Neue', sans-serif; font-size: 28px; margin-bottom: 3px; }
     .vital-description { font-size: 8px; color: #96C9DA; }
+    .error-panel, .loading-panel { background: #FFFFFF; border: 1px solid #DBDCDE; border-radius: 10px; padding: 30px; text-align: center; margin-bottom: 30px; }
+    .loading-panel { color: #1C2443; }
+    .error-panel { color: #E6431A; }
     .footer { background: #1C2443; padding: 15px; text-align: center; color: #96C9DA; font-size: 9px; margin-top: 40px; }
+    .hidden { display: none; }
     .color-verde { background: #47B067; } .color-amarillo { background: #E99505; } .color-rojo { background: #E6431A; } .color-gris { background: #96C9DA; } .color-celeste { background: #00A7E1; } .color-teal { background: #0C8395; }
     .text-verde { color: #47B067; } .text-amarillo { color: #E99505; } .text-rojo { color: #E6431A; } .text-gris { color: #96C9DA; } .text-celeste { color: #00A7E1; } .text-teal { color: #0C8395; }
-    @media (max-width: 768px) { .container { padding: 20px; } .score-value { font-size: 64px; } .kpi-grid, .semaforo-grid { grid-template-columns: 1fr; } }
+    @media (max-width: 768px) {
+      .header { padding: 20px; flex-direction: column; align-items: flex-start; }
+      .header-right { width: 100%; }
+      .header-right h2, .header-right p { text-align: left; }
+      .container { padding: 20px; }
+      .score-card { padding: 28px 20px; }
+      .score-value { font-size: 64px; }
+      .kpi-grid, .semaforo-grid { grid-template-columns: 1fr; }
+    }
   </style>
 </head>
 <body>
   <div class="header">
     <div class="logo-section">
-      <div class="logo-cfi"><div class="logo-circle-outer"></div><div class="logo-circle-inner"></div><div class="logo-dot-1"></div><div class="logo-dot-2"></div></div>
-      <div class="logo-text"><h1>CFI</h1><p>CONSEJO FEDERAL DE INVERSIONES</p></div>
+      <div class="logo-cfi">
+        <div class="logo-circle-outer"></div>
+        <div class="logo-circle-inner"></div>
+        <div class="logo-dot-1"></div>
+        <div class="logo-dot-2"></div>
+      </div>
+      <div class="logo-text">
+        <h1>CFI</h1>
+        <p>CONSEJO FEDERAL DE INVERSIONES</p>
+      </div>
     </div>
-    <div class="header-right"><h2>DASHBOARD</h2><p>Financiamiento Productivo</p></div>
+    <div class="header-right">
+      <h2>DASHBOARD</h2>
+      <p>Financiamiento Productivo</p>
+    </div>
   </div>
+
   <div class="container">
-    <div class="score-card">
-      <div class="badge-live">LIVE</div>
-      <div class="score-label">OBJETIVO ANUAL 2026</div>
-      <div class="score-value">12.1%</div>
-      <div class="score-subtitle">de $207.006 millones</div>
-      <div class="score-update">Actualizado: 21 de abril de 2026 • Director Rec. Financieros</div>
-    </div>
-    <div class="progress-bar"><div class="progress-fill"></div></div>
-    <div class="kpi-grid">
-      <div class="kpi-card"><div class="kpi-accent color-verde"></div><div class="kpi-content"><div class="kpi-label">APROBADO</div><div class="kpi-value text-celeste">$24973.0M</div><div class="kpi-meta">321 créditos</div><div class="kpi-detail">Ene-Abr 2026</div></div></div>
-      <div class="kpi-card"><div class="kpi-accent color-rojo"></div><div class="kpi-content"><div class="kpi-label">FALTA</div><div class="kpi-value text-rojo">$182033.0M</div><div class="kpi-meta">Para cumplir</div><div class="kpi-detail">8 meses restantes</div></div></div>
-      <div class="kpi-card"><div class="kpi-accent color-teal"></div><div class="kpi-content"><div class="kpi-label">PROMEDIO</div><div class="kpi-value text-teal">$6243.2M</div><div class="kpi-meta">Por mes</div><div class="kpi-detail">Ritmo actual</div></div></div>
-      <div class="kpi-card"><div class="kpi-accent color-amarillo"></div><div class="kpi-content"><div class="kpi-label">NECESARIO</div><div class="kpi-value text-amarillo">$22754.1M</div><div class="kpi-meta">Por mes</div><div class="kpi-detail">Para meta 2026</div></div></div>
-    </div>
-    <div class="section-title">🚦 SEMÁFORO PROVINCIAL<span class="badge-status">LIVE</span></div>
-    <div class="semaforo-note">🟢 Verde: ≥80% del objetivo • 🟡 Amarillo: 50-80% • 🔴 Rojo: &lt;50% • ⚫ Sin datos</div>
-    <div class="semaforo-grid">
-      <div class="provincia-card">
-        <div class="provincia-accent color-rojo"></div>
-        <div class="provincia-content">
-          <div class="provincia-nombre">BUENOS AIRES</div>
-          <div class="provincia-icono">🔴</div>
-          <div class="provincia-mensaje text-rojo">Bajo ritmo 35%</div>
-          <div class="provincia-monto">$6701.9M de $18943.3M</div>
-          <div class="provincia-cantidad">65 créditos</div>
-          <div class="provincia-diferencia text-rojo">↓ $12241.4M</div>
-        </div>
+    <div id="loading" class="loading-panel">Cargando datos actualizados...</div>
+    <div id="error" class="error-panel hidden"></div>
+
+    <div id="dashboard" class="hidden">
+      <div class="score-card">
+        <div class="badge-live">LIVE</div>
+        <div class="score-label">OBJETIVO ANUAL 2026</div>
+        <div id="scoreValue" class="score-value">0%</div>
+        <div id="scoreSubtitle" class="score-subtitle">de $0 millones</div>
+        <div id="scoreUpdate" class="score-update">Actualizado: -</div>
       </div>
-      <div class="provincia-card">
-        <div class="provincia-accent color-rojo"></div>
-        <div class="provincia-content">
-          <div class="provincia-nombre">SANTA FE</div>
-          <div class="provincia-icono">🔴</div>
-          <div class="provincia-mensaje text-rojo">Bajo ritmo 36%</div>
-          <div class="provincia-monto">$2571.2M de $7170.0M</div>
-          <div class="provincia-cantidad">36 créditos</div>
-          <div class="provincia-diferencia text-rojo">↓ $4598.8M</div>
-        </div>
-      </div>
-      <div class="provincia-card">
-        <div class="provincia-accent color-amarillo"></div>
-        <div class="provincia-content">
-          <div class="provincia-nombre">ENTRE RÍOS</div>
-          <div class="provincia-icono">🟡</div>
-          <div class="provincia-mensaje text-amarillo">Ritmo medio 57%</div>
-          <div class="provincia-monto">$2471.6M de $4355.3M</div>
-          <div class="provincia-cantidad">22 créditos</div>
-          <div class="provincia-diferencia text-amarillo">↓ $1883.7M</div>
-        </div>
-      </div>
-      <div class="provincia-card">
-        <div class="provincia-accent color-rojo"></div>
-        <div class="provincia-content">
-          <div class="provincia-nombre">CÓRDOBA</div>
-          <div class="provincia-icono">🔴</div>
-          <div class="provincia-mensaje text-rojo">Bajo ritmo 33%</div>
-          <div class="provincia-monto">$2297.8M de $6918.3M</div>
-          <div class="provincia-cantidad">28 créditos</div>
-          <div class="provincia-diferencia text-rojo">↓ $4620.5M</div>
-        </div>
-      </div>
-      <div class="provincia-card">
-        <div class="provincia-accent color-rojo"></div>
-        <div class="provincia-content">
-          <div class="provincia-nombre">MENDOZA</div>
-          <div class="provincia-icono">🔴</div>
-          <div class="provincia-mensaje text-rojo">Bajo ritmo 50%</div>
-          <div class="provincia-monto">$1958.7M de $3937.3M</div>
-          <div class="provincia-cantidad">17 créditos</div>
-          <div class="provincia-diferencia text-rojo">↓ $1978.6M</div>
-        </div>
-      </div>
-      <div class="provincia-card">
-        <div class="provincia-accent color-verde"></div>
-        <div class="provincia-content">
-          <div class="provincia-nombre">MISIONES</div>
-          <div class="provincia-icono">🟢</div>
-          <div class="provincia-mensaje text-verde">Buen ritmo 90%</div>
-          <div class="provincia-monto">$1324.6M de $1478.3M</div>
-          <div class="provincia-cantidad">22 créditos</div>
-          <div class="provincia-diferencia text-verde">↓ $153.7M</div>
-        </div>
-      </div>
-      <div class="provincia-card">
-        <div class="provincia-accent color-amarillo"></div>
-        <div class="provincia-content">
-          <div class="provincia-nombre">TUCUMÁN</div>
-          <div class="provincia-icono">🟡</div>
-          <div class="provincia-mensaje text-amarillo">Ritmo medio 78%</div>
-          <div class="provincia-monto">$1125.0M de $1436.7M</div>
-          <div class="provincia-cantidad">10 créditos</div>
-          <div class="provincia-diferencia text-amarillo">↓ $311.7M</div>
-        </div>
-      </div>
-      <div class="provincia-card">
-        <div class="provincia-accent color-verde"></div>
-        <div class="provincia-content">
-          <div class="provincia-nombre">RÍO NEGRO</div>
-          <div class="provincia-icono">🟢</div>
-          <div class="provincia-mensaje text-verde">Buen ritmo 91%</div>
-          <div class="provincia-monto">$1080.0M de $1188.3M</div>
-          <div class="provincia-cantidad">19 créditos</div>
-          <div class="provincia-diferencia text-verde">↓ $108.3M</div>
-        </div>
-      </div>
-      <div class="provincia-card">
-        <div class="provincia-accent color-rojo"></div>
-        <div class="provincia-content">
-          <div class="provincia-nombre">NEUQUÉN</div>
-          <div class="provincia-icono">🔴</div>
-          <div class="provincia-mensaje text-rojo">Bajo ritmo 31%</div>
-          <div class="provincia-monto">$943.5M de $3017.7M</div>
-          <div class="provincia-cantidad">9 créditos</div>
-          <div class="provincia-diferencia text-rojo">↓ $2074.1M</div>
-        </div>
-      </div>
-      <div class="provincia-card">
-        <div class="provincia-accent color-rojo"></div>
-        <div class="provincia-content">
-          <div class="provincia-nombre">CORRIENTES</div>
-          <div class="provincia-icono">🔴</div>
-          <div class="provincia-mensaje text-rojo">Bajo ritmo 24%</div>
-          <div class="provincia-monto">$835.1M de $3442.0M</div>
-          <div class="provincia-cantidad">21 créditos</div>
-          <div class="provincia-diferencia text-rojo">↓ $2606.9M</div>
-        </div>
-      </div>
-      <div class="provincia-card">
-        <div class="provincia-accent color-amarillo"></div>
-        <div class="provincia-content">
-          <div class="provincia-nombre">SALTA</div>
-          <div class="provincia-icono">🟡</div>
-          <div class="provincia-mensaje text-amarillo">Ritmo medio 51%</div>
-          <div class="provincia-monto">$706.7M de $1381.0M</div>
-          <div class="provincia-cantidad">11 créditos</div>
-          <div class="provincia-diferencia text-amarillo">↓ $674.3M</div>
-        </div>
-      </div>
-      <div class="provincia-card">
-        <div class="provincia-accent color-amarillo"></div>
-        <div class="provincia-content">
-          <div class="provincia-nombre">JUJUY</div>
-          <div class="provincia-icono">🟡</div>
-          <div class="provincia-mensaje text-amarillo">Ritmo medio 54%</div>
-          <div class="provincia-monto">$619.0M de $1143.3M</div>
-          <div class="provincia-cantidad">8 créditos</div>
-          <div class="provincia-diferencia text-amarillo">↓ $524.3M</div>
-        </div>
-      </div>
-      <div class="provincia-card">
-        <div class="provincia-accent color-rojo"></div>
-        <div class="provincia-content">
-          <div class="provincia-nombre">SAN LUIS</div>
-          <div class="provincia-icono">🔴</div>
-          <div class="provincia-mensaje text-rojo">Bajo ritmo 25%</div>
-          <div class="provincia-monto">$486.9M de $1914.3M</div>
-          <div class="provincia-cantidad">13 créditos</div>
-          <div class="provincia-diferencia text-rojo">↓ $1427.4M</div>
-        </div>
-      </div>
-      <div class="provincia-card">
-        <div class="provincia-accent color-rojo"></div>
-        <div class="provincia-content">
-          <div class="provincia-nombre">LA RIOJA</div>
-          <div class="provincia-icono">🔴</div>
-          <div class="provincia-mensaje text-rojo">Bajo ritmo 23%</div>
-          <div class="provincia-monto">$409.3M de $1791.0M</div>
-          <div class="provincia-cantidad">10 créditos</div>
-          <div class="provincia-diferencia text-rojo">↓ $1381.7M</div>
-        </div>
-      </div>
-      <div class="provincia-card">
-        <div class="provincia-accent color-rojo"></div>
-        <div class="provincia-content">
-          <div class="provincia-nombre">LA PAMPA</div>
-          <div class="provincia-icono">🔴</div>
-          <div class="provincia-mensaje text-rojo">Bajo ritmo 25%</div>
-          <div class="provincia-monto">$354.3M de $1402.0M</div>
-          <div class="provincia-cantidad">7 créditos</div>
-          <div class="provincia-diferencia text-rojo">↓ $1047.7M</div>
-        </div>
-      </div>
-      <div class="provincia-card">
-        <div class="provincia-accent color-rojo"></div>
-        <div class="provincia-content">
-          <div class="provincia-nombre">CHACO</div>
-          <div class="provincia-icono">🔴</div>
-          <div class="provincia-mensaje text-rojo">Bajo ritmo 21%</div>
-          <div class="provincia-monto">$304.4M de $1444.7M</div>
-          <div class="provincia-cantidad">11 créditos</div>
-          <div class="provincia-diferencia text-rojo">↓ $1140.2M</div>
-        </div>
-      </div>
-      <div class="provincia-card">
-        <div class="provincia-accent color-rojo"></div>
-        <div class="provincia-content">
-          <div class="provincia-nombre">SAN JUAN</div>
-          <div class="provincia-icono">🔴</div>
-          <div class="provincia-mensaje text-rojo">Bajo ritmo 37%</div>
-          <div class="provincia-monto">$300.0M de $806.0M</div>
-          <div class="provincia-cantidad">2 créditos</div>
-          <div class="provincia-diferencia text-rojo">↓ $506.0M</div>
-        </div>
-      </div>
-      <div class="provincia-card">
-        <div class="provincia-accent color-rojo"></div>
-        <div class="provincia-content">
-          <div class="provincia-nombre">CHUBUT</div>
-          <div class="provincia-icono">🔴</div>
-          <div class="provincia-mensaje text-rojo">Bajo ritmo 11%</div>
-          <div class="provincia-monto">$127.9M de $1175.7M</div>
-          <div class="provincia-cantidad">2 créditos</div>
-          <div class="provincia-diferencia text-rojo">↓ $1047.8M</div>
-        </div>
-      </div>
-      <div class="provincia-card">
-        <div class="provincia-accent color-rojo"></div>
-        <div class="provincia-content">
-          <div class="provincia-nombre">TIERRA DEL FUEGO</div>
-          <div class="provincia-icono">🔴</div>
-          <div class="provincia-mensaje text-rojo">Bajo ritmo 9%</div>
-          <div class="provincia-monto">$126.0M de $1372.7M</div>
-          <div class="provincia-cantidad">3 créditos</div>
-          <div class="provincia-diferencia text-rojo">↓ $1246.7M</div>
-        </div>
-      </div>
-      <div class="provincia-card">
-        <div class="provincia-accent color-rojo"></div>
-        <div class="provincia-content">
-          <div class="provincia-nombre">CATAMARCA</div>
-          <div class="provincia-icono">🔴</div>
-          <div class="provincia-mensaje text-rojo">Bajo ritmo 12%</div>
-          <div class="provincia-monto">$119.0M de $979.0M</div>
-          <div class="provincia-cantidad">3 créditos</div>
-          <div class="provincia-diferencia text-rojo">↓ $860.0M</div>
-        </div>
-      </div>
-      <div class="provincia-card">
-        <div class="provincia-accent color-rojo"></div>
-        <div class="provincia-content">
-          <div class="provincia-nombre">SANTIAGO DEL ESTERO</div>
-          <div class="provincia-icono">🔴</div>
-          <div class="provincia-mensaje text-rojo">Bajo ritmo 18%</div>
-          <div class="provincia-monto">$100.0M de $553.3M</div>
-          <div class="provincia-cantidad">1 crédito</div>
-          <div class="provincia-diferencia text-rojo">↓ $453.3M</div>
-        </div>
-      </div>
-      <div class="provincia-card">
-        <div class="provincia-accent color-rojo"></div>
-        <div class="provincia-content">
-          <div class="provincia-nombre">FORMOSA</div>
-          <div class="provincia-icono">🔴</div>
-          <div class="provincia-mensaje text-rojo">Bajo ritmo 3%</div>
-          <div class="provincia-monto">$10.0M de $366.0M</div>
-          <div class="provincia-cantidad">1 crédito</div>
-          <div class="provincia-diferencia text-rojo">↓ $356.0M</div>
-        </div>
-      </div>
-      <div class="provincia-card">
-        <div class="provincia-accent color-gris"></div>
-        <div class="provincia-content">
-          <div class="provincia-nombre">SANTA CRUZ</div>
-          <div class="provincia-icono">⚫</div>
-          <div class="provincia-mensaje text-gris">Sin aprobaciones 2026</div>
-          <div class="provincia-monto">$0.0M de $450.0M</div>
-          <div class="provincia-cantidad">0 créditos</div>
-          <div class="provincia-diferencia text-gris">↓ $450.0M</div>
-        </div>
-      </div>
-    </div>
-    <div class="vitals-panel">
-      <div class="vitals-title">INDICADORES DE CUMPLIMIENTO</div>
-      <div class="vitals-grid">
-        <div class="vital-item"><div class="vital-label">Ritmo de aprobación</div><div class="vital-bar"><div class="vital-fill color-rojo" style="width: 27%"></div></div><div class="vital-value text-rojo">27%</div><div class="vital-description">Del necesario mensual</div></div>
-        <div class="vital-item"><div class="vital-label">Cobertura anual</div><div class="vital-bar"><div class="vital-fill color-amarillo" style="width: 12.1%"></div></div><div class="vital-value text-amarillo">12.1%</div><div class="vital-description">Del objetivo anual</div></div>
+
+      <div class="progress-bar"><div id="progressFill" class="progress-fill"></div></div>
+
+      <div id="kpiGrid" class="kpi-grid"></div>
+
+      <div class="section-title">🚦 SEMÁFORO PROVINCIAL<span class="badge-status">LIVE</span></div>
+      <div class="semaforo-note">🟢 Verde: ≥80% del objetivo • 🟡 Amarillo: 50-80% • 🔴 Rojo: &lt;50% • ⚫ Sin datos</div>
+      <div id="semaforoGrid" class="semaforo-grid"></div>
+
+      <div class="vitals-panel">
+        <div class="vitals-title">INDICADORES DE CUMPLIMIENTO</div>
+        <div id="vitalsGrid" class="vitals-grid"></div>
       </div>
     </div>
   </div>
-  <div class="footer">Consejo Federal de Inversiones • Financiamiento Productivo • Actualizado: 21 de abril de 2026</div>
+
+  <div id="footer" class="footer">Consejo Federal de Inversiones • Financiamiento Productivo • Actualizado: -</div>
+
+  <script>
+    const COLOR_BY_STATUS = {
+      verde: 'verde',
+      amarillo: 'amarillo',
+      rojo: 'rojo',
+      gris: 'gris'
+    };
+
+    function formatMoney(value) {
+      return `$${Number(value || 0).toFixed(1)}M`;
+    }
+
+    function formatPercent(value) {
+      return `${Number(value || 0).toFixed(1)}%`;
+    }
+
+    function formatCredits(value) {
+      const count = Number(value || 0);
+      return `${count} ${count === 1 ? 'crédito' : 'créditos'}`;
+    }
+
+    function capitalize(text) {
+      return (text || '').charAt(0).toUpperCase() + (text || '').slice(1);
+    }
+
+    function formatDate(dateString) {
+      if (!dateString) return '-';
+      const normalized = dateString.replace(' ', 'T');
+      const date = new Date(normalized);
+      if (Number.isNaN(date.getTime())) return dateString;
+      return new Intl.DateTimeFormat('es-AR', {
+        day: 'numeric',
+        month: 'long',
+        year: 'numeric',
+        hour: '2-digit',
+        minute: '2-digit'
+      }).format(date);
+    }
+
+    function clampPercent(value) {
+      return Math.max(0, Math.min(Number(value || 0), 100));
+    }
+
+    function renderKpis(total) {
+      const kpis = [
+        {
+          accent: 'verde',
+          valueClass: 'celeste',
+          label: 'APROBADO',
+          value: formatMoney(total.monto),
+          meta: formatCredits(total.creditos),
+          detail: `Ene-${capitalize(monthName(total.ultimo_mes))} 2026`
+        },
+        {
+          accent: 'rojo',
+          valueClass: 'rojo',
+          label: 'FALTA',
+          value: formatMoney(total.falta),
+          meta: 'Para cumplir',
+          detail: `${total.meses_restantes} meses restantes`
+        },
+        {
+          accent: 'teal',
+          valueClass: 'teal',
+          label: 'PROMEDIO',
+          value: formatMoney(total.promedio_mensual),
+          meta: 'Por mes',
+          detail: 'Ritmo actual'
+        },
+        {
+          accent: 'amarillo',
+          valueClass: 'amarillo',
+          label: 'NECESARIO',
+          value: formatMoney(total.necesario_por_mes),
+          meta: 'Por mes',
+          detail: 'Para meta 2026'
+        }
+      ];
+
+      document.getElementById('kpiGrid').innerHTML = kpis.map((kpi) => `
+        <div class="kpi-card">
+          <div class="kpi-accent color-${kpi.accent}"></div>
+          <div class="kpi-content">
+            <div class="kpi-label">${kpi.label}</div>
+            <div class="kpi-value text-${kpi.valueClass}">${kpi.value}</div>
+            <div class="kpi-meta">${kpi.meta}</div>
+            <div class="kpi-detail">${kpi.detail}</div>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    function renderProvinces(provincias) {
+      document.getElementById('semaforoGrid').innerHTML = provincias.map((provincia) => {
+        const color = COLOR_BY_STATUS[provincia.estado] || 'gris';
+        const diffSymbol = provincia.diferencia < 0 ? '↓' : '↑';
+        const diffClass = provincia.diferencia < 0 ? color : 'verde';
+
+        return `
+          <div class="provincia-card">
+            <div class="provincia-accent color-${color}"></div>
+            <div class="provincia-content">
+              <div class="provincia-nombre">${provincia.nombre}</div>
+              <div class="provincia-icono">${provincia.icono || '⚫'}</div>
+              <div class="provincia-mensaje text-${color}">${provincia.mensaje || 'Sin datos'}</div>
+              <div class="provincia-monto">${formatMoney(provincia.monto)} de ${formatMoney(provincia.objetivo_mes)}</div>
+              <div class="provincia-cantidad">${formatCredits(provincia.cantidad)}</div>
+              <div class="provincia-diferencia text-${diffClass}">${diffSymbol} ${formatMoney(Math.abs(provincia.diferencia))}</div>
+            </div>
+          </div>
+        `;
+      }).join('');
+    }
+
+    function renderVitals(total) {
+      const ritmo = total.necesario_por_mes ? (total.promedio_mensual / total.necesario_por_mes) * 100 : 0;
+      const ritmoColor = ritmo >= 80 ? 'verde' : ritmo >= 50 ? 'amarillo' : 'rojo';
+      const coberturaColor = total.porcentaje >= 80 ? 'verde' : total.porcentaje >= 50 ? 'amarillo' : 'rojo';
+
+      const vitals = [
+        {
+          label: 'Ritmo de aprobación',
+          color: ritmoColor,
+          width: clampPercent(ritmo),
+          value: formatPercent(ritmo),
+          description: 'Del necesario mensual'
+        },
+        {
+          label: 'Cobertura anual',
+          color: coberturaColor,
+          width: clampPercent(total.porcentaje),
+          value: formatPercent(total.porcentaje),
+          description: 'Del objetivo anual'
+        }
+      ];
+
+      document.getElementById('vitalsGrid').innerHTML = vitals.map((vital) => `
+        <div class="vital-item">
+          <div class="vital-label">${vital.label}</div>
+          <div class="vital-bar"><div class="vital-fill color-${vital.color}" style="width: ${vital.width}%"></div></div>
+          <div class="vital-value text-${vital.color}">${vital.value}</div>
+          <div class="vital-description">${vital.description}</div>
+        </div>
+      `).join('');
+    }
+
+    function monthName(monthNumber) {
+      const months = ['enero', 'febrero', 'marzo', 'abril', 'mayo', 'junio', 'julio', 'agosto', 'septiembre', 'octubre', 'noviembre', 'diciembre'];
+      return months[Math.max(0, Number(monthNumber || 1) - 1)] || 'mes';
+    }
+
+    function renderDashboard(data) {
+      const total = data.total || {};
+      const updatedText = formatDate(data.fecha_actualizacion);
+
+      document.getElementById('scoreValue').textContent = formatPercent(total.porcentaje);
+      document.getElementById('scoreSubtitle').textContent = `de ${formatMoney(total.meta)}`;
+      document.getElementById('scoreUpdate').textContent = `Actualizado: ${updatedText} • Director Rec. Financieros`;
+      document.getElementById('progressFill').style.width = `${clampPercent(total.porcentaje)}%`;
+      document.getElementById('footer').textContent = `Consejo Federal de Inversiones • Financiamiento Productivo • Actualizado: ${updatedText}`;
+
+      renderKpis(total);
+      renderProvinces(data.provincias || []);
+      renderVitals(total);
+
+      document.getElementById('loading').classList.add('hidden');
+      document.getElementById('dashboard').classList.remove('hidden');
+    }
+
+    function showError(message) {
+      document.getElementById('loading').classList.add('hidden');
+      const errorPanel = document.getElementById('error');
+      errorPanel.textContent = message;
+      errorPanel.classList.remove('hidden');
+    }
+
+    async function loadData() {
+      try {
+        const response = await fetch(`./datos.json?v=${Date.now()}`, {
+          cache: 'no-store',
+          headers: {
+            'Cache-Control': 'no-cache'
+          }
+        });
+
+        if (!response.ok) {
+          throw new Error(`HTTP ${response.status}`);
+        }
+
+        const data = await response.json();
+        renderDashboard(data);
+      } catch (error) {
+        console.error('Error cargando datos.json:', error);
+        showError('No se pudieron cargar los datos actualizados. Verificá que datos.json esté publicado correctamente y probá recargar en unos segundos.');
+      }
+    }
+
+    loadData();
+  </script>
 </body>
 </html>
