@@ -1,14 +1,14 @@
 {
-  "fecha_actualizacion": "2026-04-24 19:56:20",
+  "fecha_actualizacion": "2026-04-28 11:20:25",
   "total": {
-    "monto": 25718.3,
-    "creditos": 334,
-    "porcentaje": 12.4,
+    "monto": 26076.5,
+    "creditos": 341,
+    "porcentaje": 12.6,
     "meta": 207006,
-    "falta": 181287.7,
+    "falta": 180929.5,
     "meses_restantes": 8,
-    "promedio_mensual": 6429.6,
-    "necesario_por_mes": 22661.0,
+    "promedio_mensual": 6519.1,
+    "necesario_por_mes": 22616.2,
     "ritmo_ok": false,
     "ultimo_mes": 4
   },
@@ -16,11 +16,11 @@
     {
       "codigo": "BA",
       "nombre": "Buenos Aires",
-      "monto": 6781.9,
-      "cantidad": 66,
+      "monto": 6782.0,
+      "cantidad": 67,
       "meta_anual": 56830,
       "objetivo_mes": 18943.3,
-      "diferencia": -12161.4,
+      "diferencia": -12161.3,
       "porcentaje": 35.8,
       "estado": "rojo",
       "icono": "🔴",
@@ -94,24 +94,24 @@
     {
       "codigo": "TU",
       "nombre": "Tucumán",
-      "monto": 1125.0,
-      "cantidad": 10,
+      "monto": 1262.3,
+      "cantidad": 12,
       "meta_anual": 4310,
       "objetivo_mes": 1436.7,
-      "diferencia": -311.7,
-      "porcentaje": 78.3,
-      "estado": "amarillo",
-      "icono": "🟡",
-      "mensaje": "Ritmo medio 78%"
+      "diferencia": -174.4,
+      "porcentaje": 87.9,
+      "estado": "verde",
+      "icono": "🟢",
+      "mensaje": "Buen ritmo 88%"
     },
     {
       "codigo": "RN",
       "nombre": "Río Negro",
-      "monto": 1114.6,
-      "cantidad": 21,
+      "monto": 1114.8,
+      "cantidad": 22,
       "meta_anual": 3565,
       "objetivo_mes": 1188.3,
-      "diferencia": -73.7,
+      "diferencia": -73.5,
       "porcentaje": 93.8,
       "estado": "verde",
       "icono": "🟢",
@@ -131,6 +131,19 @@
       "mensaje": "Bajo ritmo 31%"
     },
     {
+      "codigo": "SA",
+      "nombre": "Salta",
+      "monto": 915.5,
+      "cantidad": 14,
+      "meta_anual": 4143,
+      "objetivo_mes": 1381.0,
+      "diferencia": -465.5,
+      "porcentaje": 66.3,
+      "estado": "amarillo",
+      "icono": "🟡",
+      "mensaje": "Ritmo medio 66%"
+    },
+    {
       "codigo": "CT",
       "nombre": "Corrientes",
       "monto": 872.1,
@@ -142,19 +155,6 @@
       "estado": "rojo",
       "icono": "🔴",
       "mensaje": "Bajo ritmo 25%"
-    },
-    {
-      "codigo": "SA",
-      "nombre": "Salta",
-      "monto": 815.5,
-      "cantidad": 13,
-      "meta_anual": 4143,
-      "objetivo_mes": 1381.0,
-      "diferencia": -565.5,
-      "porcentaje": 59.1,
-      "estado": "amarillo",
-      "icono": "🟡",
-      "mensaje": "Ritmo medio 59%"
     },
     {
       "codigo": "JU",
@@ -172,15 +172,15 @@
     {
       "codigo": "SL",
       "nombre": "San Luis",
-      "monto": 486.9,
-      "cantidad": 13,
+      "monto": 586.9,
+      "cantidad": 14,
       "meta_anual": 5743,
       "objetivo_mes": 1914.3,
-      "diferencia": -1427.4,
-      "porcentaje": 25.4,
+      "diferencia": -1327.4,
+      "porcentaje": 30.7,
       "estado": "rojo",
       "icono": "🔴",
-      "mensaje": "Bajo ritmo 25%"
+      "mensaje": "Bajo ritmo 31%"
     },
     {
       "codigo": "LR",
@@ -198,15 +198,15 @@
     {
       "codigo": "LP",
       "nombre": "La Pampa",
-      "monto": 354.3,
-      "cantidad": 7,
+      "monto": 375.0,
+      "cantidad": 8,
       "meta_anual": 4206,
       "objetivo_mes": 1402.0,
-      "diferencia": -1047.7,
-      "porcentaje": 25.3,
+      "diferencia": -1027.0,
+      "porcentaje": 26.7,
       "estado": "rojo",
       "icono": "🔴",
-      "mensaje": "Bajo ritmo 25%"
+      "mensaje": "Bajo ritmo 27%"
     },
     {
       "codigo": "HA",
@@ -335,8 +335,8 @@
     {
       "mes": 4,
       "nombre": "Abril",
-      "monto": 7710.9,
-      "cantidad": 102
+      "monto": 8069.1,
+      "cantidad": 109
     }
   ]
 }
