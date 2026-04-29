@@ -156,7 +156,7 @@
       <div id="detalleView" class="hidden">
         <div class="detail-shell">
           <div class="section-title">📋 DETALLE POR PROVINCIA</div>
-          <p class="detail-intro">Cada vez que cargues un Excel nuevo, este panel se va a regenerar automáticamente con el detalle de créditos aprobados de la hoja <span class="detail-code">data</span>.</p>
+          <p id="detailIntro" class="detail-intro">Detalle actualizado: -</p>
           <div id="detailSummary" class="detail-summary"></div>
           <div id="detailFilters" class="detail-filter-bar"></div>
           <div id="detailTableWrap" class="detail-table-wrap"></div>
@@ -452,6 +452,7 @@
       document.getElementById('scoreValue').textContent = formatPercent(total.porcentaje);
       document.getElementById('scoreSubtitle').textContent = `de ${formatMoney(total.meta)}`;
       document.getElementById('scoreUpdate').textContent = `Actualizado: ${updatedText} • Director Rec. Financieros`;
+      document.getElementById('detailIntro').textContent = `Detalle actualizado: ${updatedText}`;
       document.getElementById('progressFill').style.width = `${clampPercent(total.porcentaje)}%`;
       document.getElementById('footer').textContent = `Consejo Federal de Inversiones • Financiamiento Productivo • Actualizado: ${updatedText}`;
 
