@@ -115,7 +115,7 @@
       <div id="kpiGrid" class="kpi-grid"></div>
 
       <div class="section-title">🚦 SEMÁFORO PROVINCIAL<span class="badge-status">LIVE</span></div>
-      <div class="semaforo-note">🟢 Verde: ≥80% del objetivo acumulado al mes • 🟡 Amarillo: 50-80% • 🔴 Rojo: &lt;50% • ⚫ Sin datos</div>
+      <div class="semaforo-note">🟢 Verde: ≥80% de la meta anual • 🟡 Amarillo: 50-80% • 🔴 Rojo: &lt;50% • ⚫ Sin datos</div>
       <div id="semaforoGrid" class="semaforo-grid"></div>
 
       <div class="vitals-panel">
@@ -233,9 +233,9 @@
               <div class="provincia-icono">${provincia.icono || '⚫'}</div>
               <div class="provincia-mensaje text-${color}">${provincia.mensaje || 'Sin datos'}</div>
               <div class="provincia-monto">${formatMoney(provincia.monto)} aprobados</div>
-              <div class="provincia-cantidad">Objetivo acumulado: ${formatMoney(provincia.objetivo_mes)} • Meta anual: ${formatMoney(provincia.meta_anual)}</div>
+              <div class="provincia-cantidad">Meta anual: ${formatMoney(provincia.meta_anual)}</div>
               <div class="provincia-cantidad">${formatCredits(provincia.cantidad)}</div>
-              <div class="provincia-diferencia text-${diffClass}">${diffSymbol} ${formatMoney(Math.abs(provincia.diferencia))}</div>
+              <div class="provincia-diferencia text-${diffClass}">${diffSymbol} ${formatMoney(Math.abs(provincia.diferencia))} contra meta anual</div>
             </div>
           </div>
         `;
