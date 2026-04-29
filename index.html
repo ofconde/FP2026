@@ -35,7 +35,7 @@
     .section-title { font-family: 'Bebas Neue', sans-serif; font-size: 24px; color: #1C2443; margin-bottom: 10px; display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
     .section-subtitle { font-size: 11px; color: #96C9DA; margin-bottom: 18px; }
     .kpi-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; margin-bottom: 28px; }
-    .kpi-card, .detail-shell, .detail-summary-card, .alert-card, .panel-card, .rank-item, .program-card { background: #FFFFFF; border: 1px solid #DBDCDE; border-radius: 10px; }
+    .kpi-card, .detail-shell, .detail-summary-card, .alert-card, .panel-card, .rank-item, .gap-item { background: #FFFFFF; border: 1px solid #DBDCDE; border-radius: 10px; }
     .kpi-accent { height: 5px; }
     .kpi-content { padding: 20px; }
     .kpi-label { font-size: 10px; font-weight: 700; letter-spacing: 1px; color: #1C2443; margin-bottom: 12px; }
@@ -68,6 +68,14 @@
     .rank-meta { text-align: right; }
     .rank-percent { font-family: 'Bebas Neue', sans-serif; font-size: 24px; color: #1C2443; line-height: 1; }
     .rank-amount { font-size: 10px; color: #96C9DA; margin-top: 4px; }
+    .gap-list { display: grid; gap: 12px; }
+    .gap-item { padding: 14px 16px; display: grid; grid-template-columns: 1fr auto; gap: 14px; align-items: center; }
+    .gap-name { font-size: 12px; font-weight: 700; color: #1C2443; text-transform: uppercase; margin-bottom: 6px; }
+    .gap-track { background: #EAF1F4; border-radius: 999px; height: 10px; overflow: hidden; }
+    .gap-fill { height: 100%; border-radius: 999px; background: linear-gradient(90deg, #E6431A 0%, #F07B5A 100%); }
+    .gap-value { text-align: right; }
+    .gap-amount { font-family: 'Bebas Neue', sans-serif; font-size: 24px; color: #E6431A; line-height: 1; }
+    .gap-meta { font-size: 10px; color: #96C9DA; margin-top: 4px; }
     .badge-status { background: #47B067; color: #FFFFFF; font-size: 9px; font-weight: 700; padding: 6px 14px; border-radius: 20px; margin-left: auto; }
     .semaforo-note { font-size: 10px; color: #96C9DA; margin-bottom: 20px; font-style: italic; }
     .semaforo-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 20px; margin-bottom: 30px; }
@@ -130,8 +138,8 @@
       .detail-shell { padding: 20px; }
       .chart-bar-wrap { max-width: none; height: 70px; width: 100%; }
       .chart-col { align-items: stretch; }
-      .rank-item { grid-template-columns: 1fr; }
-      .rank-meta { text-align: left; }
+      .rank-item, .gap-item { grid-template-columns: 1fr; }
+      .rank-meta, .gap-value { text-align: left; }
     }
   </style>
 </head>
@@ -196,6 +204,11 @@
             <div class="section-title">Ranking Provincial</div>
             <div class="section-subtitle">Ordenado por porcentaje de cumplimiento anual.</div>
             <div id="rankingList" class="ranking-list"></div>
+          </div>
+          <div class="panel-card">
+            <div class="section-title">Brechas Prioritarias</div>
+            <div class="section-subtitle">Provincias con mayor distancia contra la meta anual.</div>
+            <div id="gapList" class="gap-list"></div>
           </div>
         </div>
 
@@ -409,6 +422,31 @@
       }).join('');
     }
 
+    function renderGapPanel(provincias) {
+      const gaps = [...provincias]
+        .filter((provincia) => provincia.diferencia < 0)
+        .sort((a, b) => a.diferencia - b.diferencia)
+        .slice(0, 8);
+
+      const maxGap = Math.max(...gaps.map((provincia) => Math.abs(provincia.diferencia)), 1);
+
+      document.getElementById('gapList').innerHTML = gaps.map((provincia) => {
+        const width = (Math.abs(provincia.diferencia) / maxGap) * 100;
+        return `
+          <div class="gap-item">
+            <div>
+              <div class="gap-name">${provincia.nombre}</div>
+              <div class="gap-track"><div class="gap-fill" style="width: ${width}%"></div></div>
+            </div>
+            <div class="gap-value">
+              <div class="gap-amount">${formatMoney(Math.abs(provincia.diferencia))}</div>
+              <div class="gap-meta">Brecha restante</div>
+            </div>
+          </div>
+        `;
+      }).join('');
+    }
+
     function renderProvinces(provincias) {
       document.getElementById('semaforoGrid').innerHTML = provincias.map((provincia) => {
         const color = COLOR_BY_STATUS[provincia.estado] || 'gris';
@@ -602,6 +640,7 @@
       renderAlerts(data);
       renderEvolutionChart(data.evolucion || []);
       renderRanking(data.provincias || []);
+      renderGapPanel(data.provincias || []);
       renderProvinces(data.provincias || []);
       renderVitals(total);
       renderDetailPanel();
