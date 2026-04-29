@@ -19,29 +19,64 @@
     .logo-text p { font-size: 9px; color: #96C9DA; letter-spacing: 1px; margin-top: 2px; }
     .header-right h2 { font-size: 16px; font-weight: 700; color: #FAFAFA; text-align: right; }
     .header-right p { font-size: 10px; color: #96C9DA; text-align: right; margin-top: 2px; }
-    .container { max-width: 1400px; margin: 0 auto; padding: 30px 40px; }
-    .score-card { background: linear-gradient(180deg, #00A7E1 0%, #008AC1 100%); border-radius: 12px; padding: 40px; text-align: center; margin-bottom: 30px; position: relative; color: #FFFFFF; }
-    .score-label { font-size: 11px; font-weight: 700; letter-spacing: 2px; color: rgba(255, 255, 255, 0.85); margin-bottom: 15px; }
-    .score-value { font-family: 'Bebas Neue', sans-serif; font-size: 96px; line-height: 1; margin-bottom: 10px; }
-    .score-subtitle { font-size: 16px; color: rgba(255, 255, 255, 0.9); margin-bottom: 10px; }
-    .score-update { font-size: 10px; color: rgba(255, 255, 255, 0.75); }
-    .badge-live { position: absolute; top: 20px; right: 20px; background: rgba(255, 255, 255, 0.25); padding: 6px 16px; border-radius: 20px; font-size: 10px; font-weight: 700; color: #FFFFFF; }
+    .container { max-width: 1440px; margin: 0 auto; padding: 30px 40px; }
+    .score-card { background: linear-gradient(180deg, #00A7E1 0%, #008AC1 100%); border-radius: 12px; padding: 40px; text-align: center; margin-bottom: 30px; position: relative; color: #FFFFFF; overflow: hidden; }
+    .score-card::before { content: ''; position: absolute; width: 220px; height: 220px; border-radius: 50%; background: rgba(255,255,255,0.08); top: -70px; right: -60px; }
+    .score-label { font-size: 11px; font-weight: 700; letter-spacing: 2px; color: rgba(255, 255, 255, 0.85); margin-bottom: 15px; position: relative; }
+    .score-value { font-family: 'Bebas Neue', sans-serif; font-size: 96px; line-height: 1; margin-bottom: 10px; position: relative; }
+    .score-subtitle { font-size: 16px; color: rgba(255, 255, 255, 0.9); margin-bottom: 10px; position: relative; }
+    .score-update { font-size: 10px; color: rgba(255, 255, 255, 0.75); position: relative; }
+    .badge-live { position: absolute; top: 20px; right: 20px; background: rgba(255, 255, 255, 0.25); padding: 6px 16px; border-radius: 20px; font-size: 10px; font-weight: 700; color: #FFFFFF; z-index: 1; }
     .progress-bar { height: 12px; background: #DBDCDE; border-radius: 6px; margin-bottom: 30px; overflow: hidden; }
-    .progress-fill { height: 100%; background: #47B067; border-radius: 6px; width: 0; transition: width 1s ease-out; }
+    .progress-fill { height: 100%; background: linear-gradient(90deg, #47B067 0%, #80C98A 100%); border-radius: 6px; width: 0; transition: width 1s ease-out; }
     .view-actions { display: flex; gap: 12px; justify-content: flex-end; margin: 0 0 20px; flex-wrap: wrap; }
     .view-button { border: 1px solid #1C2443; background: transparent; color: #1C2443; padding: 10px 18px; border-radius: 999px; font-size: 11px; font-weight: 700; letter-spacing: 0.8px; cursor: pointer; transition: all 0.2s ease; }
     .view-button.active, .view-button:hover { background: #1C2443; color: #FAFAFA; }
-    .kpi-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; margin-bottom: 40px; }
-    .kpi-card, .detail-shell, .detail-summary-card { background: #FFFFFF; border: 1px solid #DBDCDE; border-radius: 10px; }
+    .section-title { font-family: 'Bebas Neue', sans-serif; font-size: 24px; color: #1C2443; margin-bottom: 10px; display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+    .section-subtitle { font-size: 11px; color: #96C9DA; margin-bottom: 18px; }
+    .kpi-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; margin-bottom: 28px; }
+    .kpi-card, .detail-shell, .detail-summary-card, .alert-card, .panel-card, .rank-item, .program-card { background: #FFFFFF; border: 1px solid #DBDCDE; border-radius: 10px; }
     .kpi-accent { height: 5px; }
     .kpi-content { padding: 20px; }
     .kpi-label { font-size: 10px; font-weight: 700; letter-spacing: 1px; color: #1C2443; margin-bottom: 12px; }
     .kpi-value { font-family: 'Bebas Neue', sans-serif; font-size: 32px; margin-bottom: 5px; }
     .kpi-meta { font-size: 11px; color: #96C9DA; margin-bottom: 3px; }
     .kpi-detail { font-size: 9px; color: #1C2443; opacity: 0.6; }
-    .section-title { font-family: 'Bebas Neue', sans-serif; font-size: 22px; color: #1C2443; margin-bottom: 10px; display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
-    .semaforo-note { font-size: 10px; color: #96C9DA; margin-bottom: 20px; font-style: italic; }
+    .insight-grid { display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 20px; margin-bottom: 28px; }
+    .alert-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+    .alert-card { padding: 18px; background: linear-gradient(180deg, #FFFFFF 0%, #F9FBFC 100%); }
+    .alert-label { font-size: 10px; font-weight: 700; letter-spacing: 1px; color: #96C9DA; margin-bottom: 10px; }
+    .alert-value { font-family: 'Bebas Neue', sans-serif; font-size: 28px; color: #1C2443; margin-bottom: 6px; }
+    .alert-text { font-size: 11px; line-height: 1.45; color: #1C2443; }
+    .insight-stack { display: grid; gap: 20px; }
+    .panel-card { padding: 22px; }
+    .chart-shell { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; align-items: end; min-height: 220px; padding-top: 18px; }
+    .chart-col { display: flex; flex-direction: column; align-items: center; gap: 10px; }
+    .chart-bar-wrap { width: 100%; max-width: 70px; height: 150px; display: flex; align-items: end; }
+    .chart-bar { width: 100%; border-radius: 12px 12px 4px 4px; background: linear-gradient(180deg, #00A7E1 0%, #0C8395 100%); box-shadow: inset 0 -8px 18px rgba(0,0,0,0.08); }
+    .chart-value { font-family: 'Bebas Neue', sans-serif; font-size: 22px; color: #1C2443; line-height: 1; }
+    .chart-meta { font-size: 10px; color: #96C9DA; }
+    .chart-label { font-size: 11px; font-weight: 700; color: #1C2443; text-transform: uppercase; }
+    .analysis-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 28px; }
+    .ranking-list { display: grid; gap: 12px; }
+    .rank-item { padding: 14px 16px; display: grid; grid-template-columns: 36px 1fr 120px; gap: 14px; align-items: center; }
+    .rank-number { font-family: 'Bebas Neue', sans-serif; font-size: 28px; color: #00A7E1; text-align: center; }
+    .rank-main { display: grid; gap: 6px; }
+    .rank-name { font-size: 12px; font-weight: 700; color: #1C2443; text-transform: uppercase; }
+    .rank-track { background: #EAF1F4; border-radius: 999px; height: 10px; overflow: hidden; }
+    .rank-fill { height: 100%; border-radius: 999px; }
+    .rank-meta { text-align: right; }
+    .rank-percent { font-family: 'Bebas Neue', sans-serif; font-size: 24px; color: #1C2443; line-height: 1; }
+    .rank-amount { font-size: 10px; color: #96C9DA; margin-top: 4px; }
+    .program-grid { display: grid; gap: 12px; }
+    .program-card { padding: 16px; display: grid; grid-template-columns: 1fr auto; gap: 16px; align-items: center; }
+    .program-name { font-size: 12px; font-weight: 700; color: #1C2443; }
+    .program-meta { font-size: 10px; color: #96C9DA; margin-top: 6px; }
+    .program-value { text-align: right; }
+    .program-amount { font-family: 'Bebas Neue', sans-serif; font-size: 24px; color: #1C2443; line-height: 1; }
+    .program-count { font-size: 10px; color: #96C9DA; margin-top: 4px; }
     .badge-status { background: #47B067; color: #FFFFFF; font-size: 9px; font-weight: 700; padding: 6px 14px; border-radius: 20px; margin-left: auto; }
+    .semaforo-note { font-size: 10px; color: #96C9DA; margin-bottom: 20px; font-style: italic; }
     .semaforo-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 20px; margin-bottom: 30px; }
     .provincia-card { background: #FFFFFF; border: 1px solid #DBDCDE; border-radius: 10px; overflow: hidden; transition: transform 0.2s; }
     .provincia-card:hover { transform: translateY(-2px); box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08); }
@@ -54,7 +89,7 @@
     .provincia-cantidad { font-size: 9px; color: #96C9DA; margin-top: 3px; }
     .provincia-diferencia { font-size: 9px; font-weight: 700; margin-top: 5px; }
     .vitals-panel { background: #FFFFFF; border: 1px solid #DBDCDE; border-radius: 10px; padding: 30px; margin-bottom: 30px; }
-    .vitals-title { font-family: 'Bebas Neue', sans-serif; font-size: 16px; color: #1C2443; text-align: center; margin-bottom: 30px; }
+    .vitals-title { font-family: 'Bebas Neue', sans-serif; font-size: 18px; color: #1C2443; text-align: center; margin-bottom: 30px; }
     .vitals-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 40px; }
     .vital-item { text-align: center; }
     .vital-label { font-size: 10px; font-weight: 700; color: #1C2443; margin-bottom: 12px; }
@@ -78,7 +113,6 @@
     .detail-table tbody td { padding: 14px 12px; border-top: 1px solid #DBDCDE; font-size: 11px; vertical-align: top; }
     .detail-table tbody tr:nth-child(even) { background: #F6FAFC; }
     .detail-empty { padding: 24px; text-align: center; color: #96C9DA; font-size: 12px; }
-    .detail-code { font-weight: 700; color: #1C2443; }
     .error-panel, .loading-panel { background: #FFFFFF; border: 1px solid #DBDCDE; border-radius: 10px; padding: 30px; text-align: center; margin-bottom: 30px; }
     .loading-panel { color: #1C2443; }
     .error-panel { color: #E6431A; }
@@ -86,6 +120,10 @@
     .hidden { display: none; }
     .color-verde { background: #47B067; } .color-amarillo { background: #E99505; } .color-rojo { background: #E6431A; } .color-gris { background: #96C9DA; } .color-celeste { background: #00A7E1; } .color-teal { background: #0C8395; }
     .text-verde { color: #47B067; } .text-amarillo { color: #E99505; } .text-rojo { color: #E6431A; } .text-gris { color: #96C9DA; } .text-celeste { color: #00A7E1; } .text-teal { color: #0C8395; }
+    @media (max-width: 1024px) {
+      .insight-grid, .analysis-grid { grid-template-columns: 1fr; }
+      .alert-grid { grid-template-columns: 1fr; }
+    }
     @media (max-width: 768px) {
       .header { padding: 20px; flex-direction: column; align-items: flex-start; }
       .header-right { width: 100%; }
@@ -95,8 +133,12 @@
       .score-value { font-size: 64px; }
       .view-actions { justify-content: stretch; }
       .view-button { width: 100%; }
-      .kpi-grid, .semaforo-grid, .detail-summary { grid-template-columns: 1fr; }
+      .kpi-grid, .semaforo-grid, .detail-summary, .chart-shell { grid-template-columns: 1fr; }
       .detail-shell { padding: 20px; }
+      .chart-bar-wrap { max-width: none; height: 70px; width: 100%; }
+      .chart-col { align-items: stretch; }
+      .rank-item, .program-card { grid-template-columns: 1fr; }
+      .rank-meta, .program-value { text-align: left; }
     }
   </style>
 </head>
@@ -142,6 +184,32 @@
 
       <div id="resumenView">
         <div id="kpiGrid" class="kpi-grid"></div>
+
+        <div class="insight-grid">
+          <div class="panel-card">
+            <div class="section-title">Alertas Ejecutivas</div>
+            <div class="section-subtitle">Lectura rápida para entrar y entender dónde actuar primero.</div>
+            <div id="alertGrid" class="alert-grid"></div>
+          </div>
+          <div class="panel-card">
+            <div class="section-title">Evolución Mensual</div>
+            <div class="section-subtitle">Monto aprobado por mes en millones.</div>
+            <div id="evolutionChart" class="chart-shell"></div>
+          </div>
+        </div>
+
+        <div class="analysis-grid">
+          <div class="panel-card">
+            <div class="section-title">Ranking Provincial</div>
+            <div class="section-subtitle">Ordenado por porcentaje de cumplimiento anual.</div>
+            <div id="rankingList" class="ranking-list"></div>
+          </div>
+          <div class="panel-card">
+            <div class="section-title">Programas Más Relevantes</div>
+            <div class="section-subtitle">Top por monto aprobado a partir del detalle cargado.</div>
+            <div id="programGrid" class="program-grid"></div>
+          </div>
+        </div>
 
         <div class="section-title">🚦 SEMÁFORO PROVINCIAL<span class="badge-status">LIVE</span></div>
         <div class="semaforo-note">🟢 Verde: ≥80% de la meta anual • 🟡 Amarillo: 50-80% • 🔴 Rojo: &lt;50% • ⚫ Sin datos</div>
@@ -263,6 +331,123 @@
             <div class="kpi-value text-${kpi.valueClass}">${kpi.value}</div>
             <div class="kpi-meta">${kpi.meta}</div>
             <div class="kpi-detail">${kpi.detail}</div>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    function deriveAlerts(data) {
+      const provincias = [...(data.provincias || [])];
+      const total = data.total || {};
+      const withAmount = provincias.filter((provincia) => provincia.monto > 0);
+      const topProvince = [...withAmount].sort((a, b) => b.monto - a.monto)[0];
+      const bestProvince = [...withAmount].sort((a, b) => b.porcentaje - a.porcentaje)[0];
+      const atRisk = provincias.filter((provincia) => provincia.estado === 'rojo').length;
+      const over50 = provincias.filter((provincia) => provincia.porcentaje >= 50).length;
+      const concentration = topProvince && total.monto ? (topProvince.monto / total.monto) * 100 : 0;
+
+      return [
+        {
+          label: 'Ritmo General',
+          value: formatPercent(total.porcentaje),
+          text: `${formatMoney(total.falta)} faltantes para cerrar la meta anual.`
+        },
+        {
+          label: 'Mayor Concentración',
+          value: topProvince ? topProvince.nombre : 'Sin datos',
+          text: topProvince ? `${formatPercent(concentration)} del monto total está en ${topProvince.nombre}.` : 'Todavía no hay aprobaciones cargadas.'
+        },
+        {
+          label: 'Señal De Gestión',
+          value: `${atRisk} rojas`,
+          text: bestProvince ? `${over50} provincias superan el 50%. Mejor desempeño relativo: ${bestProvince.nombre} (${formatPercent(bestProvince.porcentaje)}).` : 'Sin datos suficientes para leer tendencia.'
+        }
+      ];
+    }
+
+    function renderAlerts(data) {
+      const alerts = deriveAlerts(data);
+      document.getElementById('alertGrid').innerHTML = alerts.map((alert) => `
+        <div class="alert-card">
+          <div class="alert-label">${alert.label}</div>
+          <div class="alert-value">${alert.value}</div>
+          <div class="alert-text">${alert.text}</div>
+        </div>
+      `).join('');
+    }
+
+    function renderEvolutionChart(evolucion) {
+      const maxAmount = Math.max(...evolucion.map((item) => item.monto), 1);
+      document.getElementById('evolutionChart').innerHTML = evolucion.map((item) => {
+        const height = (item.monto / maxAmount) * 100;
+        return `
+          <div class="chart-col">
+            <div class="chart-value">${formatMoney(item.monto)}</div>
+            <div class="chart-bar-wrap"><div class="chart-bar" style="height: ${height}%"></div></div>
+            <div class="chart-label">${item.nombre}</div>
+            <div class="chart-meta">${formatCredits(item.cantidad)}</div>
+          </div>
+        `;
+      }).join('');
+    }
+
+    function getRankingColor(porcentaje) {
+      if (porcentaje >= 80) return 'verde';
+      if (porcentaje >= 50) return 'amarillo';
+      return 'rojo';
+    }
+
+    function renderRanking(provincias) {
+      const ranked = [...provincias]
+        .filter((provincia) => provincia.monto > 0)
+        .sort((a, b) => b.porcentaje - a.porcentaje)
+        .slice(0, 8);
+
+      document.getElementById('rankingList').innerHTML = ranked.map((provincia, index) => {
+        const color = getRankingColor(provincia.porcentaje);
+        return `
+          <div class="rank-item">
+            <div class="rank-number">${index + 1}</div>
+            <div class="rank-main">
+              <div class="rank-name">${provincia.nombre}</div>
+              <div class="rank-track"><div class="rank-fill color-${color}" style="width: ${clampPercent(provincia.porcentaje)}%"></div></div>
+            </div>
+            <div class="rank-meta">
+              <div class="rank-percent">${formatPercent(provincia.porcentaje)}</div>
+              <div class="rank-amount">${formatMoney(provincia.monto)}</div>
+            </div>
+          </div>
+        `;
+      }).join('');
+    }
+
+    function summarizePrograms(detalles) {
+      const programs = new Map();
+      detalles.forEach((provincia) => {
+        (provincia.items || []).forEach((item) => {
+          const key = item.programa && item.programa !== '-' ? item.programa : 'Sin programa';
+          if (!programs.has(key)) {
+            programs.set(key, { nombre: key, monto: 0, cantidad: 0 });
+          }
+          const current = programs.get(key);
+          current.monto += Number(item.importe || 0);
+          current.cantidad += 1;
+        });
+      });
+      return [...programs.values()].sort((a, b) => b.monto - a.monto).slice(0, 6);
+    }
+
+    function renderPrograms(detalles) {
+      const programs = summarizePrograms(detalles);
+      document.getElementById('programGrid').innerHTML = programs.map((program) => `
+        <div class="program-card">
+          <div>
+            <div class="program-name">${program.nombre}</div>
+            <div class="program-meta">${formatCredits(program.cantidad)} aprobados</div>
+          </div>
+          <div class="program-value">
+            <div class="program-amount">${formatMoney(program.monto)}</div>
+            <div class="program-count">Monto acumulado</div>
           </div>
         </div>
       `).join('');
@@ -441,8 +626,8 @@
     }
 
     function attachViewEvents() {
-      document.getElementById('viewResumen').addEventListener('click', () => setView('resumen'));
-      document.getElementById('viewDetalle').addEventListener('click', () => setView('detalle'));
+      document.getElementById('viewResumen').onclick = () => setView('resumen');
+      document.getElementById('viewDetalle').onclick = () => setView('detalle');
     }
 
     function renderDashboard(data) {
@@ -458,6 +643,10 @@
       document.getElementById('footer').textContent = `Consejo Federal de Inversiones • Financiamiento Productivo • Actualizado: ${updatedText}`;
 
       renderKpis(total);
+      renderAlerts(data);
+      renderEvolutionChart(data.evolucion || []);
+      renderRanking(data.provincias || []);
+      renderPrograms(data.detalles || []);
       renderProvinces(data.provincias || []);
       renderVitals(total);
       renderDetailPanel();
