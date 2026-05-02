@@ -1,14 +1,14 @@
 {
-  "fecha_actualizacion": "2026-05-01 23:51:12",
+  "fecha_actualizacion": "2026-05-01 23:55:52",
   "total": {
-    "monto": 26976.0,
-    "creditos": 351,
+    "monto": 26938.7,
+    "creditos": 350,
     "porcentaje": 12.6,
     "meta": 214300,
-    "falta": 187324.0,
+    "falta": 187361.3,
     "meses_restantes": 8,
-    "promedio_mensual": 6744.0,
-    "necesario_por_mes": 23415.5,
+    "promedio_mensual": 6734.7,
+    "necesario_por_mes": 23420.2,
     "ritmo_ok": false,
     "ultimo_mes": 4
   },
@@ -76,14 +76,14 @@
     {
       "codigo": "TU",
       "nombre": "Tucumán",
-      "monto": 1462.3,
-      "cantidad": 13,
+      "monto": 1425.0,
+      "cantidad": 12,
       "meta_anual": 4300,
-      "diferencia": -2837.7,
-      "porcentaje": 34.0,
+      "diferencia": -2875.0,
+      "porcentaje": 33.1,
       "estado": "rojo",
       "icono": "🔴",
-      "mensaje": "Cumplimiento anual 34%"
+      "mensaje": "Cumplimiento anual 33%"
     },
     {
       "codigo": "MI",
@@ -312,8 +312,8 @@
     {
       "mes": 4,
       "nombre": "Abril",
-      "monto": 8968.6,
-      "cantidad": 119
+      "monto": 8931.3,
+      "cantidad": 118
     }
   ],
   "detalles": [
@@ -2328,10 +2328,10 @@
     {
       "codigo": "TU",
       "nombre": "Tucumán",
-      "monto": 1462.3,
-      "cantidad": 13,
+      "monto": 1425.0,
+      "cantidad": 12,
       "meta_anual": 4300,
-      "porcentaje": 34.0,
+      "porcentaje": 33.1,
       "items": [
         {
           "denominacion": "2025-CR-TU-002019",
@@ -2441,17 +2441,6 @@
           "linea": "2023 - Reactivación Productiva",
           "sublinea": "Programatica",
           "programa": "Cadena de Valor",
-          "tipo_contragarantia": "-"
-        },
-        {
-          "denominacion": "2025-CR-TU-001969",
-          "razon_social": "BUCHET HUGO ALEJANDRO",
-          "fecha_resolucion": "2026-04-20",
-          "usuario_resolucion": "Rodriguez, Esteban Manuel",
-          "importe": 37.3,
-          "linea": "2025 - Competitividad Pyme",
-          "sublinea": "Tradicional",
-          "programa": "-",
           "tipo_contragarantia": "-"
         },
         {
