@@ -1,5 +1,5 @@
 {
-  "fecha_actualizacion": "2026-05-03 12:49:13",
+  "fecha_actualizacion": "2026-05-03 12:59:16",
   "total": {
     "monto": 26938.7,
     "creditos": 350,
@@ -345,7 +345,7 @@
           "linea": "2025 - Programática",
           "sublinea": "Programatica",
           "programa": "Mujeres",
-          "tipo_contragarantia": "-"
+          "tipo_contragarantia": "Garantia SGR / FPG - FO.GA.BA"
         },
         {
           "denominacion": "2025-CR-BA-001832",
@@ -444,7 +444,7 @@
           "linea": "2025 - Programática",
           "sublinea": "Programatica",
           "programa": "Mujeres",
-          "tipo_contragarantia": "-"
+          "tipo_contragarantia": "Garantia SGR / FPG - FO.GA.BA"
         },
         {
           "denominacion": "2025-CR-BA-001998",
@@ -455,7 +455,7 @@
           "linea": "2025 - Programática",
           "sublinea": "Programatica",
           "programa": "Financiamiento Verde",
-          "tipo_contragarantia": "-"
+          "tipo_contragarantia": "Garantia SGR / FPG - POTENCIAR SGR"
         },
         {
           "denominacion": "2025-CR-BA-001982",
@@ -466,7 +466,7 @@
           "linea": "2025 - Programática",
           "sublinea": "Programatica",
           "programa": "Mujeres",
-          "tipo_contragarantia": "-"
+          "tipo_contragarantia": "Garantia SGR / FPG - FO.GA.BA"
         },
         {
           "denominacion": "2025-CR-BA-001980",
@@ -488,7 +488,7 @@
           "linea": "2025 - Programática",
           "sublinea": "Programatica",
           "programa": "Mujeres",
-          "tipo_contragarantia": "-"
+          "tipo_contragarantia": "Garantia SGR / FPG - FO.GA.BA"
         },
         {
           "denominacion": "2025-CR-BA-001937",
@@ -499,7 +499,7 @@
           "linea": "2025 - Programática",
           "sublinea": "Programatica",
           "programa": "Mujeres",
-          "tipo_contragarantia": "-"
+          "tipo_contragarantia": "Garantia SGR / FPG - FO.GA.BA"
         },
         {
           "denominacion": "2025-CR-BA-001833",
@@ -532,7 +532,7 @@
           "linea": "2025 - Programática",
           "sublinea": "Programatica",
           "programa": "Mujeres",
-          "tipo_contragarantia": "-"
+          "tipo_contragarantia": "Garantia SGR / FPG - FO.GA.BA"
         },
         {
           "denominacion": "2025-CR-BA-001870",
@@ -598,7 +598,7 @@
           "linea": "2025 - Competitividad Pyme",
           "sublinea": "Tradicional",
           "programa": "-",
-          "tipo_contragarantia": "-"
+          "tipo_contragarantia": "Garantia SGR / FPG - AVALUAR SGR"
         },
         {
           "denominacion": "2025-CR-BA-001872",
@@ -774,7 +774,7 @@
           "linea": "2025 - Competitividad Pyme",
           "sublinea": "Tradicional",
           "programa": "-",
-          "tipo_contragarantia": "-"
+          "tipo_contragarantia": "Garantia SGR / FPG - FO.GA.BA"
         },
         {
           "denominacion": "2025-CR-BA-001722",
@@ -796,7 +796,7 @@
           "linea": "2025 - Programática",
           "sublinea": "Programatica",
           "programa": "Financiamiento Verde",
-          "tipo_contragarantia": "-"
+          "tipo_contragarantia": "Garantia SGR / FPG - FO.GA.BA"
         },
         {
           "denominacion": "2025-CR-BA-001732",
@@ -818,7 +818,7 @@
           "linea": "2025 - Competitividad Pyme",
           "sublinea": "Tradicional",
           "programa": "-",
-          "tipo_contragarantia": "-"
+          "tipo_contragarantia": "Garantia SGR / FPG - FO.GA.BA"
         },
         {
           "denominacion": "2025-CR-BA-001739",
@@ -829,7 +829,7 @@
           "linea": "2025 - Programática",
           "sublinea": "Programatica",
           "programa": "Mujeres",
-          "tipo_contragarantia": "-"
+          "tipo_contragarantia": "Garantia SGR / FPG - FO.GA.BA"
         },
         {
           "denominacion": "2025-CR-BA-001661",
@@ -862,7 +862,7 @@
           "linea": "2025 - Competitividad Pyme",
           "sublinea": "Tradicional",
           "programa": "-",
-          "tipo_contragarantia": "-"
+          "tipo_contragarantia": "Garantia SGR / FPG - FO.GA.BA"
         },
         {
           "denominacion": "2025-CR-BA-001747",
@@ -873,7 +873,7 @@
           "linea": "2025 - Programática",
           "sublinea": "Programatica",
           "programa": "Mujeres",
-          "tipo_contragarantia": "-"
+          "tipo_contragarantia": "Garantia SGR / FPG - FO.GA.BA"
         },
         {
           "denominacion": "2025-CR-BA-001768",
@@ -906,7 +906,7 @@
           "linea": "2025 - Programática",
           "sublinea": "Programatica",
           "programa": "Financiamiento Verde",
-          "tipo_contragarantia": "-"
+          "tipo_contragarantia": "Garantia SGR / FPG - FO.GA.BA"
         },
         {
           "denominacion": "2025-CR-BA-001844",
@@ -939,7 +939,7 @@
           "linea": "2025 - Programática",
           "sublinea": "Programatica",
           "programa": "Mujeres",
-          "tipo_contragarantia": "-"
+          "tipo_contragarantia": "Garantia SGR / FPG - Garantizar SGR"
         },
         {
           "denominacion": "2025-CR-BA-001824",
@@ -950,7 +950,7 @@
           "linea": "2025 - Programática",
           "sublinea": "Programatica",
           "programa": "Mujeres",
-          "tipo_contragarantia": "-"
+          "tipo_contragarantia": "Garantia SGR / FPG - Garantizar SGR"
         },
         {
           "denominacion": "2025-CR-BA-001769",
@@ -983,7 +983,7 @@
           "linea": "2025 - Programática",
           "sublinea": "Programatica",
           "programa": "Mujeres",
-          "tipo_contragarantia": "-"
+          "tipo_contragarantia": "Garantia SGR / FPG - CASFOG Serie IV (ARGENPYMES SGR)"
         },
         {
           "denominacion": "2025-CR-BA-001658",
@@ -994,7 +994,7 @@
           "linea": "2025 - Programática",
           "sublinea": "Programatica",
           "programa": "Mujeres",
-          "tipo_contragarantia": "-"
+          "tipo_contragarantia": "Garantia SGR / FPG - FO.GA.BA"
         },
         {
           "denominacion": "2025-CR-BA-001664",
@@ -1049,7 +1049,7 @@
           "linea": "2025 - Competitividad Pyme",
           "sublinea": "Tradicional",
           "programa": "-",
-          "tipo_contragarantia": "-"
+          "tipo_contragarantia": "Garantia SGR / FPG - FO.GA.BA"
         },
         {
           "denominacion": "2025-CR-BA-001760",
@@ -1082,7 +1082,7 @@
           "linea": "2002 - Producción Regional Exportable",
           "sublinea": "Tradicional",
           "programa": "-",
-          "tipo_contragarantia": "-"
+          "tipo_contragarantia": "Fianza"
         }
       ]
     },
@@ -1103,7 +1103,7 @@
           "linea": "2025 - Programática",
           "sublinea": "Programatica",
           "programa": "Mujeres",
-          "tipo_contragarantia": "-"
+          "tipo_contragarantia": "Garantia SGR / FPG - Garantizar SGR"
         },
         {
           "denominacion": "2025-CR-CO-002012",
@@ -1114,7 +1114,7 @@
           "linea": "2025 - Programática",
           "sublinea": "Programatica",
           "programa": "Mujeres",
-          "tipo_contragarantia": "-"
+          "tipo_contragarantia": "Garantia SGR / FPG - CASFOG Serie IV (ARGENPYMES SGR)"
         },
         {
           "denominacion": "2025-CR-CO-001904",
@@ -1125,7 +1125,7 @@
           "linea": "2025 - Programática",
           "sublinea": "Programatica",
           "programa": "Financiamiento Verde",
-          "tipo_contragarantia": "-"
+          "tipo_contragarantia": "Garantia SGR / FPG - ARGENPYMES"
         },
         {
           "denominacion": "2025-CR-CO-001899",
@@ -1169,7 +1169,7 @@
           "linea": "2025 - Programática",
           "sublinea": "Programatica",
           "programa": "Mujeres",
-          "tipo_contragarantia": "-"
+          "tipo_contragarantia": "Garantia SGR / FPG - Garantizar SGR"
         },
         {
           "denominacion": "2025-CR-CO-001902",
@@ -1268,7 +1268,7 @@
           "linea": "2023 - Reactivación Productiva",
           "sublinea": "Programatica",
           "programa": "Cadena de Valor",
-          "tipo_contragarantia": "-"
+          "tipo_contragarantia": "Hipoteca"
         },
         {
           "denominacion": "2025-CR-CO-001807",
@@ -1312,7 +1312,7 @@
           "linea": "2025 - Competitividad Pyme",
           "sublinea": "Tradicional",
           "programa": "-",
-          "tipo_contragarantia": "-"
+          "tipo_contragarantia": "Garantia SGR / FPG - ARGENPYMES"
         },
         {
           "denominacion": "2025-CR-CO-001847",
@@ -1389,7 +1389,7 @@
           "linea": "2025 - Competitividad Pyme",
           "sublinea": "Tradicional",
           "programa": "-",
-          "tipo_contragarantia": "-"
+          "tipo_contragarantia": "Garantia SGR / FPG - Garantizar SGR"
         },
         {
           "denominacion": "2025-CR-CO-001920",
@@ -1422,7 +1422,7 @@
           "linea": "2025 - Programática",
           "sublinea": "Programatica",
           "programa": "Mujeres",
-          "tipo_contragarantia": "-"
+          "tipo_contragarantia": "Garantia SGR / FPG - RESILIENCIA SGR"
         },
         {
           "denominacion": "2025-CR-CO-001858",
@@ -1433,7 +1433,7 @@
           "linea": "2025 - Triple Impacto",
           "sublinea": "Programatica",
           "programa": "Gestión Energética",
-          "tipo_contragarantia": "-"
+          "tipo_contragarantia": "Fianza"
         },
         {
           "denominacion": "2025-CR-CO-001794",
@@ -1531,7 +1531,7 @@
           "linea": "2025 - Triple Impacto",
           "sublinea": "Programatica",
           "programa": "Acciones Sustentables",
-          "tipo_contragarantia": "-"
+          "tipo_contragarantia": "Garantia SGR / FPG - FOGAER S.A.P.E.M"
         },
         {
           "denominacion": "2025-CR-ER-001730",
@@ -1542,7 +1542,7 @@
           "linea": "2025 - Triple Impacto",
           "sublinea": "Programatica",
           "programa": "Desarrollo Proveedores - Impacto Medio",
-          "tipo_contragarantia": "-"
+          "tipo_contragarantia": "Garantia SGR / FPG - FOGAER S.A.P.E.M"
         },
         {
           "denominacion": "2025-CR-ER-001887",
@@ -1575,7 +1575,7 @@
           "linea": "2025 - Competitividad Pyme",
           "sublinea": "Tradicional",
           "programa": "-",
-          "tipo_contragarantia": "-"
+          "tipo_contragarantia": "Hipoteca"
         },
         {
           "denominacion": "2025-CR-ER-001963",
@@ -1586,7 +1586,7 @@
           "linea": "2025 - Competitividad Pyme",
           "sublinea": "Tradicional",
           "programa": "-",
-          "tipo_contragarantia": "-"
+          "tipo_contragarantia": "Hipoteca"
         },
         {
           "denominacion": "2025-CR-ER-001891",
@@ -1597,7 +1597,7 @@
           "linea": "2025 - Competitividad Pyme",
           "sublinea": "Tradicional",
           "programa": "-",
-          "tipo_contragarantia": "-"
+          "tipo_contragarantia": "Garantia SGR / FPG - FOGAER S.A.P.E.M"
         },
         {
           "denominacion": "2025-CR-ER-001774",
@@ -1619,7 +1619,7 @@
           "linea": "2025 - Competitividad Pyme",
           "sublinea": "Tradicional",
           "programa": "-",
-          "tipo_contragarantia": "-"
+          "tipo_contragarantia": "Hipoteca"
         },
         {
           "denominacion": "2025-CR-ER-001607",
@@ -1641,7 +1641,7 @@
           "linea": "2025 - Competitividad Pyme",
           "sublinea": "Tradicional",
           "programa": "-",
-          "tipo_contragarantia": "-"
+          "tipo_contragarantia": "Garantia SGR / FPG - FOGAER S.A.P.E.M"
         },
         {
           "denominacion": "2025-CR-ER-001961",
@@ -1652,7 +1652,7 @@
           "linea": "2025 - Competitividad Pyme",
           "sublinea": "Tradicional",
           "programa": "-",
-          "tipo_contragarantia": "-"
+          "tipo_contragarantia": "Hipoteca"
         },
         {
           "denominacion": "2025-CR-ER-001740",
@@ -1663,7 +1663,7 @@
           "linea": "2025 - Competitividad Pyme",
           "sublinea": "Tradicional",
           "programa": "-",
-          "tipo_contragarantia": "-"
+          "tipo_contragarantia": "Garantia SGR / FPG - FOGAER S.A.P.E.M"
         },
         {
           "denominacion": "2025-CR-ER-001712",
@@ -1685,7 +1685,7 @@
           "linea": "2025 - Competitividad Pyme",
           "sublinea": "Tradicional",
           "programa": "-",
-          "tipo_contragarantia": "-"
+          "tipo_contragarantia": "Garantia SGR / FPG - FOGAER S.A.P.E.M"
         },
         {
           "denominacion": "2025-CR-ER-001738",
@@ -1696,7 +1696,7 @@
           "linea": "2025 - Triple Impacto",
           "sublinea": "Programatica",
           "programa": "Desarrollo Proveedores - Impacto Alto",
-          "tipo_contragarantia": "-"
+          "tipo_contragarantia": "Garantia SGR / FPG - FOGAER S.A.P.E.M"
         },
         {
           "denominacion": "2025-CR-ER-001706",
@@ -1718,7 +1718,7 @@
           "linea": "2025 - Triple Impacto",
           "sublinea": "Programatica",
           "programa": "Desarrollo Proveedores - Impacto Alto",
-          "tipo_contragarantia": "-"
+          "tipo_contragarantia": "Garantia SGR / FPG - FOGAER S.A.P.E.M"
         }
       ]
     },
@@ -1761,7 +1761,7 @@
           "linea": "2025 - Programática",
           "sublinea": "Programatica",
           "programa": "Mujeres",
-          "tipo_contragarantia": "-"
+          "tipo_contragarantia": "Garantia SGR / FPG - CASFOG Serie IV (ARGENPYMES SGR)"
         },
         {
           "denominacion": "2025-CR-SF-001909",
@@ -1794,7 +1794,7 @@
           "linea": "2025 - Programática",
           "sublinea": "Programatica",
           "programa": "Mujeres",
-          "tipo_contragarantia": "-"
+          "tipo_contragarantia": "Garantia SGR / FPG - CASFOG Serie IV (ARGENPYMES SGR)"
         },
         {
           "denominacion": "2025-CR-SF-001916",
@@ -1904,7 +1904,7 @@
           "linea": "2025 - Competitividad Pyme",
           "sublinea": "Tradicional",
           "programa": "-",
-          "tipo_contragarantia": "-"
+          "tipo_contragarantia": "Garantia SGR / FPG - ARGENPYMES"
         },
         {
           "denominacion": "2025-CR-SF-001949",
@@ -1926,7 +1926,7 @@
           "linea": "2025 - Programática",
           "sublinea": "Programatica",
           "programa": "Mujeres",
-          "tipo_contragarantia": "-"
+          "tipo_contragarantia": "Garantia SGR / FPG - ARGENPYMES"
         },
         {
           "denominacion": "2025-CR-SF-001655",
@@ -1970,7 +1970,7 @@
           "linea": "2025 - Programática",
           "sublinea": "Programatica",
           "programa": "Mujeres",
-          "tipo_contragarantia": "-"
+          "tipo_contragarantia": "Garantia SGR / FPG - Garantizar SGR"
         },
         {
           "denominacion": "2025-CR-SF-001991",
@@ -2014,7 +2014,7 @@
           "linea": "2025 - Competitividad Pyme",
           "sublinea": "Tradicional",
           "programa": "-",
-          "tipo_contragarantia": "-"
+          "tipo_contragarantia": "Garantia SGR / FPG - AVALUAR SGR"
         },
         {
           "denominacion": "2025-CR-SF-001951",
@@ -2025,7 +2025,7 @@
           "linea": "2025 - Programática",
           "sublinea": "Programatica",
           "programa": "Financiamiento Verde",
-          "tipo_contragarantia": "-"
+          "tipo_contragarantia": "Garantia SGR / FPG - Garantizar SGR"
         },
         {
           "denominacion": "2025-CR-SF-001988",
@@ -2036,7 +2036,7 @@
           "linea": "2025 - Competitividad Pyme",
           "sublinea": "Tradicional",
           "programa": "-",
-          "tipo_contragarantia": "-"
+          "tipo_contragarantia": "Garantia SGR / FPG - Garantizar SGR"
         },
         {
           "denominacion": "2025-CR-SF-001789",
@@ -2058,7 +2058,7 @@
           "linea": "2025 - Competitividad Pyme",
           "sublinea": "Tradicional",
           "programa": "-",
-          "tipo_contragarantia": "-"
+          "tipo_contragarantia": "Garantia SGR / FPG - ARGENPYMES"
         },
         {
           "denominacion": "2023-CR-SF-001633",
@@ -2080,7 +2080,7 @@
           "linea": "2023 - Reactivación Productiva",
           "sublinea": "Programatica",
           "programa": "Verde",
-          "tipo_contragarantia": "-"
+          "tipo_contragarantia": "Prenda"
         },
         {
           "denominacion": "2025-CR-SF-001960",
@@ -2091,7 +2091,7 @@
           "linea": "2025 - Competitividad Pyme",
           "sublinea": "Tradicional",
           "programa": "-",
-          "tipo_contragarantia": "-"
+          "tipo_contragarantia": "Fianza"
         },
         {
           "denominacion": "2025-CR-SF-001806",
@@ -2102,7 +2102,7 @@
           "linea": "2025 - Programática",
           "sublinea": "Programatica",
           "programa": "Mujeres",
-          "tipo_contragarantia": "-"
+          "tipo_contragarantia": "Fianza"
         },
         {
           "denominacion": "2023-CR-SF-001526",
@@ -2113,7 +2113,7 @@
           "linea": "2023 - Reactivación Productiva",
           "sublinea": "Programatica",
           "programa": "Verde",
-          "tipo_contragarantia": "-"
+          "tipo_contragarantia": "Hipoteca"
         },
         {
           "denominacion": "2025-CR-SF-001952",
@@ -2124,7 +2124,7 @@
           "linea": "2025 - Programática",
           "sublinea": "Programatica",
           "programa": "Financiamiento Verde",
-          "tipo_contragarantia": "-"
+          "tipo_contragarantia": "Fianza"
         }
       ]
     },
@@ -2145,7 +2145,7 @@
           "linea": "2025 - Triple Impacto",
           "sublinea": "Programatica",
           "programa": "Riego y Eficiencia Hídrica",
-          "tipo_contragarantia": "-"
+          "tipo_contragarantia": "Garantia SGR / FPG - CUYO AVAL SGR"
         },
         {
           "denominacion": "2025-CR-MZ-001957",
@@ -2156,7 +2156,7 @@
           "linea": "2025 - Programática",
           "sublinea": "Programatica",
           "programa": "Financiamiento Verde",
-          "tipo_contragarantia": "-"
+          "tipo_contragarantia": "Garantia SGR / FPG - CUYO AVAL SGR"
         },
         {
           "denominacion": "2025-CR-MZ-001986",
@@ -2178,7 +2178,7 @@
           "linea": "2025 - Triple Impacto",
           "sublinea": "Programatica",
           "programa": "Riego y Eficiencia Hídrica",
-          "tipo_contragarantia": "-"
+          "tipo_contragarantia": "Garantia SGR / FPG - CUYO AVAL SGR"
         },
         {
           "denominacion": "2025-CR-MZ-001889",
@@ -2233,7 +2233,7 @@
           "linea": "2025 - Triple Impacto",
           "sublinea": "Programatica",
           "programa": "Riego y Eficiencia Hídrica",
-          "tipo_contragarantia": "-"
+          "tipo_contragarantia": "Garantia SGR / FPG - CUYO AVAL SGR"
         },
         {
           "denominacion": "2025-CR-MZ-001702",
@@ -2244,7 +2244,7 @@
           "linea": "2025 - Programática",
           "sublinea": "Programatica",
           "programa": "Mujeres",
-          "tipo_contragarantia": "-"
+          "tipo_contragarantia": "Garantia SGR / FPG - CUYO AVAL SGR"
         },
         {
           "denominacion": "2025-CR-MZ-001865",
@@ -2288,7 +2288,7 @@
           "linea": "2025 - Programática",
           "sublinea": "Programatica",
           "programa": "Financiamiento Verde",
-          "tipo_contragarantia": "-"
+          "tipo_contragarantia": "Garantia SGR / FPG - CUYO AVAL FAE Mendoza"
         },
         {
           "denominacion": "2025-CR-MZ-001996",
@@ -2310,7 +2310,7 @@
           "linea": "2025 - Programática",
           "sublinea": "Programatica",
           "programa": "Financiamiento Verde",
-          "tipo_contragarantia": "-"
+          "tipo_contragarantia": "Garantia SGR / FPG - CUYO AVAL FAE Mendoza"
         },
         {
           "denominacion": "2002-CR-MZ-001681",
@@ -2321,7 +2321,7 @@
           "linea": "2002 - Producción Regional Exportable",
           "sublinea": "Tradicional",
           "programa": "-",
-          "tipo_contragarantia": "-"
+          "tipo_contragarantia": "Garantia SGR / FPG - Garantizar SGR"
         }
       ]
     },
@@ -2342,7 +2342,7 @@
           "linea": "2025 - Programática",
           "sublinea": "Programatica",
           "programa": "Mujeres",
-          "tipo_contragarantia": "-"
+          "tipo_contragarantia": "Garantia SGR / FPG - Garantizar SGR"
         },
         {
           "denominacion": "2025-CR-TU-001944",
@@ -2364,7 +2364,7 @@
           "linea": "2025 - Programática",
           "sublinea": "Programatica",
           "programa": "Mujeres",
-          "tipo_contragarantia": "-"
+          "tipo_contragarantia": "Garantia SGR / FPG - UNION SGR"
         },
         {
           "denominacion": "2025-CR-TU-001829",
@@ -2397,7 +2397,7 @@
           "linea": "2025 - Programática",
           "sublinea": "Programatica",
           "programa": "Financiamiento Verde",
-          "tipo_contragarantia": "-"
+          "tipo_contragarantia": "Garantia SGR / FPG - Garantizar SGR"
         },
         {
           "denominacion": "2025-CR-TU-001924",
@@ -2408,7 +2408,7 @@
           "linea": "2025 - Competitividad Pyme",
           "sublinea": "Tradicional",
           "programa": "-",
-          "tipo_contragarantia": "-"
+          "tipo_contragarantia": "Garantia SGR / FPG - Garantizar SGR"
         },
         {
           "denominacion": "2025-CR-TU-001716",
@@ -2441,7 +2441,7 @@
           "linea": "2023 - Reactivación Productiva",
           "sublinea": "Programatica",
           "programa": "Cadena de Valor",
-          "tipo_contragarantia": "-"
+          "tipo_contragarantia": "Prenda, Fianza"
         },
         {
           "denominacion": "2025-CR-TU-001969",
@@ -2452,7 +2452,7 @@
           "linea": "2025 - Competitividad Pyme",
           "sublinea": "Tradicional",
           "programa": "-",
-          "tipo_contragarantia": "-"
+          "tipo_contragarantia": "Prenda, Fianza"
         },
         {
           "denominacion": "2025-CR-TU-001796",
@@ -2550,7 +2550,7 @@
           "linea": "2025 - Programática",
           "sublinea": "Programatica",
           "programa": "Financiamiento Verde",
-          "tipo_contragarantia": "-"
+          "tipo_contragarantia": "Garantia SGR / FPG - CASFOG Serie IV (ARGENPYMES SGR)"
         },
         {
           "denominacion": "2025-CR-MI-001997",
@@ -2561,7 +2561,7 @@
           "linea": "2025 - Programática",
           "sublinea": "Programatica",
           "programa": "Financiamiento Verde",
-          "tipo_contragarantia": "-"
+          "tipo_contragarantia": "Garantia SGR / FPG - CASFOG Serie IV (ARGENPYMES SGR)"
         },
         {
           "denominacion": "2025-CR-MI-001841",
@@ -2616,7 +2616,7 @@
           "linea": "2025 - Programática",
           "sublinea": "Programatica",
           "programa": "Mujeres",
-          "tipo_contragarantia": "-"
+          "tipo_contragarantia": "Garantia SGR / FPG - CASFOG Serie IV (ARGENPYMES SGR)"
         },
         {
           "denominacion": "2025-CR-MI-001821",
@@ -2704,7 +2704,7 @@
           "linea": "2025 - Programática",
           "sublinea": "Programatica",
           "programa": "Mujeres",
-          "tipo_contragarantia": "-"
+          "tipo_contragarantia": "Garantia SGR / FPG - CASFOG Serie II (TREND SGR)"
         },
         {
           "denominacion": "2025-CR-MI-002000",
@@ -2715,7 +2715,7 @@
           "linea": "2025 - Competitividad Pyme",
           "sublinea": "Tradicional",
           "programa": "-",
-          "tipo_contragarantia": "-"
+          "tipo_contragarantia": "Fianza"
         },
         {
           "denominacion": "2025-CR-MI-001866",
@@ -2737,7 +2737,7 @@
           "linea": "2025 - Programática",
           "sublinea": "Programatica",
           "programa": "Mujeres",
-          "tipo_contragarantia": "-"
+          "tipo_contragarantia": "Fianza"
         }
       ]
     },
@@ -2802,7 +2802,7 @@
           "linea": "2025 - Programática",
           "sublinea": "Programatica",
           "programa": "Mujeres",
-          "tipo_contragarantia": "-"
+          "tipo_contragarantia": "Garantia SGR / FPG - FOGARIO"
         },
         {
           "denominacion": "2025-CR-RN-001967",
@@ -2890,7 +2890,7 @@
           "linea": "2025 - Competitividad Pyme",
           "sublinea": "Tradicional",
           "programa": "-",
-          "tipo_contragarantia": "-"
+          "tipo_contragarantia": "Prenda"
         },
         {
           "denominacion": "2025-CR-RN-001714",
@@ -2912,7 +2912,7 @@
           "linea": "2025 - Competitividad Pyme",
           "sublinea": "Tradicional",
           "programa": "-",
-          "tipo_contragarantia": "-"
+          "tipo_contragarantia": "Garantia SGR / FPG - FOGARIO"
         },
         {
           "denominacion": "2025-CR-RN-002003",
@@ -2923,7 +2923,7 @@
           "linea": "2025 - Programática",
           "sublinea": "Programatica",
           "programa": "Mujeres",
-          "tipo_contragarantia": "-"
+          "tipo_contragarantia": "Garantia SGR / FPG - FOGARIO"
         },
         {
           "denominacion": "2025-CR-RN-001852",
@@ -2934,7 +2934,7 @@
           "linea": "2025 - Programática",
           "sublinea": "Programatica",
           "programa": "Mujeres",
-          "tipo_contragarantia": "-"
+          "tipo_contragarantia": "Garantia SGR / FPG - FOGARIO"
         },
         {
           "denominacion": "2025-CR-RN-001862",
@@ -2956,7 +2956,7 @@
           "linea": "2025 - Programática",
           "sublinea": "Programatica",
           "programa": "Mujeres",
-          "tipo_contragarantia": "-"
+          "tipo_contragarantia": "Fianza"
         },
         {
           "denominacion": "2002-CR-RN-001863",
@@ -2967,7 +2967,7 @@
           "linea": "2002 - Producción Regional Exportable",
           "sublinea": "Tradicional",
           "programa": "-",
-          "tipo_contragarantia": "-"
+          "tipo_contragarantia": "Fianza"
         },
         {
           "denominacion": "2002-CR-RN-001947",
@@ -2978,7 +2978,7 @@
           "linea": "2002 - Producción Regional Exportable",
           "sublinea": "Tradicional",
           "programa": "-",
-          "tipo_contragarantia": "-"
+          "tipo_contragarantia": "Fianza"
         },
         {
           "denominacion": "2002-CR-RN-001861",
@@ -2989,7 +2989,7 @@
           "linea": "2002 - Producción Regional Exportable",
           "sublinea": "Tradicional",
           "programa": "-",
-          "tipo_contragarantia": "-"
+          "tipo_contragarantia": "Fianza"
         },
         {
           "denominacion": "2002-CR-RN-001895",
@@ -3000,7 +3000,7 @@
           "linea": "2002 - Producción Regional Exportable",
           "sublinea": "Tradicional",
           "programa": "Prefinanciación de Exportaciones",
-          "tipo_contragarantia": "-"
+          "tipo_contragarantia": "Fianza"
         }
       ]
     },
@@ -3043,7 +3043,7 @@
           "linea": "2025 - Triple Impacto",
           "sublinea": "Programatica",
           "programa": "Gestión Energética",
-          "tipo_contragarantia": "-"
+          "tipo_contragarantia": "Garantia SGR / FPG - CASFOG Serie IV (ARGENPYMES SGR)"
         },
         {
           "denominacion": "2025-CR-SA-002004",
@@ -3054,7 +3054,7 @@
           "linea": "2025 - Competitividad Pyme",
           "sublinea": "Tradicional",
           "programa": "-",
-          "tipo_contragarantia": "-"
+          "tipo_contragarantia": "Garantia SGR / FPG - CASFOG Serie IV (ARGENPYMES SGR)"
         },
         {
           "denominacion": "2025-CR-SA-001860",
@@ -3065,7 +3065,7 @@
           "linea": "2025 - Programática",
           "sublinea": "Programatica",
           "programa": "Mujeres",
-          "tipo_contragarantia": "-"
+          "tipo_contragarantia": "Hipoteca"
         },
         {
           "denominacion": "2025-CR-SA-001776",
@@ -3098,7 +3098,7 @@
           "linea": "2025 - Programática",
           "sublinea": "Programatica",
           "programa": "Mujeres",
-          "tipo_contragarantia": "-"
+          "tipo_contragarantia": "Garantia SGR / FPG - CASFOG Serie IV (ARGENPYMES SGR)"
         },
         {
           "denominacion": "2025-CR-SA-002006",
@@ -3109,7 +3109,7 @@
           "linea": "2025 - Programática",
           "sublinea": "Programatica",
           "programa": "Mujeres",
-          "tipo_contragarantia": "-"
+          "tipo_contragarantia": "Garantia SGR / FPG - CASFOG Serie IV (ARGENPYMES SGR)"
         },
         {
           "denominacion": "2025-CR-SA-001838",
@@ -3120,7 +3120,7 @@
           "linea": "2025 - Programática",
           "sublinea": "Programatica",
           "programa": "Mujeres",
-          "tipo_contragarantia": "-"
+          "tipo_contragarantia": "Prenda"
         },
         {
           "denominacion": "2025-CR-SA-001811",
@@ -3218,7 +3218,7 @@
           "linea": "2025 - Programática",
           "sublinea": "Programatica",
           "programa": "Mujeres",
-          "tipo_contragarantia": "-"
+          "tipo_contragarantia": "Hipoteca"
         },
         {
           "denominacion": "2025-CR-NQ-001942",
@@ -3229,7 +3229,7 @@
           "linea": "2025 - Competitividad Pyme",
           "sublinea": "Tradicional",
           "programa": "-",
-          "tipo_contragarantia": "-"
+          "tipo_contragarantia": "Garantia SGR / FPG - MOVIL SGR"
         },
         {
           "denominacion": "2025-CR-NQ-001875",
@@ -3251,7 +3251,7 @@
           "linea": "2025 - Triple Impacto",
           "sublinea": "Programatica",
           "programa": "Desarrollo Proveedores - Impacto Estándar",
-          "tipo_contragarantia": "-"
+          "tipo_contragarantia": "Garantia SGR / FPG - Garantizar SGR"
         },
         {
           "denominacion": "2023-CR-NQ-001690",
@@ -3327,7 +3327,7 @@
           "linea": "2025 - Programática",
           "sublinea": "Programatica",
           "programa": "Financiamiento Verde",
-          "tipo_contragarantia": "-"
+          "tipo_contragarantia": "Garantia SGR / FPG - ACINDAR PYMES SGR"
         },
         {
           "denominacion": "2025-CR-CT-001878",
@@ -3360,7 +3360,7 @@
           "linea": "2025 - Programática",
           "sublinea": "Programatica",
           "programa": "Mujeres",
-          "tipo_contragarantia": "-"
+          "tipo_contragarantia": "Garantia SGR / FPG - CASFOG Serie II (TREND SGR)"
         },
         {
           "denominacion": "2025-CR-CT-001995",
@@ -3371,7 +3371,7 @@
           "linea": "2025 - Programática",
           "sublinea": "Programatica",
           "programa": "Financiamiento Verde",
-          "tipo_contragarantia": "-"
+          "tipo_contragarantia": "Garantia SGR / FPG - CASFOG Serie II (TREND SGR)"
         },
         {
           "denominacion": "2025-CR-CT-001976",
@@ -3382,7 +3382,7 @@
           "linea": "2025 - Programática",
           "sublinea": "Programatica",
           "programa": "Financiamiento Verde",
-          "tipo_contragarantia": "-"
+          "tipo_contragarantia": "Garantia SGR / FPG - CASFOG Serie II (TREND SGR)"
         },
         {
           "denominacion": "2025-CR-CT-001922",
@@ -3393,7 +3393,7 @@
           "linea": "2025 - Programática",
           "sublinea": "Programatica",
           "programa": "Financiamiento Verde",
-          "tipo_contragarantia": "-"
+          "tipo_contragarantia": "Garantia SGR / FPG - CASFOG Serie II (TREND SGR)"
         },
         {
           "denominacion": "2025-CR-CT-001831",
@@ -3404,7 +3404,7 @@
           "linea": "2025 - Programática",
           "sublinea": "Programatica",
           "programa": "Financiamiento Verde",
-          "tipo_contragarantia": "-"
+          "tipo_contragarantia": "Garantia SGR / FPG - ACINDAR PYMES SGR"
         },
         {
           "denominacion": "2025-CR-CT-001823",
@@ -3426,7 +3426,7 @@
           "linea": "2025 - Competitividad Pyme",
           "sublinea": "Tradicional",
           "programa": "-",
-          "tipo_contragarantia": "-"
+          "tipo_contragarantia": "Garantia SGR / FPG - CASFOG Serie II (TREND SGR)"
         },
         {
           "denominacion": "2025-CR-CT-001883",
@@ -3437,7 +3437,7 @@
           "linea": "2025 - Programática",
           "sublinea": "Programatica",
           "programa": "Mujeres",
-          "tipo_contragarantia": "-"
+          "tipo_contragarantia": "Garantia SGR / FPG - CASFOG Serie II (TREND SGR)"
         },
         {
           "denominacion": "2025-CR-CT-002021",
@@ -3448,7 +3448,7 @@
           "linea": "2025 - Competitividad Pyme",
           "sublinea": "Tradicional",
           "programa": "-",
-          "tipo_contragarantia": "-"
+          "tipo_contragarantia": "Fianza"
         },
         {
           "denominacion": "2025-CR-CT-001985",
@@ -3459,7 +3459,7 @@
           "linea": "2025 - Competitividad Pyme",
           "sublinea": "Tradicional",
           "programa": "-",
-          "tipo_contragarantia": "-"
+          "tipo_contragarantia": "Fianza"
         },
         {
           "denominacion": "2025-CR-CT-001950",
@@ -3470,7 +3470,7 @@
           "linea": "2025 - Programática",
           "sublinea": "Programatica",
           "programa": "Mujeres",
-          "tipo_contragarantia": "-"
+          "tipo_contragarantia": "Fianza"
         },
         {
           "denominacion": "2025-CR-CT-001908",
@@ -3481,7 +3481,7 @@
           "linea": "2025 - Programática",
           "sublinea": "Programatica",
           "programa": "Mujeres",
-          "tipo_contragarantia": "-"
+          "tipo_contragarantia": "Fianza"
         },
         {
           "denominacion": "2025-CR-CT-001853",
@@ -3492,7 +3492,7 @@
           "linea": "2025 - Competitividad Pyme",
           "sublinea": "Tradicional",
           "programa": "-",
-          "tipo_contragarantia": "-"
+          "tipo_contragarantia": "Fianza"
         },
         {
           "denominacion": "2025-CR-CT-001835",
@@ -3503,7 +3503,7 @@
           "linea": "2025 - Programática",
           "sublinea": "Programatica",
           "programa": "Mujeres",
-          "tipo_contragarantia": "-"
+          "tipo_contragarantia": "Fianza"
         },
         {
           "denominacion": "2025-CR-CT-001820",
@@ -3514,7 +3514,7 @@
           "linea": "2025 - Competitividad Pyme",
           "sublinea": "Tradicional",
           "programa": "-",
-          "tipo_contragarantia": "-"
+          "tipo_contragarantia": "Fianza"
         },
         {
           "denominacion": "2025-CR-CT-002007",
@@ -3525,7 +3525,7 @@
           "linea": "2025 - Programática",
           "sublinea": "Programatica",
           "programa": "Mujeres",
-          "tipo_contragarantia": "-"
+          "tipo_contragarantia": "Fianza"
         },
         {
           "denominacion": "2025-CR-CT-001721",
@@ -3536,7 +3536,7 @@
           "linea": "2025 - Competitividad Pyme",
           "sublinea": "Tradicional",
           "programa": "-",
-          "tipo_contragarantia": "-"
+          "tipo_contragarantia": "Fianza"
         },
         {
           "denominacion": "2025-CR-CT-001977",
@@ -3547,7 +3547,7 @@
           "linea": "2025 - Programática",
           "sublinea": "Programatica",
           "programa": "Mujeres",
-          "tipo_contragarantia": "-"
+          "tipo_contragarantia": "Fianza"
         },
         {
           "denominacion": "2025-CR-CT-001864",
@@ -3558,7 +3558,7 @@
           "linea": "2025 - Programática",
           "sublinea": "Programatica",
           "programa": "Mujeres",
-          "tipo_contragarantia": "-"
+          "tipo_contragarantia": "Fianza"
         }
       ]
     },
@@ -3579,7 +3579,7 @@
           "linea": "2023 - Reactivación Productiva",
           "sublinea": "Programatica",
           "programa": "Verde",
-          "tipo_contragarantia": "-"
+          "tipo_contragarantia": "Garantia SGR / FPG - Garantizar SGR"
         },
         {
           "denominacion": "2023-CR-JU-001659",
@@ -3590,7 +3590,7 @@
           "linea": "2023 - Reactivación Productiva",
           "sublinea": "Programatica",
           "programa": "Cadena de Valor",
-          "tipo_contragarantia": "-"
+          "tipo_contragarantia": "Hipoteca"
         },
         {
           "denominacion": "2023-CR-JU-001699",
@@ -3601,7 +3601,7 @@
           "linea": "2023 - Reactivación Productiva",
           "sublinea": "Programatica",
           "programa": "Cadena de Valor",
-          "tipo_contragarantia": "-"
+          "tipo_contragarantia": "Hipoteca"
         },
         {
           "denominacion": "2025-CR-JU-001923",
@@ -3688,7 +3688,7 @@
           "linea": "2025 - Programática",
           "sublinea": "Programatica",
           "programa": "Mujeres",
-          "tipo_contragarantia": "-"
+          "tipo_contragarantia": "Garantia SGR / FPG - Garantizar SGR"
         },
         {
           "denominacion": "2025-CR-SL-001905",
@@ -3699,7 +3699,7 @@
           "linea": "2025 - Competitividad Pyme",
           "sublinea": "Tradicional",
           "programa": "-",
-          "tipo_contragarantia": "-"
+          "tipo_contragarantia": "Garantia SGR / FPG - AFB AVALES SGR"
         },
         {
           "denominacion": "2025-CR-SL-001703",
@@ -3787,7 +3787,7 @@
           "linea": "2025 - Programática",
           "sublinea": "Programatica",
           "programa": "Mujeres",
-          "tipo_contragarantia": "-"
+          "tipo_contragarantia": "Fianza"
         },
         {
           "denominacion": "2025-CR-SL-001877",
@@ -3798,7 +3798,7 @@
           "linea": "2025 - Programática",
           "sublinea": "Programatica",
           "programa": "Mujeres",
-          "tipo_contragarantia": "-"
+          "tipo_contragarantia": "Fianza"
         },
         {
           "denominacion": "2025-CR-SL-001745",
@@ -3809,7 +3809,7 @@
           "linea": "2025 - Competitividad Pyme",
           "sublinea": "Tradicional",
           "programa": "-",
-          "tipo_contragarantia": "-"
+          "tipo_contragarantia": "Fianza"
         },
         {
           "denominacion": "2025-CR-SL-001822",
@@ -3820,7 +3820,7 @@
           "linea": "2025 - Programática",
           "sublinea": "Programatica",
           "programa": "Mujeres",
-          "tipo_contragarantia": "-"
+          "tipo_contragarantia": "Fianza"
         }
       ]
     },
@@ -3852,7 +3852,7 @@
           "linea": "2025 - Triple Impacto",
           "sublinea": "Programatica",
           "programa": "Gestión Energética",
-          "tipo_contragarantia": "-"
+          "tipo_contragarantia": "Garantia SGR / FPG - FOGAPLAR S.A.U"
         },
         {
           "denominacion": "2025-CR-LR-002016",
@@ -3863,7 +3863,7 @@
           "linea": "2025 - Programática",
           "sublinea": "Programatica",
           "programa": "Financiamiento Verde",
-          "tipo_contragarantia": "-"
+          "tipo_contragarantia": "Garantia SGR / FPG - FOGAPLAR S.A.U"
         },
         {
           "denominacion": "2025-CR-LR-001881",
@@ -4038,7 +4038,7 @@
           "linea": "2025 - Programática",
           "sublinea": "Programatica",
           "programa": "Mujeres",
-          "tipo_contragarantia": "-"
+          "tipo_contragarantia": "Garantia SGR / FPG - FOGAPAM"
         },
         {
           "denominacion": "2023-CR-LP-001689",
@@ -4212,7 +4212,7 @@
           "linea": "2023 - Reactivación Productiva",
           "sublinea": "Programatica",
           "programa": "Cadena de Valor",
-          "tipo_contragarantia": "-"
+          "tipo_contragarantia": "Garantia SGR / FPG - GARANTIA SAN JUAN SAPEM"
         }
       ]
     },
@@ -4266,7 +4266,7 @@
           "linea": "2025 - Programática",
           "sublinea": "Programatica",
           "programa": "Mujeres",
-          "tipo_contragarantia": "-"
+          "tipo_contragarantia": "Garantia SGR / FPG - FOGADEF"
         }
       ]
     },
@@ -4287,7 +4287,7 @@
           "linea": "2025 - Programática",
           "sublinea": "Programatica",
           "programa": "Mujeres",
-          "tipo_contragarantia": "-"
+          "tipo_contragarantia": "Garantia SGR / FPG - Garantizar SGR"
         },
         {
           "denominacion": "2025-CR-CB-001962",
@@ -4298,7 +4298,7 @@
           "linea": "2025 - Programática",
           "sublinea": "Programatica",
           "programa": "Mujeres",
-          "tipo_contragarantia": "-"
+          "tipo_contragarantia": "Fianza"
         }
       ]
     },
@@ -4383,7 +4383,7 @@
           "linea": "2025 - Programática",
           "sublinea": "Programatica",
           "programa": "Mujeres",
-          "tipo_contragarantia": "-"
+          "tipo_contragarantia": "Fianza"
         }
       ]
     },
