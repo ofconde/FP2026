@@ -902,108 +902,99 @@
     `;
   }
 
-  async function ensurePdfLibrary() {
-    if (window.html2pdf) return window.html2pdf;
-    throw new Error('La librería de exportación PDF no está disponible en este momento.');
+  function buildPrintDocument({ title, reportHtml }) {
+    return `<!doctype html>
+      <html lang="es">
+        <head>
+          <meta charset="utf-8">
+          <meta name="viewport" content="width=device-width, initial-scale=1">
+          <title>${title}</title>
+          <link rel="preconnect" href="https://fonts.googleapis.com">
+          <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+          <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Raleway:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+          <style>
+            @page {
+              size: A4 landscape;
+              margin: 0;
+            }
+            html, body {
+              margin: 0;
+              padding: 0;
+              background: #E9EEF2;
+              -webkit-print-color-adjust: exact;
+              print-color-adjust: exact;
+            }
+            body {
+              font-family: 'Raleway', sans-serif;
+            }
+            .print-shell {
+              width: ${REPORT_PAGE_WIDTH}px;
+              min-height: ${REPORT_PAGE_HEIGHT}px;
+              margin: 0 auto;
+            }
+            @media screen {
+              body {
+                padding: 18px;
+              }
+              .print-shell {
+                box-shadow: 0 20px 40px rgba(28,36,67,0.14);
+              }
+            }
+            @media print {
+              body {
+                padding: 0;
+                background: white;
+              }
+              .print-shell {
+                box-shadow: none;
+              }
+            }
+          </style>
+        </head>
+        <body>
+          <div class="print-shell">${reportHtml}</div>
+          <script>
+            const waitForReady = async () => {
+              if (document.fonts && document.fonts.ready) {
+                try { await document.fonts.ready; } catch (e) {}
+              }
+              await new Promise((resolve) => requestAnimationFrame(() => requestAnimationFrame(resolve)));
+              setTimeout(() => {
+                window.print();
+              }, 120);
+            };
+            waitForReady();
+          <\/script>
+        </body>
+      </html>`;
   }
 
-  async function exportReport({ filename, html, mountNode }) {
-    const html2pdf = await ensurePdfLibrary();
-    const previousStyle = mountNode.getAttribute('style') || '';
-    mountNode.setAttribute('style', 'position:fixed;left:0;top:0;width:1122px;pointer-events:none;z-index:1;overflow:visible;');
-    mountNode.innerHTML = `
-      <div class="report-export-frame" style="width:${REPORT_PAGE_WIDTH}px;height:${REPORT_PAGE_HEIGHT}px;overflow:hidden;background:#F4F7FB;position:relative;">
-        ${html}
-      </div>
-    `;
-    const frame = mountNode.querySelector('.report-export-frame');
-    const page = mountNode.querySelector('.report-page');
-    if (!page) {
-      mountNode.innerHTML = '';
-      mountNode.setAttribute('style', previousStyle);
-      throw new Error('No se pudo construir la hoja del informe para exportar.');
+  function openPrintWindow({ title, reportHtml }) {
+    const printWindow = window.open('', '_blank', 'noopener,noreferrer,width=1280,height=900');
+    if (!printWindow) {
+      throw new Error('El navegador bloqueó la ventana del informe. Habilitá pop-ups para continuar.');
     }
 
-    await new Promise((resolve) => setTimeout(resolve, 180));
-    await new Promise((resolve) => requestAnimationFrame(() => requestAnimationFrame(resolve)));
-    if (document.fonts && document.fonts.ready) {
-      await document.fonts.ready;
-    }
-
-    const fitReport = async () => {
-      const overflowHeight = () => page.scrollHeight > REPORT_PAGE_HEIGHT;
-      const overflowWidth = () => page.scrollWidth > REPORT_PAGE_WIDTH;
-
-      if (overflowHeight() || overflowWidth()) {
-        page.classList.add('compact');
-        await new Promise((resolve) => requestAnimationFrame(resolve));
-      }
-      if (overflowHeight() || overflowWidth()) {
-        page.classList.add('compact-tight');
-        await new Promise((resolve) => requestAnimationFrame(resolve));
-      }
-
-      const visualWidth = Math.max(page.scrollWidth, page.offsetWidth, REPORT_PAGE_WIDTH);
-      const visualHeight = Math.max(page.scrollHeight, page.offsetHeight, REPORT_PAGE_HEIGHT);
-      const scale = Math.min(
-        REPORT_PAGE_WIDTH / visualWidth,
-        REPORT_PAGE_HEIGHT / visualHeight,
-        1
-      );
-
-      if (scale < 0.999) {
-        page.style.transformOrigin = 'top left';
-        page.style.transform = `scale(${scale})`;
-        page.style.position = 'absolute';
-        page.style.left = '0';
-        page.style.top = '0';
-        frame.style.height = `${REPORT_PAGE_HEIGHT}px`;
-        frame.style.width = `${REPORT_PAGE_WIDTH}px`;
-        await new Promise((resolve) => requestAnimationFrame(resolve));
-      }
-    };
-
-    await fitReport();
-
-    const rect = frame.getBoundingClientRect();
-    if (!rect.width || !rect.height) {
-      mountNode.innerHTML = '';
-      mountNode.setAttribute('style', previousStyle);
-      throw new Error('No se pudo calcular el tamaño del informe para exportar.');
-    }
-
-    const options = {
-      margin: 0,
-      filename,
-      image: { type: 'jpeg', quality: 0.98 },
-      html2canvas: {
-        scale: 2,
-        useCORS: true,
-        backgroundColor: '#F4F7FB',
-        logging: false,
-      },
-      jsPDF: {
-        unit: 'mm',
-        format: 'a4',
-        orientation: 'landscape',
-      },
-      pagebreak: { mode: ['avoid-all'] },
-    };
-    await html2pdf().set(options).from(frame).save();
-    mountNode.innerHTML = '';
-    mountNode.setAttribute('style', previousStyle);
+    printWindow.document.open();
+    printWindow.document.write(buildPrintDocument({ title, reportHtml }));
+    printWindow.document.close();
   }
 
-  async function generateProvincialReport({ data, provinceCode, mountNode }) {
+  async function generateProvincialReport({ data, provinceCode }) {
     const html = await renderProvincialReport(data, provinceCode);
     const provincia = (data.provincias || []).find((item) => item.codigo === provinceCode);
-    const filename = `informe_creditos_${normalizeKey(provincia?.nombre || provinceCode)}_2026.pdf`;
-    return exportReport({ filename, html, mountNode });
+    openPrintWindow({
+      title: `Informe de Créditos CFI - ${provincia?.nombre || provinceCode}`,
+      reportHtml: html,
+    });
   }
 
-  async function generateNationalReport({ data, mountNode }) {
+  async function generateNationalReport({ data }) {
     const html = await renderNationalReport(data);
-    return exportReport({ filename: 'informe_nacional_creditos_cfi_2026.pdf', html, mountNode });
+    openPrintWindow({
+      title: 'Informe Nacional de Créditos CFI',
+      reportHtml: html,
+    });
   }
 
   window.CFIReports = {

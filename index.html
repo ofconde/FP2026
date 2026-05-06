@@ -591,11 +591,10 @@
       }
       try {
         setReportButtonsLoading(true);
-        showReportMessage(`Generando informe ejecutivo de ${selected.nombre}...`, 'info');
+        showReportMessage(`Abriendo informe ejecutivo de ${selected.nombre} para imprimir o guardar como PDF...`, 'info');
         await window.CFIReports.generateProvincialReport({
           data: dashboardData,
-          provinceCode: selected.codigo,
-          mountNode: document.getElementById('reportStage')
+          provinceCode: selected.codigo
         });
         clearReportMessage();
       } catch (error) {
@@ -611,10 +610,9 @@
       clearReportMessage();
       try {
         setReportButtonsLoading(true);
-        showReportMessage('Generando informe nacional...', 'info');
+        showReportMessage('Abriendo informe nacional para imprimir o guardar como PDF...', 'info');
         await window.CFIReports.generateNationalReport({
-          data: dashboardData,
-          mountNode: document.getElementById('reportStage')
+          data: dashboardData
         });
         clearReportMessage();
       } catch (error) {
