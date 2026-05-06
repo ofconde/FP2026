@@ -29,9 +29,9 @@
     .badge-live { position: absolute; top: 20px; right: 20px; background: rgba(255, 255, 255, 0.25); padding: 6px 16px; border-radius: 20px; font-size: 10px; font-weight: 700; color: #FFFFFF; z-index: 1; }
     .progress-bar { height: 12px; background: #DBDCDE; border-radius: 6px; margin-bottom: 30px; overflow: hidden; }
     .progress-fill { height: 100%; background: linear-gradient(90deg, #47B067 0%, #80C98A 100%); border-radius: 6px; width: 0; transition: width 1s ease-out; }
-    .view-actions { display: flex; gap: 12px; justify-content: space-between; align-items: center; margin: 0 0 20px; flex-wrap: wrap; }
+    .view-actions { display: flex; gap: 12px; justify-content: flex-end; align-items: center; margin: 0 0 20px; flex-wrap: wrap; }
     .view-tabs { display: flex; gap: 12px; flex-wrap: wrap; }
-    .report-actions { display: flex; gap: 10px; flex-wrap: wrap; justify-content: flex-end; }
+    .report-actions { display: flex; gap: 10px; flex-wrap: wrap; justify-content: flex-end; margin-bottom: 18px; }
     .view-button { border: 1px solid #1C2443; background: transparent; color: #1C2443; padding: 10px 18px; border-radius: 999px; font-size: 11px; font-weight: 700; letter-spacing: 0.8px; cursor: pointer; transition: all 0.2s ease; }
     .view-button.active, .view-button:hover { background: #1C2443; color: #FAFAFA; }
     .report-button { border: 0; background: linear-gradient(90deg, #00A7E1 0%, #0C8395 100%); color: #FFFFFF; padding: 11px 18px; border-radius: 999px; font-size: 11px; font-weight: 700; letter-spacing: 0.7px; cursor: pointer; transition: transform 0.2s ease, opacity 0.2s ease; box-shadow: 0 10px 24px rgba(0, 167, 225, 0.18); }
@@ -197,12 +197,7 @@
           <button id="viewDetalle" class="view-button" type="button">Detalle</button>
           <button id="viewMapa" class="view-button" type="button">Mapa</button>
         </div>
-        <div class="report-actions">
-          <button id="generateProvincialReport" class="report-button" type="button">Generar informe provincial</button>
-          <button id="generateNationalReport" class="report-button" type="button">Generar informe nacional</button>
-        </div>
       </div>
-      <div id="reportMessage" class="report-message hidden"></div>
       <div id="reportStage" class="report-stage" aria-hidden="true"></div>
 
       <div id="resumenView">
@@ -248,6 +243,11 @@
         <div class="detail-shell">
           <div class="section-title">📋 DETALLE POR PROVINCIA</div>
           <p id="detailIntro" class="detail-intro">Detalle actualizado: -</p>
+          <div class="report-actions">
+            <button id="generateProvincialReport" class="report-button" type="button">Generar informe provincial</button>
+            <button id="generateNationalReport" class="report-button" type="button">Generar informe nacional</button>
+          </div>
+          <div id="reportMessage" class="report-message hidden"></div>
           <div id="detailSummary" class="detail-summary"></div>
           <div id="detailFilters" class="detail-filter-bar"></div>
           <div id="detailTableWrap" class="detail-table-wrap"></div>
