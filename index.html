@@ -114,6 +114,8 @@
     .detail-table tbody td { padding: 14px 12px; border-top: 1px solid #DBDCDE; font-size: 11px; vertical-align: top; }
     .detail-table tbody tr:nth-child(even) { background: #F6FAFC; }
     .detail-empty { padding: 24px; text-align: center; color: #96C9DA; font-size: 12px; }
+    .map-frame-shell { background: #F7FAFC; border: 1px solid #DBDCDE; border-radius: 12px; overflow: hidden; }
+    .map-frame { width: 100%; min-height: 1180px; border: 0; display: block; background: #FAFAFA; }
     .error-panel, .loading-panel { background: #FFFFFF; border: 1px solid #DBDCDE; border-radius: 10px; padding: 30px; text-align: center; margin-bottom: 30px; }
     .loading-panel { color: #1C2443; }
     .error-panel { color: #E6431A; }
@@ -181,6 +183,7 @@
       <div class="view-actions">
         <button id="viewResumen" class="view-button active" type="button">Resumen</button>
         <button id="viewDetalle" class="view-button" type="button">Detalle</button>
+        <button id="viewMapa" class="view-button" type="button">Mapa</button>
       </div>
 
       <div id="resumenView">
@@ -229,6 +232,16 @@
           <div id="detailSummary" class="detail-summary"></div>
           <div id="detailFilters" class="detail-filter-bar"></div>
           <div id="detailTableWrap" class="detail-table-wrap"></div>
+        </div>
+      </div>
+
+      <div id="mapaView" class="hidden">
+        <div class="detail-shell">
+          <div class="section-title">🗺️ MAPA FEDERAL</div>
+          <p class="detail-intro">Lectura territorial del mismo universo de datos del dashboard, coloreado por monto aprobado acumulado en 2026.</p>
+          <div class="map-frame-shell">
+            <iframe id="mapaFrame" class="map-frame" src="./mapa_creditos.html" title="Mapa federal de créditos 2026" loading="lazy"></iframe>
+          </div>
         </div>
       </div>
     </div>
@@ -613,15 +626,28 @@
 
     function setView(view) {
       const isDetail = view === 'detalle';
-      document.getElementById('resumenView').classList.toggle('hidden', isDetail);
+      const isMap = view === 'mapa';
+      document.getElementById('resumenView').classList.toggle('hidden', isDetail || isMap);
       document.getElementById('detalleView').classList.toggle('hidden', !isDetail);
-      document.getElementById('viewResumen').classList.toggle('active', !isDetail);
+      document.getElementById('mapaView').classList.toggle('hidden', !isMap);
+      document.getElementById('viewResumen').classList.toggle('active', !isDetail && !isMap);
       document.getElementById('viewDetalle').classList.toggle('active', isDetail);
+      document.getElementById('viewMapa').classList.toggle('active', isMap);
+      if (isMap) {
+        const frame = document.getElementById('mapaFrame');
+        if (frame && frame.dataset.loaded === 'true') {
+          frame.contentWindow?.postMessage({ type: 'refresh-map' }, '*');
+        } else if (frame) {
+          frame.dataset.loaded = 'true';
+          frame.src = `./mapa_creditos.html?v=${Date.now()}`;
+        }
+      }
     }
 
     function attachViewEvents() {
       document.getElementById('viewResumen').onclick = () => setView('resumen');
       document.getElementById('viewDetalle').onclick = () => setView('detalle');
+      document.getElementById('viewMapa').onclick = () => setView('mapa');
     }
 
     function renderDashboard(data) {
@@ -657,6 +683,14 @@
       errorPanel.textContent = message;
       errorPanel.classList.remove('hidden');
     }
+
+    window.addEventListener('message', (event) => {
+      if (!event.data || event.data.type !== 'map-height' || !event.data.height) return;
+      const frame = document.getElementById('mapaFrame');
+      if (frame) {
+        frame.style.minHeight = `${Math.max(900, Number(event.data.height) + 24)}px`;
+      }
+    });
 
     async function loadData() {
       try {
