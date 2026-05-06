@@ -592,8 +592,8 @@
       return match ? match[1] : null;
     }
 
-    async function requestPdfDownload(url, fallbackName) {
-      const response = await fetch(url);
+    async function requestPdfDownload(url, fallbackName, options = {}) {
+      const response = await fetch(url, options);
       if (!response.ok) {
         let message = 'No se pudo generar el PDF.';
         try {
@@ -612,6 +612,14 @@
       link.click();
       link.remove();
       setTimeout(() => URL.revokeObjectURL(objectUrl), 1500);
+    }
+
+    async function requestRenderedPdf(preview, fallbackName) {
+      return requestPdfDownload(`${PDF_SERVICE_BASE}/render`, fallbackName, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ html: preview.documentHtml, filename: fallbackName })
+      });
     }
 
     function closeReportPreview() {
@@ -678,10 +686,11 @@
       try {
         setReportButtonsLoading(true);
         showReportMessage(`Generando PDF provincial de ${selected.nombre}...`, 'info');
-        await requestPdfDownload(
-          `${PDF_SERVICE_BASE}/report/provincial.pdf?code=${encodeURIComponent(selected.codigo)}`,
-          `Dashboard CFI - Financiamiento Productivo 2026 - ${selected.nombre}.pdf`
-        );
+        const preview = await window.CFIReports.generateProvincialReport({
+          data: dashboardData,
+          provinceCode: selected.codigo
+        });
+        await requestRenderedPdf(preview, `Dashboard CFI - Financiamiento Productivo 2026 - ${selected.nombre}.pdf`);
         clearReportMessage();
       } catch (error) {
         console.error('Error generando informe provincial:', error);
@@ -700,10 +709,10 @@
       try {
         setReportButtonsLoading(true);
         showReportMessage('Generando PDF nacional...', 'info');
-        await requestPdfDownload(
-          `${PDF_SERVICE_BASE}/report/national.pdf`,
-          'Dashboard CFI - Financiamiento Productivo 2026 - Nacional.pdf'
-        );
+        const preview = await window.CFIReports.generateNationalReport({
+          data: dashboardData
+        });
+        await requestRenderedPdf(preview, 'Dashboard CFI - Financiamiento Productivo 2026 - Nacional.pdf');
         clearReportMessage();
       } catch (error) {
         console.error('Error generando informe nacional:', error);
