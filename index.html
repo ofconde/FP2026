@@ -29,9 +29,20 @@
     .badge-live { position: absolute; top: 20px; right: 20px; background: rgba(255, 255, 255, 0.25); padding: 6px 16px; border-radius: 20px; font-size: 10px; font-weight: 700; color: #FFFFFF; z-index: 1; }
     .progress-bar { height: 12px; background: #DBDCDE; border-radius: 6px; margin-bottom: 30px; overflow: hidden; }
     .progress-fill { height: 100%; background: linear-gradient(90deg, #47B067 0%, #80C98A 100%); border-radius: 6px; width: 0; transition: width 1s ease-out; }
-    .view-actions { display: flex; gap: 12px; justify-content: flex-end; margin: 0 0 20px; flex-wrap: wrap; }
+    .view-actions { display: flex; gap: 12px; justify-content: space-between; align-items: center; margin: 0 0 20px; flex-wrap: wrap; }
+    .view-tabs { display: flex; gap: 12px; flex-wrap: wrap; }
+    .report-actions { display: flex; gap: 10px; flex-wrap: wrap; justify-content: flex-end; }
     .view-button { border: 1px solid #1C2443; background: transparent; color: #1C2443; padding: 10px 18px; border-radius: 999px; font-size: 11px; font-weight: 700; letter-spacing: 0.8px; cursor: pointer; transition: all 0.2s ease; }
     .view-button.active, .view-button:hover { background: #1C2443; color: #FAFAFA; }
+    .report-button { border: 0; background: linear-gradient(90deg, #00A7E1 0%, #0C8395 100%); color: #FFFFFF; padding: 11px 18px; border-radius: 999px; font-size: 11px; font-weight: 700; letter-spacing: 0.7px; cursor: pointer; transition: transform 0.2s ease, opacity 0.2s ease; box-shadow: 0 10px 24px rgba(0, 167, 225, 0.18); }
+    .report-button:hover { transform: translateY(-1px); }
+    .report-button:disabled { opacity: 0.45; cursor: not-allowed; transform: none; }
+    .report-message { margin: -6px 0 18px; padding: 12px 16px; border-radius: 12px; font-size: 11px; line-height: 1.5; }
+    .report-message.error { background: #FFF3F0; color: #C83C15; border: 1px solid #F0C4B6; }
+    .report-message.info { background: #F2FBFE; color: #0C6171; border: 1px solid #C6EAF2; }
+    .report-stage { position: fixed; left: -99999px; top: 0; width: 1122px; pointer-events: none; opacity: 0; }
+    .report-loading { position: relative; }
+    .report-loading::after { content: 'Generando PDF...'; position: absolute; inset: auto 14px -28px auto; font-size: 10px; color: #96C9DA; }
     .section-title { font-family: 'Bebas Neue', sans-serif; font-size: 24px; color: #1C2443; margin-bottom: 10px; display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
     .section-subtitle { font-size: 11px; color: #96C9DA; margin-bottom: 18px; }
     .kpi-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; margin-bottom: 28px; }
@@ -181,10 +192,18 @@
       <div class="progress-bar"><div id="progressFill" class="progress-fill"></div></div>
 
       <div class="view-actions">
-        <button id="viewResumen" class="view-button active" type="button">Resumen</button>
-        <button id="viewDetalle" class="view-button" type="button">Detalle</button>
-        <button id="viewMapa" class="view-button" type="button">Mapa</button>
+        <div class="view-tabs">
+          <button id="viewResumen" class="view-button active" type="button">Resumen</button>
+          <button id="viewDetalle" class="view-button" type="button">Detalle</button>
+          <button id="viewMapa" class="view-button" type="button">Mapa</button>
+        </div>
+        <div class="report-actions">
+          <button id="generateProvincialReport" class="report-button" type="button">Generar informe provincial</button>
+          <button id="generateNationalReport" class="report-button" type="button">Generar informe nacional</button>
+        </div>
       </div>
+      <div id="reportMessage" class="report-message hidden"></div>
+      <div id="reportStage" class="report-stage" aria-hidden="true"></div>
 
       <div id="resumenView">
         <div id="kpiGrid" class="kpi-grid"></div>
@@ -249,6 +268,8 @@
 
   <div id="footer" class="footer">Consejo Federal de Inversiones • Financiamiento Productivo • Actualizado: -</div>
 
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+  <script src="./informes.js"></script>
   <script>
     const COLOR_BY_STATUS = {
       verde: 'verde',
@@ -259,6 +280,7 @@
 
     let dashboardData = null;
     let selectedProvinceCode = null;
+    let reportHandlersAttached = false;
 
     function formatMoney(value) {
       return `$${Number(value || 0).toFixed(1)}M`;
@@ -519,6 +541,98 @@
       return (dashboardData?.detalles || []).filter((detail) => detail.cantidad > 0);
     }
 
+
+    function getSelectedDetail() {
+      const visibleDetails = getVisibleDetails();
+      return visibleDetails.find((detail) => detail.codigo === selectedProvinceCode) || visibleDetails[0] || null;
+    }
+
+    function showReportMessage(message, type = 'error') {
+      const box = document.getElementById('reportMessage');
+      box.textContent = message;
+      box.className = `report-message ${type}`;
+      box.classList.remove('hidden');
+    }
+
+    function clearReportMessage() {
+      const box = document.getElementById('reportMessage');
+      box.textContent = '';
+      box.className = 'report-message hidden';
+    }
+
+    function setReportButtonsLoading(isLoading) {
+      ['generateProvincialReport', 'generateNationalReport'].forEach((id) => {
+        const button = document.getElementById(id);
+        if (!button) return;
+        button.disabled = isLoading;
+        button.classList.toggle('report-loading', isLoading);
+      });
+    }
+
+    function updateReportButtons() {
+      const provincialButton = document.getElementById('generateProvincialReport');
+      const selected = getSelectedDetail();
+      if (provincialButton) {
+        provincialButton.disabled = !selected;
+        provincialButton.textContent = selected ? `Generar informe provincial · ${selected.nombre}` : 'Generar informe provincial';
+      }
+    }
+
+    async function handleProvincialReport() {
+      clearReportMessage();
+      const selected = getSelectedDetail();
+      if (!selected) {
+        showReportMessage('No se puede generar el informe provincial porque no hay una provincia seleccionada con créditos visibles.');
+        return;
+      }
+      if (!(Number(selected.meta_anual) > 0)) {
+        showReportMessage(`No se puede generar el informe porque falta el objetivo provincial de ${selected.nombre}.`);
+        return;
+      }
+      try {
+        setReportButtonsLoading(true);
+        showReportMessage(`Generando informe ejecutivo de ${selected.nombre}...`, 'info');
+        await window.CFIReports.generateProvincialReport({
+          data: dashboardData,
+          provinceCode: selected.codigo,
+          mountNode: document.getElementById('reportStage')
+        });
+        clearReportMessage();
+      } catch (error) {
+        console.error('Error generando informe provincial:', error);
+        showReportMessage(error.message || 'No se pudo generar el informe provincial.');
+      } finally {
+        setReportButtonsLoading(false);
+        updateReportButtons();
+      }
+    }
+
+    async function handleNationalReport() {
+      clearReportMessage();
+      try {
+        setReportButtonsLoading(true);
+        showReportMessage('Generando informe nacional...', 'info');
+        await window.CFIReports.generateNationalReport({
+          data: dashboardData,
+          mountNode: document.getElementById('reportStage')
+        });
+        clearReportMessage();
+      } catch (error) {
+        console.error('Error generando informe nacional:', error);
+        showReportMessage(error.message || 'No se pudo generar el informe nacional.');
+      } finally {
+        setReportButtonsLoading(false);
+        updateReportButtons();
+      }
+    }
+
+    function attachReportEvents() {
+      if (reportHandlersAttached) return;
+      document.getElementById('generateProvincialReport').addEventListener('click', handleProvincialReport);
+      document.getElementById('generateNationalReport').addEventListener('click', handleNationalReport);
+      reportHandlersAttached = true;
+    }
+
     function renderDetailFilters() {
       const visibleDetails = getVisibleDetails();
       if (!visibleDetails.length) {
@@ -540,6 +654,7 @@
         button.addEventListener('click', () => {
           selectedProvinceCode = button.dataset.code;
           renderDetailPanel();
+          updateReportButtons();
         });
       });
     }
@@ -622,6 +737,7 @@
       renderDetailSummary(selectedDetail);
       renderDetailFilters();
       renderDetailTable(selectedDetail);
+      updateReportButtons();
     }
 
     function setView(view) {
@@ -671,6 +787,8 @@
       renderVitals(total);
       renderDetailPanel();
       attachViewEvents();
+      attachReportEvents();
+      updateReportButtons();
       setView('resumen');
 
       document.getElementById('loading').classList.add('hidden');
@@ -698,6 +816,7 @@
       if (event.data.type === 'select-province' && event.data.code) {
         selectedProvinceCode = event.data.code;
         renderDetailPanel();
+        updateReportButtons();
         setView('detalle');
       }
     });
