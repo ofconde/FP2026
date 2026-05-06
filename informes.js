@@ -944,9 +944,15 @@
               body {
                 padding: 0;
                 background: white;
+                width: 297mm;
+                height: 210mm;
+                overflow: hidden;
               }
               .print-shell {
                 box-shadow: none;
+                width: ${REPORT_PAGE_WIDTH}px;
+                height: ${REPORT_PAGE_HEIGHT}px;
+                overflow: hidden;
               }
             }
           </style>
@@ -959,6 +965,30 @@
                 try { await document.fonts.ready; } catch (e) {}
               }
               await new Promise((resolve) => requestAnimationFrame(() => requestAnimationFrame(resolve)));
+              const page = document.querySelector('.report-page');
+              if (!page) return;
+
+              const targetWidth = ${REPORT_PAGE_WIDTH};
+              const targetHeight = ${REPORT_PAGE_HEIGHT};
+              const overflowHeight = () => page.scrollHeight > targetHeight;
+              const overflowWidth = () => page.scrollWidth > targetWidth;
+
+              if (overflowHeight() || overflowWidth()) {
+                page.classList.add('compact');
+                await new Promise((resolve) => requestAnimationFrame(resolve));
+              }
+              if (overflowHeight() || overflowWidth()) {
+                page.classList.add('compact-tight');
+                await new Promise((resolve) => requestAnimationFrame(resolve));
+              }
+
+              const visualWidth = Math.max(page.scrollWidth, page.offsetWidth, targetWidth);
+              const visualHeight = Math.max(page.scrollHeight, page.offsetHeight, targetHeight);
+              const scale = Math.min(targetWidth / visualWidth, targetHeight / visualHeight, 1);
+              if (scale < 0.999) {
+                page.style.transformOrigin = 'top left';
+                page.style.transform = 'scale(' + scale + ')';
+              }
             };
             waitForReady();
           <\/script>
