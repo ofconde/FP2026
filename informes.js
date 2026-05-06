@@ -1389,10 +1389,11 @@
   async function generateProvincialReport({ data, provinceCode }) {
     const html = await renderProvincialReport(data, provinceCode);
     const provincia = (data.provincias || []).find((item) => item.codigo === provinceCode);
+    const reportTitle = `Dashboard CFI - Financiamiento Productivo 2026 - ${provincia?.nombre || provinceCode}`;
     return {
-      title: `Informe de Créditos CFI - ${provincia?.nombre || provinceCode}`,
+      title: reportTitle,
       documentHtml: buildPrintDocument({
-        title: `Informe de Créditos CFI - ${provincia?.nombre || provinceCode}`,
+        title: reportTitle,
         reportHtml: html,
       }),
     };
@@ -1400,10 +1401,11 @@
 
   async function generateNationalReport({ data }) {
     const html = await renderNationalReport(data);
+    const reportTitle = 'Dashboard CFI - Financiamiento Productivo 2026 - Nacional';
     return {
-      title: 'Informe Nacional de Créditos CFI',
+      title: reportTitle,
       documentHtml: buildPrintDocument({
-        title: 'Informe Nacional de Créditos CFI',
+        title: reportTitle,
         reportHtml: html,
       }),
     };
