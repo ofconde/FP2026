@@ -1,8 +1,7 @@
 from __future__ import annotations
 
 import json
-import threading
-from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
+from http.server import BaseHTTPRequestHandler, HTTPServer
 from urllib.parse import urlparse
 
 from playwright.sync_api import sync_playwright
@@ -11,74 +10,42 @@ HOST = '127.0.0.1'
 PORT = 8765
 VIEWPORT = {'width': 1122, 'height': 794}
 
-_BROWSER_LOCK = threading.Lock()
-_PLAYWRIGHT = None
-_BROWSER = None
-_CONTEXT = None
-
-
-def ensure_browser():
-    global _PLAYWRIGHT, _BROWSER, _CONTEXT
-    if _CONTEXT is not None:
-        return _CONTEXT
-    _PLAYWRIGHT = sync_playwright().start()
-    _BROWSER = _PLAYWRIGHT.chromium.launch(headless=True)
-    _CONTEXT = _BROWSER.new_context(
-        viewport=VIEWPORT,
-        screen=VIEWPORT,
-        device_scale_factor=2,
-        locale='es-AR',
-        color_scheme='light',
-    )
-    return _CONTEXT
-
-
-def shutdown_browser():
-    global _PLAYWRIGHT, _BROWSER, _CONTEXT
-    if _CONTEXT is not None:
-        try:
-            _CONTEXT.close()
-        except Exception:
-            pass
-        _CONTEXT = None
-    if _BROWSER is not None:
-        try:
-            _BROWSER.close()
-        except Exception:
-            pass
-        _BROWSER = None
-    if _PLAYWRIGHT is not None:
-        try:
-            _PLAYWRIGHT.stop()
-        except Exception:
-            pass
-        _PLAYWRIGHT = None
-
 
 def render_pdf(html: str) -> bytes:
     if not html or '<html' not in html.lower():
         raise ValueError('No se recibió un documento HTML válido para renderizar.')
 
-    with _BROWSER_LOCK:
-        context = ensure_browser()
-        page = context.new_page()
+    with sync_playwright() as p:
+        browser = p.chromium.launch(headless=True)
         try:
-            page.set_content(html, wait_until='load')
-            page.emulate_media(media='print')
-            page.wait_for_timeout(1200)
-            return page.pdf(
-                format='A4',
-                landscape=True,
-                print_background=True,
-                prefer_css_page_size=True,
-                margin={'top': '0mm', 'right': '0mm', 'bottom': '0mm', 'left': '0mm'},
+            context = browser.new_context(
+                viewport=VIEWPORT,
+                screen=VIEWPORT,
+                device_scale_factor=2,
+                locale='es-AR',
+                color_scheme='light',
             )
+            page = context.new_page()
+            try:
+                page.set_content(html, wait_until='load')
+                page.emulate_media(media='print')
+                page.wait_for_timeout(1400)
+                return page.pdf(
+                    format='A4',
+                    landscape=True,
+                    print_background=True,
+                    prefer_css_page_size=True,
+                    margin={'top': '0mm', 'right': '0mm', 'bottom': '0mm', 'left': '0mm'},
+                )
+            finally:
+                page.close()
+                context.close()
         finally:
-            page.close()
+            browser.close()
 
 
 class Handler(BaseHTTPRequestHandler):
-    server_version = 'CFIPDF/2.0'
+    server_version = 'CFIPDF/2.1'
 
     def _send_json(self, payload: dict, status: int = 200):
         data = json.dumps(payload).encode('utf-8')
@@ -163,13 +130,9 @@ class Handler(BaseHTTPRequestHandler):
 
 
 def serve():
-    server = ThreadingHTTPServer((HOST, PORT), Handler)
-    try:
-        print(f'Servicio PDF activo en http://{HOST}:{PORT}', flush=True)
-        server.serve_forever()
-    finally:
-        server.server_close()
-        shutdown_browser()
+    server = HTTPServer((HOST, PORT), Handler)
+    print(f'Servicio PDF activo en http://{HOST}:{PORT}', flush=True)
+    server.serve_forever()
 
 
 if __name__ == '__main__':
