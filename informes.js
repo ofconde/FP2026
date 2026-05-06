@@ -721,6 +721,108 @@
         .report-chip strong {
           color: #1C2443;
         }
+        .report-bullet-list {
+          display: grid;
+          gap: 10px;
+        }
+        .report-bullet-item {
+          background: #F6FAFC;
+          border: 1px solid #E0ECF2;
+          border-radius: 14px;
+          padding: 12px 14px;
+        }
+        .report-bullet-title {
+          font-size: 10px;
+          font-weight: 800;
+          letter-spacing: 0.9px;
+          text-transform: uppercase;
+          color: #96C9DA;
+          margin-bottom: 6px;
+        }
+        .report-bullet-text {
+          font-size: 12px;
+          line-height: 1.45;
+          color: #1C2443;
+        }
+        .report-month-grid {
+          display: grid;
+          grid-template-columns: repeat(5, 1fr);
+          gap: 10px;
+          align-items: end;
+        }
+        .report-month-card {
+          background: #F8FBFD;
+          border: 1px solid #E0ECF2;
+          border-radius: 14px;
+          padding: 12px 10px;
+          display: grid;
+          gap: 8px;
+        }
+        .report-month-name {
+          font-size: 11px;
+          font-weight: 800;
+          color: #1C2443;
+          text-transform: uppercase;
+        }
+        .report-month-bar {
+          height: 10px;
+          background: #EAF1F4;
+          border-radius: 999px;
+          overflow: hidden;
+        }
+        .report-month-fill {
+          height: 100%;
+          border-radius: 999px;
+          background: linear-gradient(90deg, #00A7E1 0%, #0C8395 100%);
+        }
+        .report-month-value {
+          font-family: 'Bebas Neue', sans-serif;
+          font-size: 22px;
+          color: #1C2443;
+          line-height: 1;
+        }
+        .report-month-sub {
+          font-size: 10px;
+          color: #5E6A85;
+        }
+        .report-warning-grid {
+          display: grid;
+          gap: 10px;
+        }
+        .report-warning-row {
+          display: grid;
+          grid-template-columns: 1fr auto;
+          gap: 10px;
+          align-items: center;
+          padding: 10px 0;
+          border-top: 1px solid #ECF2F5;
+        }
+        .report-warning-row:first-child {
+          border-top: 0;
+          padding-top: 0;
+        }
+        .report-warning-name {
+          font-size: 12px;
+          font-weight: 800;
+          color: #1C2443;
+          text-transform: uppercase;
+        }
+        .report-warning-meta {
+          font-size: 10px;
+          color: #5E6A85;
+          margin-top: 3px;
+        }
+        .report-warning-value {
+          font-family: 'Bebas Neue', sans-serif;
+          font-size: 22px;
+          color: #E6431A;
+          white-space: nowrap;
+        }
+        .report-section-divider {
+          height: 1px;
+          background: linear-gradient(90deg, rgba(150,201,218,0) 0%, rgba(150,201,218,0.8) 50%, rgba(150,201,218,0) 100%);
+          margin: 4px 0;
+        }
         .report-page.compact {
           padding: 22px 24px 18px;
           gap: 10px;
@@ -939,8 +1041,8 @@
     const map = await buildNationalMapSvg(provincias);
     const avgNational = data.total?.creditos ? Number(data.total.monto) / Number(data.total.creditos) : 0;
     const topThree = provinciasOrdenadas.slice(0, 3);
-    const topByCredits = [...active].sort((a, b) => Number(b.cantidad || 0) - Number(a.cantidad || 0)).slice(0, 8);
-    const topTen = provinciasOrdenadas.slice(0, 10);
+    const topByCredits = [...active].sort((a, b) => Number(b.cantidad || 0) - Number(a.cantidad || 0)).slice(0, 6);
+    const topByAmount = provinciasOrdenadas.slice(0, 6);
     const topShare = topThree.reduce((acc, item) => acc + (data.total?.monto ? (Number(item.monto) / Number(data.total.monto)) * 100 : 0), 0);
     const totalActiveMeta = active.reduce((acc, item) => acc + Number(item.meta_anual || 0), 0);
     const greenCount = active.filter((item) => Number(item.porcentaje || 0) >= 80).length;
@@ -948,11 +1050,30 @@
     const redCount = active.filter((item) => Number(item.porcentaje || 0) < 50).length;
     const medianProvince = provinciasOrdenadas[Math.floor(Math.max(provinciasOrdenadas.length - 1, 0) / 2)] || null;
     const avgPerProvince = active.length ? Number(data.total?.monto || 0) / active.length : 0;
+    const topBottom = [...active].sort((a, b) => Number(a.porcentaje || 0) - Number(b.porcentaje || 0)).slice(0, 5);
+    const monthly = (data.evolucion || []).filter((item) => Number(item.monto || 0) > 0 || Number(item.cantidad || 0) > 0);
+    const maxMonthly = Math.max(...monthly.map((item) => Number(item.monto || 0)), 1);
+    const topProvince = provinciasOrdenadas[0] || null;
+    const secondProvince = provinciasOrdenadas[1] || null;
     const note = `El sistema acumula ${formatMoneyCompact(data.total?.monto || 0)} en ${data.total?.creditos || 0} créditos, con ${active.length} provincias alcanzadas. Las tres jurisdicciones líderes concentran ${formatPercent(topShare)} del volumen nacional informado.`;
+    const strategicNotes = [
+      {
+        title: 'Concentración',
+        text: topProvince ? `${topProvince.nombre} lidera con ${formatMoneyCompact(topProvince.monto)} y explica ${formatPercent(data.total?.monto ? (Number(topProvince.monto) / Number(data.total.monto)) * 100 : 0)} del total nacional.` : 'Sin datos de liderazgo disponibles.',
+      },
+      {
+        title: 'Capilaridad',
+        text: `${active.length} provincias ya registran aprobaciones. El promedio operativo por provincia activa es ${formatMoneyCompact(avgPerProvince)}.`,
+      },
+      {
+        title: 'Ritmo',
+        text: data.total?.ritmo_ok ? `El ritmo promedio (${formatMoneyCompact(data.total?.promedio_mensual || 0)} por mes) se mantiene alineado con la necesidad proyectada.` : `El ritmo promedio (${formatMoneyCompact(data.total?.promedio_mensual || 0)} por mes) todavía queda por debajo de lo necesario (${formatMoneyCompact(data.total?.necesario_por_mes || 0)} por mes).`,
+      },
+    ];
 
     return `
       ${reportStyles()}
-      <div class="report-page national-report">
+      <div class="report-page national-report national-report-page national-report-primary">
         <div class="report-header">
           <div>
             <div class="report-kicker">Consejo Federal de Inversiones</div>
@@ -988,8 +1109,8 @@
 
         <div class="report-main">
           <div class="report-block">
-            <h2 class="report-block-title">Mapa coroplético</h2>
-            <p class="report-block-subtitle">Las provincias se colorean según monto otorgado acumulado, usando la misma lógica territorial del dashboard interactivo.</p>
+            <h2 class="report-block-title">Mapa federal y cobertura</h2>
+            <p class="report-block-subtitle">Distribución territorial del monto aprobado acumulado para ver concentración, alcance federal y escala relativa entre jurisdicciones.</p>
             <div class="report-map-shell">
               <div class="report-map-stage">${map.svg}</div>
               <div class="report-legend">${map.legend}</div>
@@ -998,33 +1119,41 @@
 
           <div class="report-side-stack">
             <div class="report-block">
-              <h2 class="report-block-title">Ranking líder</h2>
-              <p class="report-block-subtitle">Cinco jurisdicciones que lideran el volumen aprobado del período.</p>
-              ${provinciasOrdenadas.slice(0, 5).map((item, index) => `
-                <div class="report-rank-row">
-                  <div>
-                    <div class="report-rank-name">#${index + 1} · ${item.nombre}</div>
-                    <div class="report-rank-meta">${formatCount(item.cantidad)} · ${formatPercent(item.porcentaje)} de avance</div>
+              <h2 class="report-block-title">Claves para decisión</h2>
+              <p class="report-block-subtitle">Tres señales que una autoridad nacional querría leer primero: concentración, capilaridad y ritmo.</p>
+              <div class="report-bullet-list">
+                ${strategicNotes.map((item) => `
+                  <div class="report-bullet-item">
+                    <div class="report-bullet-title">${item.title}</div>
+                    <div class="report-bullet-text">${item.text}</div>
                   </div>
-                  <div class="report-rank-value">${formatMoneyCompact(item.monto)}</div>
-                </div>
-              `).join('')}
+                `).join('')}
+              </div>
             </div>
 
             <div class="report-block">
-              <h2 class="report-block-title">Participación principal</h2>
-              <p class="report-block-subtitle">Peso relativo de las provincias líderes sobre el total nacional informado.</p>
-              <div class="report-participation-list">
-                ${topThree.map((item) => {
-                  const share = data.total?.monto ? (Number(item.monto) / Number(data.total.monto)) * 100 : 0;
-                  return `
-                    <div class="report-participation-row">
-                      <div class="report-participation-name">${item.codigo}</div>
-                      <div class="report-participation-bar"><div class="report-participation-fill" style="width:${Math.min(share, 100)}%"></div></div>
-                      <div class="report-participation-value">${formatPercent(share)}</div>
-                    </div>
-                  `;
-                }).join('')}
+              <h2 class="report-block-title">Evolución mensual</h2>
+              <p class="report-block-subtitle">Ritmo del monto aprobado mes a mes, para identificar aceleración, amesetamiento o necesidad de corrección.</p>
+              <div class="report-month-grid">
+                ${monthly.map((item) => `
+                  <div class="report-month-card">
+                    <div class="report-month-name">${item.nombre}</div>
+                    <div class="report-month-bar"><div class="report-month-fill" style="width:${Math.max(8, (Number(item.monto || 0) / maxMonthly) * 100)}%"></div></div>
+                    <div class="report-month-value">${formatMoneyCompact(item.monto || 0)}</div>
+                    <div class="report-month-sub">${item.cantidad || 0} créditos</div>
+                  </div>
+                `).join('')}
+              </div>
+            </div>
+
+            <div class="report-block">
+              <h2 class="report-block-title">Semáforo territorial</h2>
+              <p class="report-block-subtitle">Lectura agregada del avance provincial sobre metas anuales, útil para priorizar asistencia y seguimiento.</p>
+              <div class="report-chip-row">
+                <div class="report-chip"><strong>Verdes:</strong> ${greenCount}</div>
+                <div class="report-chip"><strong>Amarillas:</strong> ${yellowCount}</div>
+                <div class="report-chip"><strong>Rojas:</strong> ${redCount}</div>
+                <div class="report-chip"><strong>Top 2:</strong> ${topProvince ? topProvince.codigo : '-'}${secondProvince ? ` + ${secondProvince.codigo}` : ''}</div>
               </div>
             </div>
           </div>
@@ -1032,16 +1161,16 @@
 
         <div class="report-footer">
           <div class="report-footer-brand">CFI · Financiamiento Productivo · Uso institucional</div>
-          <div>Página 1 de 2 · Resumen nacional</div>
+          <div>Página 1 de 2 · Foto nacional y contexto</div>
         </div>
       </div>
 
-      <div class="report-page national-report national-report-secondary">
+      <div class="report-page national-report national-report-page national-report-secondary">
         <div class="report-header">
           <div>
             <div class="report-kicker">Consejo Federal de Inversiones</div>
-            <h1 class="report-title">Apertura Nacional Complementaria</h1>
-            <p class="report-subtitle">Profundización territorial y operativa del mismo período informado.</p>
+            <h1 class="report-title">Apertura territorial y focos de gestión</h1>
+            <p class="report-subtitle">Desglose de liderazgo, concentración y rezagos provinciales sobre el mismo corte de información.</p>
           </div>
           <div class="report-stamp">
             <div class="report-stamp-label">CONCENTRACIÓN TOP 3</div>
@@ -1075,31 +1204,43 @@
 
         <div class="national-two-col">
           <div class="report-block">
-            <h2 class="report-block-title">Ranking extendido por monto</h2>
-            <p class="report-block-subtitle">Diez primeras provincias ordenadas por monto otorgado, con cantidad de créditos y nivel de avance.</p>
-            <table class="report-table-lite">
-              <thead>
-                <tr>
-                  <th>Provincia</th>
-                  <th>Créditos</th>
-                  <th>Monto</th>
-                </tr>
-              </thead>
-              <tbody>
-                ${topTen.map((item, index) => `
-                  <tr>
-                    <td><strong>#${index + 1} · ${item.nombre}</strong><br><span style="color:#5E6A85;font-size:10px;">${formatPercent(item.porcentaje)} de avance</span></td>
-                    <td>${item.cantidad}</td>
-                    <td>${formatMoneyCompact(item.monto)}</td>
-                  </tr>
-                `).join('')}
-              </tbody>
-            </table>
+            <h2 class="report-block-title">Ranking por monto</h2>
+            <p class="report-block-subtitle">Jurisdicciones con mayor volumen aprobado, combinando monto, cantidad y avance relativo.</p>
+            ${topByAmount.map((item, index) => `
+              <div class="report-rank-row">
+                <div>
+                  <div class="report-rank-name">#${index + 1} · ${item.nombre}</div>
+                  <div class="report-rank-meta">${formatCount(item.cantidad)} · ${formatPercent(item.porcentaje)} de avance</div>
+                </div>
+                <div class="report-rank-value">${formatMoneyCompact(item.monto)}</div>
+              </div>
+            `).join('')}
           </div>
 
           <div class="report-block">
-            <h2 class="report-block-title">Provincias con mayor volumen operativo</h2>
-            <p class="report-block-subtitle">Jurisdicciones con más créditos aprobados, útil para leer capilaridad y dinamismo.</p>
+            <h2 class="report-block-title">Participación principal</h2>
+            <p class="report-block-subtitle">Peso relativo de las provincias líderes sobre el total nacional, para leer concentración de cartera.</p>
+            <div class="report-participation-list">
+              ${provinciasOrdenadas.slice(0, 5).map((item) => {
+                const share = data.total?.monto ? (Number(item.monto) / Number(data.total.monto)) * 100 : 0;
+                return `
+                  <div class="report-participation-row">
+                    <div class="report-participation-name">${item.codigo}</div>
+                    <div class="report-participation-bar"><div class="report-participation-fill" style="width:${Math.min(share, 100)}%"></div></div>
+                    <div class="report-participation-value">${formatPercent(share)}</div>
+                  </div>
+                `;
+              }).join('')}
+            </div>
+          </div>
+        </div>
+
+        <div class="report-section-divider"></div>
+
+        <div class="national-two-col">
+          <div class="report-block">
+            <h2 class="report-block-title">Mayor volumen operativo</h2>
+            <p class="report-block-subtitle">Provincias con más créditos aprobados, para ver dónde el instrumento está logrando mayor despliegue y capilaridad.</p>
             ${topByCredits.map((item, index) => `
               <div class="report-rank-row">
                 <div>
@@ -1110,24 +1251,20 @@
               </div>
             `).join('')}
           </div>
-        </div>
-
-        <div class="national-two-col">
-          <div class="report-block">
-            <h2 class="report-block-title">Estado de cobertura territorial</h2>
-            <p class="report-block-subtitle">Lectura rápida del semáforo nacional por avance provincial acumulado.</p>
-            <div class="report-chip-row">
-              <div class="report-chip"><strong>Verdes:</strong> ${greenCount} provincias con 80% o más</div>
-              <div class="report-chip"><strong>Amarillas:</strong> ${yellowCount} provincias entre 50% y 79,9%</div>
-              <div class="report-chip"><strong>Rojas:</strong> ${redCount} provincias por debajo del 50%</div>
-            </div>
-          </div>
 
           <div class="report-block">
-            <h2 class="report-block-title">Lectura ejecutiva ampliada</h2>
-            <p class="report-block-subtitle">La segunda página ordena el mapa nacional con foco en concentración, capilaridad y cobertura.</p>
-            <div class="report-note-text" style="color:#1C2443;">
-              Buenos Aires, Córdoba y Santa Fe continúan explicando la mayor parte del volumen aprobado, mientras que el ranking por cantidad permite identificar dónde el instrumento está logrando mayor despliegue operativo. La distribución por colores muestra además cuántas provincias ya se acercan a sus metas y dónde conviene profundizar gestión durante los próximos meses.
+            <h2 class="report-block-title">Focos de gestión</h2>
+            <p class="report-block-subtitle">Provincias con menor nivel de avance y mayor necesidad de seguimiento sobre el tramo restante del año.</p>
+            <div class="report-warning-grid">
+              ${topBottom.map((item) => `
+                <div class="report-warning-row">
+                  <div>
+                    <div class="report-warning-name">${item.nombre}</div>
+                    <div class="report-warning-meta">${formatMoneyCompact(item.monto)} otorgados · brecha ${formatMoneyCompact(Math.abs(Number(item.diferencia || 0)))}</div>
+                  </div>
+                  <div class="report-warning-value">${formatPercent(item.porcentaje)}</div>
+                </div>
+              `).join('')}
             </div>
           </div>
         </div>
