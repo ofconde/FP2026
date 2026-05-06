@@ -825,7 +825,11 @@
   async function exportReport({ filename, html, mountNode }) {
     const html2pdf = await ensurePdfLibrary();
     mountNode.innerHTML = html;
-    const page = mountNode.firstElementChild;
+    const page = mountNode.querySelector('.report-page');
+    if (!page) {
+      mountNode.innerHTML = '';
+      throw new Error('No se pudo construir la hoja del informe para exportar.');
+    }
 
     await new Promise((resolve) => requestAnimationFrame(() => requestAnimationFrame(resolve)));
     if (document.fonts && document.fonts.ready) {
