@@ -911,7 +911,12 @@
     const html2pdf = await ensurePdfLibrary();
     const previousStyle = mountNode.getAttribute('style') || '';
     mountNode.setAttribute('style', 'position:fixed;left:0;top:0;width:1122px;pointer-events:none;z-index:1;overflow:visible;');
-    mountNode.innerHTML = html;
+    mountNode.innerHTML = `
+      <div class="report-export-frame" style="width:${REPORT_PAGE_WIDTH}px;height:${REPORT_PAGE_HEIGHT}px;overflow:hidden;background:#F4F7FB;position:relative;">
+        ${html}
+      </div>
+    `;
+    const frame = mountNode.querySelector('.report-export-frame');
     const page = mountNode.querySelector('.report-page');
     if (!page) {
       mountNode.innerHTML = '';
@@ -937,11 +942,30 @@
         page.classList.add('compact-tight');
         await new Promise((resolve) => requestAnimationFrame(resolve));
       }
+
+      const visualWidth = Math.max(page.scrollWidth, page.offsetWidth, REPORT_PAGE_WIDTH);
+      const visualHeight = Math.max(page.scrollHeight, page.offsetHeight, REPORT_PAGE_HEIGHT);
+      const scale = Math.min(
+        REPORT_PAGE_WIDTH / visualWidth,
+        REPORT_PAGE_HEIGHT / visualHeight,
+        1
+      );
+
+      if (scale < 0.999) {
+        page.style.transformOrigin = 'top left';
+        page.style.transform = `scale(${scale})`;
+        page.style.position = 'absolute';
+        page.style.left = '0';
+        page.style.top = '0';
+        frame.style.height = `${REPORT_PAGE_HEIGHT}px`;
+        frame.style.width = `${REPORT_PAGE_WIDTH}px`;
+        await new Promise((resolve) => requestAnimationFrame(resolve));
+      }
     };
 
     await fitReport();
 
-    const rect = page.getBoundingClientRect();
+    const rect = frame.getBoundingClientRect();
     if (!rect.width || !rect.height) {
       mountNode.innerHTML = '';
       mountNode.setAttribute('style', previousStyle);
@@ -965,7 +989,7 @@
       },
       pagebreak: { mode: ['avoid-all'] },
     };
-    await html2pdf().set(options).from(page).save();
+    await html2pdf().set(options).from(frame).save();
     mountNode.innerHTML = '';
     mountNode.setAttribute('style', previousStyle);
   }
