@@ -41,6 +41,16 @@
     .report-message.error { background: #FFF3F0; color: #C83C15; border: 1px solid #F0C4B6; }
     .report-message.info { background: #F2FBFE; color: #0C6171; border: 1px solid #C6EAF2; }
     .report-stage { position: fixed; left: 0; top: 0; width: 1122px; pointer-events: none; z-index: -1; overflow: visible; }
+    .report-preview-overlay { position: fixed; inset: 0; background: rgba(21,24,39,0.74); backdrop-filter: blur(6px); z-index: 5000; display: flex; align-items: center; justify-content: center; padding: 24px; }
+    .report-preview-shell { width: min(1320px, 100%); height: min(92vh, 980px); background: #FFFFFF; border-radius: 18px; box-shadow: 0 28px 60px rgba(0,0,0,0.24); overflow: hidden; display: grid; grid-template-rows: auto 1fr; }
+    .report-preview-toolbar { background: linear-gradient(90deg, #1C2443 0%, #151827 100%); color: #FFFFFF; display: flex; align-items: center; justify-content: space-between; gap: 18px; padding: 16px 20px; }
+    .report-preview-title { font-size: 14px; font-weight: 700; }
+    .report-preview-subtitle { font-size: 11px; color: #96C9DA; margin-top: 4px; }
+    .report-preview-actions { display: flex; gap: 10px; flex-wrap: wrap; justify-content: flex-end; }
+    .report-preview-button { border: 0; border-radius: 999px; padding: 10px 16px; font-size: 11px; font-weight: 700; letter-spacing: 0.7px; cursor: pointer; }
+    .report-preview-button.primary { background: #00A7E1; color: #FFFFFF; }
+    .report-preview-button.secondary { background: rgba(255,255,255,0.12); color: #FFFFFF; border: 1px solid rgba(255,255,255,0.16); }
+    .report-preview-frame { width: 100%; height: 100%; border: 0; background: #E9EEF2; }
     .report-loading { position: relative; }
     .report-loading::after { content: 'Generando PDF...'; position: absolute; inset: auto 14px -28px auto; font-size: 10px; color: #96C9DA; }
     .section-title { font-family: 'Bebas Neue', sans-serif; font-size: 24px; color: #1C2443; margin-bottom: 10px; display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
@@ -199,6 +209,21 @@
         </div>
       </div>
       <div id="reportStage" class="report-stage" aria-hidden="true"></div>
+      <div id="reportPreviewOverlay" class="report-preview-overlay hidden" aria-hidden="true">
+        <div class="report-preview-shell">
+          <div class="report-preview-toolbar">
+            <div>
+              <div id="reportPreviewTitle" class="report-preview-title">Vista previa del informe</div>
+              <div class="report-preview-subtitle">Revisá el informe y elegí "Imprimir / Guardar PDF".</div>
+            </div>
+            <div class="report-preview-actions">
+              <button id="reportPreviewClose" class="report-preview-button secondary" type="button">Cerrar</button>
+              <button id="reportPreviewPrint" class="report-preview-button primary" type="button">Imprimir / Guardar PDF</button>
+            </div>
+          </div>
+          <iframe id="reportPreviewFrame" class="report-preview-frame" title="Vista previa del informe"></iframe>
+        </div>
+      </div>
 
       <div id="resumenView">
         <div id="kpiGrid" class="kpi-grid"></div>
@@ -281,6 +306,7 @@
     let dashboardData = null;
     let selectedProvinceCode = null;
     let reportHandlersAttached = false;
+    let currentReportDocument = '';
 
     function formatMoney(value) {
       return `$${Number(value || 0).toFixed(1)}M`;
@@ -560,6 +586,38 @@
       box.className = 'report-message hidden';
     }
 
+    function closeReportPreview() {
+      const overlay = document.getElementById('reportPreviewOverlay');
+      const frame = document.getElementById('reportPreviewFrame');
+      const title = document.getElementById('reportPreviewTitle');
+      overlay.classList.add('hidden');
+      overlay.setAttribute('aria-hidden', 'true');
+      frame.srcdoc = '';
+      title.textContent = 'Vista previa del informe';
+      currentReportDocument = '';
+    }
+
+    function openReportPreview({ title, documentHtml }) {
+      const overlay = document.getElementById('reportPreviewOverlay');
+      const frame = document.getElementById('reportPreviewFrame');
+      const titleNode = document.getElementById('reportPreviewTitle');
+      titleNode.textContent = title;
+      currentReportDocument = documentHtml;
+      frame.srcdoc = documentHtml;
+      overlay.classList.remove('hidden');
+      overlay.setAttribute('aria-hidden', 'false');
+    }
+
+    function printReportPreview() {
+      const frame = document.getElementById('reportPreviewFrame');
+      if (!frame || !frame.contentWindow) {
+        showReportMessage('No se pudo abrir la vista previa del informe para imprimir.');
+        return;
+      }
+      frame.contentWindow.focus();
+      frame.contentWindow.print();
+    }
+
     function setReportButtonsLoading(isLoading) {
       ['generateProvincialReport', 'generateNationalReport'].forEach((id) => {
         const button = document.getElementById(id);
@@ -591,11 +649,12 @@
       }
       try {
         setReportButtonsLoading(true);
-        showReportMessage(`Abriendo informe ejecutivo de ${selected.nombre} para imprimir o guardar como PDF...`, 'info');
-        await window.CFIReports.generateProvincialReport({
+        showReportMessage(`Preparando informe ejecutivo de ${selected.nombre}...`, 'info');
+        const preview = await window.CFIReports.generateProvincialReport({
           data: dashboardData,
           provinceCode: selected.codigo
         });
+        openReportPreview(preview);
         clearReportMessage();
       } catch (error) {
         console.error('Error generando informe provincial:', error);
@@ -610,10 +669,11 @@
       clearReportMessage();
       try {
         setReportButtonsLoading(true);
-        showReportMessage('Abriendo informe nacional para imprimir o guardar como PDF...', 'info');
-        await window.CFIReports.generateNationalReport({
+        showReportMessage('Preparando informe nacional...', 'info');
+        const preview = await window.CFIReports.generateNationalReport({
           data: dashboardData
         });
+        openReportPreview(preview);
         clearReportMessage();
       } catch (error) {
         console.error('Error generando informe nacional:', error);
@@ -628,6 +688,11 @@
       if (reportHandlersAttached) return;
       document.getElementById('generateProvincialReport').addEventListener('click', handleProvincialReport);
       document.getElementById('generateNationalReport').addEventListener('click', handleNationalReport);
+      document.getElementById('reportPreviewClose').addEventListener('click', closeReportPreview);
+      document.getElementById('reportPreviewPrint').addEventListener('click', printReportPreview);
+      document.getElementById('reportPreviewOverlay').addEventListener('click', (event) => {
+        if (event.target.id === 'reportPreviewOverlay') closeReportPreview();
+      });
       reportHandlersAttached = true;
     }
 
