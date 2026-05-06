@@ -824,16 +824,27 @@
 
   async function exportReport({ filename, html, mountNode }) {
     const html2pdf = await ensurePdfLibrary();
+    const previousStyle = mountNode.getAttribute('style') || '';
+    mountNode.setAttribute('style', 'position:fixed;left:0;top:0;width:1122px;pointer-events:none;z-index:1;overflow:visible;');
     mountNode.innerHTML = html;
     const page = mountNode.querySelector('.report-page');
     if (!page) {
       mountNode.innerHTML = '';
+      mountNode.setAttribute('style', previousStyle);
       throw new Error('No se pudo construir la hoja del informe para exportar.');
     }
 
+    await new Promise((resolve) => setTimeout(resolve, 180));
     await new Promise((resolve) => requestAnimationFrame(() => requestAnimationFrame(resolve)));
     if (document.fonts && document.fonts.ready) {
       await document.fonts.ready;
+    }
+
+    const rect = page.getBoundingClientRect();
+    if (!rect.width || !rect.height) {
+      mountNode.innerHTML = '';
+      mountNode.setAttribute('style', previousStyle);
+      throw new Error('No se pudo calcular el tamaño del informe para exportar.');
     }
 
     const options = {
@@ -855,6 +866,7 @@
     };
     await html2pdf().set(options).from(page).save();
     mountNode.innerHTML = '';
+    mountNode.setAttribute('style', previousStyle);
   }
 
   async function generateProvincialReport({ data, provinceCode, mountNode }) {
