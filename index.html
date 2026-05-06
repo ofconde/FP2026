@@ -685,10 +685,20 @@
     }
 
     window.addEventListener('message', (event) => {
-      if (!event.data || event.data.type !== 'map-height' || !event.data.height) return;
-      const frame = document.getElementById('mapaFrame');
-      if (frame) {
-        frame.style.minHeight = `${Math.max(900, Number(event.data.height) + 24)}px`;
+      if (!event.data || !event.data.type) return;
+
+      if (event.data.type === 'map-height' && event.data.height) {
+        const frame = document.getElementById('mapaFrame');
+        if (frame) {
+          frame.style.minHeight = `${Math.max(900, Number(event.data.height) + 24)}px`;
+        }
+        return;
+      }
+
+      if (event.data.type === 'select-province' && event.data.code) {
+        selectedProvinceCode = event.data.code;
+        renderDetailPanel();
+        setView('detalle');
       }
     });
 

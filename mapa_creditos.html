@@ -38,7 +38,8 @@
     .legend-text strong { display: block; font-size: 12px; color: #1C2443; margin-bottom: 2px; }
     .legend-text span { font-size: 11px; color: #5E6A85; line-height: 1.45; }
     .top-list { display: grid; gap: 10px; }
-    .top-item { display: grid; grid-template-columns: 30px 1fr auto; gap: 12px; align-items: center; padding: 12px 14px; border-radius: 14px; background: #F7FAFC; border: 1px solid #E6EDF2; }
+    .top-item { display: grid; grid-template-columns: 30px 1fr auto; gap: 12px; align-items: center; padding: 12px 14px; border-radius: 14px; background: #F7FAFC; border: 1px solid #E6EDF2; cursor: pointer; transition: transform 0.18s ease, border-color 0.18s ease, box-shadow 0.18s ease; }
+    .top-item:hover { transform: translateY(-1px); border-color: #96C9DA; box-shadow: 0 8px 18px rgba(28,36,67,0.08); }
     .top-number { font-family: 'Bebas Neue', sans-serif; font-size: 24px; color: #00A7E1; text-align: center; }
     .top-name { font-size: 12px; font-weight: 700; color: #1C2443; text-transform: uppercase; margin-bottom: 4px; }
     .top-meta { font-size: 10px; color: #5E6A85; }
@@ -321,6 +322,12 @@
       tooltip.style.display = 'none';
     }
 
+
+    function openProvinceDetail(provincia) {
+      if (!provincia?.codigo) return;
+      window.parent?.postMessage({ type: 'select-province', code: provincia.codigo }, '*');
+    }
+
     function renderTopList(provincias) {
       const top = [...provincias]
         .filter((provincia) => Number(provincia.monto) > 0)
@@ -328,15 +335,22 @@
         .slice(0, 5);
 
       document.getElementById('topList').innerHTML = top.map((provincia, index) => `
-        <div class="top-item">
+        <button type="button" class="top-item" data-code="${provincia.codigo}">
           <div class="top-number">${index + 1}</div>
           <div>
             <div class="top-name">${provincia.nombre}</div>
             <div class="top-meta">${provincia.cantidad} créditos • ${formatPercent(provincia.porcentaje)} de cumplimiento</div>
           </div>
           <div class="top-amount">${formatMoney(provincia.monto)}</div>
-        </div>
+        </button>
       `).join('');
+
+      document.querySelectorAll('.top-item[data-code]').forEach((element) => {
+        element.addEventListener('click', () => {
+          const provincia = top.find((item) => item.codigo === element.dataset.code);
+          openProvinceDetail(provincia);
+        });
+      });
     }
 
     function renderSummary(data) {
@@ -377,6 +391,9 @@
         path.setAttribute('fill', scale.getColor(amount));
         path.addEventListener('mousemove', (event) => showTooltip(event, provincia, scale.getLabel(amount)));
         path.addEventListener('mouseleave', hideTooltip);
+        if (provincia?.codigo) {
+          path.addEventListener('click', () => openProvinceDetail(provincia));
+        }
         svg.appendChild(path);
       });
 
