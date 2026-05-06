@@ -306,6 +306,7 @@
     let selectedProvinceCode = null;
     let reportHandlersAttached = false;
     let currentReportDocument = '';
+    const PDF_SERVICE_BASE = 'http://127.0.0.1:8765';
 
     function formatMoney(value) {
       return `$${Number(value || 0).toFixed(1)}M`;
@@ -585,6 +586,34 @@
       box.className = 'report-message hidden';
     }
 
+    function parseFilenameFromDisposition(disposition) {
+      if (!disposition) return null;
+      const match = disposition.match(/filename=\"?([^\";]+)\"?/i);
+      return match ? match[1] : null;
+    }
+
+    async function requestPdfDownload(url, fallbackName) {
+      const response = await fetch(url);
+      if (!response.ok) {
+        let message = 'No se pudo generar el PDF.';
+        try {
+          const payload = await response.json();
+          if (payload && payload.error) message = payload.error;
+        } catch (e) {}
+        throw new Error(message);
+      }
+      const blob = await response.blob();
+      const filename = parseFilenameFromDisposition(response.headers.get('Content-Disposition')) || fallbackName;
+      const objectUrl = URL.createObjectURL(blob);
+      const link = document.createElement('a');
+      link.href = objectUrl;
+      link.download = filename;
+      document.body.appendChild(link);
+      link.click();
+      link.remove();
+      setTimeout(() => URL.revokeObjectURL(objectUrl), 1500);
+    }
+
     function closeReportPreview() {
       const overlay = document.getElementById('reportPreviewOverlay');
       const frame = document.getElementById('reportPreviewFrame');
@@ -648,16 +677,18 @@
       }
       try {
         setReportButtonsLoading(true);
-        showReportMessage(`Preparando informe ejecutivo de ${selected.nombre}...`, 'info');
-        const preview = await window.CFIReports.generateProvincialReport({
-          data: dashboardData,
-          provinceCode: selected.codigo
-        });
-        openReportPreview(preview);
+        showReportMessage(`Generando PDF provincial de ${selected.nombre}...`, 'info');
+        await requestPdfDownload(
+          `${PDF_SERVICE_BASE}/report/provincial.pdf?code=${encodeURIComponent(selected.codigo)}`,
+          `Dashboard CFI - Financiamiento Productivo 2026 - ${selected.nombre}.pdf`
+        );
         clearReportMessage();
       } catch (error) {
         console.error('Error generando informe provincial:', error);
-        showReportMessage(error.message || 'No se pudo generar el informe provincial.');
+        showReportMessage(
+          `${error.message || 'No se pudo generar el informe provincial.'} Iniciá el servicio local de PDF para descargar la versión final.`,
+          'error'
+        );
       } finally {
         setReportButtonsLoading(false);
         updateReportButtons();
@@ -668,15 +699,18 @@
       clearReportMessage();
       try {
         setReportButtonsLoading(true);
-        showReportMessage('Preparando informe nacional...', 'info');
-        const preview = await window.CFIReports.generateNationalReport({
-          data: dashboardData
-        });
-        openReportPreview(preview);
+        showReportMessage('Generando PDF nacional...', 'info');
+        await requestPdfDownload(
+          `${PDF_SERVICE_BASE}/report/national.pdf`,
+          'Dashboard CFI - Financiamiento Productivo 2026 - Nacional.pdf'
+        );
         clearReportMessage();
       } catch (error) {
         console.error('Error generando informe nacional:', error);
-        showReportMessage(error.message || 'No se pudo generar el informe nacional.');
+        showReportMessage(
+          `${error.message || 'No se pudo generar el informe nacional.'} Iniciá el servicio local de PDF para descargar la versión final.`,
+          'error'
+        );
       } finally {
         setReportButtonsLoading(false);
         updateReportButtons();
