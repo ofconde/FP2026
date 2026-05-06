@@ -603,6 +603,91 @@
           text-transform: uppercase;
           color: #96C9DA;
         }
+        .report-page.compact {
+          padding: 22px 24px 18px;
+          gap: 10px;
+        }
+        .report-page.compact .report-title {
+          font-size: 34px;
+        }
+        .report-page.compact .report-subtitle,
+        .report-page.compact .report-note-text,
+        .report-page.compact .report-goal-sub,
+        .report-page.compact .report-block-subtitle {
+          font-size: 12px;
+          line-height: 1.4;
+        }
+        .report-page.compact .report-goal-value {
+          font-size: 40px;
+        }
+        .report-page.compact .report-stamp-value {
+          font-size: 26px;
+        }
+        .report-page.compact .report-kpi-grid {
+          gap: 10px;
+        }
+        .report-page.compact .report-kpi-card,
+        .report-page.compact .report-block,
+        .report-page.compact .report-goal-card,
+        .report-page.compact .report-note-card {
+          padding: 14px 16px;
+        }
+        .report-page.compact .report-kpi-value {
+          font-size: 24px;
+        }
+        .report-page.compact .report-main,
+        .report-page.compact .report-hero,
+        .report-page.compact .report-map-shell,
+        .report-page.compact .report-side-stack {
+          gap: 10px;
+        }
+        .report-page.compact .report-map-svg {
+          max-height: 250px;
+        }
+        .report-page.compact .report-rank-row {
+          padding: 7px 0;
+        }
+        .report-page.compact .report-rank-name,
+        .report-page.compact .report-participation-name {
+          font-size: 11px;
+        }
+        .report-page.compact .report-rank-value {
+          font-size: 20px;
+        }
+        .report-page.compact .report-footer,
+        .report-page.compact .report-legend-item,
+        .report-page.compact .report-progress-meta,
+        .report-page.compact .report-rank-meta,
+        .report-page.compact .report-participation-value {
+          font-size: 10px;
+        }
+        .report-page.compact-tight {
+          padding: 18px 20px 14px;
+          gap: 8px;
+        }
+        .report-page.compact-tight .report-title {
+          font-size: 30px;
+        }
+        .report-page.compact-tight .report-goal-value {
+          font-size: 34px;
+        }
+        .report-page.compact-tight .report-stamp-value,
+        .report-page.compact-tight .report-kpi-value,
+        .report-page.compact-tight .report-rank-value {
+          font-size: 20px;
+        }
+        .report-page.compact-tight .report-kpi-card,
+        .report-page.compact-tight .report-block,
+        .report-page.compact-tight .report-goal-card,
+        .report-page.compact-tight .report-note-card {
+          padding: 12px 14px;
+        }
+        .report-page.compact-tight .report-map-svg {
+          max-height: 220px;
+        }
+        .report-page.compact-tight .report-rank-row {
+          padding: 5px 0;
+        }
       </style>
     `;
   }
@@ -839,6 +924,22 @@
     if (document.fonts && document.fonts.ready) {
       await document.fonts.ready;
     }
+
+    const fitReport = async () => {
+      const overflowHeight = () => page.scrollHeight > REPORT_PAGE_HEIGHT;
+      const overflowWidth = () => page.scrollWidth > REPORT_PAGE_WIDTH;
+
+      if (overflowHeight() || overflowWidth()) {
+        page.classList.add('compact');
+        await new Promise((resolve) => requestAnimationFrame(resolve));
+      }
+      if (overflowHeight() || overflowWidth()) {
+        page.classList.add('compact-tight');
+        await new Promise((resolve) => requestAnimationFrame(resolve));
+      }
+    };
+
+    await fitReport();
 
     const rect = page.getBoundingClientRect();
     if (!rect.width || !rect.height) {
