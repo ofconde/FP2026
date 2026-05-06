@@ -633,6 +633,94 @@
           break-inside: avoid;
           page-break-inside: avoid;
         }
+        .national-report + .national-report {
+          margin-top: 18px;
+        }
+        .national-report-secondary::before {
+          opacity: 0.65;
+        }
+        .national-two-col {
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          gap: 14px;
+        }
+        .national-stat-grid {
+          display: grid;
+          grid-template-columns: repeat(4, 1fr);
+          gap: 12px;
+        }
+        .national-stat-card {
+          background: rgba(255,255,255,0.95);
+          border: 1px solid #DCE7ED;
+          border-radius: 18px;
+          box-shadow: 0 12px 28px rgba(28,36,67,0.05);
+          padding: 14px 16px;
+        }
+        .national-stat-label {
+          font-size: 10px;
+          font-weight: 700;
+          letter-spacing: 1px;
+          text-transform: uppercase;
+          color: #96C9DA;
+          margin-bottom: 8px;
+        }
+        .national-stat-value {
+          font-family: 'Bebas Neue', sans-serif;
+          font-size: 24px;
+          line-height: 1;
+          color: #1C2443;
+          margin-bottom: 6px;
+        }
+        .national-stat-sub {
+          font-size: 11px;
+          color: #5E6A85;
+          line-height: 1.35;
+        }
+        .report-table-lite {
+          width: 100%;
+          border-collapse: collapse;
+          font-size: 11px;
+        }
+        .report-table-lite th,
+        .report-table-lite td {
+          padding: 9px 0;
+          border-top: 1px solid #ECF2F5;
+          text-align: left;
+          vertical-align: top;
+        }
+        .report-table-lite th {
+          font-size: 10px;
+          font-weight: 800;
+          letter-spacing: 0.8px;
+          text-transform: uppercase;
+          color: #96C9DA;
+          border-top: 0;
+          padding-top: 0;
+        }
+        .report-table-lite td:last-child,
+        .report-table-lite th:last-child {
+          text-align: right;
+        }
+        .report-table-lite td:nth-child(2),
+        .report-table-lite th:nth-child(2) {
+          text-align: center;
+        }
+        .report-chip-row {
+          display: flex;
+          flex-wrap: wrap;
+          gap: 10px;
+        }
+        .report-chip {
+          background: #F2F7FA;
+          border: 1px solid #DCE7ED;
+          border-radius: 999px;
+          padding: 8px 12px;
+          font-size: 11px;
+          color: #42506D;
+        }
+        .report-chip strong {
+          color: #1C2443;
+        }
         .report-page.compact {
           padding: 22px 24px 18px;
           gap: 10px;
@@ -717,6 +805,16 @@
         }
         .report-page.compact-tight .report-rank-row {
           padding: 5px 0;
+        }
+        @media print {
+          .print-shell.multi-page .report-page {
+            break-after: page;
+            page-break-after: always;
+          }
+          .print-shell.multi-page .report-page:last-child {
+            break-after: auto;
+            page-break-after: auto;
+          }
         }
       </style>
     `;
@@ -841,7 +939,15 @@
     const map = await buildNationalMapSvg(provincias);
     const avgNational = data.total?.creditos ? Number(data.total.monto) / Number(data.total.creditos) : 0;
     const topThree = provinciasOrdenadas.slice(0, 3);
+    const topByCredits = [...active].sort((a, b) => Number(b.cantidad || 0) - Number(a.cantidad || 0)).slice(0, 8);
+    const topTen = provinciasOrdenadas.slice(0, 10);
     const topShare = topThree.reduce((acc, item) => acc + (data.total?.monto ? (Number(item.monto) / Number(data.total.monto)) * 100 : 0), 0);
+    const totalActiveMeta = active.reduce((acc, item) => acc + Number(item.meta_anual || 0), 0);
+    const greenCount = active.filter((item) => Number(item.porcentaje || 0) >= 80).length;
+    const yellowCount = active.filter((item) => Number(item.porcentaje || 0) >= 50 && Number(item.porcentaje || 0) < 80).length;
+    const redCount = active.filter((item) => Number(item.porcentaje || 0) < 50).length;
+    const medianProvince = provinciasOrdenadas[Math.floor(Math.max(provinciasOrdenadas.length - 1, 0) / 2)] || null;
+    const avgPerProvince = active.length ? Number(data.total?.monto || 0) / active.length : 0;
     const note = `El sistema acumula ${formatMoneyCompact(data.total?.monto || 0)} en ${data.total?.creditos || 0} créditos, con ${active.length} provincias alcanzadas. Las tres jurisdicciones líderes concentran ${formatPercent(topShare)} del volumen nacional informado.`;
 
     return `
@@ -892,8 +998,8 @@
 
           <div class="report-side-stack">
             <div class="report-block">
-              <h2 class="report-block-title">Ranking por monto</h2>
-              <p class="report-block-subtitle">Principales jurisdicciones por volumen otorgado en el período.</p>
+              <h2 class="report-block-title">Ranking líder</h2>
+              <p class="report-block-subtitle">Cinco jurisdicciones que lideran el volumen aprobado del período.</p>
               ${provinciasOrdenadas.slice(0, 5).map((item, index) => `
                 <div class="report-rank-row">
                   <div>
@@ -926,7 +1032,109 @@
 
         <div class="report-footer">
           <div class="report-footer-brand">CFI · Financiamiento Productivo · Uso institucional</div>
-          <div>Generado automáticamente desde el dashboard 2026</div>
+          <div>Página 1 de 2 · Resumen nacional</div>
+        </div>
+      </div>
+
+      <div class="report-page national-report national-report-secondary">
+        <div class="report-header">
+          <div>
+            <div class="report-kicker">Consejo Federal de Inversiones</div>
+            <h1 class="report-title">Apertura Nacional Complementaria</h1>
+            <p class="report-subtitle">Profundización territorial y operativa del mismo período informado.</p>
+          </div>
+          <div class="report-stamp">
+            <div class="report-stamp-label">CONCENTRACIÓN TOP 3</div>
+            <div class="report-stamp-value">${formatPercent(topShare)}</div>
+            <div class="report-stamp-sub">del volumen nacional acumulado</div>
+          </div>
+        </div>
+
+        <div class="national-stat-grid">
+          <div class="national-stat-card">
+            <div class="national-stat-label">Promedio por provincia activa</div>
+            <div class="national-stat-value">${formatMoneyCompact(avgPerProvince)}</div>
+            <div class="national-stat-sub">${active.length} provincias con aprobaciones</div>
+          </div>
+          <div class="national-stat-card">
+            <div class="national-stat-label">Meta agregada activa</div>
+            <div class="national-stat-value">${formatMoneyCompact(totalActiveMeta)}</div>
+            <div class="national-stat-sub">Suma de metas provinciales con actividad</div>
+          </div>
+          <div class="national-stat-card">
+            <div class="national-stat-label">Provincia mediana</div>
+            <div class="national-stat-value">${medianProvince ? medianProvince.codigo : '-'}</div>
+            <div class="national-stat-sub">${medianProvince ? formatMoneyCompact(medianProvince.monto) : 'Sin datos suficientes'}</div>
+          </div>
+          <div class="national-stat-card">
+            <div class="national-stat-label">Cobertura operativa</div>
+            <div class="national-stat-value">${formatPercent((active.length / Math.max(provincias.length, 1)) * 100)}</div>
+            <div class="national-stat-sub">${active.length} de ${provincias.length} provincias con monto</div>
+          </div>
+        </div>
+
+        <div class="national-two-col">
+          <div class="report-block">
+            <h2 class="report-block-title">Ranking extendido por monto</h2>
+            <p class="report-block-subtitle">Diez primeras provincias ordenadas por monto otorgado, con cantidad de créditos y nivel de avance.</p>
+            <table class="report-table-lite">
+              <thead>
+                <tr>
+                  <th>Provincia</th>
+                  <th>Créditos</th>
+                  <th>Monto</th>
+                </tr>
+              </thead>
+              <tbody>
+                ${topTen.map((item, index) => `
+                  <tr>
+                    <td><strong>#${index + 1} · ${item.nombre}</strong><br><span style="color:#5E6A85;font-size:10px;">${formatPercent(item.porcentaje)} de avance</span></td>
+                    <td>${item.cantidad}</td>
+                    <td>${formatMoneyCompact(item.monto)}</td>
+                  </tr>
+                `).join('')}
+              </tbody>
+            </table>
+          </div>
+
+          <div class="report-block">
+            <h2 class="report-block-title">Provincias con mayor volumen operativo</h2>
+            <p class="report-block-subtitle">Jurisdicciones con más créditos aprobados, útil para leer capilaridad y dinamismo.</p>
+            ${topByCredits.map((item, index) => `
+              <div class="report-rank-row">
+                <div>
+                  <div class="report-rank-name">#${index + 1} · ${item.nombre}</div>
+                  <div class="report-rank-meta">${formatMoneyCompact(item.monto)} · ${formatPercent(data.total?.monto ? (Number(item.monto) / Number(data.total.monto)) * 100 : 0)} del total</div>
+                </div>
+                <div class="report-rank-value">${item.cantidad}</div>
+              </div>
+            `).join('')}
+          </div>
+        </div>
+
+        <div class="national-two-col">
+          <div class="report-block">
+            <h2 class="report-block-title">Estado de cobertura territorial</h2>
+            <p class="report-block-subtitle">Lectura rápida del semáforo nacional por avance provincial acumulado.</p>
+            <div class="report-chip-row">
+              <div class="report-chip"><strong>Verdes:</strong> ${greenCount} provincias con 80% o más</div>
+              <div class="report-chip"><strong>Amarillas:</strong> ${yellowCount} provincias entre 50% y 79,9%</div>
+              <div class="report-chip"><strong>Rojas:</strong> ${redCount} provincias por debajo del 50%</div>
+            </div>
+          </div>
+
+          <div class="report-block">
+            <h2 class="report-block-title">Lectura ejecutiva ampliada</h2>
+            <p class="report-block-subtitle">La segunda página ordena el mapa nacional con foco en concentración, capilaridad y cobertura.</p>
+            <div class="report-note-text" style="color:#1C2443;">
+              Buenos Aires, Córdoba y Santa Fe continúan explicando la mayor parte del volumen aprobado, mientras que el ranking por cantidad permite identificar dónde el instrumento está logrando mayor despliegue operativo. La distribución por colores muestra además cuántas provincias ya se acercan a sus metas y dónde conviene profundizar gestión durante los próximos meses.
+            </div>
+          </div>
+        </div>
+
+        <div class="report-footer">
+          <div class="report-footer-brand">CFI · Financiamiento Productivo · Uso institucional</div>
+          <div>Página 2 de 2 · Apertura nacional</div>
         </div>
       </div>
     `;
