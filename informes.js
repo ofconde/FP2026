@@ -279,7 +279,7 @@
       <style>
         .report-page {
           width: ${REPORT_PAGE_WIDTH}px;
-          height: ${REPORT_PAGE_HEIGHT}px;
+          min-height: ${REPORT_PAGE_HEIGHT}px;
           background: linear-gradient(180deg, #F8FBFD 0%, #F4F7FB 100%);
           color: #1C2443;
           font-family: 'Raleway', sans-serif;
@@ -287,8 +287,16 @@
           display: flex;
           flex-direction: column;
           gap: 14px;
-          overflow: hidden;
           position: relative;
+        }
+        .provincial-report {
+          height: ${REPORT_PAGE_HEIGHT}px;
+          overflow: hidden;
+        }
+        .national-report {
+          height: auto;
+          overflow: visible;
+          padding-bottom: 30px;
         }
         .report-page::before {
           content: '';
@@ -602,6 +610,28 @@
           letter-spacing: 1px;
           text-transform: uppercase;
           color: #96C9DA;
+        }
+        .national-report .report-main {
+          flex: 0 0 auto;
+          min-height: auto;
+          align-items: start;
+        }
+        .national-report .report-block,
+        .national-report .report-goal-card,
+        .national-report .report-note-card,
+        .national-report .report-kpi-card,
+        .national-report .report-rank-row,
+        .national-report .report-participation-row,
+        .national-report .report-footer {
+          break-inside: avoid;
+          page-break-inside: avoid;
+        }
+        .national-report .report-map-shell,
+        .national-report .report-side-stack,
+        .national-report .report-kpi-grid,
+        .national-report .report-hero {
+          break-inside: avoid;
+          page-break-inside: avoid;
         }
         .report-page.compact {
           padding: 22px 24px 18px;
