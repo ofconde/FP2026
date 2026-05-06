@@ -927,6 +927,50 @@
             body {
               font-family: 'Raleway', sans-serif;
             }
+            .print-toolbar {
+              position: sticky;
+              top: 0;
+              z-index: 10;
+              display: flex;
+              justify-content: space-between;
+              align-items: center;
+              gap: 12px;
+              background: rgba(28, 36, 67, 0.92);
+              color: white;
+              padding: 12px 18px;
+              backdrop-filter: blur(8px);
+            }
+            .print-toolbar-title {
+              font-size: 13px;
+              font-weight: 700;
+              letter-spacing: 0.4px;
+            }
+            .print-toolbar-sub {
+              font-size: 11px;
+              opacity: 0.8;
+              margin-top: 2px;
+            }
+            .print-toolbar-actions {
+              display: flex;
+              gap: 10px;
+              align-items: center;
+            }
+            .print-toolbar-button {
+              appearance: none;
+              border: 0;
+              border-radius: 999px;
+              padding: 10px 16px;
+              font: inherit;
+              font-size: 12px;
+              font-weight: 700;
+              cursor: pointer;
+              background: #00A7E1;
+              color: white;
+            }
+            .print-toolbar-button.secondary {
+              background: rgba(255,255,255,0.12);
+              border: 1px solid rgba(255,255,255,0.18);
+            }
             .print-shell {
               width: ${REPORT_PAGE_WIDTH}px;
               min-height: ${REPORT_PAGE_HEIGHT}px;
@@ -945,6 +989,9 @@
                 padding: 0;
                 background: white;
               }
+              .print-toolbar {
+                display: none;
+              }
               .print-shell {
                 box-shadow: none;
               }
@@ -952,6 +999,16 @@
           </style>
         </head>
         <body>
+          <div class="print-toolbar">
+            <div>
+              <div class="print-toolbar-title">${title}</div>
+              <div class="print-toolbar-sub">Revisá el informe y luego elegí "Guardar como PDF".</div>
+            </div>
+            <div class="print-toolbar-actions">
+              <button class="print-toolbar-button secondary" type="button" onclick="window.close()">Cerrar</button>
+              <button class="print-toolbar-button" type="button" onclick="window.print()">Imprimir / Guardar PDF</button>
+            </div>
+          </div>
           <div class="print-shell">${reportHtml}</div>
           <script>
             const waitForReady = async () => {
@@ -959,9 +1016,6 @@
                 try { await document.fonts.ready; } catch (e) {}
               }
               await new Promise((resolve) => requestAnimationFrame(() => requestAnimationFrame(resolve)));
-              setTimeout(() => {
-                window.print();
-              }, 120);
             };
             waitForReady();
           <\/script>
