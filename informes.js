@@ -826,6 +826,12 @@
     const html2pdf = await ensurePdfLibrary();
     mountNode.innerHTML = html;
     const page = mountNode.firstElementChild;
+
+    await new Promise((resolve) => requestAnimationFrame(() => requestAnimationFrame(resolve)));
+    if (document.fonts && document.fonts.ready) {
+      await document.fonts.ready;
+    }
+
     const options = {
       margin: 0,
       filename,
