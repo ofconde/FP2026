@@ -944,15 +944,19 @@
               body {
                 padding: 0;
                 background: white;
-                width: 297mm;
-                height: 210mm;
-                overflow: hidden;
               }
               .print-shell {
                 box-shadow: none;
                 width: ${REPORT_PAGE_WIDTH}px;
+              }
+              .print-shell.single-page {
                 height: ${REPORT_PAGE_HEIGHT}px;
                 overflow: hidden;
+              }
+              .print-shell.multi-page {
+                min-height: auto;
+                height: auto;
+                overflow: visible;
               }
             }
           </style>
@@ -965,8 +969,19 @@
                 try { await document.fonts.ready; } catch (e) {}
               }
               await new Promise((resolve) => requestAnimationFrame(() => requestAnimationFrame(resolve)));
+              const shell = document.querySelector('.print-shell');
               const page = document.querySelector('.report-page');
-              if (!page) return;
+              if (!page || !shell) return;
+
+              const isProvincial = page.classList.contains('provincial-report');
+              shell.classList.add(isProvincial ? 'single-page' : 'multi-page');
+
+              if (!isProvincial) {
+                page.style.height = 'auto';
+                page.style.minHeight = '${REPORT_PAGE_HEIGHT}px';
+                page.style.overflow = 'visible';
+                return;
+              }
 
               const targetWidth = ${REPORT_PAGE_WIDTH};
               const targetHeight = ${REPORT_PAGE_HEIGHT};
