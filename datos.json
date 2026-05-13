@@ -1,14 +1,14 @@
 {
-  "fecha_actualizacion": "2026-05-13 14:29:27",
+  "fecha_actualizacion": "2026-05-13 14:39:30",
   "total": {
-    "monto": 29161.6,
-    "creditos": 372,
-    "porcentaje": 13.6,
+    "monto": 29625.5,
+    "creditos": 379,
+    "porcentaje": 13.8,
     "meta": 214300,
-    "falta": 185138.4,
+    "falta": 184674.5,
     "meses_restantes": 7,
-    "promedio_mensual": 5832.3,
-    "necesario_por_mes": 26448.3,
+    "promedio_mensual": 5925.1,
+    "necesario_por_mes": 26382.1,
     "ritmo_ok": false,
     "ultimo_mes": 5
   },
@@ -28,11 +28,11 @@
     {
       "codigo": "CO",
       "nombre": "Córdoba",
-      "monto": 3895.2,
-      "cantidad": 39,
+      "monto": 3908.2,
+      "cantidad": 40,
       "meta_anual": 21000,
-      "diferencia": -17104.8,
-      "porcentaje": 18.5,
+      "diferencia": -17091.8,
+      "porcentaje": 18.6,
       "estado": "rojo",
       "icono": "🔴",
       "mensaje": "Cumplimiento anual 19%"
@@ -40,11 +40,11 @@
     {
       "codigo": "ER",
       "nombre": "Entre Ríos",
-      "monto": 3001.6,
-      "cantidad": 26,
+      "monto": 3041.6,
+      "cantidad": 28,
       "meta_anual": 13100,
-      "diferencia": -10098.4,
-      "porcentaje": 22.9,
+      "diferencia": -10058.4,
+      "porcentaje": 23.2,
       "estado": "rojo",
       "icono": "🔴",
       "mensaje": "Cumplimiento anual 23%"
@@ -52,14 +52,14 @@
     {
       "codigo": "SF",
       "nombre": "Santa Fe",
-      "monto": 2581.9,
-      "cantidad": 37,
+      "monto": 2771.9,
+      "cantidad": 38,
       "meta_anual": 22000,
-      "diferencia": -19418.1,
-      "porcentaje": 11.7,
+      "diferencia": -19228.1,
+      "porcentaje": 12.6,
       "estado": "rojo",
       "icono": "🔴",
-      "mensaje": "Cumplimiento anual 12%"
+      "mensaje": "Cumplimiento anual 13%"
     },
     {
       "codigo": "MZ",
@@ -112,14 +112,26 @@
     {
       "codigo": "RN",
       "nombre": "Río Negro",
-      "monto": 1139.3,
-      "cantidad": 23,
+      "monto": 1179.3,
+      "cantidad": 24,
       "meta_anual": 15000,
-      "diferencia": -13860.7,
-      "porcentaje": 7.6,
+      "diferencia": -13820.7,
+      "porcentaje": 7.9,
       "estado": "rojo",
       "icono": "🔴",
       "mensaje": "Cumplimiento anual 8%"
+    },
+    {
+      "codigo": "CT",
+      "nombre": "Corrientes",
+      "monto": 952.1,
+      "cantidad": 27,
+      "meta_anual": 10000,
+      "diferencia": -9047.9,
+      "porcentaje": 9.5,
+      "estado": "rojo",
+      "icono": "🔴",
+      "mensaje": "Cumplimiento anual 10%"
     },
     {
       "codigo": "NQ",
@@ -132,18 +144,6 @@
       "estado": "rojo",
       "icono": "🔴",
       "mensaje": "Cumplimiento anual 10%"
-    },
-    {
-      "codigo": "CT",
-      "nombre": "Corrientes",
-      "monto": 942.1,
-      "cantidad": 26,
-      "meta_anual": 10000,
-      "diferencia": -9057.9,
-      "porcentaje": 9.4,
-      "estado": "rojo",
-      "icono": "🔴",
-      "mensaje": "Cumplimiento anual 9%"
     },
     {
       "codigo": "JU",
@@ -170,6 +170,18 @@
       "mensaje": "Cumplimiento anual 10%"
     },
     {
+      "codigo": "LP",
+      "nombre": "La Pampa",
+      "monto": 545.8,
+      "cantidad": 9,
+      "meta_anual": 4200,
+      "diferencia": -3654.2,
+      "porcentaje": 13.0,
+      "estado": "rojo",
+      "icono": "🔴",
+      "mensaje": "Cumplimiento anual 13%"
+    },
+    {
       "codigo": "LR",
       "nombre": "La Rioja",
       "monto": 459.3,
@@ -180,18 +192,6 @@
       "estado": "rojo",
       "icono": "🔴",
       "mensaje": "Cumplimiento anual 8%"
-    },
-    {
-      "codigo": "LP",
-      "nombre": "La Pampa",
-      "monto": 375.0,
-      "cantidad": 8,
-      "meta_anual": 4200,
-      "diferencia": -3825.0,
-      "porcentaje": 8.9,
-      "estado": "rojo",
-      "icono": "🔴",
-      "mensaje": "Cumplimiento anual 9%"
     },
     {
       "codigo": "HA",
@@ -318,8 +318,8 @@
     {
       "mes": 5,
       "nombre": "Mayo",
-      "monto": 2222.9,
-      "cantidad": 22
+      "monto": 2686.7,
+      "cantidad": 29
     }
   ],
   "detalles": [
@@ -1117,10 +1117,10 @@
     {
       "codigo": "CO",
       "nombre": "Córdoba",
-      "monto": 3895.2,
-      "cantidad": 39,
+      "monto": 3908.2,
+      "cantidad": 40,
       "meta_anual": 21000,
-      "porcentaje": 18.5,
+      "porcentaje": 18.6,
       "items": [
         {
           "denominacion": "2025-CR-CO-002044",
@@ -1519,6 +1519,17 @@
           "tipo_contragarantia": "Garantia SGR / FPG - RESILIENCIA SGR"
         },
         {
+          "denominacion": "2025-CR-CO-002053",
+          "razon_social": "KAIROO INTELIGENCIA AGRICOLA S.A.",
+          "fecha_resolucion": "2026-05-13",
+          "usuario_resolucion": "Rodriguez, Esteban Manuel",
+          "importe": 13.0,
+          "linea": "2025 - Competitividad Pyme",
+          "sublinea": "Tradicional",
+          "programa": "-",
+          "tipo_contragarantia": "Garantia SGR / FPG - UNION SGR"
+        },
+        {
           "denominacion": "2025-CR-CO-001858",
           "razon_social": "SAN PEDRO DEL GREDAL S.R.L.",
           "fecha_resolucion": "2026-03-25",
@@ -1556,10 +1567,10 @@
     {
       "codigo": "ER",
       "nombre": "Entre Ríos",
-      "monto": 3001.6,
-      "cantidad": 26,
+      "monto": 3041.6,
+      "cantidad": 28,
       "meta_anual": 13100,
-      "porcentaje": 22.9,
+      "porcentaje": 23.2,
       "items": [
         {
           "denominacion": "2025-CR-ER-002039",
@@ -1826,6 +1837,28 @@
           "tipo_contragarantia": "Garantia SGR / FPG - FOGAER S.A.P.E.M"
         },
         {
+          "denominacion": "2025-CR-ER-002040",
+          "razon_social": "PELTZER RICARDO ERNESTO",
+          "fecha_resolucion": "2026-05-13",
+          "usuario_resolucion": "Rodriguez, Esteban Manuel",
+          "importe": 25.0,
+          "linea": "2025 - Competitividad Pyme",
+          "sublinea": "Tradicional",
+          "programa": "-",
+          "tipo_contragarantia": "Garantia SGR / FPG - FOGAER S.A.P.E.M"
+        },
+        {
+          "denominacion": "2025-CR-ER-002056",
+          "razon_social": "RODRIGUEZ DANTE LEONEL",
+          "fecha_resolucion": "2026-05-13",
+          "usuario_resolucion": "Rodriguez, Esteban Manuel",
+          "importe": 15.0,
+          "linea": "2025 - Competitividad Pyme",
+          "sublinea": "Tradicional",
+          "programa": "-",
+          "tipo_contragarantia": "Garantia SGR / FPG - FOGAER S.A.P.E.M"
+        },
+        {
           "denominacion": "2025-CR-ER-001706",
           "razon_social": "ZAPATA FERNANDO NICOLAS",
           "fecha_resolucion": "2026-01-14",
@@ -1852,10 +1885,10 @@
     {
       "codigo": "SF",
       "nombre": "Santa Fe",
-      "monto": 2581.9,
-      "cantidad": 37,
+      "monto": 2771.9,
+      "cantidad": 38,
       "meta_anual": 22000,
-      "porcentaje": 11.7,
+      "porcentaje": 12.6,
       "items": [
         {
           "denominacion": "2025-CR-SF-001990",
@@ -1911,6 +1944,17 @@
           "sublinea": "Programatica",
           "programa": "Financiamiento Verde",
           "tipo_contragarantia": "Garantia SGR / FPG - ACINDAR PYMES SGR"
+        },
+        {
+          "denominacion": "2025-CR-SF-002017",
+          "razon_social": "OLEOHIDRAULICA LORENZO S.R.L.",
+          "fecha_resolucion": "2026-05-13",
+          "usuario_resolucion": "Rodriguez, Esteban Manuel",
+          "importe": 190.0,
+          "linea": "2025 - Programática",
+          "sublinea": "Programatica",
+          "programa": "Mujeres",
+          "tipo_contragarantia": "Garantia SGR / FPG - Garantizar SGR"
         },
         {
           "denominacion": "2025-CR-SF-001956",
@@ -3101,10 +3145,10 @@
     {
       "codigo": "RN",
       "nombre": "Río Negro",
-      "monto": 1139.3,
-      "cantidad": 23,
+      "monto": 1179.3,
+      "cantidad": 24,
       "meta_anual": 15000,
-      "porcentaje": 7.6,
+      "porcentaje": 7.9,
       "items": [
         {
           "denominacion": "2025-CR-RN-001856",
@@ -3192,6 +3236,17 @@
           "linea": "2023 - Reactivación Productiva",
           "sublinea": "Programatica",
           "programa": "Cadena de Valor",
+          "tipo_contragarantia": "Garantia SGR / FPG - FOGARIO"
+        },
+        {
+          "denominacion": "2025-CR-RN-002046",
+          "razon_social": "CURLO S.R.L.",
+          "fecha_resolucion": "2026-05-13",
+          "usuario_resolucion": "Rodriguez, Esteban Manuel",
+          "importe": 40.0,
+          "linea": "2025 - Programática",
+          "sublinea": "Programatica",
+          "programa": "Mujeres",
           "tipo_contragarantia": "Garantia SGR / FPG - FOGARIO"
         },
         {
@@ -3362,121 +3417,12 @@
       ]
     },
     {
-      "codigo": "NQ",
-      "nombre": "Neuquén",
-      "monto": 943.5,
-      "cantidad": 9,
-      "meta_anual": 9100,
-      "porcentaje": 10.4,
-      "items": [
-        {
-          "denominacion": "2025-CR-NQ-001943",
-          "razon_social": "GARCIA CARLA SOLEDAD",
-          "fecha_resolucion": "2026-04-10",
-          "usuario_resolucion": "Rodriguez, Esteban Manuel",
-          "importe": 200.0,
-          "linea": "2025 - Programática",
-          "sublinea": "Programatica",
-          "programa": "Mujeres",
-          "tipo_contragarantia": "Garantia SGR / FPG - POTENCIAR SGR"
-        },
-        {
-          "denominacion": "2025-CR-NQ-001700",
-          "razon_social": "RAUL ALLEMANNI Y CIA. S.R.L.",
-          "fecha_resolucion": "2026-01-12",
-          "usuario_resolucion": "Rodriguez, Esteban Manuel",
-          "importe": 192.0,
-          "linea": "2025 - Programática",
-          "sublinea": "Programatica",
-          "programa": "Mujeres",
-          "tipo_contragarantia": "Garantia SGR / FPG - ACINDAR PYMES SGR"
-        },
-        {
-          "denominacion": "2025-CR-NQ-001718",
-          "razon_social": "POZO MARIA PATRICIA",
-          "fecha_resolucion": "2026-03-01",
-          "usuario_resolucion": "Rodriguez, Esteban Manuel",
-          "importe": 110.0,
-          "linea": "2025 - Programática",
-          "sublinea": "Programatica",
-          "programa": "Mujeres",
-          "tipo_contragarantia": "Hipoteca"
-        },
-        {
-          "denominacion": "2025-CR-NQ-001942",
-          "razon_social": "EPSILON S.R.L.",
-          "fecha_resolucion": "2026-04-10",
-          "usuario_resolucion": "Rodriguez, Esteban Manuel",
-          "importe": 100.0,
-          "linea": "2025 - Competitividad Pyme",
-          "sublinea": "Tradicional",
-          "programa": "-",
-          "tipo_contragarantia": "Garantia SGR / FPG - MOVIL SGR"
-        },
-        {
-          "denominacion": "2025-CR-NQ-001875",
-          "razon_social": "RENUEVA S.A.",
-          "fecha_resolucion": "2026-03-25",
-          "usuario_resolucion": "Cevela, Nicolás",
-          "importe": 90.0,
-          "linea": "2025 - Programática",
-          "sublinea": "Programatica",
-          "programa": "Mujeres",
-          "tipo_contragarantia": "Garantia SGR / FPG - Garantizar SGR"
-        },
-        {
-          "denominacion": "2025-CR-NQ-001786",
-          "razon_social": "RENUEVA S.A.",
-          "fecha_resolucion": "2026-02-12",
-          "usuario_resolucion": "Rodriguez, Esteban Manuel",
-          "importe": 90.0,
-          "linea": "2025 - Triple Impacto",
-          "sublinea": "Programatica",
-          "programa": "Desarrollo Proveedores - Impacto Estándar",
-          "tipo_contragarantia": "Garantia SGR / FPG - Garantizar SGR"
-        },
-        {
-          "denominacion": "2023-CR-NQ-001690",
-          "razon_social": "AUSTIN ARIEL GUSTAVO",
-          "fecha_resolucion": "2026-01-09",
-          "usuario_resolucion": "Rodriguez, Esteban Manuel",
-          "importe": 75.0,
-          "linea": "2023 - Reactivación Productiva",
-          "sublinea": "Programatica",
-          "programa": "Cadena de Valor Maquinaria Agrícola",
-          "tipo_contragarantia": "Garantia SGR / FPG - FOGANEU"
-        },
-        {
-          "denominacion": "2023-CR-NQ-001691",
-          "razon_social": "ZAITSEV MOISES",
-          "fecha_resolucion": "2026-01-09",
-          "usuario_resolucion": "Rodriguez, Esteban Manuel",
-          "importe": 69.5,
-          "linea": "2023 - Reactivación Productiva",
-          "sublinea": "Programatica",
-          "programa": "Cadena de Valor Maquinaria Agrícola",
-          "tipo_contragarantia": "Garantia SGR / FPG - FOGANEU"
-        },
-        {
-          "denominacion": "2025-CR-NQ-001783",
-          "razon_social": "WATKINS MARIA GUILLERMINA",
-          "fecha_resolucion": "2026-02-14",
-          "usuario_resolucion": "Rodriguez, Esteban Manuel",
-          "importe": 17.0,
-          "linea": "2025 - Programática",
-          "sublinea": "Programatica",
-          "programa": "Mujeres",
-          "tipo_contragarantia": "Garantia SGR / FPG - FOGANEU"
-        }
-      ]
-    },
-    {
       "codigo": "CT",
       "nombre": "Corrientes",
-      "monto": 942.1,
-      "cantidad": 26,
+      "monto": 952.1,
+      "cantidad": 27,
       "meta_anual": 10000,
-      "porcentaje": 9.4,
+      "porcentaje": 9.5,
       "items": [
         {
           "denominacion": "2025-CR-CT-001843",
@@ -3644,6 +3590,17 @@
           "tipo_contragarantia": "Garantia SGR / FPG - CASFOG Serie II (TREND SGR)"
         },
         {
+          "denominacion": "2025-CR-CT-002057",
+          "razon_social": "GARCIA OMAR ABEL",
+          "fecha_resolucion": "2026-05-13",
+          "usuario_resolucion": "Rodriguez, Esteban Manuel",
+          "importe": 10.0,
+          "linea": "2025 - Programática",
+          "sublinea": "Programatica",
+          "programa": "Financiamiento Verde",
+          "tipo_contragarantia": "Fianza"
+        },
+        {
           "denominacion": "2025-CR-CT-002021",
           "razon_social": "PEREZ DOMINGO ANTONIO",
           "fecha_resolucion": "2026-04-30",
@@ -3763,6 +3720,115 @@
           "sublinea": "Programatica",
           "programa": "Mujeres",
           "tipo_contragarantia": "Fianza"
+        }
+      ]
+    },
+    {
+      "codigo": "NQ",
+      "nombre": "Neuquén",
+      "monto": 943.5,
+      "cantidad": 9,
+      "meta_anual": 9100,
+      "porcentaje": 10.4,
+      "items": [
+        {
+          "denominacion": "2025-CR-NQ-001943",
+          "razon_social": "GARCIA CARLA SOLEDAD",
+          "fecha_resolucion": "2026-04-10",
+          "usuario_resolucion": "Rodriguez, Esteban Manuel",
+          "importe": 200.0,
+          "linea": "2025 - Programática",
+          "sublinea": "Programatica",
+          "programa": "Mujeres",
+          "tipo_contragarantia": "Garantia SGR / FPG - POTENCIAR SGR"
+        },
+        {
+          "denominacion": "2025-CR-NQ-001700",
+          "razon_social": "RAUL ALLEMANNI Y CIA. S.R.L.",
+          "fecha_resolucion": "2026-01-12",
+          "usuario_resolucion": "Rodriguez, Esteban Manuel",
+          "importe": 192.0,
+          "linea": "2025 - Programática",
+          "sublinea": "Programatica",
+          "programa": "Mujeres",
+          "tipo_contragarantia": "Garantia SGR / FPG - ACINDAR PYMES SGR"
+        },
+        {
+          "denominacion": "2025-CR-NQ-001718",
+          "razon_social": "POZO MARIA PATRICIA",
+          "fecha_resolucion": "2026-03-01",
+          "usuario_resolucion": "Rodriguez, Esteban Manuel",
+          "importe": 110.0,
+          "linea": "2025 - Programática",
+          "sublinea": "Programatica",
+          "programa": "Mujeres",
+          "tipo_contragarantia": "Hipoteca"
+        },
+        {
+          "denominacion": "2025-CR-NQ-001942",
+          "razon_social": "EPSILON S.R.L.",
+          "fecha_resolucion": "2026-04-10",
+          "usuario_resolucion": "Rodriguez, Esteban Manuel",
+          "importe": 100.0,
+          "linea": "2025 - Competitividad Pyme",
+          "sublinea": "Tradicional",
+          "programa": "-",
+          "tipo_contragarantia": "Garantia SGR / FPG - MOVIL SGR"
+        },
+        {
+          "denominacion": "2025-CR-NQ-001875",
+          "razon_social": "RENUEVA S.A.",
+          "fecha_resolucion": "2026-03-25",
+          "usuario_resolucion": "Cevela, Nicolás",
+          "importe": 90.0,
+          "linea": "2025 - Programática",
+          "sublinea": "Programatica",
+          "programa": "Mujeres",
+          "tipo_contragarantia": "Garantia SGR / FPG - Garantizar SGR"
+        },
+        {
+          "denominacion": "2025-CR-NQ-001786",
+          "razon_social": "RENUEVA S.A.",
+          "fecha_resolucion": "2026-02-12",
+          "usuario_resolucion": "Rodriguez, Esteban Manuel",
+          "importe": 90.0,
+          "linea": "2025 - Triple Impacto",
+          "sublinea": "Programatica",
+          "programa": "Desarrollo Proveedores - Impacto Estándar",
+          "tipo_contragarantia": "Garantia SGR / FPG - Garantizar SGR"
+        },
+        {
+          "denominacion": "2023-CR-NQ-001690",
+          "razon_social": "AUSTIN ARIEL GUSTAVO",
+          "fecha_resolucion": "2026-01-09",
+          "usuario_resolucion": "Rodriguez, Esteban Manuel",
+          "importe": 75.0,
+          "linea": "2023 - Reactivación Productiva",
+          "sublinea": "Programatica",
+          "programa": "Cadena de Valor Maquinaria Agrícola",
+          "tipo_contragarantia": "Garantia SGR / FPG - FOGANEU"
+        },
+        {
+          "denominacion": "2023-CR-NQ-001691",
+          "razon_social": "ZAITSEV MOISES",
+          "fecha_resolucion": "2026-01-09",
+          "usuario_resolucion": "Rodriguez, Esteban Manuel",
+          "importe": 69.5,
+          "linea": "2023 - Reactivación Productiva",
+          "sublinea": "Programatica",
+          "programa": "Cadena de Valor Maquinaria Agrícola",
+          "tipo_contragarantia": "Garantia SGR / FPG - FOGANEU"
+        },
+        {
+          "denominacion": "2025-CR-NQ-001783",
+          "razon_social": "WATKINS MARIA GUILLERMINA",
+          "fecha_resolucion": "2026-02-14",
+          "usuario_resolucion": "Rodriguez, Esteban Manuel",
+          "importe": 17.0,
+          "linea": "2025 - Programática",
+          "sublinea": "Programatica",
+          "programa": "Mujeres",
+          "tipo_contragarantia": "Garantia SGR / FPG - FOGANEU"
         }
       ]
     },
@@ -4062,6 +4128,115 @@
       ]
     },
     {
+      "codigo": "LP",
+      "nombre": "La Pampa",
+      "monto": 545.8,
+      "cantidad": 9,
+      "meta_anual": 4200,
+      "porcentaje": 13.0,
+      "items": [
+        {
+          "denominacion": "2025-CR-LP-001958",
+          "razon_social": "PRODUCTOS PAMPEANOS S.A.",
+          "fecha_resolucion": "2026-05-13",
+          "usuario_resolucion": "Rodriguez, Esteban Manuel",
+          "importe": 170.9,
+          "linea": "2025 - Programática",
+          "sublinea": "Programatica",
+          "programa": "Financiamiento Verde",
+          "tipo_contragarantia": "Garantia SGR / FPG - FOGAPAM"
+        },
+        {
+          "denominacion": "2025-CR-LP-001837",
+          "razon_social": "BIOLAB S.R.L.",
+          "fecha_resolucion": "2026-03-17",
+          "usuario_resolucion": "Rodriguez, Esteban Manuel",
+          "importe": 139.0,
+          "linea": "2025 - Programática",
+          "sublinea": "Programatica",
+          "programa": "Mujeres",
+          "tipo_contragarantia": "Garantia SGR / FPG - FOGAPAM"
+        },
+        {
+          "denominacion": "2025-CR-LP-001770",
+          "razon_social": "ARTOLA ADRIAN MATIAS",
+          "fecha_resolucion": "2026-02-09",
+          "usuario_resolucion": "Rodriguez, Esteban Manuel",
+          "importe": 54.3,
+          "linea": "2025 - Competitividad Pyme",
+          "sublinea": "Tradicional",
+          "programa": "-",
+          "tipo_contragarantia": "Garantia SGR / FPG - FOGAPAM"
+        },
+        {
+          "denominacion": "2025-CR-LP-001954",
+          "razon_social": "SALIONE ROMINA",
+          "fecha_resolucion": "2026-04-16",
+          "usuario_resolucion": "Rodriguez, Esteban Manuel",
+          "importe": 48.1,
+          "linea": "2025 - Programática",
+          "sublinea": "Programatica",
+          "programa": "Mujeres",
+          "tipo_contragarantia": "Garantia SGR / FPG - FOGAPAM"
+        },
+        {
+          "denominacion": "2025-CR-LP-001787",
+          "razon_social": "GOMEZ MARIA BELEN",
+          "fecha_resolucion": "2026-04-10",
+          "usuario_resolucion": "Rodriguez, Esteban Manuel",
+          "importe": 40.0,
+          "linea": "2025 - Programática",
+          "sublinea": "Programatica",
+          "programa": "Mujeres",
+          "tipo_contragarantia": "Garantia SGR / FPG - FOGAPAM"
+        },
+        {
+          "denominacion": "2025-CR-LP-001723",
+          "razon_social": "WEIGUM OSVALDO ARIEL",
+          "fecha_resolucion": "2026-01-20",
+          "usuario_resolucion": "Rodriguez, Esteban Manuel",
+          "importe": 30.0,
+          "linea": "2025 - Competitividad Pyme",
+          "sublinea": "Tradicional",
+          "programa": "-",
+          "tipo_contragarantia": "Garantia SGR / FPG - FOGAPAM"
+        },
+        {
+          "denominacion": "2025-CR-LP-001803",
+          "razon_social": "FLORES MABEL JUANA",
+          "fecha_resolucion": "2026-03-06",
+          "usuario_resolucion": "Rodriguez, Esteban Manuel",
+          "importe": 22.9,
+          "linea": "2025 - Programática",
+          "sublinea": "Programatica",
+          "programa": "Mujeres",
+          "tipo_contragarantia": "Garantia SGR / FPG - FOGAPAM"
+        },
+        {
+          "denominacion": "2025-CR-LP-001992",
+          "razon_social": "PASTUS DE CAMPO, MARIA VIRGINIA Y PEPA, FEDERICO JAVIER S. CAP. I SECC. IV",
+          "fecha_resolucion": "2026-04-24",
+          "usuario_resolucion": "Rodriguez, Esteban Manuel",
+          "importe": 20.6,
+          "linea": "2025 - Programática",
+          "sublinea": "Programatica",
+          "programa": "Mujeres",
+          "tipo_contragarantia": "Garantia SGR / FPG - FOGAPAM"
+        },
+        {
+          "denominacion": "2023-CR-LP-001689",
+          "razon_social": "DUSCHER NORA VANINA",
+          "fecha_resolucion": "2026-01-12",
+          "usuario_resolucion": "Rodriguez, Esteban Manuel",
+          "importe": 20.0,
+          "linea": "2025 - Programática",
+          "sublinea": "Programatica",
+          "programa": "Mujeres",
+          "tipo_contragarantia": "Garantia SGR / FPG - FOGAPAM"
+        }
+      ]
+    },
+    {
       "codigo": "LR",
       "nombre": "La Rioja",
       "monto": 459.3,
@@ -4189,104 +4364,6 @@
           "sublinea": "Tradicional",
           "programa": "-",
           "tipo_contragarantia": "Garantia SGR / FPG - FOGAPLAR S.A.U"
-        }
-      ]
-    },
-    {
-      "codigo": "LP",
-      "nombre": "La Pampa",
-      "monto": 375.0,
-      "cantidad": 8,
-      "meta_anual": 4200,
-      "porcentaje": 8.9,
-      "items": [
-        {
-          "denominacion": "2025-CR-LP-001837",
-          "razon_social": "BIOLAB S.R.L.",
-          "fecha_resolucion": "2026-03-17",
-          "usuario_resolucion": "Rodriguez, Esteban Manuel",
-          "importe": 139.0,
-          "linea": "2025 - Programática",
-          "sublinea": "Programatica",
-          "programa": "Mujeres",
-          "tipo_contragarantia": "Garantia SGR / FPG - FOGAPAM"
-        },
-        {
-          "denominacion": "2025-CR-LP-001770",
-          "razon_social": "ARTOLA ADRIAN MATIAS",
-          "fecha_resolucion": "2026-02-09",
-          "usuario_resolucion": "Rodriguez, Esteban Manuel",
-          "importe": 54.3,
-          "linea": "2025 - Competitividad Pyme",
-          "sublinea": "Tradicional",
-          "programa": "-",
-          "tipo_contragarantia": "Garantia SGR / FPG - FOGAPAM"
-        },
-        {
-          "denominacion": "2025-CR-LP-001954",
-          "razon_social": "SALIONE ROMINA",
-          "fecha_resolucion": "2026-04-16",
-          "usuario_resolucion": "Rodriguez, Esteban Manuel",
-          "importe": 48.1,
-          "linea": "2025 - Programática",
-          "sublinea": "Programatica",
-          "programa": "Mujeres",
-          "tipo_contragarantia": "Garantia SGR / FPG - FOGAPAM"
-        },
-        {
-          "denominacion": "2025-CR-LP-001787",
-          "razon_social": "GOMEZ MARIA BELEN",
-          "fecha_resolucion": "2026-04-10",
-          "usuario_resolucion": "Rodriguez, Esteban Manuel",
-          "importe": 40.0,
-          "linea": "2025 - Programática",
-          "sublinea": "Programatica",
-          "programa": "Mujeres",
-          "tipo_contragarantia": "Garantia SGR / FPG - FOGAPAM"
-        },
-        {
-          "denominacion": "2025-CR-LP-001723",
-          "razon_social": "WEIGUM OSVALDO ARIEL",
-          "fecha_resolucion": "2026-01-20",
-          "usuario_resolucion": "Rodriguez, Esteban Manuel",
-          "importe": 30.0,
-          "linea": "2025 - Competitividad Pyme",
-          "sublinea": "Tradicional",
-          "programa": "-",
-          "tipo_contragarantia": "Garantia SGR / FPG - FOGAPAM"
-        },
-        {
-          "denominacion": "2025-CR-LP-001803",
-          "razon_social": "FLORES MABEL JUANA",
-          "fecha_resolucion": "2026-03-06",
-          "usuario_resolucion": "Rodriguez, Esteban Manuel",
-          "importe": 22.9,
-          "linea": "2025 - Programática",
-          "sublinea": "Programatica",
-          "programa": "Mujeres",
-          "tipo_contragarantia": "Garantia SGR / FPG - FOGAPAM"
-        },
-        {
-          "denominacion": "2025-CR-LP-001992",
-          "razon_social": "PASTUS DE CAMPO, MARIA VIRGINIA Y PEPA, FEDERICO JAVIER S. CAP. I SECC. IV",
-          "fecha_resolucion": "2026-04-24",
-          "usuario_resolucion": "Rodriguez, Esteban Manuel",
-          "importe": 20.6,
-          "linea": "2025 - Programática",
-          "sublinea": "Programatica",
-          "programa": "Mujeres",
-          "tipo_contragarantia": "Garantia SGR / FPG - FOGAPAM"
-        },
-        {
-          "denominacion": "2023-CR-LP-001689",
-          "razon_social": "DUSCHER NORA VANINA",
-          "fecha_resolucion": "2026-01-12",
-          "usuario_resolucion": "Rodriguez, Esteban Manuel",
-          "importe": 20.0,
-          "linea": "2025 - Programática",
-          "sublinea": "Programatica",
-          "programa": "Mujeres",
-          "tipo_contragarantia": "Garantia SGR / FPG - FOGAPAM"
         }
       ]
     },
