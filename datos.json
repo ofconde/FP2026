@@ -1,14 +1,14 @@
 {
-  "fecha_actualizacion": "2026-05-14 16:46:55",
+  "fecha_actualizacion": "2026-05-14 16:56:58",
   "total": {
-    "monto": 29625.5,
-    "creditos": 379,
-    "porcentaje": 13.8,
+    "monto": 30120.0,
+    "creditos": 383,
+    "porcentaje": 14.1,
     "meta": 214300,
-    "falta": 184674.5,
+    "falta": 184180.0,
     "meses_restantes": 7,
-    "promedio_mensual": 5925.1,
-    "necesario_por_mes": 26382.1,
+    "promedio_mensual": 6024.0,
+    "necesario_por_mes": 26311.4,
     "ritmo_ok": false,
     "ultimo_mes": 5
   },
@@ -16,11 +16,11 @@
     {
       "codigo": "BA",
       "nombre": "Buenos Aires",
-      "monto": 7256.6,
-      "cantidad": 71,
+      "monto": 7456.6,
+      "cantidad": 72,
       "meta_anual": 57000,
-      "diferencia": -49743.4,
-      "porcentaje": 12.7,
+      "diferencia": -49543.4,
+      "porcentaje": 13.1,
       "estado": "rojo",
       "icono": "🔴",
       "mensaje": "Cumplimiento anual 13%"
@@ -52,14 +52,14 @@
     {
       "codigo": "SF",
       "nombre": "Santa Fe",
-      "monto": 2771.9,
-      "cantidad": 38,
+      "monto": 2971.9,
+      "cantidad": 39,
       "meta_anual": 22000,
-      "diferencia": -19228.1,
-      "porcentaje": 12.6,
+      "diferencia": -19028.1,
+      "porcentaje": 13.5,
       "estado": "rojo",
       "icono": "🔴",
-      "mensaje": "Cumplimiento anual 13%"
+      "mensaje": "Cumplimiento anual 14%"
     },
     {
       "codigo": "MZ",
@@ -88,14 +88,26 @@
     {
       "codigo": "MI",
       "nombre": "Misiones",
-      "monto": 1359.6,
-      "cantidad": 25,
+      "monto": 1364.1,
+      "cantidad": 26,
       "meta_anual": 4500,
-      "diferencia": -3140.4,
-      "porcentaje": 30.2,
+      "diferencia": -3135.9,
+      "porcentaje": 30.3,
       "estado": "rojo",
       "icono": "🔴",
       "mensaje": "Cumplimiento anual 30%"
+    },
+    {
+      "codigo": "RN",
+      "nombre": "Río Negro",
+      "monto": 1269.3,
+      "cantidad": 25,
+      "meta_anual": 15000,
+      "diferencia": -13730.7,
+      "porcentaje": 8.5,
+      "estado": "rojo",
+      "icono": "🔴",
+      "mensaje": "Cumplimiento anual 8%"
     },
     {
       "codigo": "SA",
@@ -108,18 +120,6 @@
       "estado": "rojo",
       "icono": "🔴",
       "mensaje": "Cumplimiento anual 30%"
-    },
-    {
-      "codigo": "RN",
-      "nombre": "Río Negro",
-      "monto": 1179.3,
-      "cantidad": 24,
-      "meta_anual": 15000,
-      "diferencia": -13820.7,
-      "porcentaje": 7.9,
-      "estado": "rojo",
-      "icono": "🔴",
-      "mensaje": "Cumplimiento anual 8%"
     },
     {
       "codigo": "CT",
@@ -318,18 +318,18 @@
     {
       "mes": 5,
       "nombre": "Mayo",
-      "monto": 2686.7,
-      "cantidad": 29
+      "monto": 3181.2,
+      "cantidad": 33
     }
   ],
   "detalles": [
     {
       "codigo": "BA",
       "nombre": "Buenos Aires",
-      "monto": 7256.6,
-      "cantidad": 71,
+      "monto": 7456.6,
+      "cantidad": 72,
       "meta_anual": 57000,
-      "porcentaje": 12.7,
+      "porcentaje": 13.1,
       "items": [
         {
           "denominacion": "2025-CR-BA-001867",
@@ -341,6 +341,17 @@
           "sublinea": "Programatica",
           "programa": "Desarrollo Proveedores - Impacto Alto",
           "tipo_contragarantia": "Garantia SGR / FPG - FO.GA.BA"
+        },
+        {
+          "denominacion": "2025-CR-BA-002065",
+          "razon_social": "BENIPLAST S.A.",
+          "fecha_resolucion": "2026-05-14",
+          "usuario_resolucion": "Rodriguez, Esteban Manuel",
+          "importe": 200.0,
+          "linea": "2025 - Programática",
+          "sublinea": "Programatica",
+          "programa": "Mujeres",
+          "tipo_contragarantia": "Garantia SGR / FPG - Garantizar SGR"
         },
         {
           "denominacion": "2025-CR-BA-002023",
@@ -1885,11 +1896,22 @@
     {
       "codigo": "SF",
       "nombre": "Santa Fe",
-      "monto": 2771.9,
-      "cantidad": 38,
+      "monto": 2971.9,
+      "cantidad": 39,
       "meta_anual": 22000,
-      "porcentaje": 12.6,
+      "porcentaje": 13.5,
       "items": [
+        {
+          "denominacion": "2025-CR-SF-002055",
+          "razon_social": "FAILAR S.A.",
+          "fecha_resolucion": "2026-05-14",
+          "usuario_resolucion": "Rodriguez, Esteban Manuel",
+          "importe": 200.0,
+          "linea": "2025 - Programática",
+          "sublinea": "Programatica",
+          "programa": "Financiamiento Verde",
+          "tipo_contragarantia": "Garantia SGR / FPG - CASFOG Serie IV (ARGENPYMES SGR)"
+        },
         {
           "denominacion": "2025-CR-SF-001990",
           "razon_social": "SERVICIOS ECOLOGICOS ROSARIO S.R.L.",
@@ -2674,10 +2696,10 @@
     {
       "codigo": "MI",
       "nombre": "Misiones",
-      "monto": 1359.6,
-      "cantidad": 25,
+      "monto": 1364.1,
+      "cantidad": 26,
       "meta_anual": 4500,
-      "porcentaje": 30.2,
+      "porcentaje": 30.3,
       "items": [
         {
           "denominacion": "2025-CR-MI-001812",
@@ -2953,188 +2975,13 @@
           "sublinea": "Programatica",
           "programa": "Mujeres",
           "tipo_contragarantia": "Fianza"
-        }
-      ]
-    },
-    {
-      "codigo": "SA",
-      "nombre": "Salta",
-      "monto": 1215.5,
-      "cantidad": 16,
-      "meta_anual": 4100,
-      "porcentaje": 29.6,
-      "items": [
-        {
-          "denominacion": "2025-CR-SA-002032",
-          "razon_social": "LUIS CASTELLANI S.A.",
-          "fecha_resolucion": "2026-05-12",
-          "usuario_resolucion": "Rodriguez, Esteban Manuel",
-          "importe": 200.0,
-          "linea": "2025 - Programática",
-          "sublinea": "Programatica",
-          "programa": "Mujeres",
-          "tipo_contragarantia": "Garantia SGR / FPG - CASFOG Serie IV (ARGENPYMES SGR)"
         },
         {
-          "denominacion": "2025-CR-SA-001842",
-          "razon_social": "WICHI TOLEDO SRL",
-          "fecha_resolucion": "2026-03-17",
+          "denominacion": "2025-CR-MI-002058",
+          "razon_social": "SOLIS MALVINA NOELIA",
+          "fecha_resolucion": "2026-05-14",
           "usuario_resolucion": "Rodriguez, Esteban Manuel",
-          "importe": 200.0,
-          "linea": "2025 - Programática",
-          "sublinea": "Programatica",
-          "programa": "Mujeres",
-          "tipo_contragarantia": "Garantia SGR / FPG - ARGENPYMES"
-        },
-        {
-          "denominacion": "2025-CR-SA-001818",
-          "razon_social": "NOA GENERACION S.R.L.",
-          "fecha_resolucion": "2026-03-11",
-          "usuario_resolucion": "Rodriguez, Esteban Manuel",
-          "importe": 139.2,
-          "linea": "2025 - Programática",
-          "sublinea": "Programatica",
-          "programa": "Mujeres",
-          "tipo_contragarantia": "Garantia SGR / FPG - ACINDAR PYMES SGR"
-        },
-        {
-          "denominacion": "2025-CR-SA-001989",
-          "razon_social": "SANZ NAVAMUEL SEBASTIAN",
-          "fecha_resolucion": "2026-04-20",
-          "usuario_resolucion": "Rodriguez, Esteban Manuel",
-          "importe": 107.0,
-          "linea": "2025 - Triple Impacto",
-          "sublinea": "Programatica",
-          "programa": "Gestión Energética",
-          "tipo_contragarantia": "Garantia SGR / FPG - CASFOG Serie IV (ARGENPYMES SGR)"
-        },
-        {
-          "denominacion": "2025-CR-SA-002004",
-          "razon_social": "JUAN PEDRO GARIN CONSTRUCCIONES S.A.",
-          "fecha_resolucion": "2026-04-30",
-          "usuario_resolucion": "Rodriguez, Esteban Manuel",
-          "importe": 100.0,
-          "linea": "2025 - Competitividad Pyme",
-          "sublinea": "Tradicional",
-          "programa": "-",
-          "tipo_contragarantia": "Garantia SGR / FPG - CASFOG Serie IV (ARGENPYMES SGR)"
-        },
-        {
-          "denominacion": "2025-CR-SA-001860",
-          "razon_social": "NOVOA NORMA INES",
-          "fecha_resolucion": "2026-04-27",
-          "usuario_resolucion": "Rodriguez, Esteban Manuel",
-          "importe": 100.0,
-          "linea": "2025 - Programática",
-          "sublinea": "Programatica",
-          "programa": "Mujeres",
-          "tipo_contragarantia": "Hipoteca"
-        },
-        {
-          "denominacion": "2025-CR-SA-001776",
-          "razon_social": "ABRAHAM SCHEJ E HIJOS S.R.L.",
-          "fecha_resolucion": "2026-03-01",
-          "usuario_resolucion": "Rodriguez, Esteban Manuel",
-          "importe": 100.0,
-          "linea": "2025 - Competitividad Pyme",
-          "sublinea": "Tradicional",
-          "programa": "-",
-          "tipo_contragarantia": "Garantia SGR / FPG - Garantizar SGR"
-        },
-        {
-          "denominacion": "2025-CR-SA-001810",
-          "razon_social": "FORZA INGENIERIA SOCIEDAD POR ACCIONES SIMPLIFICADA",
-          "fecha_resolucion": "2026-03-11",
-          "usuario_resolucion": "Rodriguez, Esteban Manuel",
-          "importe": 85.0,
-          "linea": "2025 - Competitividad Pyme",
-          "sublinea": "Tradicional",
-          "programa": "-",
-          "tipo_contragarantia": "Garantia SGR / FPG - Garantizar SGR"
-        },
-        {
-          "denominacion": "2025-CR-SA-002005",
-          "razon_social": "ALIMENTACION SALUDABLE S.R.L.",
-          "fecha_resolucion": "2026-04-24",
-          "usuario_resolucion": "Rodriguez, Esteban Manuel",
-          "importe": 60.8,
-          "linea": "2025 - Programática",
-          "sublinea": "Programatica",
-          "programa": "Mujeres",
-          "tipo_contragarantia": "Garantia SGR / FPG - CASFOG Serie IV (ARGENPYMES SGR)"
-        },
-        {
-          "denominacion": "2025-CR-SA-002006",
-          "razon_social": "MAGNOLIA S.A.S.",
-          "fecha_resolucion": "2026-04-24",
-          "usuario_resolucion": "Rodriguez, Esteban Manuel",
-          "importe": 48.0,
-          "linea": "2025 - Programática",
-          "sublinea": "Programatica",
-          "programa": "Mujeres",
-          "tipo_contragarantia": "Garantia SGR / FPG - CASFOG Serie IV (ARGENPYMES SGR)"
-        },
-        {
-          "denominacion": "2025-CR-SA-001838",
-          "razon_social": "AGUIRRE MARIA ALFONSINA",
-          "fecha_resolucion": "2026-03-17",
-          "usuario_resolucion": "Rodriguez, Esteban Manuel",
-          "importe": 16.0,
-          "linea": "2025 - Programática",
-          "sublinea": "Programatica",
-          "programa": "Mujeres",
-          "tipo_contragarantia": "Prenda"
-        },
-        {
-          "denominacion": "2025-CR-SA-001811",
-          "razon_social": "NAVARRO MACARENA",
-          "fecha_resolucion": "2026-03-06",
-          "usuario_resolucion": "Rodriguez, Esteban Manuel",
-          "importe": 15.0,
-          "linea": "2025 - Programática",
-          "sublinea": "Programatica",
-          "programa": "Mujeres",
-          "tipo_contragarantia": "Garantia SGR / FPG - CASFOG Serie II (TREND SGR)"
-        },
-        {
-          "denominacion": "2025-CR-SA-001788",
-          "razon_social": "PORCEL SILVANA DE LOS ANGELES",
-          "fecha_resolucion": "2026-03-01",
-          "usuario_resolucion": "Rodriguez, Esteban Manuel",
-          "importe": 14.5,
-          "linea": "2025 - Programática",
-          "sublinea": "Programatica",
-          "programa": "Mujeres",
-          "tipo_contragarantia": "Garantia SGR / FPG - CASFOG Serie II (TREND SGR)"
-        },
-        {
-          "denominacion": "2025-CR-SA-001849",
-          "razon_social": "STEPHAN MARIA AGUSTINA",
-          "fecha_resolucion": "2026-03-17",
-          "usuario_resolucion": "Rodriguez, Esteban Manuel",
-          "importe": 11.0,
-          "linea": "2025 - Programática",
-          "sublinea": "Programatica",
-          "programa": "Mujeres",
-          "tipo_contragarantia": "Garantia SGR / FPG - CASFOG Serie II (TREND SGR)"
-        },
-        {
-          "denominacion": "2025-CR-SA-001720",
-          "razon_social": "BELTRAN GARCIA ANA NOELIA",
-          "fecha_resolucion": "2026-01-16",
-          "usuario_resolucion": "Rodriguez, Esteban Manuel",
-          "importe": 10.0,
-          "linea": "2025 - Programática",
-          "sublinea": "Programatica",
-          "programa": "Mujeres",
-          "tipo_contragarantia": "Garantia SGR / FPG - CASFOG Serie II (TREND SGR)"
-        },
-        {
-          "denominacion": "2025-CR-SA-001819",
-          "razon_social": "CASTILLO LILIANA MARCELA",
-          "fecha_resolucion": "2026-03-11",
-          "usuario_resolucion": "Rodriguez, Esteban Manuel",
-          "importe": 9.0,
+          "importe": 4.5,
           "linea": "2025 - Programática",
           "sublinea": "Programatica",
           "programa": "Mujeres",
@@ -3145,10 +2992,10 @@
     {
       "codigo": "RN",
       "nombre": "Río Negro",
-      "monto": 1179.3,
-      "cantidad": 24,
+      "monto": 1269.3,
+      "cantidad": 25,
       "meta_anual": 15000,
-      "porcentaje": 7.9,
+      "porcentaje": 8.5,
       "items": [
         {
           "denominacion": "2025-CR-RN-001856",
@@ -3193,6 +3040,17 @@
           "sublinea": "Programatica",
           "programa": "Mujeres",
           "tipo_contragarantia": "Garantia SGR / FPG - Garantizar SGR"
+        },
+        {
+          "denominacion": "2025-CR-RN-002067",
+          "razon_social": "MADECO S.A.C.I.",
+          "fecha_resolucion": "2026-05-14",
+          "usuario_resolucion": "Rodriguez, Esteban Manuel",
+          "importe": 90.0,
+          "linea": "2025 - Programática",
+          "sublinea": "Programatica",
+          "programa": "Mujeres",
+          "tipo_contragarantia": "Garantia SGR / FPG - FOGARIO"
         },
         {
           "denominacion": "2025-CR-RN-002002",
@@ -3413,6 +3271,192 @@
           "sublinea": "Tradicional",
           "programa": "Prefinanciación de Exportaciones",
           "tipo_contragarantia": "Fianza"
+        }
+      ]
+    },
+    {
+      "codigo": "SA",
+      "nombre": "Salta",
+      "monto": 1215.5,
+      "cantidad": 16,
+      "meta_anual": 4100,
+      "porcentaje": 29.6,
+      "items": [
+        {
+          "denominacion": "2025-CR-SA-002032",
+          "razon_social": "LUIS CASTELLANI S.A.",
+          "fecha_resolucion": "2026-05-12",
+          "usuario_resolucion": "Rodriguez, Esteban Manuel",
+          "importe": 200.0,
+          "linea": "2025 - Programática",
+          "sublinea": "Programatica",
+          "programa": "Mujeres",
+          "tipo_contragarantia": "Garantia SGR / FPG - CASFOG Serie IV (ARGENPYMES SGR)"
+        },
+        {
+          "denominacion": "2025-CR-SA-001842",
+          "razon_social": "WICHI TOLEDO SRL",
+          "fecha_resolucion": "2026-03-17",
+          "usuario_resolucion": "Rodriguez, Esteban Manuel",
+          "importe": 200.0,
+          "linea": "2025 - Programática",
+          "sublinea": "Programatica",
+          "programa": "Mujeres",
+          "tipo_contragarantia": "Garantia SGR / FPG - ARGENPYMES"
+        },
+        {
+          "denominacion": "2025-CR-SA-001818",
+          "razon_social": "NOA GENERACION S.R.L.",
+          "fecha_resolucion": "2026-03-11",
+          "usuario_resolucion": "Rodriguez, Esteban Manuel",
+          "importe": 139.2,
+          "linea": "2025 - Programática",
+          "sublinea": "Programatica",
+          "programa": "Mujeres",
+          "tipo_contragarantia": "Garantia SGR / FPG - ACINDAR PYMES SGR"
+        },
+        {
+          "denominacion": "2025-CR-SA-001989",
+          "razon_social": "SANZ NAVAMUEL SEBASTIAN",
+          "fecha_resolucion": "2026-04-20",
+          "usuario_resolucion": "Rodriguez, Esteban Manuel",
+          "importe": 107.0,
+          "linea": "2025 - Triple Impacto",
+          "sublinea": "Programatica",
+          "programa": "Gestión Energética",
+          "tipo_contragarantia": "Garantia SGR / FPG - CASFOG Serie IV (ARGENPYMES SGR)"
+        },
+        {
+          "denominacion": "2025-CR-SA-002004",
+          "razon_social": "JUAN PEDRO GARIN CONSTRUCCIONES S.A.",
+          "fecha_resolucion": "2026-04-30",
+          "usuario_resolucion": "Rodriguez, Esteban Manuel",
+          "importe": 100.0,
+          "linea": "2025 - Competitividad Pyme",
+          "sublinea": "Tradicional",
+          "programa": "-",
+          "tipo_contragarantia": "Garantia SGR / FPG - CASFOG Serie IV (ARGENPYMES SGR)"
+        },
+        {
+          "denominacion": "2025-CR-SA-001860",
+          "razon_social": "NOVOA NORMA INES",
+          "fecha_resolucion": "2026-04-27",
+          "usuario_resolucion": "Rodriguez, Esteban Manuel",
+          "importe": 100.0,
+          "linea": "2025 - Programática",
+          "sublinea": "Programatica",
+          "programa": "Mujeres",
+          "tipo_contragarantia": "Hipoteca"
+        },
+        {
+          "denominacion": "2025-CR-SA-001776",
+          "razon_social": "ABRAHAM SCHEJ E HIJOS S.R.L.",
+          "fecha_resolucion": "2026-03-01",
+          "usuario_resolucion": "Rodriguez, Esteban Manuel",
+          "importe": 100.0,
+          "linea": "2025 - Competitividad Pyme",
+          "sublinea": "Tradicional",
+          "programa": "-",
+          "tipo_contragarantia": "Garantia SGR / FPG - Garantizar SGR"
+        },
+        {
+          "denominacion": "2025-CR-SA-001810",
+          "razon_social": "FORZA INGENIERIA SOCIEDAD POR ACCIONES SIMPLIFICADA",
+          "fecha_resolucion": "2026-03-11",
+          "usuario_resolucion": "Rodriguez, Esteban Manuel",
+          "importe": 85.0,
+          "linea": "2025 - Competitividad Pyme",
+          "sublinea": "Tradicional",
+          "programa": "-",
+          "tipo_contragarantia": "Garantia SGR / FPG - Garantizar SGR"
+        },
+        {
+          "denominacion": "2025-CR-SA-002005",
+          "razon_social": "ALIMENTACION SALUDABLE S.R.L.",
+          "fecha_resolucion": "2026-04-24",
+          "usuario_resolucion": "Rodriguez, Esteban Manuel",
+          "importe": 60.8,
+          "linea": "2025 - Programática",
+          "sublinea": "Programatica",
+          "programa": "Mujeres",
+          "tipo_contragarantia": "Garantia SGR / FPG - CASFOG Serie IV (ARGENPYMES SGR)"
+        },
+        {
+          "denominacion": "2025-CR-SA-002006",
+          "razon_social": "MAGNOLIA S.A.S.",
+          "fecha_resolucion": "2026-04-24",
+          "usuario_resolucion": "Rodriguez, Esteban Manuel",
+          "importe": 48.0,
+          "linea": "2025 - Programática",
+          "sublinea": "Programatica",
+          "programa": "Mujeres",
+          "tipo_contragarantia": "Garantia SGR / FPG - CASFOG Serie IV (ARGENPYMES SGR)"
+        },
+        {
+          "denominacion": "2025-CR-SA-001838",
+          "razon_social": "AGUIRRE MARIA ALFONSINA",
+          "fecha_resolucion": "2026-03-17",
+          "usuario_resolucion": "Rodriguez, Esteban Manuel",
+          "importe": 16.0,
+          "linea": "2025 - Programática",
+          "sublinea": "Programatica",
+          "programa": "Mujeres",
+          "tipo_contragarantia": "Prenda"
+        },
+        {
+          "denominacion": "2025-CR-SA-001811",
+          "razon_social": "NAVARRO MACARENA",
+          "fecha_resolucion": "2026-03-06",
+          "usuario_resolucion": "Rodriguez, Esteban Manuel",
+          "importe": 15.0,
+          "linea": "2025 - Programática",
+          "sublinea": "Programatica",
+          "programa": "Mujeres",
+          "tipo_contragarantia": "Garantia SGR / FPG - CASFOG Serie II (TREND SGR)"
+        },
+        {
+          "denominacion": "2025-CR-SA-001788",
+          "razon_social": "PORCEL SILVANA DE LOS ANGELES",
+          "fecha_resolucion": "2026-03-01",
+          "usuario_resolucion": "Rodriguez, Esteban Manuel",
+          "importe": 14.5,
+          "linea": "2025 - Programática",
+          "sublinea": "Programatica",
+          "programa": "Mujeres",
+          "tipo_contragarantia": "Garantia SGR / FPG - CASFOG Serie II (TREND SGR)"
+        },
+        {
+          "denominacion": "2025-CR-SA-001849",
+          "razon_social": "STEPHAN MARIA AGUSTINA",
+          "fecha_resolucion": "2026-03-17",
+          "usuario_resolucion": "Rodriguez, Esteban Manuel",
+          "importe": 11.0,
+          "linea": "2025 - Programática",
+          "sublinea": "Programatica",
+          "programa": "Mujeres",
+          "tipo_contragarantia": "Garantia SGR / FPG - CASFOG Serie II (TREND SGR)"
+        },
+        {
+          "denominacion": "2025-CR-SA-001720",
+          "razon_social": "BELTRAN GARCIA ANA NOELIA",
+          "fecha_resolucion": "2026-01-16",
+          "usuario_resolucion": "Rodriguez, Esteban Manuel",
+          "importe": 10.0,
+          "linea": "2025 - Programática",
+          "sublinea": "Programatica",
+          "programa": "Mujeres",
+          "tipo_contragarantia": "Garantia SGR / FPG - CASFOG Serie II (TREND SGR)"
+        },
+        {
+          "denominacion": "2025-CR-SA-001819",
+          "razon_social": "CASTILLO LILIANA MARCELA",
+          "fecha_resolucion": "2026-03-11",
+          "usuario_resolucion": "Rodriguez, Esteban Manuel",
+          "importe": 9.0,
+          "linea": "2025 - Programática",
+          "sublinea": "Programatica",
+          "programa": "Mujeres",
+          "tipo_contragarantia": "Garantia SGR / FPG - CASFOG Serie II (TREND SGR)"
         }
       ]
     },
