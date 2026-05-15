@@ -9,14 +9,9 @@
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body { font-family: 'Raleway', sans-serif; background: #FAFAFA; color: #1C2443; }
     .header { background: linear-gradient(90deg, #1C2443 0%, #151827 100%); padding: 20px 40px; display: flex; align-items: center; justify-content: space-between; gap: 20px; }
-    .logo-section { display: flex; align-items: center; gap: 20px; }
-    .logo-cfi { position: relative; width: 50px; height: 50px; flex-shrink: 0; }
-    .logo-circle-outer { position: absolute; width: 50px; height: 50px; border: 3px solid #00A7E1; border-radius: 50%; }
-    .logo-circle-inner { position: absolute; top: 7px; left: 7px; width: 36px; height: 36px; border: 2px solid #96C9DA; border-radius: 50%; }
-    .logo-dot-1 { position: absolute; top: 17px; left: 17px; width: 6px; height: 6px; background: #00A7E1; border-radius: 50%; }
-    .logo-dot-2 { position: absolute; top: 27px; left: 27px; width: 6px; height: 6px; background: #00A7E1; border-radius: 50%; }
-    .logo-text h1 { font-family: 'Bebas Neue', sans-serif; font-size: 32px; letter-spacing: 3px; color: #FAFAFA; line-height: 1; }
-    .logo-text p { font-size: 9px; color: #96C9DA; letter-spacing: 1px; margin-top: 2px; }
+    .logo-section { display: flex; align-items: center; gap: 18px; }
+    .logo-cfi { display: flex; align-items: center; flex-shrink: 0; }
+    .logo-cfi img { height: 52px; width: auto; display: block; object-fit: contain; }
     .header-right h2 { font-size: 16px; font-weight: 700; color: #FAFAFA; text-align: right; }
     .header-right p { font-size: 10px; color: #96C9DA; text-align: right; margin-top: 2px; }
     .container { max-width: 1440px; margin: 0 auto; padding: 30px 40px; }
@@ -170,14 +165,7 @@
   <div class="header">
     <div class="logo-section">
       <div class="logo-cfi">
-        <div class="logo-circle-outer"></div>
-        <div class="logo-circle-inner"></div>
-        <div class="logo-dot-1"></div>
-        <div class="logo-dot-2"></div>
-      </div>
-      <div class="logo-text">
-        <h1>CFI</h1>
-        <p>CONSEJO FEDERAL DE INVERSIONES</p>
+        <img src="./logo-cfi-blanco-home.png" alt="Consejo Federal de Inversiones">
       </div>
     </div>
     <div class="header-right">
@@ -615,6 +603,13 @@
     }
 
     async function requestRenderedPdf(preview, fallbackName) {
+      if (preview.pages && Array.isArray(preview.pages)) {
+        return requestPdfDownload(`${PDF_SERVICE_BASE}/render-batch`, fallbackName, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ pages: preview.pages, filename: fallbackName })
+        });
+      }
       return requestPdfDownload(`${PDF_SERVICE_BASE}/render`, fallbackName, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
