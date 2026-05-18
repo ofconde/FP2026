@@ -1,14 +1,14 @@
 {
-  "fecha_actualizacion": "2026-05-18 16:17:28",
+  "fecha_actualizacion": "2026-05-18 16:27:31",
   "total": {
-    "monto": 30120.0,
-    "creditos": 383,
-    "porcentaje": 14.1,
+    "monto": 30830.5,
+    "creditos": 391,
+    "porcentaje": 14.4,
     "meta": 214300,
-    "falta": 184180.0,
+    "falta": 183469.5,
     "meses_restantes": 7,
-    "promedio_mensual": 6024.0,
-    "necesario_por_mes": 26311.4,
+    "promedio_mensual": 6166.1,
+    "necesario_por_mes": 26209.9,
     "ritmo_ok": false,
     "ultimo_mes": 5
   },
@@ -16,11 +16,11 @@
     {
       "codigo": "BA",
       "nombre": "Buenos Aires",
-      "monto": 7456.6,
-      "cantidad": 72,
+      "monto": 7624.6,
+      "cantidad": 73,
       "meta_anual": 57000,
-      "diferencia": -49543.4,
-      "porcentaje": 13.1,
+      "diferencia": -49375.4,
+      "porcentaje": 13.4,
       "estado": "rojo",
       "icono": "🔴",
       "mensaje": "Cumplimiento anual 13%"
@@ -28,26 +28,26 @@
     {
       "codigo": "CO",
       "nombre": "Córdoba",
-      "monto": 3908.2,
-      "cantidad": 40,
+      "monto": 4101.2,
+      "cantidad": 41,
       "meta_anual": 21000,
-      "diferencia": -17091.8,
-      "porcentaje": 18.6,
+      "diferencia": -16898.8,
+      "porcentaje": 19.5,
       "estado": "rojo",
       "icono": "🔴",
-      "mensaje": "Cumplimiento anual 19%"
+      "mensaje": "Cumplimiento anual 20%"
     },
     {
       "codigo": "ER",
       "nombre": "Entre Ríos",
-      "monto": 3041.6,
-      "cantidad": 28,
+      "monto": 3141.6,
+      "cantidad": 29,
       "meta_anual": 13100,
-      "diferencia": -10058.4,
-      "porcentaje": 23.2,
+      "diferencia": -9958.4,
+      "porcentaje": 24.0,
       "estado": "rojo",
       "icono": "🔴",
-      "mensaje": "Cumplimiento anual 23%"
+      "mensaje": "Cumplimiento anual 24%"
     },
     {
       "codigo": "SF",
@@ -64,14 +64,14 @@
     {
       "codigo": "MZ",
       "nombre": "Mendoza",
-      "monto": 2133.7,
-      "cantidad": 19,
+      "monto": 2233.7,
+      "cantidad": 20,
       "meta_anual": 12000,
-      "diferencia": -9866.3,
-      "porcentaje": 17.8,
+      "diferencia": -9766.3,
+      "porcentaje": 18.6,
       "estado": "rojo",
       "icono": "🔴",
-      "mensaje": "Cumplimiento anual 18%"
+      "mensaje": "Cumplimiento anual 19%"
     },
     {
       "codigo": "TU",
@@ -100,14 +100,14 @@
     {
       "codigo": "RN",
       "nombre": "Río Negro",
-      "monto": 1269.3,
-      "cantidad": 25,
+      "monto": 1284.3,
+      "cantidad": 26,
       "meta_anual": 15000,
-      "diferencia": -13730.7,
-      "porcentaje": 8.5,
+      "diferencia": -13715.7,
+      "porcentaje": 8.6,
       "estado": "rojo",
       "icono": "🔴",
-      "mensaje": "Cumplimiento anual 8%"
+      "mensaje": "Cumplimiento anual 9%"
     },
     {
       "codigo": "SA",
@@ -160,11 +160,11 @@
     {
       "codigo": "SL",
       "nombre": "San Luis",
-      "monto": 586.9,
-      "cantidad": 14,
+      "monto": 598.9,
+      "cantidad": 15,
       "meta_anual": 6000,
-      "diferencia": -5413.1,
-      "porcentaje": 9.8,
+      "diferencia": -5401.1,
+      "porcentaje": 10.0,
       "estado": "rojo",
       "icono": "🔴",
       "mensaje": "Cumplimiento anual 10%"
@@ -196,14 +196,14 @@
     {
       "codigo": "HA",
       "nombre": "Chaco",
-      "monto": 304.4,
-      "cantidad": 11,
+      "monto": 426.9,
+      "cantidad": 13,
       "meta_anual": 4300,
-      "diferencia": -3995.6,
-      "porcentaje": 7.1,
+      "diferencia": -3873.1,
+      "porcentaje": 9.9,
       "estado": "rojo",
       "icono": "🔴",
-      "mensaje": "Cumplimiento anual 7%"
+      "mensaje": "Cumplimiento anual 10%"
     },
     {
       "codigo": "SJ",
@@ -318,18 +318,18 @@
     {
       "mes": 5,
       "nombre": "Mayo",
-      "monto": 3181.2,
-      "cantidad": 33
+      "monto": 3891.7,
+      "cantidad": 41
     }
   ],
   "detalles": [
     {
       "codigo": "BA",
       "nombre": "Buenos Aires",
-      "monto": 7456.6,
-      "cantidad": 72,
+      "monto": 7624.6,
+      "cantidad": 73,
       "meta_anual": 57000,
-      "porcentaje": 13.1,
+      "porcentaje": 13.4,
       "items": [
         {
           "denominacion": "2025-CR-BA-001867",
@@ -450,6 +450,17 @@
           "linea": "2025 - Programática",
           "sublinea": "Programatica",
           "programa": "Financiamiento Verde",
+          "tipo_contragarantia": "Garantia SGR / FPG - Garantizar SGR"
+        },
+        {
+          "denominacion": "2025-CR-BA-002066",
+          "razon_social": "UHRIG METALURGICA S.R.L.",
+          "fecha_resolucion": "2026-05-18",
+          "usuario_resolucion": "Rodriguez, Esteban Manuel",
+          "importe": 168.0,
+          "linea": "2025 - Programática",
+          "sublinea": "Programatica",
+          "programa": "Mujeres",
           "tipo_contragarantia": "Garantia SGR / FPG - Garantizar SGR"
         },
         {
@@ -1128,10 +1139,10 @@
     {
       "codigo": "CO",
       "nombre": "Córdoba",
-      "monto": 3908.2,
-      "cantidad": 40,
+      "monto": 4101.2,
+      "cantidad": 41,
       "meta_anual": 21000,
-      "porcentaje": 18.6,
+      "porcentaje": 19.5,
       "items": [
         {
           "denominacion": "2025-CR-CO-002044",
@@ -1209,6 +1220,17 @@
           "sublinea": "Programatica",
           "programa": "Financiamiento Verde",
           "tipo_contragarantia": "Garantia SGR / FPG - AFB AVALES SGR"
+        },
+        {
+          "denominacion": "2025-CR-CO-002064",
+          "razon_social": "H & A AGRO S.R.L.",
+          "fecha_resolucion": "2026-05-18",
+          "usuario_resolucion": "Rodriguez, Esteban Manuel",
+          "importe": 193.0,
+          "linea": "2025 - Triple Impacto",
+          "sublinea": "Programatica",
+          "programa": "Triple Impacto",
+          "tipo_contragarantia": "Garantia SGR / FPG - Garantizar SGR"
         },
         {
           "denominacion": "2025-CR-CO-001797",
@@ -1578,10 +1600,10 @@
     {
       "codigo": "ER",
       "nombre": "Entre Ríos",
-      "monto": 3041.6,
-      "cantidad": 28,
+      "monto": 3141.6,
+      "cantidad": 29,
       "meta_anual": 13100,
-      "porcentaje": 23.2,
+      "porcentaje": 24.0,
       "items": [
         {
           "denominacion": "2025-CR-ER-002039",
@@ -1692,6 +1714,17 @@
           "sublinea": "Programatica",
           "programa": "Mujeres",
           "tipo_contragarantia": "Garantia SGR / FPG - Garantizar SGR"
+        },
+        {
+          "denominacion": "2025-CR-ER-002054",
+          "razon_social": "ALBORNOZ MARCELO ALEJANDRO Y PEREZ LEANDRO SEBASTIAN SOCIEDAD SIMPLE",
+          "fecha_resolucion": "2026-05-18",
+          "usuario_resolucion": "Rodriguez, Esteban Manuel",
+          "importe": 100.0,
+          "linea": "2025 - Competitividad Pyme",
+          "sublinea": "Tradicional",
+          "programa": "-",
+          "tipo_contragarantia": "Garantia SGR / FPG - FOGAER S.A.P.E.M"
         },
         {
           "denominacion": "2025-CR-ER-002015",
@@ -2335,10 +2368,10 @@
     {
       "codigo": "MZ",
       "nombre": "Mendoza",
-      "monto": 2133.7,
-      "cantidad": 19,
+      "monto": 2233.7,
+      "cantidad": 20,
       "meta_anual": 12000,
-      "porcentaje": 17.8,
+      "porcentaje": 18.6,
       "items": [
         {
           "denominacion": "2025-CR-MZ-001994",
@@ -2449,6 +2482,17 @@
           "sublinea": "Programatica",
           "programa": "Riego y Eficiencia Hídrica",
           "tipo_contragarantia": "Garantia SGR / FPG - CUYO AVAL SGR"
+        },
+        {
+          "denominacion": "2025-CR-MZ-002052",
+          "razon_social": "GGGROUP S.A.S.",
+          "fecha_resolucion": "2026-05-18",
+          "usuario_resolucion": "Rodriguez, Esteban Manuel",
+          "importe": 100.0,
+          "linea": "2025 - Competitividad Pyme",
+          "sublinea": "Tradicional",
+          "programa": "Mujeres",
+          "tipo_contragarantia": "Garantia SGR / FPG - CUYO AVAL FAE Mendoza"
         },
         {
           "denominacion": "2025-CR-MZ-001702",
@@ -2992,10 +3036,10 @@
     {
       "codigo": "RN",
       "nombre": "Río Negro",
-      "monto": 1269.3,
-      "cantidad": 25,
+      "monto": 1284.3,
+      "cantidad": 26,
       "meta_anual": 15000,
-      "porcentaje": 8.5,
+      "porcentaje": 8.6,
       "items": [
         {
           "denominacion": "2025-CR-RN-001856",
@@ -3190,6 +3234,17 @@
           "fecha_resolucion": "2026-04-24",
           "usuario_resolucion": "Rodriguez, Esteban Manuel",
           "importe": 19.6,
+          "linea": "2025 - Programática",
+          "sublinea": "Programatica",
+          "programa": "Mujeres",
+          "tipo_contragarantia": "Garantia SGR / FPG - FOGARIO"
+        },
+        {
+          "denominacion": "2025-CR-RN-002071",
+          "razon_social": "DE CILLIA CLAUDIA GRACIELA",
+          "fecha_resolucion": "2026-05-18",
+          "usuario_resolucion": "Rodriguez, Esteban Manuel",
+          "importe": 15.0,
           "linea": "2025 - Programática",
           "sublinea": "Programatica",
           "programa": "Mujeres",
@@ -4010,10 +4065,10 @@
     {
       "codigo": "SL",
       "nombre": "San Luis",
-      "monto": 586.9,
-      "cantidad": 14,
+      "monto": 598.9,
+      "cantidad": 15,
       "meta_anual": 6000,
-      "porcentaje": 9.8,
+      "porcentaje": 10.0,
       "items": [
         {
           "denominacion": "2025-CR-SL-002011",
@@ -4120,6 +4175,17 @@
           "fecha_resolucion": "2026-01-26",
           "usuario_resolucion": "Rodriguez, Esteban Manuel",
           "importe": 14.0,
+          "linea": "2025 - Programática",
+          "sublinea": "Programatica",
+          "programa": "Mujeres",
+          "tipo_contragarantia": "Garantia SGR / FPG - CASFOG Serie II (TREND SGR)"
+        },
+        {
+          "denominacion": "2025-CR-SL-002069",
+          "razon_social": "BRAGAGNOLO MARIA FLORENCIA",
+          "fecha_resolucion": "2026-05-18",
+          "usuario_resolucion": "Rodriguez, Esteban Manuel",
+          "importe": 12.0,
           "linea": "2025 - Programática",
           "sublinea": "Programatica",
           "programa": "Mujeres",
@@ -4414,11 +4480,22 @@
     {
       "codigo": "HA",
       "nombre": "Chaco",
-      "monto": 304.4,
-      "cantidad": 11,
+      "monto": 426.9,
+      "cantidad": 13,
       "meta_anual": 4300,
-      "porcentaje": 7.1,
+      "porcentaje": 9.9,
       "items": [
+        {
+          "denominacion": "2025-CR-CH-002059",
+          "razon_social": "MONTE S.R.L.",
+          "fecha_resolucion": "2026-05-18",
+          "usuario_resolucion": "Rodriguez, Esteban Manuel",
+          "importe": 92.5,
+          "linea": "2025 - Competitividad Pyme",
+          "sublinea": "Tradicional",
+          "programa": "-",
+          "tipo_contragarantia": "Garantia SGR / FPG - FOGACH"
+        },
         {
           "denominacion": "2025-CR-CH-001809",
           "razon_social": "VIENTOS DEL CAMINO S.A.",
@@ -4447,6 +4524,17 @@
           "fecha_resolucion": "2026-03-19",
           "usuario_resolucion": "Rodriguez, Esteban Manuel",
           "importe": 47.5,
+          "linea": "2025 - Programática",
+          "sublinea": "Programatica",
+          "programa": "Mujeres",
+          "tipo_contragarantia": "Garantia SGR / FPG - FOGACH"
+        },
+        {
+          "denominacion": "2025-CR-CH-002070",
+          "razon_social": "MAVIAMA S.A.",
+          "fecha_resolucion": "2026-05-18",
+          "usuario_resolucion": "Rodriguez, Esteban Manuel",
+          "importe": 30.0,
           "linea": "2025 - Programática",
           "sublinea": "Programatica",
           "programa": "Mujeres",
