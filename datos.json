@@ -1,5 +1,5 @@
 {
-  "fecha_actualizacion": "2026-05-19 10:08:22",
+  "fecha_actualizacion": "2026-05-19 10:39:39",
   "total": {
     "monto": 30830.5,
     "creditos": 391,
@@ -2722,7 +2722,7 @@
           "linea": "2025 - Competitividad Pyme",
           "sublinea": "Tradicional",
           "programa": "-",
-          "tipo_contragarantia": "Prenda, Fianza"
+          "tipo_contragarantia": "Prenda, Prenda, Fianza"
         },
         {
           "denominacion": "2025-CR-TU-001796",
