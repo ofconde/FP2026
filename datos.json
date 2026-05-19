@@ -1,14 +1,14 @@
 {
-  "fecha_actualizacion": "2026-05-19 16:41:38",
+  "fecha_actualizacion": "2026-05-19 16:51:42",
   "total": {
-    "monto": 30830.5,
-    "creditos": 391,
+    "monto": 30930.5,
+    "creditos": 392,
     "porcentaje": 14.4,
     "meta": 214300,
-    "falta": 183469.5,
+    "falta": 183369.5,
     "meses_restantes": 7,
-    "promedio_mensual": 6166.1,
-    "necesario_por_mes": 26209.9,
+    "promedio_mensual": 6186.1,
+    "necesario_por_mes": 26195.6,
     "ritmo_ok": false,
     "ultimo_mes": 5
   },
@@ -76,14 +76,14 @@
     {
       "codigo": "TU",
       "nombre": "Tucumán",
-      "monto": 1425.0,
-      "cantidad": 12,
+      "monto": 1525.0,
+      "cantidad": 13,
       "meta_anual": 4300,
-      "diferencia": -2875.0,
-      "porcentaje": 33.1,
+      "diferencia": -2775.0,
+      "porcentaje": 35.5,
       "estado": "rojo",
       "icono": "🔴",
-      "mensaje": "Cumplimiento anual 33%"
+      "mensaje": "Cumplimiento anual 35%"
     },
     {
       "codigo": "MI",
@@ -318,8 +318,8 @@
     {
       "mes": 5,
       "nombre": "Mayo",
-      "monto": 3891.7,
-      "cantidad": 41
+      "monto": 3991.7,
+      "cantidad": 42
     }
   ],
   "detalles": [
@@ -2598,10 +2598,10 @@
     {
       "codigo": "TU",
       "nombre": "Tucumán",
-      "monto": 1425.0,
-      "cantidad": 12,
+      "monto": 1525.0,
+      "cantidad": 13,
       "meta_anual": 4300,
-      "porcentaje": 33.1,
+      "porcentaje": 35.5,
       "items": [
         {
           "denominacion": "2025-CR-TU-002019",
@@ -2667,6 +2667,17 @@
           "linea": "2025 - Programática",
           "sublinea": "Programatica",
           "programa": "Financiamiento Verde",
+          "tipo_contragarantia": "Garantia SGR / FPG - Garantizar SGR"
+        },
+        {
+          "denominacion": "2025-CR-TU-002072",
+          "razon_social": "AGRO ENERGIA S.A.",
+          "fecha_resolucion": "2026-05-19",
+          "usuario_resolucion": "Rodriguez, Esteban Manuel",
+          "importe": 100.0,
+          "linea": "2025 - Competitividad Pyme",
+          "sublinea": "Tradicional",
+          "programa": "-",
           "tipo_contragarantia": "Garantia SGR / FPG - Garantizar SGR"
         },
         {
