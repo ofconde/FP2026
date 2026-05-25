@@ -1,14 +1,14 @@
 {
-  "fecha_actualizacion": "2026-05-19 17:41:58",
+  "fecha_actualizacion": "2026-05-25 15:18:13",
   "total": {
-    "monto": 30930.5,
-    "creditos": 392,
-    "porcentaje": 14.4,
+    "monto": 31081.7,
+    "creditos": 397,
+    "porcentaje": 14.5,
     "meta": 214300,
-    "falta": 183369.5,
+    "falta": 183218.3,
     "meses_restantes": 7,
-    "promedio_mensual": 6186.1,
-    "necesario_por_mes": 26195.6,
+    "promedio_mensual": 6216.3,
+    "necesario_por_mes": 26174.0,
     "ritmo_ok": false,
     "ultimo_mes": 5
   },
@@ -16,23 +16,23 @@
     {
       "codigo": "BA",
       "nombre": "Buenos Aires",
-      "monto": 7624.6,
-      "cantidad": 73,
+      "monto": 7729.8,
+      "cantidad": 75,
       "meta_anual": 57000,
-      "diferencia": -49375.4,
-      "porcentaje": 13.4,
+      "diferencia": -49270.2,
+      "porcentaje": 13.6,
       "estado": "rojo",
       "icono": "🔴",
-      "mensaje": "Cumplimiento anual 13%"
+      "mensaje": "Cumplimiento anual 14%"
     },
     {
       "codigo": "CO",
       "nombre": "Córdoba",
-      "monto": 4101.2,
-      "cantidad": 41,
+      "monto": 4141.3,
+      "cantidad": 43,
       "meta_anual": 21000,
-      "diferencia": -16898.8,
-      "porcentaje": 19.5,
+      "diferencia": -16858.7,
+      "porcentaje": 19.7,
       "estado": "rojo",
       "icono": "🔴",
       "mensaje": "Cumplimiento anual 20%"
@@ -124,11 +124,11 @@
     {
       "codigo": "CT",
       "nombre": "Corrientes",
-      "monto": 952.1,
-      "cantidad": 27,
+      "monto": 958.1,
+      "cantidad": 28,
       "meta_anual": 10000,
-      "diferencia": -9047.9,
-      "porcentaje": 9.5,
+      "diferencia": -9041.9,
+      "porcentaje": 9.6,
       "estado": "rojo",
       "icono": "🔴",
       "mensaje": "Cumplimiento anual 10%"
@@ -318,18 +318,18 @@
     {
       "mes": 5,
       "nombre": "Mayo",
-      "monto": 3991.7,
-      "cantidad": 42
+      "monto": 4142.9,
+      "cantidad": 47
     }
   ],
   "detalles": [
     {
       "codigo": "BA",
       "nombre": "Buenos Aires",
-      "monto": 7624.6,
-      "cantidad": 73,
+      "monto": 7729.8,
+      "cantidad": 75,
       "meta_anual": 57000,
-      "porcentaje": 13.4,
+      "porcentaje": 13.6,
       "items": [
         {
           "denominacion": "2025-CR-BA-001867",
@@ -816,6 +816,17 @@
           "tipo_contragarantia": "Garantia SGR / FPG - FO.GA.BA"
         },
         {
+          "denominacion": "2025-CR-BA-002085",
+          "razon_social": "DESSOL INDUSTRIAL S.A.",
+          "fecha_resolucion": "2026-05-22",
+          "usuario_resolucion": "Rodriguez, Esteban Manuel",
+          "importe": 88.7,
+          "linea": "2025 - Competitividad Pyme",
+          "sublinea": "Tradicional",
+          "programa": "-",
+          "tipo_contragarantia": "Garantia SGR / FPG - CASFOG Serie IV (ARGENPYMES SGR)"
+        },
+        {
           "denominacion": "2025-CR-BA-001722",
           "razon_social": "SOLUCIONES ELECTRICAS AVANZADAS S.R.L.",
           "fecha_resolucion": "2026-01-16",
@@ -1091,6 +1102,17 @@
           "tipo_contragarantia": "Garantia SGR / FPG - FO.GA.BA"
         },
         {
+          "denominacion": "2025-CR-BA-002084",
+          "razon_social": "CAMBARERI HERNAN LUIS",
+          "fecha_resolucion": "2026-05-22",
+          "usuario_resolucion": "Rodriguez, Esteban Manuel",
+          "importe": 16.5,
+          "linea": "2025 - Programática",
+          "sublinea": "Programatica",
+          "programa": "Financiamiento Verde",
+          "tipo_contragarantia": "Garantia SGR / FPG - FO.GA.BA"
+        },
+        {
           "denominacion": "2025-CR-BA-001793",
           "razon_social": "LLAFAR JOSE MARIA",
           "fecha_resolucion": "2026-03-01",
@@ -1139,10 +1161,10 @@
     {
       "codigo": "CO",
       "nombre": "Córdoba",
-      "monto": 4101.2,
-      "cantidad": 41,
+      "monto": 4141.3,
+      "cantidad": 43,
       "meta_anual": 21000,
-      "porcentaje": 19.5,
+      "porcentaje": 19.7,
       "items": [
         {
           "denominacion": "2025-CR-CO-002044",
@@ -1464,6 +1486,17 @@
           "tipo_contragarantia": "Garantia SGR / FPG - Garantizar SGR"
         },
         {
+          "denominacion": "2025-CR-CO-002083",
+          "razon_social": "ACEITE PRINCIPITO S.A.",
+          "fecha_resolucion": "2026-05-22",
+          "usuario_resolucion": "Rodriguez, Esteban Manuel",
+          "importe": 40.0,
+          "linea": "2025 - Programática",
+          "sublinea": "Programatica",
+          "programa": "Mujeres",
+          "tipo_contragarantia": "Garantia SGR / FPG - NEUQUEN PYMES SGR"
+        },
+        {
           "denominacion": "2025-CR-CO-001814",
           "razon_social": "LA NUEVA ESPERANZA SOCIEDAD CIVIL",
           "fecha_resolucion": "2026-03-06",
@@ -1594,6 +1627,17 @@
           "sublinea": "Programatica",
           "programa": "Financiamiento Verde",
           "tipo_contragarantia": "Garantia SGR / FPG - Garantizar SGR"
+        },
+        {
+          "denominacion": "2002-CR-CO-002037",
+          "razon_social": "INFAS S.R.L.",
+          "fecha_resolucion": "2026-05-22",
+          "usuario_resolucion": "Rodriguez, Esteban Manuel",
+          "importe": 0.0,
+          "linea": "2002 - Producción Regional Exportable",
+          "sublinea": "Tradicional",
+          "programa": "Prefinanciación de Exportaciones",
+          "tipo_contragarantia": "Fianza"
         }
       ]
     },
@@ -3529,10 +3573,10 @@
     {
       "codigo": "CT",
       "nombre": "Corrientes",
-      "monto": 952.1,
-      "cantidad": 27,
+      "monto": 958.1,
+      "cantidad": 28,
       "meta_anual": 10000,
-      "porcentaje": 9.5,
+      "porcentaje": 9.6,
       "items": [
         {
           "denominacion": "2025-CR-CT-001843",
@@ -3807,6 +3851,17 @@
           "linea": "2025 - Competitividad Pyme",
           "sublinea": "Tradicional",
           "programa": "-",
+          "tipo_contragarantia": "Fianza"
+        },
+        {
+          "denominacion": "2025-CR-CT-002087",
+          "razon_social": "BONDARUK IVANNA STEFANIA",
+          "fecha_resolucion": "2026-05-22",
+          "usuario_resolucion": "Rodriguez, Esteban Manuel",
+          "importe": 6.0,
+          "linea": "2025 - Programática",
+          "sublinea": "Programatica",
+          "programa": "Mujeres",
           "tipo_contragarantia": "Fianza"
         },
         {
