@@ -1,14 +1,14 @@
 {
-  "fecha_actualizacion": "2026-05-27 17:39:13",
+  "fecha_actualizacion": "2026-05-27 17:49:17",
   "total": {
-    "monto": 31438.5,
-    "creditos": 403,
+    "monto": 31442.5,
+    "creditos": 404,
     "porcentaje": 14.7,
     "meta": 214300,
-    "falta": 182861.5,
+    "falta": 182857.5,
     "meses_restantes": 7,
-    "promedio_mensual": 6287.7,
-    "necesario_por_mes": 26123.1,
+    "promedio_mensual": 6288.5,
+    "necesario_por_mes": 26122.5,
     "ritmo_ok": false,
     "ultimo_mes": 5
   },
@@ -88,11 +88,11 @@
     {
       "codigo": "MI",
       "nombre": "Misiones",
-      "monto": 1364.1,
-      "cantidad": 26,
+      "monto": 1368.1,
+      "cantidad": 27,
       "meta_anual": 4500,
-      "diferencia": -3135.9,
-      "porcentaje": 30.3,
+      "diferencia": -3131.9,
+      "porcentaje": 30.4,
       "estado": "rojo",
       "icono": "🔴",
       "mensaje": "Cumplimiento anual 30%"
@@ -318,8 +318,8 @@
     {
       "mes": 5,
       "nombre": "Mayo",
-      "monto": 4499.7,
-      "cantidad": 53
+      "monto": 4503.7,
+      "cantidad": 54
     }
   ],
   "detalles": [
@@ -2828,10 +2828,10 @@
     {
       "codigo": "MI",
       "nombre": "Misiones",
-      "monto": 1364.1,
-      "cantidad": 26,
+      "monto": 1368.1,
+      "cantidad": 27,
       "meta_anual": 4500,
-      "porcentaje": 30.3,
+      "porcentaje": 30.4,
       "items": [
         {
           "denominacion": "2025-CR-MI-001812",
@@ -3118,6 +3118,17 @@
           "sublinea": "Programatica",
           "programa": "Mujeres",
           "tipo_contragarantia": "Garantia SGR / FPG - CASFOG Serie II (TREND SGR)"
+        },
+        {
+          "denominacion": "2025-CR-MI-002061",
+          "razon_social": "SOSA MYRIAM PATRICIA",
+          "fecha_resolucion": "2026-05-27",
+          "usuario_resolucion": "Rodriguez, Esteban Manuel",
+          "importe": 4.0,
+          "linea": "2025 - Programática",
+          "sublinea": "Programatica",
+          "programa": "Mujeres",
+          "tipo_contragarantia": "Fianza"
         }
       ]
     },
