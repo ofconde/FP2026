@@ -1,5 +1,5 @@
 {
-  "fecha_actualizacion": "2026-06-26 12:04:54",
+  "fecha_actualizacion": "2026-06-26 13:11:47",
   "total": {
     "monto": 43008.3,
     "creditos": 527,
@@ -10,7 +10,14 @@
     "promedio_mensual": 7168.1,
     "necesario_por_mes": 24470.2,
     "ritmo_ok": false,
-    "ultimo_mes": 6
+    "ultimo_mes": 6,
+    "meta_cuatrimestral": 80066.7,
+    "monto_cuatrimestral": 0.0,
+    "creditos_cuatrimestral": 0,
+    "porcentaje_cuatrimestral": 0.0,
+    "cuatrimestre_iniciado": false,
+    "cuatrimestre_desde": "2026-07-01",
+    "cuatrimestre_hasta": "2026-10-31"
   },
   "provincias": [
     {
@@ -23,7 +30,14 @@
       "porcentaje": 16.8,
       "estado": "rojo",
       "icono": "🔴",
-      "mensaje": "Cumplimiento anual 17%"
+      "mensaje": "Cumplimiento anual 17%",
+      "meta_cuatrimestral": 19333.3,
+      "monto_cuatrimestral": 0.0,
+      "cantidad_cuatrimestral": 0,
+      "porcentaje_cuatrimestral": 0.0,
+      "estado_cuatrimestral": "gris",
+      "icono_cuatrimestral": "⚫",
+      "mensaje_cuatrimestral": "Período inicia el 01/07"
     },
     {
       "codigo": "CO",
@@ -35,7 +49,14 @@
       "porcentaje": 25.9,
       "estado": "rojo",
       "icono": "🔴",
-      "mensaje": "Cumplimiento anual 26%"
+      "mensaje": "Cumplimiento anual 26%",
+      "meta_cuatrimestral": 7333.3,
+      "monto_cuatrimestral": 0.0,
+      "cantidad_cuatrimestral": 0,
+      "porcentaje_cuatrimestral": 0.0,
+      "estado_cuatrimestral": "gris",
+      "icono_cuatrimestral": "⚫",
+      "mensaje_cuatrimestral": "Período inicia el 01/07"
     },
     {
       "codigo": "SF",
@@ -47,7 +68,14 @@
       "porcentaje": 18.8,
       "estado": "rojo",
       "icono": "🔴",
-      "mensaje": "Cumplimiento anual 19%"
+      "mensaje": "Cumplimiento anual 19%",
+      "meta_cuatrimestral": 7333.3,
+      "monto_cuatrimestral": 0.0,
+      "cantidad_cuatrimestral": 0,
+      "porcentaje_cuatrimestral": 0.0,
+      "estado_cuatrimestral": "gris",
+      "icono_cuatrimestral": "⚫",
+      "mensaje_cuatrimestral": "Período inicia el 01/07"
     },
     {
       "codigo": "ER",
@@ -59,7 +87,14 @@
       "porcentaje": 40.7,
       "estado": "amarillo",
       "icono": "🟡",
-      "mensaje": "Cumplimiento anual 41%"
+      "mensaje": "Cumplimiento anual 41%",
+      "meta_cuatrimestral": 6666.7,
+      "monto_cuatrimestral": 0.0,
+      "cantidad_cuatrimestral": 0,
+      "porcentaje_cuatrimestral": 0.0,
+      "estado_cuatrimestral": "gris",
+      "icono_cuatrimestral": "⚫",
+      "mensaje_cuatrimestral": "Período inicia el 01/07"
     },
     {
       "codigo": "MZ",
@@ -71,7 +106,14 @@
       "porcentaje": 26.1,
       "estado": "rojo",
       "icono": "🔴",
-      "mensaje": "Cumplimiento anual 26%"
+      "mensaje": "Cumplimiento anual 26%",
+      "meta_cuatrimestral": 4000.0,
+      "monto_cuatrimestral": 0.0,
+      "cantidad_cuatrimestral": 0,
+      "porcentaje_cuatrimestral": 0.0,
+      "estado_cuatrimestral": "gris",
+      "icono_cuatrimestral": "⚫",
+      "mensaje_cuatrimestral": "Período inicia el 01/07"
     },
     {
       "codigo": "TU",
@@ -83,7 +125,14 @@
       "porcentaje": 40.1,
       "estado": "amarillo",
       "icono": "🟡",
-      "mensaje": "Cumplimiento anual 40%"
+      "mensaje": "Cumplimiento anual 40%",
+      "meta_cuatrimestral": 1500.0,
+      "monto_cuatrimestral": 0.0,
+      "cantidad_cuatrimestral": 0,
+      "porcentaje_cuatrimestral": 0.0,
+      "estado_cuatrimestral": "gris",
+      "icono_cuatrimestral": "⚫",
+      "mensaje_cuatrimestral": "Período inicia el 01/07"
     },
     {
       "codigo": "MI",
@@ -95,7 +144,14 @@
       "porcentaje": 46.5,
       "estado": "amarillo",
       "icono": "🟡",
-      "mensaje": "Cumplimiento anual 46%"
+      "mensaje": "Cumplimiento anual 46%",
+      "meta_cuatrimestral": 1833.3,
+      "monto_cuatrimestral": 0.0,
+      "cantidad_cuatrimestral": 0,
+      "porcentaje_cuatrimestral": 0.0,
+      "estado_cuatrimestral": "gris",
+      "icono_cuatrimestral": "⚫",
+      "mensaje_cuatrimestral": "Período inicia el 01/07"
     },
     {
       "codigo": "RN",
@@ -107,7 +163,14 @@
       "porcentaje": 9.9,
       "estado": "rojo",
       "icono": "🔴",
-      "mensaje": "Cumplimiento anual 10%"
+      "mensaje": "Cumplimiento anual 10%",
+      "meta_cuatrimestral": 5000.0,
+      "monto_cuatrimestral": 0.0,
+      "cantidad_cuatrimestral": 0,
+      "porcentaje_cuatrimestral": 0.0,
+      "estado_cuatrimestral": "gris",
+      "icono_cuatrimestral": "⚫",
+      "mensaje_cuatrimestral": "Período inicia el 01/07"
     },
     {
       "codigo": "SA",
@@ -119,7 +182,14 @@
       "porcentaje": 51.0,
       "estado": "amarillo",
       "icono": "🟡",
-      "mensaje": "Cumplimiento anual 51%"
+      "mensaje": "Cumplimiento anual 51%",
+      "meta_cuatrimestral": 1333.3,
+      "monto_cuatrimestral": 0.0,
+      "cantidad_cuatrimestral": 0,
+      "porcentaje_cuatrimestral": 0.0,
+      "estado_cuatrimestral": "gris",
+      "icono_cuatrimestral": "⚫",
+      "mensaje_cuatrimestral": "Período inicia el 01/07"
     },
     {
       "codigo": "NQ",
@@ -131,7 +201,14 @@
       "porcentaje": 11.2,
       "estado": "rojo",
       "icono": "🔴",
-      "mensaje": "Cumplimiento anual 11%"
+      "mensaje": "Cumplimiento anual 11%",
+      "meta_cuatrimestral": 3033.3,
+      "monto_cuatrimestral": 0.0,
+      "cantidad_cuatrimestral": 0,
+      "porcentaje_cuatrimestral": 0.0,
+      "estado_cuatrimestral": "gris",
+      "icono_cuatrimestral": "⚫",
+      "mensaje_cuatrimestral": "Período inicia el 01/07"
     },
     {
       "codigo": "CT",
@@ -143,7 +220,14 @@
       "porcentaje": 12.5,
       "estado": "rojo",
       "icono": "🔴",
-      "mensaje": "Cumplimiento anual 12%"
+      "mensaje": "Cumplimiento anual 12%",
+      "meta_cuatrimestral": 5000.0,
+      "monto_cuatrimestral": 0.0,
+      "cantidad_cuatrimestral": 0,
+      "porcentaje_cuatrimestral": 0.0,
+      "estado_cuatrimestral": "gris",
+      "icono_cuatrimestral": "⚫",
+      "mensaje_cuatrimestral": "Período inicia el 01/07"
     },
     {
       "codigo": "JU",
@@ -155,7 +239,14 @@
       "porcentaje": 23.1,
       "estado": "rojo",
       "icono": "🔴",
-      "mensaje": "Cumplimiento anual 23%"
+      "mensaje": "Cumplimiento anual 23%",
+      "meta_cuatrimestral": 1333.3,
+      "monto_cuatrimestral": 0.0,
+      "cantidad_cuatrimestral": 0,
+      "porcentaje_cuatrimestral": 0.0,
+      "estado_cuatrimestral": "gris",
+      "icono_cuatrimestral": "⚫",
+      "mensaje_cuatrimestral": "Período inicia el 01/07"
     },
     {
       "codigo": "SL",
@@ -167,7 +258,14 @@
       "porcentaje": 15.5,
       "estado": "rojo",
       "icono": "🔴",
-      "mensaje": "Cumplimiento anual 16%"
+      "mensaje": "Cumplimiento anual 16%",
+      "meta_cuatrimestral": 2000.0,
+      "monto_cuatrimestral": 0.0,
+      "cantidad_cuatrimestral": 0,
+      "porcentaje_cuatrimestral": 0.0,
+      "estado_cuatrimestral": "gris",
+      "icono_cuatrimestral": "⚫",
+      "mensaje_cuatrimestral": "Período inicia el 01/07"
     },
     {
       "codigo": "LR",
@@ -179,7 +277,14 @@
       "porcentaje": 14.7,
       "estado": "rojo",
       "icono": "🔴",
-      "mensaje": "Cumplimiento anual 15%"
+      "mensaje": "Cumplimiento anual 15%",
+      "meta_cuatrimestral": 2000.0,
+      "monto_cuatrimestral": 0.0,
+      "cantidad_cuatrimestral": 0,
+      "porcentaje_cuatrimestral": 0.0,
+      "estado_cuatrimestral": "gris",
+      "icono_cuatrimestral": "⚫",
+      "mensaje_cuatrimestral": "Período inicia el 01/07"
     },
     {
       "codigo": "LP",
@@ -191,7 +296,14 @@
       "porcentaje": 19.4,
       "estado": "rojo",
       "icono": "🔴",
-      "mensaje": "Cumplimiento anual 19%"
+      "mensaje": "Cumplimiento anual 19%",
+      "meta_cuatrimestral": 1500.0,
+      "monto_cuatrimestral": 0.0,
+      "cantidad_cuatrimestral": 0,
+      "porcentaje_cuatrimestral": 0.0,
+      "estado_cuatrimestral": "gris",
+      "icono_cuatrimestral": "⚫",
+      "mensaje_cuatrimestral": "Período inicia el 01/07"
     },
     {
       "codigo": "CH",
@@ -203,7 +315,14 @@
       "porcentaje": 24.3,
       "estado": "rojo",
       "icono": "🔴",
-      "mensaje": "Cumplimiento anual 24%"
+      "mensaje": "Cumplimiento anual 24%",
+      "meta_cuatrimestral": 1433.3,
+      "monto_cuatrimestral": 0.0,
+      "cantidad_cuatrimestral": 0,
+      "porcentaje_cuatrimestral": 0.0,
+      "estado_cuatrimestral": "gris",
+      "icono_cuatrimestral": "⚫",
+      "mensaje_cuatrimestral": "Período inicia el 01/07"
     },
     {
       "codigo": "SJ",
@@ -215,7 +334,14 @@
       "porcentaje": 7.9,
       "estado": "rojo",
       "icono": "🔴",
-      "mensaje": "Cumplimiento anual 8%"
+      "mensaje": "Cumplimiento anual 8%",
+      "meta_cuatrimestral": 1333.3,
+      "monto_cuatrimestral": 0.0,
+      "cantidad_cuatrimestral": 0,
+      "porcentaje_cuatrimestral": 0.0,
+      "estado_cuatrimestral": "gris",
+      "icono_cuatrimestral": "⚫",
+      "mensaje_cuatrimestral": "Período inicia el 01/07"
     },
     {
       "codigo": "TF",
@@ -227,7 +353,14 @@
       "porcentaje": 4.9,
       "estado": "rojo",
       "icono": "🔴",
-      "mensaje": "Cumplimiento anual 5%"
+      "mensaje": "Cumplimiento anual 5%",
+      "meta_cuatrimestral": 1333.3,
+      "monto_cuatrimestral": 0.0,
+      "cantidad_cuatrimestral": 0,
+      "porcentaje_cuatrimestral": 0.0,
+      "estado_cuatrimestral": "gris",
+      "icono_cuatrimestral": "⚫",
+      "mensaje_cuatrimestral": "Período inicia el 01/07"
     },
     {
       "codigo": "CB",
@@ -239,7 +372,14 @@
       "porcentaje": 6.1,
       "estado": "rojo",
       "icono": "🔴",
-      "mensaje": "Cumplimiento anual 6%"
+      "mensaje": "Cumplimiento anual 6%",
+      "meta_cuatrimestral": 1333.3,
+      "monto_cuatrimestral": 0.0,
+      "cantidad_cuatrimestral": 0,
+      "porcentaje_cuatrimestral": 0.0,
+      "estado_cuatrimestral": "gris",
+      "icono_cuatrimestral": "⚫",
+      "mensaje_cuatrimestral": "Período inicia el 01/07"
     },
     {
       "codigo": "CA",
@@ -251,7 +391,14 @@
       "porcentaje": 13.0,
       "estado": "rojo",
       "icono": "🔴",
-      "mensaje": "Cumplimiento anual 13%"
+      "mensaje": "Cumplimiento anual 13%",
+      "meta_cuatrimestral": 1333.3,
+      "monto_cuatrimestral": 0.0,
+      "cantidad_cuatrimestral": 0,
+      "porcentaje_cuatrimestral": 0.0,
+      "estado_cuatrimestral": "gris",
+      "icono_cuatrimestral": "⚫",
+      "mensaje_cuatrimestral": "Período inicia el 01/07"
     },
     {
       "codigo": "SE",
@@ -263,7 +410,14 @@
       "porcentaje": 7.7,
       "estado": "rojo",
       "icono": "🔴",
-      "mensaje": "Cumplimiento anual 8%"
+      "mensaje": "Cumplimiento anual 8%",
+      "meta_cuatrimestral": 3333.3,
+      "monto_cuatrimestral": 0.0,
+      "cantidad_cuatrimestral": 0,
+      "porcentaje_cuatrimestral": 0.0,
+      "estado_cuatrimestral": "gris",
+      "icono_cuatrimestral": "⚫",
+      "mensaje_cuatrimestral": "Período inicia el 01/07"
     },
     {
       "codigo": "FO",
@@ -275,7 +429,14 @@
       "porcentaje": 3.0,
       "estado": "rojo",
       "icono": "🔴",
-      "mensaje": "Cumplimiento anual 3%"
+      "mensaje": "Cumplimiento anual 3%",
+      "meta_cuatrimestral": 333.3,
+      "monto_cuatrimestral": 0.0,
+      "cantidad_cuatrimestral": 0,
+      "porcentaje_cuatrimestral": 0.0,
+      "estado_cuatrimestral": "gris",
+      "icono_cuatrimestral": "⚫",
+      "mensaje_cuatrimestral": "Período inicia el 01/07"
     },
     {
       "codigo": "SC",
@@ -287,7 +448,14 @@
       "porcentaje": 0.0,
       "estado": "rojo",
       "icono": "🔴",
-      "mensaje": "Cumplimiento anual 0%"
+      "mensaje": "Cumplimiento anual 0%",
+      "meta_cuatrimestral": 433.3,
+      "monto_cuatrimestral": 0.0,
+      "cantidad_cuatrimestral": 0,
+      "porcentaje_cuatrimestral": 0.0,
+      "estado_cuatrimestral": "gris",
+      "icono_cuatrimestral": "⚫",
+      "mensaje_cuatrimestral": "Período inicia el 01/07"
     }
   ],
   "evolucion": [
@@ -336,6 +504,12 @@
       "cantidad": 89,
       "meta_anual": 57000.0,
       "porcentaje": 16.8,
+      "meta_cuatrimestral": 19333.3,
+      "monto_cuatrimestral": 0.0,
+      "cantidad_cuatrimestral": 0,
+      "porcentaje_cuatrimestral": 0.0,
+      "estado_cuatrimestral": "gris",
+      "mensaje_cuatrimestral": "Período inicia el 01/07",
       "items": [
         {
           "denominacion": "2025-CR-BA-002205",
@@ -1325,6 +1499,12 @@
       "cantidad": 50,
       "meta_anual": 21000.0,
       "porcentaje": 25.9,
+      "meta_cuatrimestral": 7333.3,
+      "monto_cuatrimestral": 0.0,
+      "cantidad_cuatrimestral": 0,
+      "porcentaje_cuatrimestral": 0.0,
+      "estado_cuatrimestral": "gris",
+      "mensaje_cuatrimestral": "Período inicia el 01/07",
       "items": [
         {
           "denominacion": "2025-CR-CO-002184",
@@ -1885,6 +2065,12 @@
       "cantidad": 51,
       "meta_anual": 22000.0,
       "porcentaje": 18.8,
+      "meta_cuatrimestral": 7333.3,
+      "monto_cuatrimestral": 0.0,
+      "cantidad_cuatrimestral": 0,
+      "porcentaje_cuatrimestral": 0.0,
+      "estado_cuatrimestral": "gris",
+      "mensaje_cuatrimestral": "Período inicia el 01/07",
       "items": [
         {
           "denominacion": "2025-CR-SF-002217",
@@ -2456,6 +2642,12 @@
       "cantidad": 44,
       "meta_anual": 13100.0,
       "porcentaje": 40.7,
+      "meta_cuatrimestral": 6666.7,
+      "monto_cuatrimestral": 0.0,
+      "cantidad_cuatrimestral": 0,
+      "porcentaje_cuatrimestral": 0.0,
+      "estado_cuatrimestral": "gris",
+      "mensaje_cuatrimestral": "Período inicia el 01/07",
       "items": [
         {
           "denominacion": "2025-CR-ER-002198",
@@ -2950,6 +3142,12 @@
       "cantidad": 29,
       "meta_anual": 12000.0,
       "porcentaje": 26.1,
+      "meta_cuatrimestral": 4000.0,
+      "monto_cuatrimestral": 0.0,
+      "cantidad_cuatrimestral": 0,
+      "porcentaje_cuatrimestral": 0.0,
+      "estado_cuatrimestral": "gris",
+      "mensaje_cuatrimestral": "Período inicia el 01/07",
       "items": [
         {
           "denominacion": "2025-CR-MZ-002175",
@@ -3279,6 +3477,12 @@
       "cantidad": 14,
       "meta_anual": 4300.0,
       "porcentaje": 40.1,
+      "meta_cuatrimestral": 1500.0,
+      "monto_cuatrimestral": 0.0,
+      "cantidad_cuatrimestral": 0,
+      "porcentaje_cuatrimestral": 0.0,
+      "estado_cuatrimestral": "gris",
+      "mensaje_cuatrimestral": "Período inicia el 01/07",
       "items": [
         {
           "denominacion": "2025-CR-TU-002209",
@@ -3443,6 +3647,12 @@
       "cantidad": 34,
       "meta_anual": 4500.0,
       "porcentaje": 46.5,
+      "meta_cuatrimestral": 1833.3,
+      "monto_cuatrimestral": 0.0,
+      "cantidad_cuatrimestral": 0,
+      "porcentaje_cuatrimestral": 0.0,
+      "estado_cuatrimestral": "gris",
+      "mensaje_cuatrimestral": "Período inicia el 01/07",
       "items": [
         {
           "denominacion": "2025-CR-MI-002160",
@@ -3827,6 +4037,12 @@
       "cantidad": 31,
       "meta_anual": 15000.0,
       "porcentaje": 9.9,
+      "meta_cuatrimestral": 5000.0,
+      "monto_cuatrimestral": 0.0,
+      "cantidad_cuatrimestral": 0,
+      "porcentaje_cuatrimestral": 0.0,
+      "estado_cuatrimestral": "gris",
+      "mensaje_cuatrimestral": "Período inicia el 01/07",
       "items": [
         {
           "denominacion": "2025-CR-RN-002192",
@@ -4178,6 +4394,12 @@
       "cantidad": 23,
       "meta_anual": 4100.0,
       "porcentaje": 51.0,
+      "meta_cuatrimestral": 1333.3,
+      "monto_cuatrimestral": 0.0,
+      "cantidad_cuatrimestral": 0,
+      "porcentaje_cuatrimestral": 0.0,
+      "estado_cuatrimestral": "gris",
+      "mensaje_cuatrimestral": "Período inicia el 01/07",
       "items": [
         {
           "denominacion": "2025-CR-SA-002159",
@@ -4441,6 +4663,12 @@
       "cantidad": 10,
       "meta_anual": 9100.0,
       "porcentaje": 11.2,
+      "meta_cuatrimestral": 3033.3,
+      "monto_cuatrimestral": 0.0,
+      "cantidad_cuatrimestral": 0,
+      "porcentaje_cuatrimestral": 0.0,
+      "estado_cuatrimestral": "gris",
+      "mensaje_cuatrimestral": "Período inicia el 01/07",
       "items": [
         {
           "denominacion": "2025-CR-NQ-002211",
@@ -4561,6 +4789,12 @@
       "cantidad": 40,
       "meta_anual": 10000.0,
       "porcentaje": 12.5,
+      "meta_cuatrimestral": 5000.0,
+      "monto_cuatrimestral": 0.0,
+      "cantidad_cuatrimestral": 0,
+      "porcentaje_cuatrimestral": 0.0,
+      "estado_cuatrimestral": "gris",
+      "mensaje_cuatrimestral": "Período inicia el 01/07",
       "items": [
         {
           "denominacion": "2025-CR-CT-002210",
@@ -5011,6 +5245,12 @@
       "cantidad": 13,
       "meta_anual": 3500.0,
       "porcentaje": 23.1,
+      "meta_cuatrimestral": 1333.3,
+      "monto_cuatrimestral": 0.0,
+      "cantidad_cuatrimestral": 0,
+      "porcentaje_cuatrimestral": 0.0,
+      "estado_cuatrimestral": "gris",
+      "mensaje_cuatrimestral": "Período inicia el 01/07",
       "items": [
         {
           "denominacion": "2025-CR-JU-002096",
@@ -5164,6 +5404,12 @@
       "cantidad": 22,
       "meta_anual": 6000.0,
       "porcentaje": 15.5,
+      "meta_cuatrimestral": 2000.0,
+      "monto_cuatrimestral": 0.0,
+      "cantidad_cuatrimestral": 0,
+      "porcentaje_cuatrimestral": 0.0,
+      "estado_cuatrimestral": "gris",
+      "mensaje_cuatrimestral": "Período inicia el 01/07",
       "items": [
         {
           "denominacion": "2025-CR-SL-002212",
@@ -5416,6 +5662,12 @@
       "cantidad": 17,
       "meta_anual": 6000.0,
       "porcentaje": 14.7,
+      "meta_cuatrimestral": 2000.0,
+      "monto_cuatrimestral": 0.0,
+      "cantidad_cuatrimestral": 0,
+      "porcentaje_cuatrimestral": 0.0,
+      "estado_cuatrimestral": "gris",
+      "mensaje_cuatrimestral": "Período inicia el 01/07",
       "items": [
         {
           "denominacion": "2025-CR-LR-002188",
@@ -5613,6 +5865,12 @@
       "cantidad": 14,
       "meta_anual": 4200.0,
       "porcentaje": 19.4,
+      "meta_cuatrimestral": 1500.0,
+      "monto_cuatrimestral": 0.0,
+      "cantidad_cuatrimestral": 0,
+      "porcentaje_cuatrimestral": 0.0,
+      "estado_cuatrimestral": "gris",
+      "mensaje_cuatrimestral": "Período inicia el 01/07",
       "items": [
         {
           "denominacion": "2025-CR-LP-002120",
@@ -5777,6 +6035,12 @@
       "cantidad": 20,
       "meta_anual": 4300.0,
       "porcentaje": 24.3,
+      "meta_cuatrimestral": 1433.3,
+      "monto_cuatrimestral": 0.0,
+      "cantidad_cuatrimestral": 0,
+      "porcentaje_cuatrimestral": 0.0,
+      "estado_cuatrimestral": "gris",
+      "mensaje_cuatrimestral": "Período inicia el 01/07",
       "items": [
         {
           "denominacion": "2025-CR-CH-002186",
@@ -6007,6 +6271,12 @@
       "cantidad": 3,
       "meta_anual": 4000.0,
       "porcentaje": 7.9,
+      "meta_cuatrimestral": 1333.3,
+      "monto_cuatrimestral": 0.0,
+      "cantidad_cuatrimestral": 0,
+      "porcentaje_cuatrimestral": 0.0,
+      "estado_cuatrimestral": "gris",
+      "mensaje_cuatrimestral": "Período inicia el 01/07",
       "items": [
         {
           "denominacion": "2025-CR-SJ-002088",
@@ -6050,6 +6320,12 @@
       "cantidad": 5,
       "meta_anual": 4100.0,
       "porcentaje": 4.9,
+      "meta_cuatrimestral": 1333.3,
+      "monto_cuatrimestral": 0.0,
+      "cantidad_cuatrimestral": 0,
+      "porcentaje_cuatrimestral": 0.0,
+      "estado_cuatrimestral": "gris",
+      "mensaje_cuatrimestral": "Período inicia el 01/07",
       "items": [
         {
           "denominacion": "2025-CR-TF-002155",
@@ -6115,6 +6391,12 @@
       "cantidad": 4,
       "meta_anual": 3500.0,
       "porcentaje": 6.1,
+      "meta_cuatrimestral": 1333.3,
+      "monto_cuatrimestral": 0.0,
+      "cantidad_cuatrimestral": 0,
+      "porcentaje_cuatrimestral": 0.0,
+      "estado_cuatrimestral": "gris",
+      "mensaje_cuatrimestral": "Período inicia el 01/07",
       "items": [
         {
           "denominacion": "2025-CR-CB-002146",
@@ -6169,6 +6451,12 @@
       "cantidad": 10,
       "meta_anual": 3000.0,
       "porcentaje": 13.0,
+      "meta_cuatrimestral": 1333.3,
+      "monto_cuatrimestral": 0.0,
+      "cantidad_cuatrimestral": 0,
+      "porcentaje_cuatrimestral": 0.0,
+      "estado_cuatrimestral": "gris",
+      "mensaje_cuatrimestral": "Período inicia el 01/07",
       "items": [
         {
           "denominacion": "2025-CR-CA-002207",
@@ -6289,6 +6577,12 @@
       "cantidad": 1,
       "meta_anual": 1300.0,
       "porcentaje": 7.7,
+      "meta_cuatrimestral": 3333.3,
+      "monto_cuatrimestral": 0.0,
+      "cantidad_cuatrimestral": 0,
+      "porcentaje_cuatrimestral": 0.0,
+      "estado_cuatrimestral": "gris",
+      "mensaje_cuatrimestral": "Período inicia el 01/07",
       "items": [
         {
           "denominacion": "2025-CR-SE-001725",
@@ -6310,6 +6604,12 @@
       "cantidad": 3,
       "meta_anual": 1000.0,
       "porcentaje": 3.0,
+      "meta_cuatrimestral": 333.3,
+      "monto_cuatrimestral": 0.0,
+      "cantidad_cuatrimestral": 0,
+      "porcentaje_cuatrimestral": 0.0,
+      "estado_cuatrimestral": "gris",
+      "mensaje_cuatrimestral": "Período inicia el 01/07",
       "items": [
         {
           "denominacion": "2025-CR-FO-002107",
@@ -6353,6 +6653,12 @@
       "cantidad": 0,
       "meta_anual": 1300.0,
       "porcentaje": 0.0,
+      "meta_cuatrimestral": 433.3,
+      "monto_cuatrimestral": 0.0,
+      "cantidad_cuatrimestral": 0,
+      "porcentaje_cuatrimestral": 0.0,
+      "estado_cuatrimestral": "gris",
+      "mensaje_cuatrimestral": "Período inicia el 01/07",
       "items": []
     }
   ]

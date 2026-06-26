@@ -15,13 +15,16 @@
     .header-right h2 { font-size: 16px; font-weight: 700; color: #FAFAFA; text-align: right; }
     .header-right p { font-size: 10px; color: #96C9DA; text-align: right; margin-top: 2px; }
     .container { max-width: 1440px; margin: 0 auto; padding: 30px 40px; }
-    .score-card { background: linear-gradient(180deg, #00A7E1 0%, #008AC1 100%); border-radius: 12px; padding: 40px; text-align: center; margin-bottom: 30px; position: relative; color: #FFFFFF; overflow: hidden; }
+    .score-grid { display: grid; grid-template-columns: 1.2fr 0.9fr; gap: 20px; margin-bottom: 22px; }
+    .score-card { background: linear-gradient(180deg, #00A7E1 0%, #008AC1 100%); border-radius: 12px; padding: 40px; text-align: center; position: relative; color: #FFFFFF; overflow: hidden; }
     .score-card::before { content: ''; position: absolute; width: 220px; height: 220px; border-radius: 50%; background: rgba(255,255,255,0.08); top: -70px; right: -60px; }
+    .score-card.secondary { background: linear-gradient(180deg, #1C2443 0%, #243258 100%); }
     .score-label { font-size: 11px; font-weight: 700; letter-spacing: 2px; color: rgba(255, 255, 255, 0.85); margin-bottom: 15px; position: relative; }
     .score-value { font-family: 'Bebas Neue', sans-serif; font-size: 96px; line-height: 1; margin-bottom: 10px; position: relative; }
     .score-subtitle { font-size: 16px; color: rgba(255, 255, 255, 0.9); margin-bottom: 10px; position: relative; }
     .score-update { font-size: 10px; color: rgba(255, 255, 255, 0.75); position: relative; }
     .badge-live { position: absolute; top: 20px; right: 20px; background: rgba(255, 255, 255, 0.25); padding: 6px 16px; border-radius: 20px; font-size: 10px; font-weight: 700; color: #FFFFFF; z-index: 1; }
+    .score-period { font-size: 12px; color: rgba(255,255,255,0.82); margin-top: 8px; position: relative; }
     .progress-bar { height: 12px; background: #DBDCDE; border-radius: 6px; margin-bottom: 30px; overflow: hidden; }
     .progress-fill { height: 100%; background: linear-gradient(90deg, #47B067 0%, #80C98A 100%); border-radius: 6px; width: 0; transition: width 1s ease-out; }
     .view-actions { display: flex; gap: 12px; justify-content: flex-end; align-items: center; margin: 0 0 20px; flex-wrap: wrap; }
@@ -105,6 +108,11 @@
     .provincia-monto { font-size: 10px; color: #1C2443; margin-bottom: 5px; }
     .provincia-cantidad { font-size: 9px; color: #96C9DA; margin-top: 3px; }
     .provincia-diferencia { font-size: 9px; font-weight: 700; margin-top: 5px; }
+    .provincia-dual { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin: 12px 0 8px; text-align: left; }
+    .provincia-dual-card { background: #F6FAFC; border: 1px solid #E3EDF2; border-radius: 10px; padding: 10px; }
+    .provincia-dual-label { font-size: 9px; font-weight: 700; letter-spacing: 0.7px; color: #96C9DA; margin-bottom: 6px; text-transform: uppercase; }
+    .provincia-dual-value { font-family: 'Bebas Neue', sans-serif; font-size: 22px; line-height: 1; color: #1C2443; }
+    .provincia-dual-meta { font-size: 9px; color: #1C2443; opacity: 0.72; margin-top: 4px; }
     .vitals-panel { background: #FFFFFF; border: 1px solid #DBDCDE; border-radius: 10px; padding: 30px; margin-bottom: 30px; }
     .vitals-title { font-family: 'Bebas Neue', sans-serif; font-size: 18px; color: #1C2443; text-align: center; margin-bottom: 30px; }
     .vitals-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 40px; }
@@ -140,7 +148,7 @@
     .color-verde { background: #47B067; } .color-amarillo { background: #E99505; } .color-rojo { background: #E6431A; } .color-gris { background: #96C9DA; } .color-celeste { background: #00A7E1; } .color-teal { background: #0C8395; }
     .text-verde { color: #47B067; } .text-amarillo { color: #E99505; } .text-rojo { color: #E6431A; } .text-gris { color: #96C9DA; } .text-celeste { color: #00A7E1; } .text-teal { color: #0C8395; }
     @media (max-width: 1024px) {
-      .insight-grid, .analysis-grid { grid-template-columns: 1fr; }
+      .score-grid, .insight-grid, .analysis-grid { grid-template-columns: 1fr; }
       .alert-grid { grid-template-columns: 1fr; }
     }
     @media (max-width: 768px) {
@@ -179,15 +187,26 @@
     <div id="error" class="error-panel hidden"></div>
 
     <div id="dashboard" class="hidden">
-      <div class="score-card">
-        <div class="badge-live">LIVE</div>
-        <div class="score-label">OBJETIVO ANUAL 2026</div>
-        <div id="scoreValue" class="score-value">0%</div>
-        <div id="scoreSubtitle" class="score-subtitle">de $0 millones</div>
-        <div id="scoreUpdate" class="score-update">Actualizado: -</div>
+      <div class="score-grid">
+        <div class="score-card">
+          <div class="badge-live">ANUAL</div>
+          <div class="score-label">OBJETIVO ANUAL 2026</div>
+          <div id="scoreValue" class="score-value">0%</div>
+          <div id="scoreSubtitle" class="score-subtitle">de $0 millones</div>
+          <div id="scoreUpdate" class="score-update">Actualizado: -</div>
+        </div>
+        <div class="score-card secondary">
+          <div class="badge-live">JUL-OCT</div>
+          <div class="score-label">OBJETIVO CUATRIMESTRAL</div>
+          <div id="scoreFourValue" class="score-value">0%</div>
+          <div id="scoreFourSubtitle" class="score-subtitle">de $0 millones</div>
+          <div id="scoreFourPeriod" class="score-period">01/07/2026 al 31/10/2026</div>
+          <div id="scoreFourUpdate" class="score-update">Período: pendiente</div>
+        </div>
       </div>
 
       <div class="progress-bar"><div id="progressFill" class="progress-fill"></div></div>
+      <div class="progress-bar"><div id="progressFillFour" class="progress-fill"></div></div>
 
       <div class="view-actions">
         <div class="view-tabs">
@@ -242,9 +261,13 @@
           </div>
         </div>
 
-        <div class="section-title">🚦 SEMÁFORO PROVINCIAL<span class="badge-status">LIVE</span></div>
+        <div class="section-title">🚦 SEMÁFORO ANUAL<span class="badge-status">LIVE</span></div>
         <div class="semaforo-note">🟢 Verde: ≥80% de la meta anual • 🟡 Amarillo: 50-80% • 🔴 Rojo: &lt;50% • ⚫ Sin datos</div>
         <div id="semaforoGrid" class="semaforo-grid"></div>
+
+        <div class="section-title">🗓️ SEMÁFORO CUATRIMESTRAL</div>
+        <div class="semaforo-note">Ventana 01/07/2026 al 31/10/2026 • si el período no inició, se muestra en ⚫ como referencia de meta.</div>
+        <div id="semaforoGridFour" class="semaforo-grid"></div>
 
         <div class="vitals-panel">
           <div class="vitals-title">INDICADORES DE CUMPLIMIENTO</div>
@@ -370,6 +393,22 @@
           value: formatMoney(total.necesario_por_mes),
           meta: 'Por mes',
           detail: 'Para meta 2026'
+        },
+        {
+          accent: 'teal',
+          valueClass: 'teal',
+          label: 'META JUL-OCT',
+          value: formatMoney(total.meta_cuatrimestral || 0),
+          meta: 'Objetivo cuatrimestral',
+          detail: `${total.cuatrimestre_desde || '2026-07-01'} al ${total.cuatrimestre_hasta || '2026-10-31'}`
+        },
+        {
+          accent: 'celeste',
+          valueClass: 'celeste',
+          label: 'OTORGADO JUL-OCT',
+          value: formatMoney(total.monto_cuatrimestral || 0),
+          meta: formatCredits(total.creditos_cuatrimestral || 0),
+          detail: total.cuatrimestre_iniciado ? 'Acumulado en la ventana' : 'Período aún no iniciado'
         }
       ];
 
@@ -411,6 +450,11 @@
           label: 'Señal De Gestión',
           value: `${atRisk} rojas`,
           text: bestProvince ? `${over50} provincias superan el 50%. Mejor desempeño relativo: ${bestProvince.nombre} (${formatPercent(bestProvince.porcentaje)}).` : 'Sin datos suficientes para leer tendencia.'
+        },
+        {
+          label: 'Ventana Jul-Oct',
+          value: formatPercent(total.porcentaje_cuatrimestral || 0),
+          text: total.cuatrimestre_iniciado ? `${formatMoney(total.monto_cuatrimestral || 0)} otorgados sobre ${formatMoney(total.meta_cuatrimestral || 0)} de meta cuatrimestral.` : 'Todavía no comenzó la ventana cuatrimestral; la meta ya está cargada para seguimiento.'
         }
       ];
     }
@@ -519,10 +563,36 @@
       }).join('');
     }
 
+    function renderFourMonthProvinces(provincias) {
+      document.getElementById('semaforoGridFour').innerHTML = provincias.map((provincia) => {
+        const color = COLOR_BY_STATUS[provincia.estado_cuatrimestral] || 'gris';
+        const gap = Number(provincia.meta_cuatrimestral || 0) - Number(provincia.monto_cuatrimestral || 0);
+        const diffSymbol = gap > 0 ? '↓' : '↑';
+        const diffClass = gap > 0 ? color : 'verde';
+
+        return `
+          <div class="provincia-card">
+            <div class="provincia-accent color-${color}"></div>
+            <div class="provincia-content">
+              <div class="provincia-nombre">${provincia.nombre}</div>
+              <div class="provincia-icono">${provincia.icono_cuatrimestral || '⚫'}</div>
+              <div class="provincia-mensaje text-${color}">${provincia.mensaje_cuatrimestral || 'Sin datos'}</div>
+              <div class="provincia-monto">${formatMoney(provincia.monto_cuatrimestral || 0)} otorgados</div>
+              <div class="provincia-cantidad">Meta jul-oct: ${formatMoney(provincia.meta_cuatrimestral || 0)}</div>
+              <div class="provincia-cantidad">${formatCredits(provincia.cantidad_cuatrimestral || 0)}</div>
+              <div class="provincia-diferencia text-${diffClass}">${diffSymbol} ${formatMoney(Math.abs(gap))} contra meta jul-oct</div>
+            </div>
+          </div>
+        `;
+      }).join('');
+    }
+
     function renderVitals(total) {
       const ritmo = total.necesario_por_mes ? (total.promedio_mensual / total.necesario_por_mes) * 100 : 0;
       const ritmoColor = ritmo >= 80 ? 'verde' : ritmo >= 50 ? 'amarillo' : 'rojo';
       const coberturaColor = total.porcentaje >= 80 ? 'verde' : total.porcentaje >= 50 ? 'amarillo' : 'rojo';
+      const coberturaFour = total.porcentaje_cuatrimestral || 0;
+      const coberturaFourColor = !total.cuatrimestre_iniciado ? 'gris' : coberturaFour >= 80 ? 'verde' : coberturaFour >= 50 ? 'amarillo' : 'rojo';
 
       const vitals = [
         {
@@ -538,6 +608,13 @@
           width: clampPercent(total.porcentaje),
           value: formatPercent(total.porcentaje),
           description: 'Del objetivo anual'
+        },
+        {
+          label: 'Cobertura jul-oct',
+          color: coberturaFourColor,
+          width: clampPercent(coberturaFour),
+          value: formatPercent(coberturaFour),
+          description: total.cuatrimestre_iniciado ? 'Del objetivo cuatrimestral' : 'Período aún no iniciado'
         }
       ];
 
@@ -777,9 +854,19 @@
           meta: 'Objetivo 2026'
         },
         {
-          label: 'Cumplimiento',
+          label: 'Cumplimiento anual',
           value: selectedDetail ? formatPercent(selectedDetail.porcentaje) : formatPercent(0),
           meta: selectedDetail ? formatCredits(selectedDetail.cantidad) : '0 créditos'
+        },
+        {
+          label: 'Meta jul-oct',
+          value: selectedDetail ? formatMoney(selectedDetail.meta_cuatrimestral || 0) : formatMoney(0),
+          meta: 'Objetivo cuatrimestral'
+        },
+        {
+          label: 'Cumplimiento jul-oct',
+          value: selectedDetail ? formatPercent(selectedDetail.porcentaje_cuatrimestral || 0) : formatPercent(0),
+          meta: selectedDetail && selectedDetail.estado_cuatrimestral === 'gris' ? 'Período aún no iniciado' : formatCredits(selectedDetail?.cantidad_cuatrimestral || 0)
         }
       ];
 
@@ -870,12 +957,19 @@
       dashboardData = data;
       const total = data.total || {};
       const updatedText = formatDate(data.fecha_actualizacion);
+      const fourStarted = Boolean(total.cuatrimestre_iniciado);
 
       document.getElementById('scoreValue').textContent = formatPercent(total.porcentaje);
       document.getElementById('scoreSubtitle').textContent = `de ${formatMoney(total.meta)}`;
       document.getElementById('scoreUpdate').textContent = `Actualizado: ${updatedText} • Director Rec. Financieros`;
+      document.getElementById('scoreFourValue').textContent = formatPercent(total.porcentaje_cuatrimestral || 0);
+      document.getElementById('scoreFourSubtitle').textContent = `de ${formatMoney(total.meta_cuatrimestral || 0)}`;
+      document.getElementById('scoreFourUpdate').textContent = fourStarted
+        ? `${formatMoney(total.monto_cuatrimestral || 0)} otorgados en la ventana`
+        : 'Período: pendiente de inicio';
       document.getElementById('detailIntro').textContent = `Detalle actualizado: ${updatedText}`;
       document.getElementById('progressFill').style.width = `${clampPercent(total.porcentaje)}%`;
+      document.getElementById('progressFillFour').style.width = `${clampPercent(total.porcentaje_cuatrimestral || 0)}%`;
       document.getElementById('footer').textContent = `Consejo Federal de Inversiones • Financiamiento Productivo • Actualizado: ${updatedText}`;
 
       renderKpis(total);
@@ -884,6 +978,7 @@
       renderRanking(data.provincias || []);
       renderGapPanel(data.provincias || []);
       renderProvinces(data.provincias || []);
+      renderFourMonthProvinces(data.provincias || []);
       renderVitals(total);
       renderDetailPanel();
       attachViewEvents();
