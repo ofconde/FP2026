@@ -1,14 +1,14 @@
 {
-  "fecha_actualizacion": "2026-06-26 11:47:14",
+  "fecha_actualizacion": "2026-06-26 12:04:54",
   "total": {
-    "monto": 42988.3,
-    "creditos": 526,
+    "monto": 43008.3,
+    "creditos": 527,
     "porcentaje": 20.1,
     "meta": 214300.0,
-    "falta": 171311.7,
+    "falta": 171291.7,
     "meses_restantes": 7,
-    "promedio_mensual": 7164.7,
-    "necesario_por_mes": 24473.1,
+    "promedio_mensual": 7168.1,
+    "necesario_por_mes": 24470.2,
     "ritmo_ok": false,
     "ultimo_mes": 6
   },
@@ -184,17 +184,17 @@
     {
       "codigo": "LP",
       "nombre": "La Pampa",
-      "monto": 794.0,
-      "cantidad": 13,
+      "monto": 814.0,
+      "cantidad": 14,
       "meta_anual": 4200.0,
-      "diferencia": -3406.0,
-      "porcentaje": 18.9,
+      "diferencia": -3386.0,
+      "porcentaje": 19.4,
       "estado": "rojo",
       "icono": "🔴",
       "mensaje": "Cumplimiento anual 19%"
     },
     {
-      "codigo": "HA",
+      "codigo": "CH",
       "nombre": "Chaco",
       "monto": 1044.9,
       "cantidad": 20,
@@ -294,8 +294,8 @@
     {
       "mes": 1,
       "nombre": "Enero",
-      "monto": 7765.1,
-      "cantidad": 94
+      "monto": 7785.1,
+      "cantidad": 95
     },
     {
       "mes": 2,
@@ -5609,10 +5609,10 @@
     {
       "codigo": "LP",
       "nombre": "La Pampa",
-      "monto": 794.0,
-      "cantidad": 13,
+      "monto": 814.0,
+      "cantidad": 14,
       "meta_anual": 4200.0,
-      "porcentaje": 18.9,
+      "porcentaje": 19.4,
       "items": [
         {
           "denominacion": "2025-CR-LP-002120",
@@ -5747,6 +5747,17 @@
           "tipo_contragarantia": "Garantia SGR / FPG - FOGAPAM"
         },
         {
+          "denominacion": "2025-CR-LP-001689",
+          "razon_social": "DUSCHER NORA VANINA",
+          "fecha_resolucion": "2026-01-12",
+          "usuario_resolucion": "Rodriguez, Esteban Manuel",
+          "importe": 20.0,
+          "linea": "2025 - Programática",
+          "sublinea": "Programatica",
+          "programa": "Mujeres",
+          "tipo_contragarantia": "Garantia SGR / FPG - FOGAPAM"
+        },
+        {
           "denominacion": "2023-CR-LP-001689",
           "razon_social": "DUSCHER NORA VANINA",
           "fecha_resolucion": "2026-01-12",
@@ -5760,7 +5771,7 @@
       ]
     },
     {
-      "codigo": "HA",
+      "codigo": "CH",
       "nombre": "Chaco",
       "monto": 1044.9,
       "cantidad": 20,
