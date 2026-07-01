@@ -1,21 +1,21 @@
 {
-  "fecha_actualizacion": "2026-06-26 13:11:47",
+  "fecha_actualizacion": "2026-07-01 14:31:02",
   "total": {
-    "monto": 43008.3,
-    "creditos": 527,
-    "porcentaje": 20.1,
+    "monto": 44718.4,
+    "creditos": 540,
+    "porcentaje": 20.9,
     "meta": 214300.0,
-    "falta": 171291.7,
-    "meses_restantes": 7,
-    "promedio_mensual": 7168.1,
-    "necesario_por_mes": 24470.2,
+    "falta": 169581.6,
+    "meses_restantes": 6,
+    "promedio_mensual": 7453.1,
+    "necesario_por_mes": 28263.6,
     "ritmo_ok": false,
     "ultimo_mes": 6,
     "meta_cuatrimestral": 80066.7,
     "monto_cuatrimestral": 0.0,
     "creditos_cuatrimestral": 0,
     "porcentaje_cuatrimestral": 0.0,
-    "cuatrimestre_iniciado": false,
+    "cuatrimestre_iniciado": true,
     "cuatrimestre_desde": "2026-07-01",
     "cuatrimestre_hasta": "2026-10-31"
   },
@@ -23,11 +23,11 @@
     {
       "codigo": "BA",
       "nombre": "Buenos Aires",
-      "monto": 9582.7,
-      "cantidad": 89,
+      "monto": 9825.2,
+      "cantidad": 91,
       "meta_anual": 57000.0,
-      "diferencia": -47417.3,
-      "porcentaje": 16.8,
+      "diferencia": -47174.8,
+      "porcentaje": 17.2,
       "estado": "rojo",
       "icono": "🔴",
       "mensaje": "Cumplimiento anual 17%",
@@ -35,66 +35,66 @@
       "monto_cuatrimestral": 0.0,
       "cantidad_cuatrimestral": 0,
       "porcentaje_cuatrimestral": 0.0,
-      "estado_cuatrimestral": "gris",
-      "icono_cuatrimestral": "⚫",
-      "mensaje_cuatrimestral": "Período inicia el 01/07"
+      "estado_cuatrimestral": "rojo",
+      "icono_cuatrimestral": "🔴",
+      "mensaje_cuatrimestral": "Cumplimiento cuatrimestral 0%"
     },
     {
       "codigo": "CO",
       "nombre": "Córdoba",
-      "monto": 5428.7,
-      "cantidad": 50,
+      "monto": 5691.2,
+      "cantidad": 52,
       "meta_anual": 21000.0,
-      "diferencia": -15571.3,
-      "porcentaje": 25.9,
+      "diferencia": -15308.8,
+      "porcentaje": 27.1,
       "estado": "rojo",
       "icono": "🔴",
-      "mensaje": "Cumplimiento anual 26%",
+      "mensaje": "Cumplimiento anual 27%",
       "meta_cuatrimestral": 7333.3,
       "monto_cuatrimestral": 0.0,
       "cantidad_cuatrimestral": 0,
       "porcentaje_cuatrimestral": 0.0,
-      "estado_cuatrimestral": "gris",
-      "icono_cuatrimestral": "⚫",
-      "mensaje_cuatrimestral": "Período inicia el 01/07"
+      "estado_cuatrimestral": "rojo",
+      "icono_cuatrimestral": "🔴",
+      "mensaje_cuatrimestral": "Cumplimiento cuatrimestral 0%"
     },
     {
       "codigo": "SF",
       "nombre": "Santa Fe",
-      "monto": 4138.7,
-      "cantidad": 51,
+      "monto": 4338.7,
+      "cantidad": 52,
       "meta_anual": 22000.0,
-      "diferencia": -17861.3,
-      "porcentaje": 18.8,
+      "diferencia": -17661.3,
+      "porcentaje": 19.7,
       "estado": "rojo",
       "icono": "🔴",
-      "mensaje": "Cumplimiento anual 19%",
+      "mensaje": "Cumplimiento anual 20%",
       "meta_cuatrimestral": 7333.3,
       "monto_cuatrimestral": 0.0,
       "cantidad_cuatrimestral": 0,
       "porcentaje_cuatrimestral": 0.0,
-      "estado_cuatrimestral": "gris",
-      "icono_cuatrimestral": "⚫",
-      "mensaje_cuatrimestral": "Período inicia el 01/07"
+      "estado_cuatrimestral": "rojo",
+      "icono_cuatrimestral": "🔴",
+      "mensaje_cuatrimestral": "Cumplimiento cuatrimestral 0%"
     },
     {
       "codigo": "ER",
       "nombre": "Entre Ríos",
-      "monto": 5334.9,
-      "cantidad": 44,
+      "monto": 5534.9,
+      "cantidad": 45,
       "meta_anual": 13100.0,
-      "diferencia": -7765.1,
-      "porcentaje": 40.7,
+      "diferencia": -7565.1,
+      "porcentaje": 42.3,
       "estado": "amarillo",
       "icono": "🟡",
-      "mensaje": "Cumplimiento anual 41%",
+      "mensaje": "Cumplimiento anual 42%",
       "meta_cuatrimestral": 6666.7,
       "monto_cuatrimestral": 0.0,
       "cantidad_cuatrimestral": 0,
       "porcentaje_cuatrimestral": 0.0,
-      "estado_cuatrimestral": "gris",
-      "icono_cuatrimestral": "⚫",
-      "mensaje_cuatrimestral": "Período inicia el 01/07"
+      "estado_cuatrimestral": "rojo",
+      "icono_cuatrimestral": "🔴",
+      "mensaje_cuatrimestral": "Cumplimiento cuatrimestral 0%"
     },
     {
       "codigo": "MZ",
@@ -111,9 +111,9 @@
       "monto_cuatrimestral": 0.0,
       "cantidad_cuatrimestral": 0,
       "porcentaje_cuatrimestral": 0.0,
-      "estado_cuatrimestral": "gris",
-      "icono_cuatrimestral": "⚫",
-      "mensaje_cuatrimestral": "Período inicia el 01/07"
+      "estado_cuatrimestral": "rojo",
+      "icono_cuatrimestral": "🔴",
+      "mensaje_cuatrimestral": "Cumplimiento cuatrimestral 0%"
     },
     {
       "codigo": "TU",
@@ -130,28 +130,28 @@
       "monto_cuatrimestral": 0.0,
       "cantidad_cuatrimestral": 0,
       "porcentaje_cuatrimestral": 0.0,
-      "estado_cuatrimestral": "gris",
-      "icono_cuatrimestral": "⚫",
-      "mensaje_cuatrimestral": "Período inicia el 01/07"
+      "estado_cuatrimestral": "rojo",
+      "icono_cuatrimestral": "🔴",
+      "mensaje_cuatrimestral": "Cumplimiento cuatrimestral 0%"
     },
     {
       "codigo": "MI",
       "nombre": "Misiones",
-      "monto": 2091.1,
-      "cantidad": 34,
+      "monto": 2220.2,
+      "cantidad": 37,
       "meta_anual": 4500.0,
-      "diferencia": -2408.9,
-      "porcentaje": 46.5,
+      "diferencia": -2279.8,
+      "porcentaje": 49.3,
       "estado": "amarillo",
       "icono": "🟡",
-      "mensaje": "Cumplimiento anual 46%",
+      "mensaje": "Cumplimiento anual 49%",
       "meta_cuatrimestral": 1833.3,
       "monto_cuatrimestral": 0.0,
       "cantidad_cuatrimestral": 0,
       "porcentaje_cuatrimestral": 0.0,
-      "estado_cuatrimestral": "gris",
-      "icono_cuatrimestral": "⚫",
-      "mensaje_cuatrimestral": "Período inicia el 01/07"
+      "estado_cuatrimestral": "rojo",
+      "icono_cuatrimestral": "🔴",
+      "mensaje_cuatrimestral": "Cumplimiento cuatrimestral 0%"
     },
     {
       "codigo": "RN",
@@ -168,18 +168,18 @@
       "monto_cuatrimestral": 0.0,
       "cantidad_cuatrimestral": 0,
       "porcentaje_cuatrimestral": 0.0,
-      "estado_cuatrimestral": "gris",
-      "icono_cuatrimestral": "⚫",
-      "mensaje_cuatrimestral": "Período inicia el 01/07"
+      "estado_cuatrimestral": "rojo",
+      "icono_cuatrimestral": "🔴",
+      "mensaje_cuatrimestral": "Cumplimiento cuatrimestral 0%"
     },
     {
       "codigo": "SA",
       "nombre": "Salta",
-      "monto": 2091.5,
-      "cantidad": 23,
+      "monto": 2097.5,
+      "cantidad": 24,
       "meta_anual": 4100.0,
-      "diferencia": -2008.5,
-      "porcentaje": 51.0,
+      "diferencia": -2002.5,
+      "porcentaje": 51.2,
       "estado": "amarillo",
       "icono": "🟡",
       "mensaje": "Cumplimiento anual 51%",
@@ -187,28 +187,28 @@
       "monto_cuatrimestral": 0.0,
       "cantidad_cuatrimestral": 0,
       "porcentaje_cuatrimestral": 0.0,
-      "estado_cuatrimestral": "gris",
-      "icono_cuatrimestral": "⚫",
-      "mensaje_cuatrimestral": "Período inicia el 01/07"
+      "estado_cuatrimestral": "rojo",
+      "icono_cuatrimestral": "🔴",
+      "mensaje_cuatrimestral": "Cumplimiento cuatrimestral 0%"
     },
     {
       "codigo": "NQ",
       "nombre": "Neuquén",
-      "monto": 1023.5,
-      "cantidad": 10,
+      "monto": 1323.5,
+      "cantidad": 11,
       "meta_anual": 9100.0,
-      "diferencia": -8076.5,
-      "porcentaje": 11.2,
+      "diferencia": -7776.5,
+      "porcentaje": 14.5,
       "estado": "rojo",
       "icono": "🔴",
-      "mensaje": "Cumplimiento anual 11%",
+      "mensaje": "Cumplimiento anual 14%",
       "meta_cuatrimestral": 3033.3,
       "monto_cuatrimestral": 0.0,
       "cantidad_cuatrimestral": 0,
       "porcentaje_cuatrimestral": 0.0,
-      "estado_cuatrimestral": "gris",
-      "icono_cuatrimestral": "⚫",
-      "mensaje_cuatrimestral": "Período inicia el 01/07"
+      "estado_cuatrimestral": "rojo",
+      "icono_cuatrimestral": "🔴",
+      "mensaje_cuatrimestral": "Cumplimiento cuatrimestral 0%"
     },
     {
       "codigo": "CT",
@@ -225,9 +225,9 @@
       "monto_cuatrimestral": 0.0,
       "cantidad_cuatrimestral": 0,
       "porcentaje_cuatrimestral": 0.0,
-      "estado_cuatrimestral": "gris",
-      "icono_cuatrimestral": "⚫",
-      "mensaje_cuatrimestral": "Período inicia el 01/07"
+      "estado_cuatrimestral": "rojo",
+      "icono_cuatrimestral": "🔴",
+      "mensaje_cuatrimestral": "Cumplimiento cuatrimestral 0%"
     },
     {
       "codigo": "JU",
@@ -244,9 +244,9 @@
       "monto_cuatrimestral": 0.0,
       "cantidad_cuatrimestral": 0,
       "porcentaje_cuatrimestral": 0.0,
-      "estado_cuatrimestral": "gris",
-      "icono_cuatrimestral": "⚫",
-      "mensaje_cuatrimestral": "Período inicia el 01/07"
+      "estado_cuatrimestral": "rojo",
+      "icono_cuatrimestral": "🔴",
+      "mensaje_cuatrimestral": "Cumplimiento cuatrimestral 0%"
     },
     {
       "codigo": "SL",
@@ -263,9 +263,9 @@
       "monto_cuatrimestral": 0.0,
       "cantidad_cuatrimestral": 0,
       "porcentaje_cuatrimestral": 0.0,
-      "estado_cuatrimestral": "gris",
-      "icono_cuatrimestral": "⚫",
-      "mensaje_cuatrimestral": "Período inicia el 01/07"
+      "estado_cuatrimestral": "rojo",
+      "icono_cuatrimestral": "🔴",
+      "mensaje_cuatrimestral": "Cumplimiento cuatrimestral 0%"
     },
     {
       "codigo": "LR",
@@ -282,9 +282,9 @@
       "monto_cuatrimestral": 0.0,
       "cantidad_cuatrimestral": 0,
       "porcentaje_cuatrimestral": 0.0,
-      "estado_cuatrimestral": "gris",
-      "icono_cuatrimestral": "⚫",
-      "mensaje_cuatrimestral": "Período inicia el 01/07"
+      "estado_cuatrimestral": "rojo",
+      "icono_cuatrimestral": "🔴",
+      "mensaje_cuatrimestral": "Cumplimiento cuatrimestral 0%"
     },
     {
       "codigo": "LP",
@@ -301,28 +301,28 @@
       "monto_cuatrimestral": 0.0,
       "cantidad_cuatrimestral": 0,
       "porcentaje_cuatrimestral": 0.0,
-      "estado_cuatrimestral": "gris",
-      "icono_cuatrimestral": "⚫",
-      "mensaje_cuatrimestral": "Período inicia el 01/07"
+      "estado_cuatrimestral": "rojo",
+      "icono_cuatrimestral": "🔴",
+      "mensaje_cuatrimestral": "Cumplimiento cuatrimestral 0%"
     },
     {
       "codigo": "CH",
       "nombre": "Chaco",
-      "monto": 1044.9,
-      "cantidad": 20,
+      "monto": 1214.9,
+      "cantidad": 21,
       "meta_anual": 4300.0,
-      "diferencia": -3255.1,
-      "porcentaje": 24.3,
+      "diferencia": -3085.1,
+      "porcentaje": 28.3,
       "estado": "rojo",
       "icono": "🔴",
-      "mensaje": "Cumplimiento anual 24%",
+      "mensaje": "Cumplimiento anual 28%",
       "meta_cuatrimestral": 1433.3,
       "monto_cuatrimestral": 0.0,
       "cantidad_cuatrimestral": 0,
       "porcentaje_cuatrimestral": 0.0,
-      "estado_cuatrimestral": "gris",
-      "icono_cuatrimestral": "⚫",
-      "mensaje_cuatrimestral": "Período inicia el 01/07"
+      "estado_cuatrimestral": "rojo",
+      "icono_cuatrimestral": "🔴",
+      "mensaje_cuatrimestral": "Cumplimiento cuatrimestral 0%"
     },
     {
       "codigo": "SJ",
@@ -339,9 +339,9 @@
       "monto_cuatrimestral": 0.0,
       "cantidad_cuatrimestral": 0,
       "porcentaje_cuatrimestral": 0.0,
-      "estado_cuatrimestral": "gris",
-      "icono_cuatrimestral": "⚫",
-      "mensaje_cuatrimestral": "Período inicia el 01/07"
+      "estado_cuatrimestral": "rojo",
+      "icono_cuatrimestral": "🔴",
+      "mensaje_cuatrimestral": "Cumplimiento cuatrimestral 0%"
     },
     {
       "codigo": "TF",
@@ -358,9 +358,9 @@
       "monto_cuatrimestral": 0.0,
       "cantidad_cuatrimestral": 0,
       "porcentaje_cuatrimestral": 0.0,
-      "estado_cuatrimestral": "gris",
-      "icono_cuatrimestral": "⚫",
-      "mensaje_cuatrimestral": "Período inicia el 01/07"
+      "estado_cuatrimestral": "rojo",
+      "icono_cuatrimestral": "🔴",
+      "mensaje_cuatrimestral": "Cumplimiento cuatrimestral 0%"
     },
     {
       "codigo": "CB",
@@ -377,9 +377,9 @@
       "monto_cuatrimestral": 0.0,
       "cantidad_cuatrimestral": 0,
       "porcentaje_cuatrimestral": 0.0,
-      "estado_cuatrimestral": "gris",
-      "icono_cuatrimestral": "⚫",
-      "mensaje_cuatrimestral": "Período inicia el 01/07"
+      "estado_cuatrimestral": "rojo",
+      "icono_cuatrimestral": "🔴",
+      "mensaje_cuatrimestral": "Cumplimiento cuatrimestral 0%"
     },
     {
       "codigo": "CA",
@@ -396,9 +396,9 @@
       "monto_cuatrimestral": 0.0,
       "cantidad_cuatrimestral": 0,
       "porcentaje_cuatrimestral": 0.0,
-      "estado_cuatrimestral": "gris",
-      "icono_cuatrimestral": "⚫",
-      "mensaje_cuatrimestral": "Período inicia el 01/07"
+      "estado_cuatrimestral": "rojo",
+      "icono_cuatrimestral": "🔴",
+      "mensaje_cuatrimestral": "Cumplimiento cuatrimestral 0%"
     },
     {
       "codigo": "SE",
@@ -415,9 +415,9 @@
       "monto_cuatrimestral": 0.0,
       "cantidad_cuatrimestral": 0,
       "porcentaje_cuatrimestral": 0.0,
-      "estado_cuatrimestral": "gris",
-      "icono_cuatrimestral": "⚫",
-      "mensaje_cuatrimestral": "Período inicia el 01/07"
+      "estado_cuatrimestral": "rojo",
+      "icono_cuatrimestral": "🔴",
+      "mensaje_cuatrimestral": "Cumplimiento cuatrimestral 0%"
     },
     {
       "codigo": "FO",
@@ -434,28 +434,28 @@
       "monto_cuatrimestral": 0.0,
       "cantidad_cuatrimestral": 0,
       "porcentaje_cuatrimestral": 0.0,
-      "estado_cuatrimestral": "gris",
-      "icono_cuatrimestral": "⚫",
-      "mensaje_cuatrimestral": "Período inicia el 01/07"
+      "estado_cuatrimestral": "rojo",
+      "icono_cuatrimestral": "🔴",
+      "mensaje_cuatrimestral": "Cumplimiento cuatrimestral 0%"
     },
     {
       "codigo": "SC",
       "nombre": "Santa Cruz",
-      "monto": 0,
-      "cantidad": 0,
+      "monto": 200.0,
+      "cantidad": 1,
       "meta_anual": 1300.0,
-      "diferencia": -1300.0,
-      "porcentaje": 0.0,
+      "diferencia": -1100.0,
+      "porcentaje": 15.4,
       "estado": "rojo",
       "icono": "🔴",
-      "mensaje": "Cumplimiento anual 0%",
+      "mensaje": "Cumplimiento anual 15%",
       "meta_cuatrimestral": 433.3,
       "monto_cuatrimestral": 0.0,
       "cantidad_cuatrimestral": 0,
       "porcentaje_cuatrimestral": 0.0,
-      "estado_cuatrimestral": "gris",
-      "icono_cuatrimestral": "⚫",
-      "mensaje_cuatrimestral": "Período inicia el 01/07"
+      "estado_cuatrimestral": "rojo",
+      "icono_cuatrimestral": "🔴",
+      "mensaje_cuatrimestral": "Cumplimiento cuatrimestral 0%"
     }
   ],
   "evolucion": [
@@ -492,25 +492,47 @@
     {
       "mes": 6,
       "nombre": "Junio",
-      "monto": 10396.0,
-      "cantidad": 109
+      "monto": 12106.1,
+      "cantidad": 122
     }
   ],
   "detalles": [
     {
       "codigo": "BA",
       "nombre": "Buenos Aires",
-      "monto": 9582.7,
-      "cantidad": 89,
+      "monto": 9825.2,
+      "cantidad": 91,
       "meta_anual": 57000.0,
-      "porcentaje": 16.8,
+      "porcentaje": 17.2,
       "meta_cuatrimestral": 19333.3,
       "monto_cuatrimestral": 0.0,
       "cantidad_cuatrimestral": 0,
       "porcentaje_cuatrimestral": 0.0,
-      "estado_cuatrimestral": "gris",
-      "mensaje_cuatrimestral": "Período inicia el 01/07",
+      "estado_cuatrimestral": "rojo",
+      "mensaje_cuatrimestral": "Cumplimiento cuatrimestral 0%",
       "items": [
+        {
+          "denominacion": "2025-CR-BA-002220",
+          "razon_social": "PRONIPOTI S.A.",
+          "fecha_resolucion": "2026-06-30",
+          "usuario_resolucion": "Rodriguez, Esteban Manuel",
+          "importe": 122.7,
+          "linea": "2025 - Triple Impacto",
+          "sublinea": "Programatica",
+          "programa": "Triple Impacto",
+          "tipo_contragarantia": "Garantia SGR / FPG - RESILIENCIA SGR"
+        },
+        {
+          "denominacion": "2025-CR-BA-002182",
+          "razon_social": "LOS TUÑON S.R.L.",
+          "fecha_resolucion": "2026-06-30",
+          "usuario_resolucion": "Rodriguez, Esteban Manuel",
+          "importe": 119.8,
+          "linea": "2025 - Programática",
+          "sublinea": "Programatica",
+          "programa": "Financiamiento Verde",
+          "tipo_contragarantia": "Garantia SGR / FPG - FO.GA.BA"
+        },
         {
           "denominacion": "2025-CR-BA-002205",
           "razon_social": "DELPACK S.R.L.",
@@ -1495,17 +1517,39 @@
     {
       "codigo": "CO",
       "nombre": "Córdoba",
-      "monto": 5428.7,
-      "cantidad": 50,
+      "monto": 5691.2,
+      "cantidad": 52,
       "meta_anual": 21000.0,
-      "porcentaje": 25.9,
+      "porcentaje": 27.1,
       "meta_cuatrimestral": 7333.3,
       "monto_cuatrimestral": 0.0,
       "cantidad_cuatrimestral": 0,
       "porcentaje_cuatrimestral": 0.0,
-      "estado_cuatrimestral": "gris",
-      "mensaje_cuatrimestral": "Período inicia el 01/07",
+      "estado_cuatrimestral": "rojo",
+      "mensaje_cuatrimestral": "Cumplimiento cuatrimestral 0%",
       "items": [
+        {
+          "denominacion": "2025-CR-CO-002123",
+          "razon_social": "FENOGLIO Y CAPELLO S.R.L.",
+          "fecha_resolucion": "2026-06-30",
+          "usuario_resolucion": "Rodriguez, Esteban Manuel",
+          "importe": 158.0,
+          "linea": "2025 - Programática",
+          "sublinea": "Programatica",
+          "programa": "Mujeres",
+          "tipo_contragarantia": "Garantia SGR / FPG - CASFOG Serie IV (ARGENPYMES SGR)"
+        },
+        {
+          "denominacion": "2025-CR-CO-002171",
+          "razon_social": "FRIGORIFICO AB S.A.",
+          "fecha_resolucion": "2026-06-30",
+          "usuario_resolucion": "Rodriguez, Esteban Manuel",
+          "importe": 104.5,
+          "linea": "2025 - Programática",
+          "sublinea": "Programatica",
+          "programa": "Mujeres",
+          "tipo_contragarantia": "Garantia SGR / FPG - POTENCIAR SGR"
+        },
         {
           "denominacion": "2025-CR-CO-002184",
           "razon_social": "PINARES RESORT S.A.",
@@ -2061,17 +2105,28 @@
     {
       "codigo": "SF",
       "nombre": "Santa Fe",
-      "monto": 4138.7,
-      "cantidad": 51,
+      "monto": 4338.7,
+      "cantidad": 52,
       "meta_anual": 22000.0,
-      "porcentaje": 18.8,
+      "porcentaje": 19.7,
       "meta_cuatrimestral": 7333.3,
       "monto_cuatrimestral": 0.0,
       "cantidad_cuatrimestral": 0,
       "porcentaje_cuatrimestral": 0.0,
-      "estado_cuatrimestral": "gris",
-      "mensaje_cuatrimestral": "Período inicia el 01/07",
+      "estado_cuatrimestral": "rojo",
+      "mensaje_cuatrimestral": "Cumplimiento cuatrimestral 0%",
       "items": [
+        {
+          "denominacion": "2025-CR-SF-002236",
+          "razon_social": "BEST COLD S.R.L.",
+          "fecha_resolucion": "2026-06-30",
+          "usuario_resolucion": "Rodriguez, Esteban Manuel",
+          "importe": 200.0,
+          "linea": "2025 - Programática",
+          "sublinea": "Programatica",
+          "programa": "Mujeres",
+          "tipo_contragarantia": "Garantia SGR / FPG - CASFOG Serie V (ARGENPYMES SGR)"
+        },
         {
           "denominacion": "2025-CR-SF-002217",
           "razon_social": "RECICLADOS CHAMET S.R.L.",
@@ -2638,17 +2693,28 @@
     {
       "codigo": "ER",
       "nombre": "Entre Ríos",
-      "monto": 5334.9,
-      "cantidad": 44,
+      "monto": 5534.9,
+      "cantidad": 45,
       "meta_anual": 13100.0,
-      "porcentaje": 40.7,
+      "porcentaje": 42.3,
       "meta_cuatrimestral": 6666.7,
       "monto_cuatrimestral": 0.0,
       "cantidad_cuatrimestral": 0,
       "porcentaje_cuatrimestral": 0.0,
-      "estado_cuatrimestral": "gris",
-      "mensaje_cuatrimestral": "Período inicia el 01/07",
+      "estado_cuatrimestral": "rojo",
+      "mensaje_cuatrimestral": "Cumplimiento cuatrimestral 0%",
       "items": [
+        {
+          "denominacion": "2025-CR-ER-002215",
+          "razon_social": "PAULKIHN S.R.L.",
+          "fecha_resolucion": "2026-06-30",
+          "usuario_resolucion": "Rodriguez, Esteban Manuel",
+          "importe": 200.0,
+          "linea": "2025 - Competitividad Pyme",
+          "sublinea": "Tradicional",
+          "programa": "-",
+          "tipo_contragarantia": "Garantia SGR / FPG - FOGAER S.A.P.E.M"
+        },
         {
           "denominacion": "2025-CR-ER-002198",
           "razon_social": "LAMBERT REMOLQUES S.R.L.",
@@ -3146,8 +3212,8 @@
       "monto_cuatrimestral": 0.0,
       "cantidad_cuatrimestral": 0,
       "porcentaje_cuatrimestral": 0.0,
-      "estado_cuatrimestral": "gris",
-      "mensaje_cuatrimestral": "Período inicia el 01/07",
+      "estado_cuatrimestral": "rojo",
+      "mensaje_cuatrimestral": "Cumplimiento cuatrimestral 0%",
       "items": [
         {
           "denominacion": "2025-CR-MZ-002175",
@@ -3481,8 +3547,8 @@
       "monto_cuatrimestral": 0.0,
       "cantidad_cuatrimestral": 0,
       "porcentaje_cuatrimestral": 0.0,
-      "estado_cuatrimestral": "gris",
-      "mensaje_cuatrimestral": "Período inicia el 01/07",
+      "estado_cuatrimestral": "rojo",
+      "mensaje_cuatrimestral": "Cumplimiento cuatrimestral 0%",
       "items": [
         {
           "denominacion": "2025-CR-TU-002209",
@@ -3643,17 +3709,50 @@
     {
       "codigo": "MI",
       "nombre": "Misiones",
-      "monto": 2091.1,
-      "cantidad": 34,
+      "monto": 2220.2,
+      "cantidad": 37,
       "meta_anual": 4500.0,
-      "porcentaje": 46.5,
+      "porcentaje": 49.3,
       "meta_cuatrimestral": 1833.3,
       "monto_cuatrimestral": 0.0,
       "cantidad_cuatrimestral": 0,
       "porcentaje_cuatrimestral": 0.0,
-      "estado_cuatrimestral": "gris",
-      "mensaje_cuatrimestral": "Período inicia el 01/07",
+      "estado_cuatrimestral": "rojo",
+      "mensaje_cuatrimestral": "Cumplimiento cuatrimestral 0%",
       "items": [
+        {
+          "denominacion": "2025-CR-MI-002228",
+          "razon_social": "FRANCO S.R.L.",
+          "fecha_resolucion": "2026-06-30",
+          "usuario_resolucion": "Rodriguez, Esteban Manuel",
+          "importe": 61.5,
+          "linea": "2025 - Programática",
+          "sublinea": "Programatica",
+          "programa": "Mujeres",
+          "tipo_contragarantia": "Garantia SGR / FPG - CASFOG Serie IV (ARGENPYMES SGR)"
+        },
+        {
+          "denominacion": "2025-CR-MI-002135",
+          "razon_social": "FRACALOSSI MARIA VICTORIA",
+          "fecha_resolucion": "2026-06-30",
+          "usuario_resolucion": "Rodriguez, Esteban Manuel",
+          "importe": 51.7,
+          "linea": "2025 - Programática",
+          "sublinea": "Programatica",
+          "programa": "Mujeres",
+          "tipo_contragarantia": "Garantia SGR / FPG - CASFOG Serie IV (ARGENPYMES SGR)"
+        },
+        {
+          "denominacion": "2025-CR-MI-002218",
+          "razon_social": "METALGRAF S.R.L.",
+          "fecha_resolucion": "2026-06-30",
+          "usuario_resolucion": "Rodriguez, Esteban Manuel",
+          "importe": 15.9,
+          "linea": "2025 - Competitividad Pyme",
+          "sublinea": "Tradicional",
+          "programa": "-",
+          "tipo_contragarantia": "Garantia SGR / FPG - FOGAMI"
+        },
         {
           "denominacion": "2025-CR-MI-002160",
           "razon_social": "SANTA MONICA S.R.L.",
@@ -4041,8 +4140,8 @@
       "monto_cuatrimestral": 0.0,
       "cantidad_cuatrimestral": 0,
       "porcentaje_cuatrimestral": 0.0,
-      "estado_cuatrimestral": "gris",
-      "mensaje_cuatrimestral": "Período inicia el 01/07",
+      "estado_cuatrimestral": "rojo",
+      "mensaje_cuatrimestral": "Cumplimiento cuatrimestral 0%",
       "items": [
         {
           "denominacion": "2025-CR-RN-002192",
@@ -4390,17 +4489,28 @@
     {
       "codigo": "SA",
       "nombre": "Salta",
-      "monto": 2091.5,
-      "cantidad": 23,
+      "monto": 2097.5,
+      "cantidad": 24,
       "meta_anual": 4100.0,
-      "porcentaje": 51.0,
+      "porcentaje": 51.2,
       "meta_cuatrimestral": 1333.3,
       "monto_cuatrimestral": 0.0,
       "cantidad_cuatrimestral": 0,
       "porcentaje_cuatrimestral": 0.0,
-      "estado_cuatrimestral": "gris",
-      "mensaje_cuatrimestral": "Período inicia el 01/07",
+      "estado_cuatrimestral": "rojo",
+      "mensaje_cuatrimestral": "Cumplimiento cuatrimestral 0%",
       "items": [
+        {
+          "denominacion": "2025-CR-SA-002227",
+          "razon_social": "WETTSTEIN ANDREA MARINA",
+          "fecha_resolucion": "2026-06-30",
+          "usuario_resolucion": "Rodriguez, Esteban Manuel",
+          "importe": 6.0,
+          "linea": "2025 - Programática",
+          "sublinea": "Programatica",
+          "programa": "Mujeres",
+          "tipo_contragarantia": "Garantia SGR / FPG - CASFOG Serie II (TREND SGR)"
+        },
         {
           "denominacion": "2025-CR-SA-002159",
           "razon_social": "FLOR AZUL S.A.S.",
@@ -4659,17 +4769,28 @@
     {
       "codigo": "NQ",
       "nombre": "Neuquén",
-      "monto": 1023.5,
-      "cantidad": 10,
+      "monto": 1323.5,
+      "cantidad": 11,
       "meta_anual": 9100.0,
-      "porcentaje": 11.2,
+      "porcentaje": 14.5,
       "meta_cuatrimestral": 3033.3,
       "monto_cuatrimestral": 0.0,
       "cantidad_cuatrimestral": 0,
       "porcentaje_cuatrimestral": 0.0,
-      "estado_cuatrimestral": "gris",
-      "mensaje_cuatrimestral": "Período inicia el 01/07",
+      "estado_cuatrimestral": "rojo",
+      "mensaje_cuatrimestral": "Cumplimiento cuatrimestral 0%",
       "items": [
+        {
+          "denominacion": "2025-CR-NQ-002226",
+          "razon_social": "UNELEC S.A.",
+          "fecha_resolucion": "2026-06-30",
+          "usuario_resolucion": "Rodriguez, Esteban Manuel",
+          "importe": 300.0,
+          "linea": "2025 - Triple Impacto",
+          "sublinea": "Programatica",
+          "programa": "Desarrollo Proveedores - Impacto Estándar",
+          "tipo_contragarantia": "Garantia SGR / FPG - ARGENPYMES"
+        },
         {
           "denominacion": "2025-CR-NQ-002211",
           "razon_social": "CHACRITA LA LUNA S.A.S.",
@@ -4793,8 +4914,8 @@
       "monto_cuatrimestral": 0.0,
       "cantidad_cuatrimestral": 0,
       "porcentaje_cuatrimestral": 0.0,
-      "estado_cuatrimestral": "gris",
-      "mensaje_cuatrimestral": "Período inicia el 01/07",
+      "estado_cuatrimestral": "rojo",
+      "mensaje_cuatrimestral": "Cumplimiento cuatrimestral 0%",
       "items": [
         {
           "denominacion": "2025-CR-CT-002210",
@@ -5249,8 +5370,8 @@
       "monto_cuatrimestral": 0.0,
       "cantidad_cuatrimestral": 0,
       "porcentaje_cuatrimestral": 0.0,
-      "estado_cuatrimestral": "gris",
-      "mensaje_cuatrimestral": "Período inicia el 01/07",
+      "estado_cuatrimestral": "rojo",
+      "mensaje_cuatrimestral": "Cumplimiento cuatrimestral 0%",
       "items": [
         {
           "denominacion": "2025-CR-JU-002096",
@@ -5408,8 +5529,8 @@
       "monto_cuatrimestral": 0.0,
       "cantidad_cuatrimestral": 0,
       "porcentaje_cuatrimestral": 0.0,
-      "estado_cuatrimestral": "gris",
-      "mensaje_cuatrimestral": "Período inicia el 01/07",
+      "estado_cuatrimestral": "rojo",
+      "mensaje_cuatrimestral": "Cumplimiento cuatrimestral 0%",
       "items": [
         {
           "denominacion": "2025-CR-SL-002212",
@@ -5666,8 +5787,8 @@
       "monto_cuatrimestral": 0.0,
       "cantidad_cuatrimestral": 0,
       "porcentaje_cuatrimestral": 0.0,
-      "estado_cuatrimestral": "gris",
-      "mensaje_cuatrimestral": "Período inicia el 01/07",
+      "estado_cuatrimestral": "rojo",
+      "mensaje_cuatrimestral": "Cumplimiento cuatrimestral 0%",
       "items": [
         {
           "denominacion": "2025-CR-LR-002188",
@@ -5869,8 +5990,8 @@
       "monto_cuatrimestral": 0.0,
       "cantidad_cuatrimestral": 0,
       "porcentaje_cuatrimestral": 0.0,
-      "estado_cuatrimestral": "gris",
-      "mensaje_cuatrimestral": "Período inicia el 01/07",
+      "estado_cuatrimestral": "rojo",
+      "mensaje_cuatrimestral": "Cumplimiento cuatrimestral 0%",
       "items": [
         {
           "denominacion": "2025-CR-LP-002120",
@@ -6031,17 +6152,28 @@
     {
       "codigo": "CH",
       "nombre": "Chaco",
-      "monto": 1044.9,
-      "cantidad": 20,
+      "monto": 1214.9,
+      "cantidad": 21,
       "meta_anual": 4300.0,
-      "porcentaje": 24.3,
+      "porcentaje": 28.3,
       "meta_cuatrimestral": 1433.3,
       "monto_cuatrimestral": 0.0,
       "cantidad_cuatrimestral": 0,
       "porcentaje_cuatrimestral": 0.0,
-      "estado_cuatrimestral": "gris",
-      "mensaje_cuatrimestral": "Período inicia el 01/07",
+      "estado_cuatrimestral": "rojo",
+      "mensaje_cuatrimestral": "Cumplimiento cuatrimestral 0%",
       "items": [
+        {
+          "denominacion": "2025-CR-CH-002213",
+          "razon_social": "PUENTE NOGUEIRA S.R.L.",
+          "fecha_resolucion": "2026-06-30",
+          "usuario_resolucion": "Rodriguez, Esteban Manuel",
+          "importe": 170.0,
+          "linea": "2025 - Competitividad Pyme",
+          "sublinea": "Tradicional",
+          "programa": "-",
+          "tipo_contragarantia": "Garantia SGR / FPG - FOGACH"
+        },
         {
           "denominacion": "2025-CR-CH-002186",
           "razon_social": "TORRESETTI JESSICA EMILCE",
@@ -6275,8 +6407,8 @@
       "monto_cuatrimestral": 0.0,
       "cantidad_cuatrimestral": 0,
       "porcentaje_cuatrimestral": 0.0,
-      "estado_cuatrimestral": "gris",
-      "mensaje_cuatrimestral": "Período inicia el 01/07",
+      "estado_cuatrimestral": "rojo",
+      "mensaje_cuatrimestral": "Cumplimiento cuatrimestral 0%",
       "items": [
         {
           "denominacion": "2025-CR-SJ-002088",
@@ -6324,8 +6456,8 @@
       "monto_cuatrimestral": 0.0,
       "cantidad_cuatrimestral": 0,
       "porcentaje_cuatrimestral": 0.0,
-      "estado_cuatrimestral": "gris",
-      "mensaje_cuatrimestral": "Período inicia el 01/07",
+      "estado_cuatrimestral": "rojo",
+      "mensaje_cuatrimestral": "Cumplimiento cuatrimestral 0%",
       "items": [
         {
           "denominacion": "2025-CR-TF-002155",
@@ -6395,8 +6527,8 @@
       "monto_cuatrimestral": 0.0,
       "cantidad_cuatrimestral": 0,
       "porcentaje_cuatrimestral": 0.0,
-      "estado_cuatrimestral": "gris",
-      "mensaje_cuatrimestral": "Período inicia el 01/07",
+      "estado_cuatrimestral": "rojo",
+      "mensaje_cuatrimestral": "Cumplimiento cuatrimestral 0%",
       "items": [
         {
           "denominacion": "2025-CR-CB-002146",
@@ -6455,8 +6587,8 @@
       "monto_cuatrimestral": 0.0,
       "cantidad_cuatrimestral": 0,
       "porcentaje_cuatrimestral": 0.0,
-      "estado_cuatrimestral": "gris",
-      "mensaje_cuatrimestral": "Período inicia el 01/07",
+      "estado_cuatrimestral": "rojo",
+      "mensaje_cuatrimestral": "Cumplimiento cuatrimestral 0%",
       "items": [
         {
           "denominacion": "2025-CR-CA-002207",
@@ -6581,8 +6713,8 @@
       "monto_cuatrimestral": 0.0,
       "cantidad_cuatrimestral": 0,
       "porcentaje_cuatrimestral": 0.0,
-      "estado_cuatrimestral": "gris",
-      "mensaje_cuatrimestral": "Período inicia el 01/07",
+      "estado_cuatrimestral": "rojo",
+      "mensaje_cuatrimestral": "Cumplimiento cuatrimestral 0%",
       "items": [
         {
           "denominacion": "2025-CR-SE-001725",
@@ -6608,8 +6740,8 @@
       "monto_cuatrimestral": 0.0,
       "cantidad_cuatrimestral": 0,
       "porcentaje_cuatrimestral": 0.0,
-      "estado_cuatrimestral": "gris",
-      "mensaje_cuatrimestral": "Período inicia el 01/07",
+      "estado_cuatrimestral": "rojo",
+      "mensaje_cuatrimestral": "Cumplimiento cuatrimestral 0%",
       "items": [
         {
           "denominacion": "2025-CR-FO-002107",
@@ -6649,17 +6781,29 @@
     {
       "codigo": "SC",
       "nombre": "Santa Cruz",
-      "monto": 0,
-      "cantidad": 0,
+      "monto": 200.0,
+      "cantidad": 1,
       "meta_anual": 1300.0,
-      "porcentaje": 0.0,
+      "porcentaje": 15.4,
       "meta_cuatrimestral": 433.3,
       "monto_cuatrimestral": 0.0,
       "cantidad_cuatrimestral": 0,
       "porcentaje_cuatrimestral": 0.0,
-      "estado_cuatrimestral": "gris",
-      "mensaje_cuatrimestral": "Período inicia el 01/07",
-      "items": []
+      "estado_cuatrimestral": "rojo",
+      "mensaje_cuatrimestral": "Cumplimiento cuatrimestral 0%",
+      "items": [
+        {
+          "denominacion": "2025-CR-SC-002221",
+          "razon_social": "PRAEVIDA S.R.L.",
+          "fecha_resolucion": "2026-06-30",
+          "usuario_resolucion": "Rodriguez, Esteban Manuel",
+          "importe": 200.0,
+          "linea": "2025 - Competitividad Pyme",
+          "sublinea": "Tradicional",
+          "programa": "-",
+          "tipo_contragarantia": "Garantia SGR / FPG - Garantizar SGR"
+        }
+      ]
     }
   ]
 }
