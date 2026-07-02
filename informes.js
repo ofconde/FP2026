@@ -1328,6 +1328,28 @@
                 height: ${REPORT_PAGE_HEIGHT}px;
                 overflow: hidden;
               }
+              .print-shell.single-page .provincial-report {
+                transform: scale(0.94);
+                transform-origin: top left;
+                width: 1194px;
+                min-height: 845px;
+              }
+              .print-shell.single-page .provincial-report .report-map-svg {
+                max-height: 235px;
+              }
+              .print-shell.single-page .provincial-report .report-kpi-card,
+              .print-shell.single-page .provincial-report .report-block,
+              .print-shell.single-page .provincial-report .report-goal-card,
+              .print-shell.single-page .provincial-report .report-note-card {
+                padding: 12px 14px;
+              }
+              .print-shell.single-page .provincial-report .report-main,
+              .print-shell.single-page .provincial-report .report-hero,
+              .print-shell.single-page .provincial-report .report-map-shell,
+              .print-shell.single-page .provincial-report .report-side-stack,
+              .print-shell.single-page .provincial-report .report-kpi-grid {
+                gap: 10px;
+              }
               .print-shell.multi-page {
                 min-height: auto;
                 height: auto;
