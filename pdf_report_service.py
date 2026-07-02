@@ -1,12 +1,17 @@
 from __future__ import annotations
 
 import json
+import io
 import shutil
 import subprocess
 import tempfile
 from http.server import BaseHTTPRequestHandler, HTTPServer
 from pathlib import Path
 from urllib.parse import urlparse
+from PIL import Image
+from reportlab.lib.pagesizes import landscape, A4
+from reportlab.lib.utils import ImageReader
+from reportlab.pdfgen import canvas
 
 HOST = '127.0.0.1'
 PORT = 8765
@@ -38,7 +43,7 @@ def wrap_batch_pages(pages: list[str]) -> str:
     return '\n<div style="page-break-after: always;"></div>\n'.join(documents)
 
 
-def render_pdf(html: str) -> bytes:
+def render_png(html: str) -> bytes:
     if not html or '<html' not in html.lower():
         raise ValueError('No se recibió un documento HTML válido para renderizar.')
 
@@ -46,7 +51,7 @@ def render_pdf(html: str) -> bytes:
     with tempfile.TemporaryDirectory(prefix='fp2026_pdf_') as tmpdir:
         tmp_path = Path(tmpdir)
         html_path = tmp_path / 'report.html'
-        pdf_path = tmp_path / 'report.pdf'
+        png_path = tmp_path / 'report.png'
         html_path.write_text(html, encoding='utf-8')
 
         command = [
@@ -58,18 +63,46 @@ def render_pdf(html: str) -> bytes:
             '--no-default-browser-check',
             '--virtual-time-budget=5000',
             '--run-all-compositor-stages-before-draw',
-            '--no-pdf-header-footer',
             f'--window-size={VIEWPORT["width"]},{VIEWPORT["height"]}',
-            f'--print-to-pdf={pdf_path}',
+            f'--screenshot={png_path}',
             html_path.as_uri(),
         ]
         completed = subprocess.run(command, capture_output=True, text=True)
-        if completed.returncode != 0 or not pdf_path.exists():
+        if completed.returncode != 0 or not png_path.exists():
             detail = (completed.stderr or completed.stdout or '').strip()
             if detail:
-                raise RuntimeError(f'No se pudo renderizar el PDF con el navegador local: {detail}')
-            raise RuntimeError('No se pudo renderizar el PDF con el navegador local.')
-        return pdf_path.read_bytes()
+                raise RuntimeError(f'No se pudo renderizar la lámina con el navegador local: {detail}')
+            raise RuntimeError('No se pudo renderizar la lámina con el navegador local.')
+        return png_path.read_bytes()
+
+
+def image_bytes_to_pdf(image_bytes_list: list[bytes]) -> bytes:
+    packet = io.BytesIO()
+    page_width, page_height = landscape(A4)
+    pdf = canvas.Canvas(packet, pagesize=(page_width, page_height))
+
+    for image_bytes in image_bytes_list:
+        image = Image.open(io.BytesIO(image_bytes))
+        image_reader = ImageReader(image)
+        img_width, img_height = image.size
+        scale = min(page_width / img_width, page_height / img_height)
+        draw_width = img_width * scale
+        draw_height = img_height * scale
+        offset_x = (page_width - draw_width) / 2
+        offset_y = (page_height - draw_height) / 2
+        pdf.drawImage(image_reader, offset_x, offset_y, width=draw_width, height=draw_height)
+        pdf.showPage()
+
+    pdf.save()
+    return packet.getvalue()
+
+
+def render_pdf(html: str) -> bytes:
+    return image_bytes_to_pdf([render_png(html)])
+
+
+def render_pdf_batch(pages: list[str]) -> bytes:
+    return image_bytes_to_pdf([render_png(page_html) for page_html in pages])
 
 
 class Handler(BaseHTTPRequestHandler):
@@ -143,16 +176,16 @@ class Handler(BaseHTTPRequestHandler):
             self._send_json({'error': 'No se pudo leer el cuerpo JSON.'}, 400)
             return
 
+        pages = None
         if path == '/render-batch':
             pages = payload.get('pages')
             if not isinstance(pages, list) or not pages:
                 self._send_json({'error': 'No se recibieron páginas HTML válidas para renderizar.'}, 400)
                 return
-            try:
-                html = wrap_batch_pages(pages)
-            except ValueError as exc:
-                self._send_json({'error': str(exc)}, 400)
-                return
+            for index, page_html in enumerate(pages):
+                if not isinstance(page_html, str) or '<html' not in page_html.lower():
+                    self._send_json({'error': f'La página {index + 1} no contiene un HTML válido.'}, 400)
+                    return
         else:
             html = str(payload.get('html') or '')
         filename = str(payload.get('filename') or 'reporte.pdf').strip() or 'reporte.pdf'
@@ -160,7 +193,10 @@ class Handler(BaseHTTPRequestHandler):
             filename += '.pdf'
 
         try:
-            pdf_bytes = render_pdf(html)
+            if pages is not None:
+                pdf_bytes = render_pdf_batch(pages)
+            else:
+                pdf_bytes = render_pdf(html)
         except Exception as exc:
             self._send_json({'error': f'No se pudo generar el PDF: {exc}'}, 500)
             return
