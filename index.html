@@ -657,8 +657,25 @@
       return match ? match[1] : null;
     }
 
+    function buildReportTimestamp() {
+      const now = new Date();
+      const yyyy = now.getFullYear();
+      const mm = String(now.getMonth() + 1).padStart(2, '0');
+      const dd = String(now.getDate()).padStart(2, '0');
+      const hh = String(now.getHours()).padStart(2, '0');
+      const mi = String(now.getMinutes()).padStart(2, '0');
+      return `${yyyy}${mm}${dd}-${hh}${mi}`;
+    }
+
     async function requestPdfDownload(url, fallbackName, options = {}) {
-      const response = await fetch(url, options);
+      const response = await fetch(url, {
+        cache: 'no-store',
+        ...options,
+        headers: {
+          ...(options.headers || {}),
+          'Cache-Control': 'no-store'
+        }
+      });
       if (!response.ok) {
         let message = 'No se pudo generar el PDF.';
         try {
@@ -770,10 +787,11 @@
       try {
         setReportButtonsLoading(true);
         showReportMessage(`Generando PDF provincial de ${selected.nombre}...`, 'info');
+        const timestamp = buildReportTimestamp();
         await requestProvincialDirectPdf(
           dashboardData,
           selected.codigo,
-          `Dashboard CFI - Financiamiento Productivo 2026 - ${selected.nombre}.pdf`
+          `Dashboard CFI - Financiamiento Productivo 2026 - ${selected.nombre} - ${timestamp}.pdf`
         );
         clearReportMessage();
       } catch (error) {

@@ -30,6 +30,16 @@ SOFT = colors.HexColor("#D7EDF6")
 SOFT_2 = colors.HexColor("#EAF4F8")
 TRACK = colors.HexColor("#E4EEF3")
 
+BG_DARK = colors.HexColor("#0B1422")
+PANEL_DARK = colors.HexColor("#111D30")
+CARD_DARK = colors.HexColor("#16253A")
+BORDER_DARK = colors.HexColor("#223650")
+TEXT_LIGHT = colors.HexColor("#F5F8FC")
+TEXT_SOFT = colors.HexColor("#93A6C4")
+TEXT_FAINT = colors.HexColor("#637793")
+ACCENT_GOLD = colors.HexColor("#C7A45C")
+TRACK_DARK = colors.HexColor("#23344A")
+
 ROOT = Path(__file__).resolve().parent
 MAP_HTML = ROOT / "mapa_creditos.html"
 LOGO = ROOT / "logo-cfi-color-h.png"
@@ -206,19 +216,39 @@ def draw_text_block(pdf: canvas.Canvas, text: str, x: float, y: float, width: fl
     pdf.drawText(text_obj)
 
 
-def draw_kpi_card(pdf: canvas.Canvas, x: float, y: float, w: float, h: float, label: str, value: str, sub: str):
-    draw_round_rect(pdf, x, y, w, h)
-    pdf.setFillColor(colors.HexColor("#96C9DA"))
+def draw_kpi_card(
+    pdf: canvas.Canvas,
+    x: float,
+    y: float,
+    w: float,
+    h: float,
+    label: str,
+    value: str,
+    sub: str,
+    *,
+    dark: bool = False,
+):
+    if dark:
+        draw_round_rect(pdf, x, y, w, h, fill=CARD_DARK, stroke=BORDER_DARK)
+        label_color = colors.HexColor("#90D9F0")
+        value_color = TEXT_LIGHT
+        sub_color = TEXT_SOFT
+    else:
+        draw_round_rect(pdf, x, y, w, h)
+        label_color = colors.HexColor("#96C9DA")
+        value_color = NAVY
+        sub_color = MUTED
+    pdf.setFillColor(label_color)
     pdf.setFont("Helvetica-Bold", 10)
     pdf.drawString(x + 14, y + h - 20, label.upper())
-    pdf.setFillColor(NAVY)
+    pdf.setFillColor(value_color)
     pdf.setFont("Helvetica-Bold", 24)
     pdf.drawString(x + 14, y + h - 48, value)
-    draw_text_block(pdf, sub, x + 14, y + 18, w - 28, font_size=10.5, color=MUTED)
+    draw_text_block(pdf, sub, x + 14, y + 18, w - 28, font_size=10.5, color=sub_color)
 
 
-def draw_progress(pdf: canvas.Canvas, x: float, y: float, w: float, progress: float):
-    pdf.setFillColor(TRACK)
+def draw_progress(pdf: canvas.Canvas, x: float, y: float, w: float, progress: float, *, dark: bool = False):
+    pdf.setFillColor(TRACK_DARK if dark else TRACK)
     pdf.roundRect(x, y, w, 14, 7, fill=1, stroke=0)
     fill_w = max(0, min(w, w * max(progress, 0) / 100))
     pdf.setFillColor(ACCENT)
@@ -247,17 +277,17 @@ def draw_map(pdf: canvas.Canvas, provincias: list[dict], selected_code: str, x: 
     selected_height = max(selected_bounds["max_y"] - selected_bounds["min_y"], 0.8)
     focus_bounds = expand_bounds(
         selected_bounds,
-        max(selected_width * 1.9, (country_bounds["max_x"] - country_bounds["min_x"]) * 0.11),
-        max(selected_height * 1.9, (country_bounds["max_y"] - country_bounds["min_y"]) * 0.13),
+        selected_width * 1.9,
+        selected_height * 1.9,
     )
-    focus_project = create_projector_from_bounds(focus_bounds, 250, 220, 12)
-    inset_project = create_projector_from_bounds(country_bounds, 86, 126, 8)
+    focus_project = create_projector_from_bounds(focus_bounds, 280, 220, 20)
+    inset_project = create_projector_from_bounds(country_bounds, 100, 140, 10)
 
-    draw_round_rect(pdf, x, y, w, h, radius=18, fill=LIGHT, stroke=BORDER)
+    draw_round_rect(pdf, x, y, w, h, radius=20, fill=CARD_DARK, stroke=BORDER_DARK)
 
-    img_w = 320
-    img_h = 250
-    image = Image.new("RGBA", (img_w, img_h), (248, 251, 253, 0))
+    img_w = 420
+    img_h = 290
+    image = Image.new("RGBA", (img_w, img_h), (12, 22, 36, 0))
     draw = ImageDraw.Draw(image)
 
     def pil_feature(geometry: dict, project, origin_x: float, origin_y: float, fill_color, stroke_color, stroke_w: int):
@@ -271,31 +301,32 @@ def draw_map(pdf: canvas.Canvas, provincias: list[dict], selected_code: str, x: 
             if stroke_w > 1:
                 draw.line(points + [points[0]], fill=stroke_rgba, width=stroke_w)
 
-    draw.rounded_rectangle((0, 8, 258, 238), radius=18, fill=(248, 251, 253, 255), outline=(220, 233, 240, 255), width=1)
-    draw.rounded_rectangle((262, 12, 318, 144), radius=14, fill=(255, 255, 255, 255), outline=(220, 233, 240, 255), width=1)
+    draw.rounded_rectangle((0, 0, 418, 286), radius=24, fill=(14, 24, 39, 255), outline=(34, 54, 80, 255), width=1)
+    draw.rounded_rectangle((300, 16, 404, 170), radius=18, fill=(18, 31, 49, 255), outline=(34, 54, 80, 255), width=1)
 
     if selected_feature:
-        pil_feature(selected_feature["geometry"], focus_project, 4, 12, colors.HexColor("#D8EBF5"), colors.HexColor("#C3DCE8"), 6)
-        pil_feature(selected_feature["geometry"], focus_project, 4, 12, ACCENT, NAVY, 3)
+        pil_feature(selected_feature["geometry"], focus_project, 18, 28, colors.HexColor("#D4F3FB"), colors.HexColor("#85D7EE"), 7)
+        pil_feature(selected_feature["geometry"], focus_project, 18, 28, colors.HexColor("#27B6E2"), colors.HexColor("#F4FBFF"), 3)
 
     for feature in geojson["features"]:
         geo_id = feature["properties"].get("id_mapa") or normalize_key(feature["properties"].get("nombre"))
         provincia = by_id.get(geo_id)
         is_selected = provincia and provincia.get("codigo") == selected_code
+        has_activity = provincia and float(provincia.get("monto") or 0) > 0
         pil_feature(
             feature["geometry"],
             inset_project,
-            268,
-            18,
-            NAVY if is_selected else SOFT,
-            colors.white,
+            304,
+            22,
+            colors.HexColor("#27B6E2") if is_selected else (colors.HexColor("#A6DFF1") if has_activity else colors.HexColor("#314662")),
+            colors.HexColor("#F4FBFF") if is_selected else colors.white,
             2 if is_selected else 1,
         )
 
     image_buffer = io.BytesIO()
     image.save(image_buffer, format="PNG")
     image_buffer.seek(0)
-    pdf.drawImage(ImageReader(image_buffer), x + 10, y + 14, width=w - 20, height=h - 28, mask="auto")
+    pdf.drawImage(ImageReader(image_buffer), x + 12, y + 16, width=w - 24, height=h - 32, mask="auto")
 
 
 def build_provincial_pdf(data: dict, province_code: str) -> bytes:
@@ -319,55 +350,77 @@ def build_provincial_pdf(data: dict, province_code: str) -> bytes:
     packet = io.BytesIO()
     pdf = canvas.Canvas(packet, pagesize=(PAGE_WIDTH, PAGE_HEIGHT))
 
-    pdf.setFillColor(colors.HexColor("#F5F8FB"))
+    pdf.setFillColor(BG_DARK)
     pdf.rect(0, 0, PAGE_WIDTH, PAGE_HEIGHT, fill=1, stroke=0)
-    pdf.setFillColor(colors.HexColor("#EAF4FA"))
-    pdf.circle(PAGE_WIDTH - 38, PAGE_HEIGHT - 24, 82, fill=1, stroke=0)
+    pdf.setFillColor(colors.HexColor("#102038"))
+    pdf.rect(0, PAGE_HEIGHT - 56, PAGE_WIDTH, 56, fill=1, stroke=0)
+    pdf.setStrokeColor(colors.HexColor("#1B2C46"))
+    pdf.line(0, PAGE_HEIGHT - 56, PAGE_WIDTH, PAGE_HEIGHT - 56)
+
+    content_x = 18
+    content_y = 16
+    content_w = PAGE_WIDTH - 36
+    content_h = PAGE_HEIGHT - 72
+    draw_round_rect(pdf, content_x, content_y, content_w, content_h, radius=18, fill=PANEL_DARK, stroke=BORDER_DARK)
 
     if LOGO.exists():
-        pdf.drawImage(ImageReader(str(LOGO)), MARGIN_X, PAGE_HEIGHT - 38, width=112, height=24, mask="auto")
-    pdf.setFillColor(ACCENT)
-    pdf.setFont("Helvetica-Bold", 11)
-    pdf.drawString(MARGIN_X, PAGE_HEIGHT - 54, "CONSEJO FEDERAL DE INVERSIONES")
-    pdf.setFillColor(NAVY)
-    pdf.setFont("Helvetica-Bold", 26)
-    pdf.drawString(MARGIN_X, PAGE_HEIGHT - 84, f"INFORME DE CREDITOS CFI - {str(provincia.get('nombre')).upper()}")
-    pdf.setFillColor(MUTED)
-    pdf.setFont("Helvetica", 12.5)
+        pdf.drawImage(ImageReader(str(LOGO)), content_x + 18, PAGE_HEIGHT - 34, width=104, height=22, mask="auto")
+    pdf.setFillColor(ACCENT_GOLD)
+    pdf.setFont("Helvetica-Bold", 7)
+    pdf.drawString(content_x + 18, content_y + content_h - 22, "CONSEJO FEDERAL DE INVERSIONES · FINANCIAMIENTO PRODUCTIVO")
+    pdf.setFillColor(TEXT_LIGHT)
+    pdf.setFont("Helvetica-Bold", 24)
+    pdf.drawString(content_x + 18, content_y + content_h - 50, f"REPORTE EJECUTIVO FP2026 · {str(provincia.get('nombre')).upper()}")
+    pdf.setFillColor(colors.HexColor("#7FB6FF"))
+    pdf.setFont("Helvetica-Bold", 13)
+    pdf.drawString(content_x + 18, content_y + content_h - 68, provincia.get("nombre") or "-")
+    pdf.setFillColor(TEXT_SOFT)
+    pdf.setFont("Helvetica", 10.5)
     period = f"Enero / {month_name(data.get('total', {}).get('ultimo_mes') or 1)} 2026"
-    pdf.drawString(MARGIN_X, PAGE_HEIGHT - 104, f"{period} - Actualizado al {current_date_label(data)}")
+    pdf.drawString(content_x + 18, content_y + content_h - 84, f"Datos al {current_date_label(data)} · {period}")
 
-    stamp_w, stamp_h = 122, 74
-    stamp_x, stamp_y = PAGE_WIDTH - MARGIN_X - stamp_w, PAGE_HEIGHT - 110
-    draw_round_rect(pdf, stamp_x, stamp_y, stamp_w, stamp_h, radius=16)
-    pdf.setFillColor(colors.HexColor("#96C9DA"))
+    badge_w, badge_h = 132, 56
+    badge_x = content_x + content_w - badge_w - 18
+    badge_y = content_y + content_h - badge_h - 14
+    draw_round_rect(pdf, badge_x, badge_y, badge_w, badge_h, radius=16, fill=CARD_DARK, stroke=BORDER_DARK)
+    pdf.setFillColor(colors.HexColor("#9DDCF2"))
+    pdf.setFont("Helvetica-Bold", 9)
+    pdf.drawString(badge_x + 12, badge_y + 40, "RANKING NACIONAL")
+    pdf.setFillColor(TEXT_LIGHT)
+    pdf.setFont("Helvetica-Bold", 24)
+    pdf.drawString(badge_x + 12, badge_y + 16, f"#{rank}")
+
+    hero_y = content_y + content_h - 174
+    left_w = 370
+    right_w = content_w - left_w - 32
+    draw_round_rect(pdf, content_x + 18, hero_y, left_w, 88, radius=18, fill=CARD_DARK, stroke=BORDER_DARK)
+    draw_round_rect(pdf, content_x + 18 + left_w + 14, hero_y, right_w, 88, radius=18, fill=colors.HexColor("#0F97BC"), stroke=colors.HexColor("#0F97BC"))
+
+    pdf.setFillColor(colors.HexColor("#9DDCF2"))
     pdf.setFont("Helvetica-Bold", 10)
-    pdf.drawString(stamp_x + 14, stamp_y + 52, "RANKING PAIS")
-    pdf.setFillColor(NAVY)
-    pdf.setFont("Helvetica-Bold", 26)
-    pdf.drawString(stamp_x + 14, stamp_y + 26, f"#{rank}")
+    pdf.drawString(content_x + 34, hero_y + 60, "OBJETIVO PROVINCIAL 2026")
+    pdf.setFillColor(TEXT_LIGHT)
+    pdf.setFont("Helvetica-Bold", 27)
+    pdf.drawString(content_x + 34, hero_y + 24, format_money_compact(float(provincia.get("meta_anual") or 0)))
+    draw_text_block(
+        pdf,
+        f"Meta asignada: {format_money_full_millions(float(provincia.get('meta_anual') or 0))}",
+        content_x + 34,
+        hero_y + 10,
+        left_w - 30,
+        font_size=10.5,
+        color=TEXT_SOFT,
+    )
 
-    hero_y = PAGE_HEIGHT - 210
-    left_w = 360
-    right_w = PAGE_WIDTH - MARGIN_X * 2 - left_w - 14
-    draw_round_rect(pdf, MARGIN_X, hero_y, left_w, 86, radius=18)
-    draw_round_rect(pdf, MARGIN_X + left_w + 14, hero_y, right_w, 86, radius=18, fill=colors.HexColor("#139CC8"), stroke=colors.HexColor("#139CC8"))
-    pdf.setFillColor(colors.HexColor("#96C9DA"))
-    pdf.setFont("Helvetica-Bold", 11)
-    pdf.drawString(MARGIN_X + 18, hero_y + 58, "OBJETIVO PROVINCIAL 2026")
-    pdf.setFillColor(NAVY)
-    pdf.setFont("Helvetica-Bold", 30)
-    pdf.drawString(MARGIN_X + 18, hero_y + 24, format_money_compact(float(provincia.get("meta_anual") or 0)))
-    draw_text_block(pdf, f"Equivale a {format_money_full_millions(float(provincia.get('meta_anual') or 0))} como meta anual asignada.", MARGIN_X + 18, hero_y + 10, left_w - 30, font_size=10.5, color=MUTED)
-
-    note_x = MARGIN_X + left_w + 14
+        # bloque ejecutivo principal
+    note_x = content_x + 18 + left_w + 14
     pdf.setFillColor(colors.white)
-    pdf.setFont("Helvetica-Bold", 11)
-    pdf.drawString(note_x + 18, hero_y + 58, "LECTURA EJECUTIVA")
-    draw_text_block(pdf, note, note_x + 18, hero_y + 40, right_w - 36, font_size=12, color=colors.white, leading=17)
+    pdf.setFont("Helvetica-Bold", 10)
+    pdf.drawString(note_x + 18, hero_y + 60, "LECTURA EJECUTIVA")
+    draw_text_block(pdf, note, note_x + 18, hero_y + 42, right_w - 32, font_size=12.5, color=colors.white, leading=17)
 
-    kpi_y = hero_y - 102
-    total_w = PAGE_WIDTH - MARGIN_X * 2
+    kpi_y = hero_y - 104
+    total_w = content_w - 36
     kpi_gap = 10
     kpi_w = (total_w - kpi_gap * 4) / 5
     kpi_labels = [
@@ -375,74 +428,105 @@ def build_provincial_pdf(data: dict, province_code: str) -> bytes:
         ("Participacion nacional", format_percent(participation), "Sobre el monto total pais"),
         ("Avance objetivo", format_percent(progress), f"Brecha: {format_money_compact(abs(float(provincia.get('diferencia') or 0)))}"),
         ("Promedio por credito", format_money_compact(avg_ticket), format_money_full_millions(avg_ticket)),
-        ("Estado actual", format_percent(float(provincia.get("porcentaje") or 0)), str(provincia.get("mensaje") or "Seguimiento de meta")),
+        ("Estado actual", format_percent(float(provincia.get("porcentaje") or 0)), str(provincia.get("mensaje") or "Seguimiento anual")),
     ]
     for idx, (label, value, sub) in enumerate(kpi_labels):
-        draw_kpi_card(pdf, MARGIN_X + idx * (kpi_w + kpi_gap), kpi_y, kpi_w, 86, label, value, sub)
+        draw_kpi_card(pdf, content_x + 18 + idx * (kpi_w + kpi_gap), kpi_y, kpi_w, 86, label, value, sub, dark=True)
 
-    main_y = 76
-    main_h = kpi_y - main_y - 16
-    left_main_w = 430
-    right_main_w = total_w - left_main_w - 14
-    draw_round_rect(pdf, MARGIN_X, main_y, left_main_w, main_h, radius=18)
-    draw_round_rect(pdf, MARGIN_X + left_main_w + 14, main_y + main_h - 112, right_main_w, 112, radius=18)
-    draw_round_rect(pdf, MARGIN_X + left_main_w + 14, main_y, right_main_w, main_h - 126, radius=18)
+    bottom_y = content_y + 24
+    bottom_h = kpi_y - bottom_y - 16
+    left_main_w = 470
+    right_main_w = content_w - left_main_w - 32
+    left_x = content_x + 18
+    right_x = left_x + left_main_w + 14
 
-    pdf.setFillColor(NAVY)
-    pdf.setFont("Helvetica-Bold", 24)
-    pdf.drawString(MARGIN_X + 18, main_y + main_h - 34, "MAPA TERRITORIAL")
-    draw_text_block(pdf, "Foco provincial con localizador nacional para lectura institucional rapida.", MARGIN_X + 18, main_y + main_h - 56, left_main_w - 36, font_size=11.5, color=MUTED)
-    draw_map(pdf, provincias, province_code, MARGIN_X + 18, main_y + 34, left_main_w - 36, main_h - 126)
-    chip_y = main_y + 12
-    for idx, (label, chip_color) in enumerate([(provincia.get("nombre"), ACCENT), ("Localizador nacional", NAVY), ("Entorno regional", colors.HexColor("#96C9DA"))]):
-        chip_x = MARGIN_X + 18 + idx * 118
-        pdf.setFillColor(LIGHT)
-        pdf.setStrokeColor(BORDER)
-        pdf.roundRect(chip_x, chip_y, 108, 20, 10, fill=1, stroke=1)
+    draw_round_rect(pdf, left_x, bottom_y, left_main_w, bottom_h, radius=18, fill=CARD_DARK, stroke=BORDER_DARK)
+    draw_round_rect(pdf, right_x, bottom_y + bottom_h - 112, right_main_w, 112, radius=18, fill=CARD_DARK, stroke=BORDER_DARK)
+    draw_round_rect(pdf, right_x, bottom_y, right_main_w, bottom_h - 126, radius=18, fill=CARD_DARK, stroke=BORDER_DARK)
+
+    pdf.setFillColor(TEXT_LIGHT)
+    pdf.setFont("Helvetica-Bold", 22)
+    pdf.drawString(left_x + 18, bottom_y + bottom_h - 32, "MAPA FEDERAL")
+    draw_text_block(
+        pdf,
+        "La provincia analizada se resalta sobre el resto del mapa para ubicar rapidamente su peso territorial dentro del sistema.",
+        left_x + 18,
+        bottom_y + bottom_h - 54,
+        left_main_w - 36,
+        font_size=11.5,
+        color=TEXT_SOFT,
+    )
+    legend_y = bottom_y + bottom_h - 90
+    legend_items = [
+        (provincia.get("nombre"), ACCENT, 98),
+        ("Actividad 2026", colors.HexColor("#66C9E8"), 92),
+        ("Sin monto", colors.HexColor("#263A55"), 74),
+    ]
+    cursor_x = left_x + 18
+    for label, chip_color, chip_w in legend_items:
+        pdf.setFillColor(colors.HexColor("#0F1C2F"))
+        pdf.setStrokeColor(BORDER_DARK)
+        pdf.roundRect(cursor_x, legend_y, chip_w, 20, 10, fill=1, stroke=1)
         pdf.setFillColor(chip_color)
-        pdf.circle(chip_x + 10, chip_y + 10, 3.5, fill=1, stroke=0)
-        pdf.setFillColor(TEXT)
-        pdf.setFont("Helvetica-Bold", 8.5)
-        pdf.drawString(chip_x + 18, chip_y + 7, str(label)[:17].upper())
+        pdf.circle(cursor_x + 11, legend_y + 10, 3.5, fill=1, stroke=0)
+        pdf.setFillColor(TEXT_LIGHT if label == provincia.get("nombre") else TEXT_SOFT)
+        pdf.setFont("Helvetica-Bold" if label == provincia.get("nombre") else "Helvetica", 8.7)
+        pdf.drawString(cursor_x + 20, legend_y + 6.5, str(label))
+        cursor_x += chip_w + 8
+    draw_map(pdf, provincias, province_code, left_x + 18, bottom_y + 18, left_main_w - 36, bottom_h - 126)
 
-    right_x = MARGIN_X + left_main_w + 14
-    top_card_y = main_y + main_h - 112
-    pdf.setFillColor(NAVY)
-    pdf.setFont("Helvetica-Bold", 24)
+    top_card_y = bottom_y + bottom_h - 112
+    pdf.setFillColor(TEXT_LIGHT)
+    pdf.setFont("Helvetica-Bold", 22)
     pdf.drawString(right_x + 18, top_card_y + 78, "AVANCE CONTRA OBJETIVO")
-    draw_text_block(pdf, "Comparacion directa entre monto aprobado acumulado y meta provincial 2026.", right_x + 18, top_card_y + 54, right_main_w - 36, font_size=11.5, color=MUTED)
-    draw_progress(pdf, right_x + 18, top_card_y + 34, right_main_w - 36, progress)
-    pdf.setFillColor(MUTED)
+    draw_text_block(
+        pdf,
+        "Comparacion directa entre monto aprobado acumulado y la meta provincial 2026.",
+        right_x + 18,
+        top_card_y + 54,
+        right_main_w - 36,
+        font_size=11.5,
+        color=TEXT_SOFT,
+    )
+    draw_progress(pdf, right_x + 18, top_card_y + 34, right_main_w - 36, progress, dark=True)
+    pdf.setFillColor(TEXT_SOFT)
     pdf.setFont("Helvetica", 10.5)
     pdf.drawString(right_x + 18, top_card_y + 18, f"Otorgado: {format_money_compact(float(provincia.get('monto') or 0))}")
     pdf.drawRightString(right_x + right_main_w - 18, top_card_y + 18, f"Meta: {format_money_compact(float(provincia.get('meta_anual') or 0))}")
 
-    list_y = main_y
-    pdf.setFillColor(NAVY)
-    pdf.setFont("Helvetica-Bold", 24)
-    pdf.drawString(right_x + 18, list_y + main_h - 162, "TOP PROVINCIAS")
-    draw_text_block(pdf, f"Contexto nacional para leer la posicion relativa de {provincia.get('nombre')}.", right_x + 18, list_y + main_h - 184, right_main_w - 36, font_size=11.5, color=MUTED)
-    start_y = list_y + main_h - 218
+    pdf.setFillColor(TEXT_LIGHT)
+    pdf.setFont("Helvetica-Bold", 22)
+    pdf.drawString(right_x + 18, bottom_y + bottom_h - 148, "TOP PROVINCIAS")
+    draw_text_block(
+        pdf,
+        f"Contexto nacional para leer la posicion relativa de {provincia.get('nombre')}.",
+        right_x + 18,
+        bottom_y + bottom_h - 170,
+        right_main_w - 36,
+        font_size=11.5,
+        color=TEXT_SOFT,
+    )
+    start_y = bottom_y + bottom_h - 206
     for idx, item in enumerate(ordered[:5]):
-        row_y = start_y - idx * 54
-        pdf.setStrokeColor(colors.HexColor("#ECF2F5"))
+        row_y = start_y - idx * 53
+        pdf.setStrokeColor(colors.HexColor("#223650"))
         pdf.setLineWidth(1)
-        pdf.line(right_x + 18, row_y - 10, right_x + right_main_w - 18, row_y - 10)
-        pdf.setFillColor(NAVY)
-        pdf.setFont("Helvetica-Bold", 15)
-        pdf.drawString(right_x + 18, row_y + 4, f"#{idx + 1} - {str(item.get('nombre')).upper()}")
+        pdf.line(right_x + 18, row_y - 9, right_x + right_main_w - 18, row_y - 9)
+        pdf.setFillColor(TEXT_LIGHT)
+        pdf.setFont("Helvetica-Bold", 14.5)
+        pdf.drawString(right_x + 18, row_y + 4, f"#{idx + 1} · {str(item.get('nombre')).upper()}")
         share = (float(item.get("monto") or 0) / float(data.get("total", {}).get("monto") or 1)) * 100
-        draw_text_block(pdf, f"{format_count(item.get('cantidad') or 0)} - {format_percent(share)} del total", right_x + 18, row_y - 14, 210, font_size=10, color=MUTED)
-        pdf.setFillColor(NAVY)
-        pdf.setFont("Helvetica-Bold", 16)
-        pdf.drawRightString(right_x + right_main_w - 18, row_y - 2, format_money_compact(float(item.get("monto") or 0)))
+        draw_text_block(pdf, f"{format_count(item.get('cantidad') or 0)} · {format_percent(share)} del total", right_x + 18, row_y - 13, 220, font_size=10, color=TEXT_SOFT)
+        pdf.setFillColor(TEXT_LIGHT)
+        pdf.setFont("Helvetica-Bold", 15.5)
+        pdf.drawRightString(right_x + right_main_w - 18, row_y - 1, format_money_compact(float(item.get("monto") or 0)))
 
-    pdf.setFillColor(colors.HexColor("#96C9DA"))
-    pdf.setFont("Helvetica-Bold", 10)
-    pdf.drawString(MARGIN_X, 14, "CFI - FINANCIAMIENTO PRODUCTIVO - USO INSTITUCIONAL")
-    pdf.setFillColor(MUTED)
-    pdf.setFont("Helvetica", 10)
-    pdf.drawRightString(PAGE_WIDTH - MARGIN_X, 14, "Generado directamente desde datos 2026")
+    pdf.setFillColor(TEXT_FAINT)
+    pdf.setFont("Helvetica-Bold", 9.5)
+    pdf.drawString(content_x + 18, content_y + 8, "CFI · FINANCIAMIENTO PRODUCTIVO · USO INSTITUCIONAL")
+    pdf.setFillColor(TEXT_FAINT)
+    pdf.setFont("Helvetica", 9.5)
+    pdf.drawRightString(content_x + content_w - 18, content_y + 8, "Generado automaticamente desde datos 2026")
 
     pdf.showPage()
     pdf.save()
