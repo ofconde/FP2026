@@ -1,47 +1,71 @@
 from __future__ import annotations
 
 import json
+import shutil
+import subprocess
+import tempfile
 from http.server import BaseHTTPRequestHandler, HTTPServer
+from pathlib import Path
 from urllib.parse import urlparse
-
-from playwright.sync_api import sync_playwright
 
 HOST = '127.0.0.1'
 PORT = 8765
 VIEWPORT = {'width': 1122, 'height': 794}
+BROWSER_CANDIDATES = [
+    '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome',
+    '/Applications/Brave Browser.app/Contents/MacOS/Brave Browser',
+    '/Applications/Microsoft Edge.app/Contents/MacOS/Microsoft Edge',
+]
+
+
+def find_browser_binary() -> str:
+    for candidate in BROWSER_CANDIDATES:
+        if Path(candidate).exists():
+            return candidate
+    for candidate in ('google-chrome', 'chromium', 'chromium-browser'):
+        resolved = shutil.which(candidate)
+        if resolved:
+            return resolved
+    raise RuntimeError('No se encontró un navegador compatible para renderizar el PDF.')
+
+
+def wrap_batch_pages(pages: list[str]) -> str:
+    documents = []
+    for index, page_html in enumerate(pages):
+        if not isinstance(page_html, str) or '<html' not in page_html.lower():
+            raise ValueError(f'La página {index + 1} no contiene un HTML válido.')
+        documents.append(page_html)
+    return '\n<div style="page-break-after: always;"></div>\n'.join(documents)
 
 
 def render_pdf(html: str) -> bytes:
     if not html or '<html' not in html.lower():
         raise ValueError('No se recibió un documento HTML válido para renderizar.')
 
-    with sync_playwright() as p:
-        browser = p.chromium.launch(headless=True)
-        try:
-            context = browser.new_context(
-                viewport=VIEWPORT,
-                screen=VIEWPORT,
-                device_scale_factor=2,
-                locale='es-AR',
-                color_scheme='light',
-            )
-            page = context.new_page()
-            try:
-                page.set_content(html, wait_until='load')
-                page.emulate_media(media='print')
-                page.wait_for_timeout(1400)
-                return page.pdf(
-                    format='A4',
-                    landscape=True,
-                    print_background=True,
-                    prefer_css_page_size=True,
-                    margin={'top': '0mm', 'right': '0mm', 'bottom': '0mm', 'left': '0mm'},
-                )
-            finally:
-                page.close()
-                context.close()
-        finally:
-            browser.close()
+    browser_binary = find_browser_binary()
+    with tempfile.TemporaryDirectory(prefix='fp2026_pdf_') as tmpdir:
+        tmp_path = Path(tmpdir)
+        html_path = tmp_path / 'report.html'
+        pdf_path = tmp_path / 'report.pdf'
+        html_path.write_text(html, encoding='utf-8')
+
+        command = [
+            browser_binary,
+            '--headless',
+            '--disable-gpu',
+            '--no-first-run',
+            '--no-default-browser-check',
+            f'--window-size={VIEWPORT["width"]},{VIEWPORT["height"]}',
+            f'--print-to-pdf={pdf_path}',
+            html_path.as_uri(),
+        ]
+        completed = subprocess.run(command, capture_output=True, text=True)
+        if completed.returncode != 0 or not pdf_path.exists():
+            detail = (completed.stderr or completed.stdout or '').strip()
+            if detail:
+                raise RuntimeError(f'No se pudo renderizar el PDF con el navegador local: {detail}')
+            raise RuntimeError('No se pudo renderizar el PDF con el navegador local.')
+        return pdf_path.read_bytes()
 
 
 class Handler(BaseHTTPRequestHandler):
@@ -103,7 +127,7 @@ class Handler(BaseHTTPRequestHandler):
 
     def do_POST(self):
         path = urlparse(self.path).path
-        if path != '/render':
+        if path not in ('/render', '/render-batch'):
             self._send_json({'error': 'Ruta no encontrada.'}, 404)
             return
 
@@ -115,7 +139,18 @@ class Handler(BaseHTTPRequestHandler):
             self._send_json({'error': 'No se pudo leer el cuerpo JSON.'}, 400)
             return
 
-        html = str(payload.get('html') or '')
+        if path == '/render-batch':
+            pages = payload.get('pages')
+            if not isinstance(pages, list) or not pages:
+                self._send_json({'error': 'No se recibieron páginas HTML válidas para renderizar.'}, 400)
+                return
+            try:
+                html = wrap_batch_pages(pages)
+            except ValueError as exc:
+                self._send_json({'error': str(exc)}, 400)
+                return
+        else:
+            html = str(payload.get('html') or '')
         filename = str(payload.get('filename') or 'reporte.pdf').strip() or 'reporte.pdf'
         if not filename.lower().endswith('.pdf'):
             filename += '.pdf'
