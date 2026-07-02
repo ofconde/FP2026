@@ -329,21 +329,6 @@
       </g>
     ` : '';
 
-    const legend = `
-      <div class="report-legend-item">
-        <span class="report-legend-color" style="background:#10B7E8"></span>
-        <span>${selected ? selected.nombre : 'Provincia analizada'}</span>
-      </div>
-      <div class="report-legend-item">
-        <span class="report-legend-color" style="background:#D6EAF2"></span>
-        <span>Localizador nacional</span>
-      </div>
-      <div class="report-legend-item">
-        <span class="report-legend-color" style="background:#E9F2F6"></span>
-        <span>Entorno territorial de referencia</span>
-      </div>
-    `;
-
     return {
       svg: `
         <svg viewBox="0 0 520 420" class="report-map-svg report-map-svg-provincial" xmlns="http://www.w3.org/2000/svg">
@@ -363,7 +348,7 @@
           ${mapLabel}
         </svg>
       `,
-      legend,
+      legend: '',
     };
   }
 
@@ -571,6 +556,10 @@
           gap: 12px;
           min-height: 0;
         }
+        .report-map-shell.provincial-map-shell {
+          grid-template-columns: 1fr;
+          gap: 0;
+        }
         .report-map-stage {
           background: linear-gradient(180deg, #F8FBFD 0%, #EFF6FA 100%);
           border: 1px solid #E0ECF2;
@@ -588,6 +577,41 @@
         }
         .report-map-svg-provincial {
           max-height: 328px;
+        }
+        .report-map-caption {
+          margin-top: 10px;
+          display: flex;
+          gap: 8px;
+          flex-wrap: wrap;
+        }
+        .report-map-chip {
+          display: inline-flex;
+          align-items: center;
+          gap: 6px;
+          border-radius: 999px;
+          padding: 6px 10px;
+          background: #F2F7FA;
+          border: 1px solid #DCE9F0;
+          font-size: 10px;
+          color: #42506D;
+          font-weight: 700;
+        }
+        .report-map-chip::before {
+          content: '';
+          width: 10px;
+          height: 10px;
+          border-radius: 50%;
+          background: currentColor;
+          opacity: 0.9;
+        }
+        .report-map-chip.primary {
+          color: #10B7E8;
+        }
+        .report-map-chip.dark {
+          color: #1C2443;
+        }
+        .report-map-chip.soft {
+          color: #96C9DA;
         }
         .report-legend {
           display: grid;
@@ -1093,9 +1117,15 @@
           <div class="report-block">
             <h2 class="report-block-title">Mapa Federal</h2>
             <p class="report-block-subtitle">La provincia analizada se resalta sobre el resto del mapa para ubicar rápidamente su peso territorial dentro del sistema.</p>
-            <div class="report-map-shell">
-              <div class="report-map-stage">${map.svg}</div>
-              <div class="report-legend">${map.legend}</div>
+            <div class="report-map-shell provincial-map-shell">
+              <div>
+                <div class="report-map-stage">${map.svg}</div>
+                <div class="report-map-caption">
+                  <span class="report-map-chip primary">${provincia.nombre}</span>
+                  <span class="report-map-chip dark">Localizador nacional</span>
+                  <span class="report-map-chip soft">Entorno regional</span>
+                </div>
+              </div>
             </div>
           </div>
 
