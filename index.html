@@ -304,7 +304,7 @@
 
   <div id="footer" class="footer">Consejo Federal de Inversiones • Financiamiento Productivo • Actualizado: -</div>
 
-  <script src="./informes-20260702.js?v=20260702b"></script>
+  <script src="./informes.js"></script>
   <script>
     const COLOR_BY_STATUS = {
       verde: 'verde',
@@ -657,25 +657,8 @@
       return match ? match[1] : null;
     }
 
-    function buildReportTimestamp() {
-      const now = new Date();
-      const yyyy = now.getFullYear();
-      const mm = String(now.getMonth() + 1).padStart(2, '0');
-      const dd = String(now.getDate()).padStart(2, '0');
-      const hh = String(now.getHours()).padStart(2, '0');
-      const mi = String(now.getMinutes()).padStart(2, '0');
-      return `${yyyy}${mm}${dd}-${hh}${mi}`;
-    }
-
     async function requestPdfDownload(url, fallbackName, options = {}) {
-      const response = await fetch(url, {
-        cache: 'no-store',
-        ...options,
-        headers: {
-          ...(options.headers || {}),
-          'Cache-Control': 'no-store'
-        }
-      });
+      const response = await fetch(url, options);
       if (!response.ok) {
         let message = 'No se pudo generar el PDF.';
         try {
@@ -711,17 +694,6 @@
       });
     }
 
-    async function requestProvincialDirectPdf(data, provinceCode, fallbackName) {
-      return requestPdfDownload(`${PDF_SERVICE_BASE}/render-provincial-direct`, fallbackName, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          data,
-          provinceCode,
-          filename: fallbackName
-        })
-      });
-    }
 
     function closeReportPreview() {
       const overlay = document.getElementById('reportPreviewOverlay');
@@ -787,12 +759,11 @@
       try {
         setReportButtonsLoading(true);
         showReportMessage(`Generando PDF provincial de ${selected.nombre}...`, 'info');
-        const timestamp = buildReportTimestamp();
-        await requestProvincialDirectPdf(
-          dashboardData,
-          selected.codigo,
-          `Dashboard CFI - Financiamiento Productivo 2026 - ${selected.nombre} - ${timestamp}.pdf`
-        );
+        const preview = await window.CFIReports.generateProvincialReport({
+          data: dashboardData,
+          provinceCode: selected.codigo
+        });
+        await requestRenderedPdf(preview, `Dashboard CFI - Financiamiento Productivo 2026 - ${selected.nombre}.pdf`);
         clearReportMessage();
       } catch (error) {
         console.error('Error generando informe provincial:', error);
