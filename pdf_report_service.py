@@ -53,8 +53,12 @@ def render_pdf(html: str) -> bytes:
             browser_binary,
             '--headless',
             '--disable-gpu',
+            '--no-sandbox',
             '--no-first-run',
             '--no-default-browser-check',
+            '--virtual-time-budget=5000',
+            '--run-all-compositor-stages-before-draw',
+            '--no-pdf-header-footer',
             f'--window-size={VIEWPORT["width"]},{VIEWPORT["height"]}',
             f'--print-to-pdf={pdf_path}',
             html_path.as_uri(),
@@ -112,13 +116,13 @@ class Handler(BaseHTTPRequestHandler):
     def do_GET(self):
         path = urlparse(self.path).path
         if path == '/health':
-            self._send_json({'ok': True, 'engine': 'playwright-chromium'})
+            self._send_json({'ok': True, 'engine': 'local-chrome-headless'})
             return
         if path == '/':
             self._send_html(
                 '<!doctype html><html lang="es"><meta charset="utf-8"><title>Servicio PDF activo</title>'
                 '<body style="font-family:Arial,sans-serif;padding:32px;background:#f4f7fb;color:#1c2443">'
-                '<h1>Servicio PDF activo</h1><p>Motor: Playwright + Chromium</p>'
+                '<h1>Servicio PDF activo</h1><p>Motor: navegador local en modo headless</p>'
                 '<ul><li><code>GET /health</code></li><li><code>POST /render</code></li></ul>'
                 '</body></html>'
             )
