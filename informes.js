@@ -96,6 +96,42 @@
     };
   }
 
+  function geometryBounds(geometry) {
+    const points = [];
+    walkCoords(geometry, (coord) => points.push(mercator(coord)));
+    const xs = points.map((point) => point[0]);
+    const ys = points.map((point) => point[1]);
+    return {
+      minX: Math.min(...xs),
+      maxX: Math.max(...xs),
+      minY: Math.min(...ys),
+      maxY: Math.max(...ys),
+    };
+  }
+
+  function expandBounds(bounds, targetWidth, targetHeight) {
+    const centerX = (bounds.minX + bounds.maxX) / 2;
+    const centerY = (bounds.minY + bounds.maxY) / 2;
+    return {
+      minX: centerX - targetWidth / 2,
+      maxX: centerX + targetWidth / 2,
+      minY: centerY - targetHeight / 2,
+      maxY: centerY + targetHeight / 2,
+    };
+  }
+
+  function createProjectorFromBounds(bounds, width, height, pad) {
+    const spanX = Math.max(bounds.maxX - bounds.minX, 0.0001);
+    const spanY = Math.max(bounds.maxY - bounds.minY, 0.0001);
+    const scale = Math.min((width - pad * 2) / spanX, (height - pad * 2) / spanY);
+    const offsetX = (width - spanX * scale) / 2;
+    const offsetY = (height - spanY * scale) / 2;
+    return (coord) => {
+      const [x, y] = mercator(coord);
+      return [offsetX + (x - bounds.minX) * scale, height - (offsetY + (y - bounds.minY) * scale)];
+    };
+  }
+
   function ringToPath(ring, project) {
     return ring.map((coord, index) => {
       const [x, y] = project(coord);
@@ -239,37 +275,94 @@
   async function buildProvincialMapSvg(provincias, selectedCode) {
     const geojson = await loadGeoJsonArgentina();
     const byId = mapProvinceById(provincias);
-    const project = createProjector(geojson.features, 520, 420, 18);
-
     const selected = provincias.find((item) => item.codigo === selectedCode);
-    const paths = geojson.features.map((feature) => {
+    const selectedFeature = geojson.features.find((feature) => {
+      const geoId = feature.properties.id_mapa || normalizeKey(feature.properties.nombre);
+      const provincia = byId.get(geoId);
+      return provincia?.codigo === selectedCode;
+    });
+    const nationalProject = createProjector(geojson.features, 132, 186, 10);
+    const countryBounds = geometryBounds({
+      type: 'MultiPolygon',
+      coordinates: geojson.features.flatMap((feature) => (
+        feature.geometry.type === 'MultiPolygon'
+          ? feature.geometry.coordinates
+          : [feature.geometry.coordinates]
+      )),
+    });
+    const selectedBounds = selectedFeature ? geometryBounds(selectedFeature.geometry) : countryBounds;
+    const selectedWidth = Math.max(selectedBounds.maxX - selectedBounds.minX, 0.8);
+    const selectedHeight = Math.max(selectedBounds.maxY - selectedBounds.minY, 0.8);
+    const focusBounds = expandBounds(
+      selectedBounds,
+      Math.max(selectedWidth * 3.4, (countryBounds.maxX - countryBounds.minX) * 0.2),
+      Math.max(selectedHeight * 2.9, (countryBounds.maxY - countryBounds.minY) * 0.24),
+    );
+    const focusProject = createProjectorFromBounds(focusBounds, 332, 344, 14);
+
+    const focusPaths = geojson.features.map((feature) => {
       const geoId = feature.properties.id_mapa || normalizeKey(feature.properties.nombre);
       const provincia = byId.get(geoId);
       const isSelected = provincia?.codigo === selectedCode;
-      const hasData = Number(provincia?.monto || 0) > 0;
-      const fill = isSelected ? '#00A7E1' : hasData ? '#CFE7EF' : '#EDF1F4';
-      const stroke = isSelected ? '#1C2443' : '#FFFFFF';
-      const strokeWidth = isSelected ? '2.2' : '1.2';
-      return `<path d="${geometryToPath(feature.geometry, project)}" fill="${fill}" stroke="${stroke}" stroke-width="${strokeWidth}" vector-effect="non-scaling-stroke"></path>`;
+      const path = geometryToPath(feature.geometry, focusProject);
+      if (!path) return '';
+      if (isSelected) {
+        return `
+          <path d="${path}" fill="none" stroke="rgba(28,36,67,0.16)" stroke-width="10" stroke-linejoin="round" stroke-linecap="round" vector-effect="non-scaling-stroke"></path>
+          <path d="${path}" fill="#10B7E8" stroke="#1C2443" stroke-width="2.8" stroke-linejoin="round" stroke-linecap="round" vector-effect="non-scaling-stroke"></path>
+        `;
+      }
+      return `<path d="${path}" fill="#E9F2F6" stroke="#FFFFFF" stroke-width="1.3" stroke-linejoin="round" stroke-linecap="round" vector-effect="non-scaling-stroke"></path>`;
     }).join('');
+
+    const insetPaths = geojson.features.map((feature) => {
+      const geoId = feature.properties.id_mapa || normalizeKey(feature.properties.nombre);
+      const provincia = byId.get(geoId);
+      const isSelected = provincia?.codigo === selectedCode;
+      return `<path d="${geometryToPath(feature.geometry, nationalProject)}" fill="${isSelected ? '#1C2443' : '#D6EAF2'}" stroke="${isSelected ? '#FFFFFF' : '#FFFFFF'}" stroke-width="${isSelected ? '1.8' : '0.9'}" stroke-linejoin="round" stroke-linecap="round" vector-effect="non-scaling-stroke"></path>`;
+    }).join('');
+
+    const mapLabel = selected ? `
+      <g transform="translate(358 264)">
+        <text x="0" y="0" font-family="Raleway, sans-serif" font-size="11" font-weight="800" fill="#1C2443">${selected.nombre.toUpperCase()}</text>
+        <text x="0" y="18" font-family="Raleway, sans-serif" font-size="10" fill="#5E6A85">foco territorial del informe provincial</text>
+      </g>
+    ` : '';
 
     const legend = `
       <div class="report-legend-item">
-        <span class="report-legend-color" style="background:#00A7E1"></span>
-        <span>${selected ? selected.nombre : 'Provincia seleccionada'}</span>
+        <span class="report-legend-color" style="background:#10B7E8"></span>
+        <span>${selected ? selected.nombre : 'Provincia analizada'}</span>
       </div>
       <div class="report-legend-item">
-        <span class="report-legend-color" style="background:#CFE7EF"></span>
-        <span>Provincias con actividad en 2026</span>
+        <span class="report-legend-color" style="background:#D6EAF2"></span>
+        <span>Localizador nacional</span>
       </div>
       <div class="report-legend-item">
-        <span class="report-legend-color" style="background:#EDF1F4"></span>
-        <span>Sin monto aprobado</span>
+        <span class="report-legend-color" style="background:#E9F2F6"></span>
+        <span>Entorno territorial de referencia</span>
       </div>
     `;
 
     return {
-      svg: `<svg viewBox="0 0 520 420" class="report-map-svg" xmlns="http://www.w3.org/2000/svg">${paths}</svg>`,
+      svg: `
+        <svg viewBox="0 0 520 420" class="report-map-svg report-map-svg-provincial" xmlns="http://www.w3.org/2000/svg">
+          <rect x="8" y="10" width="344" height="368" rx="20" fill="url(#provincialBg)" stroke="#DCE9F0"></rect>
+          <rect x="364" y="18" width="148" height="196" rx="18" fill="#F8FBFD" stroke="#DCE9F0"></rect>
+          <defs>
+            <linearGradient id="provincialBg" x1="0%" y1="0%" x2="0%" y2="100%">
+              <stop offset="0%" stop-color="#F9FCFE"></stop>
+              <stop offset="100%" stop-color="#EDF5FA"></stop>
+            </linearGradient>
+          </defs>
+          <g transform="translate(18 22)">${focusPaths}</g>
+          <g transform="translate(372 24)">
+            <text x="0" y="10" font-family="Raleway, sans-serif" font-size="10" font-weight="800" letter-spacing="1" fill="#96C9DA">POSICIÓN NACIONAL</text>
+            <g transform="translate(2 18)">${insetPaths}</g>
+          </g>
+          ${mapLabel}
+        </svg>
+      `,
       legend,
     };
   }
@@ -492,6 +585,9 @@
           height: auto;
           max-height: 290px;
           display: block;
+        }
+        .report-map-svg-provincial {
+          max-height: 328px;
         }
         .report-legend {
           display: grid;
@@ -864,6 +960,9 @@
         .report-page.compact .report-map-svg {
           max-height: 250px;
         }
+        .report-page.compact .report-map-svg-provincial {
+          max-height: 286px;
+        }
         .report-page.compact .report-rank-row {
           padding: 7px 0;
         }
@@ -904,6 +1003,9 @@
         }
         .report-page.compact-tight .report-map-svg {
           max-height: 220px;
+        }
+        .report-page.compact-tight .report-map-svg-provincial {
+          max-height: 252px;
         }
         .report-page.compact-tight .report-rank-row {
           padding: 5px 0;
