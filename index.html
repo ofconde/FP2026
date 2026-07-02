@@ -694,6 +694,18 @@
       });
     }
 
+    async function requestProvincialDirectPdf(data, provinceCode, fallbackName) {
+      return requestPdfDownload(`${PDF_SERVICE_BASE}/render-provincial-direct`, fallbackName, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          data,
+          provinceCode,
+          filename: fallbackName
+        })
+      });
+    }
+
     function closeReportPreview() {
       const overlay = document.getElementById('reportPreviewOverlay');
       const frame = document.getElementById('reportPreviewFrame');
@@ -758,11 +770,11 @@
       try {
         setReportButtonsLoading(true);
         showReportMessage(`Generando PDF provincial de ${selected.nombre}...`, 'info');
-        const preview = await window.CFIReports.generateProvincialReport({
-          data: dashboardData,
-          provinceCode: selected.codigo
-        });
-        await requestRenderedPdf(preview, `Dashboard CFI - Financiamiento Productivo 2026 - ${selected.nombre}.pdf`);
+        await requestProvincialDirectPdf(
+          dashboardData,
+          selected.codigo,
+          `Dashboard CFI - Financiamiento Productivo 2026 - ${selected.nombre}.pdf`
+        );
         clearReportMessage();
       } catch (error) {
         console.error('Error generando informe provincial:', error);

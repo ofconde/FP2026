@@ -12,6 +12,7 @@ from PIL import Image
 from reportlab.lib.pagesizes import landscape, A4
 from reportlab.lib.utils import ImageReader
 from reportlab.pdfgen import canvas
+from direct_pdf_reports import build_provincial_pdf
 
 HOST = '127.0.0.1'
 PORT = 8765
@@ -106,7 +107,7 @@ def render_pdf_batch(pages: list[str]) -> bytes:
 
 
 class Handler(BaseHTTPRequestHandler):
-    server_version = 'CFIPDF/2.1'
+    server_version = 'CFIPDF/3.0'
 
     def _send_json(self, payload: dict, status: int = 200):
         data = json.dumps(payload).encode('utf-8')
@@ -149,7 +150,7 @@ class Handler(BaseHTTPRequestHandler):
     def do_GET(self):
         path = urlparse(self.path).path
         if path == '/health':
-            self._send_json({'ok': True, 'engine': 'local-chrome-headless'})
+            self._send_json({'ok': True, 'engine': 'local-chrome-headless', 'direct_provincial': True})
             return
         if path == '/':
             self._send_html(
@@ -164,7 +165,7 @@ class Handler(BaseHTTPRequestHandler):
 
     def do_POST(self):
         path = urlparse(self.path).path
-        if path not in ('/render', '/render-batch'):
+        if path not in ('/render', '/render-batch', '/render-provincial-direct'):
             self._send_json({'error': 'Ruta no encontrada.'}, 404)
             return
 
@@ -177,7 +178,17 @@ class Handler(BaseHTTPRequestHandler):
             return
 
         pages = None
-        if path == '/render-batch':
+        html = ''
+        if path == '/render-provincial-direct':
+            province_code = str(payload.get('provinceCode') or '').strip().upper()
+            data = payload.get('data')
+            if not province_code:
+                self._send_json({'error': 'Falta provinceCode para generar el informe provincial.'}, 400)
+                return
+            if not isinstance(data, dict):
+                self._send_json({'error': 'Faltan los datos para generar el informe provincial.'}, 400)
+                return
+        elif path == '/render-batch':
             pages = payload.get('pages')
             if not isinstance(pages, list) or not pages:
                 self._send_json({'error': 'No se recibieron páginas HTML válidas para renderizar.'}, 400)
@@ -193,7 +204,9 @@ class Handler(BaseHTTPRequestHandler):
             filename += '.pdf'
 
         try:
-            if pages is not None:
+            if path == '/render-provincial-direct':
+                pdf_bytes = build_provincial_pdf(data, province_code)
+            elif pages is not None:
                 pdf_bytes = render_pdf_batch(pages)
             else:
                 pdf_bytes = render_pdf(html)
