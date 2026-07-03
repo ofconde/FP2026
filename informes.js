@@ -1212,7 +1212,8 @@
     const offI = circI * (1 - cuatriProgress / 100);
 
     const escudoExt = provinceCode === 'SL' ? 'png' : 'svg';
-    const escudoSrc = `./escudos/${provinceCode}.${escudoExt}`;
+    const baseUrl = window.location.href.replace(/[^/]*$/, '');
+    const escudoSrc = `${baseUrl}escudos/${provinceCode}.${escudoExt}`;
 
     const evolucionProv = {};
     (detail.items || []).forEach((item) => {
