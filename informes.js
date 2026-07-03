@@ -1250,7 +1250,7 @@
     return `
       <style>
         * { box-sizing: border-box; margin: 0; padding: 0; }
-        .rp { width: ${REPORT_PAGE_WIDTH_P}px; min-height: ${REPORT_PAGE_HEIGHT_P}px; background: #f8fbfd; color: #1C2443; font-family: 'Raleway', sans-serif; display: flex; flex-direction: column; }
+        .rp { width: ${REPORT_PAGE_WIDTH_P}px; height: ${REPORT_PAGE_HEIGHT_P}px; background: #f8fbfd; color: #1C2443; font-family: 'Raleway', sans-serif; display: flex; flex-direction: column; overflow: hidden; }
         .rp-hdr { background: #1C2443; padding: 14px 28px; display: flex; align-items: center; justify-content: space-between; flex-shrink: 0; }
         .rp-hdr-kicker { font-size: 9px; font-weight: 700; letter-spacing: 2px; color: #00A7E1; text-transform: uppercase; margin-bottom: 3px; }
         .rp-hdr-title { font-size: 13px; font-weight: 700; color: #fff; }
