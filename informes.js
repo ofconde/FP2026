@@ -1479,6 +1479,7 @@
                 page.style.height = 'auto';
                 page.style.minHeight = '${REPORT_PAGE_HEIGHT}px';
                 page.style.overflow = 'visible';
+                window.print();
                 return;
               }
 
@@ -1503,6 +1504,7 @@
                 page.style.transformOrigin = 'top left';
                 page.style.transform = 'scale(' + scale + ')';
               }
+              window.print();
             };
             waitForReady();
           <\/script>

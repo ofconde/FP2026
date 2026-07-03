@@ -679,19 +679,15 @@
       setTimeout(() => URL.revokeObjectURL(objectUrl), 1500);
     }
 
-    async function requestRenderedPdf(preview, fallbackName) {
-      if (preview.pages && Array.isArray(preview.pages)) {
-        return requestPdfDownload(`${PDF_SERVICE_BASE}/render-batch`, fallbackName, {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ pages: preview.pages, filename: fallbackName })
-        });
+    function requestRenderedPdf(preview, fallbackName) {
+      const html = preview.documentHtml;
+      const tab = window.open('', '_blank');
+      if (!tab) {
+        throw new Error('El navegador bloqueó la apertura de la pestaña. Habilitá pop-ups para este sitio y volvé a intentarlo.');
       }
-      return requestPdfDownload(`${PDF_SERVICE_BASE}/render`, fallbackName, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ html: preview.documentHtml, filename: fallbackName })
-      });
+      tab.document.open();
+      tab.document.write(html);
+      tab.document.close();
     }
 
 
