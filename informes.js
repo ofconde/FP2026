@@ -1010,6 +1010,126 @@
         .report-page.compact-tight .report-rank-row {
           padding: 5px 0;
         }
+        .report-identity {
+          align-items: center;
+          justify-content: center;
+          gap: 12px;
+          text-align: center;
+        }
+        .report-identity-ring {
+          position: relative;
+          width: 130px;
+          height: 130px;
+          flex-shrink: 0;
+        }
+        .report-identity-ring svg {
+          width: 130px;
+          height: 130px;
+          display: block;
+        }
+        .report-identity-ring-pct {
+          position: absolute;
+          inset: 0;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+        }
+        .report-identity-ring-value {
+          font-family: 'Bebas Neue', sans-serif;
+          font-size: 36px;
+          line-height: 1;
+          color: #1C2443;
+        }
+        .report-identity-ring-label {
+          font-size: 9px;
+          font-weight: 700;
+          letter-spacing: 1px;
+          color: #96C9DA;
+          text-transform: uppercase;
+        }
+        .report-identity-name {
+          font-family: 'Bebas Neue', sans-serif;
+          font-size: 40px;
+          line-height: 0.95;
+          color: #1C2443;
+          letter-spacing: 0.5px;
+        }
+        .report-identity-monto {
+          font-family: 'Bebas Neue', sans-serif;
+          font-size: 24px;
+          color: #00A7E1;
+          line-height: 1;
+        }
+        .report-identity-monto-label {
+          font-size: 10px;
+          color: #5E6A85;
+          margin-top: 2px;
+        }
+        .report-identity-stats {
+          display: flex;
+          gap: 18px;
+          justify-content: center;
+          padding: 10px 0;
+          border-top: 1px solid #ECF2F5;
+          border-bottom: 1px solid #ECF2F5;
+          width: 100%;
+        }
+        .report-identity-stat-val {
+          font-size: 17px;
+          font-weight: 700;
+          color: #1C2443;
+        }
+        .report-identity-stat-label {
+          font-size: 9px;
+          color: #5E6A85;
+          text-transform: uppercase;
+          letter-spacing: 0.8px;
+        }
+        .report-identity-stat-div {
+          width: 1px;
+          background: #ECF2F5;
+          align-self: stretch;
+        }
+        .report-identity-badge {
+          display: inline-block;
+          padding: 4px 14px;
+          border-radius: 999px;
+          font-size: 10px;
+          font-weight: 700;
+          letter-spacing: 0.8px;
+          text-transform: uppercase;
+        }
+        .report-identity-badge.verde { background: #e7f7ef; color: #1a7a45; }
+        .report-identity-badge.amarillo { background: #fef3e2; color: #8a5700; }
+        .report-identity-badge.rojo { background: #fde8e8; color: #9e2222; }
+        .report-identity-cuatri {
+          width: 100%;
+          background: #F8FBFD;
+          border: 1px solid #E0ECF2;
+          border-radius: 12px;
+          padding: 10px 14px;
+          text-align: left;
+        }
+        .report-identity-cuatri-label {
+          font-size: 9px;
+          font-weight: 700;
+          letter-spacing: 1px;
+          color: #96C9DA;
+          text-transform: uppercase;
+          margin-bottom: 4px;
+        }
+        .report-identity-cuatri-row {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          gap: 8px;
+        }
+        .report-identity-cuatri-pct {
+          font-family: 'Bebas Neue', sans-serif;
+          font-size: 22px;
+          color: #1C2443;
+        }
         @media print {
           .print-shell.multi-page .report-page {
             break-after: page;
@@ -1049,7 +1169,15 @@
     const participation = data.total?.monto ? (Number(provincia.monto) / Number(data.total.monto)) * 100 : 0;
     const avgTicket = provincia.cantidad ? Number(provincia.monto) / Number(provincia.cantidad) : 0;
     const progress = provincia.meta_anual ? (Number(provincia.monto) / Number(provincia.meta_anual)) * 100 : 0;
-    const map = await buildProvincialMapSvg(data.provincias || [], provinceCode);
+
+    const RING_R = 55;
+    const RING_CIRC = 2 * Math.PI * RING_R;
+    const ringColors = { verde: '#47B067', amarillo: '#E5A020', rojo: '#D84040' };
+    const ringColor = ringColors[provincia.estado] || '#00A7E1';
+    const ringOffset = RING_CIRC * (1 - Math.min(progress, 100) / 100);
+    const cuatriEstado = detail.estado_cuatrimestral || 'rojo';
+    const cuatriMsg = detail.mensaje_cuatrimestral || '';
+    const cuatriPct = formatPercent(detail.porcentaje_cuatrimestral);
 
     const note = `${provincia.nombre} representa el ${formatPercent(participation)} del total nacional otorgado durante el período informado y ocupa el puesto ${rank} dentro del ranking nacional por monto.`;
 
@@ -1090,12 +1218,48 @@
         </div>
 
         <div class="report-main">
-          <div class="report-block">
-            <h2 class="report-block-title">Mapa Federal</h2>
-            <p class="report-block-subtitle">La provincia analizada se resalta sobre el resto del mapa para ubicar rápidamente su peso territorial dentro del sistema.</p>
-            <div class="report-map-shell">
-              <div class="report-map-stage">${map.svg}</div>
-              <div class="report-legend">${map.legend}</div>
+          <div class="report-block report-identity">
+            <div style="font-size:10px;font-weight:700;letter-spacing:1.2px;color:#96C9DA;text-transform:uppercase;">Cumplimiento anual 2026</div>
+            <div class="report-identity-ring">
+              <svg viewBox="0 0 130 130" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="65" cy="65" r="${RING_R}" fill="none" stroke="#E5EEF2" stroke-width="11"/>
+                <circle cx="65" cy="65" r="${RING_R}" fill="none" stroke="${ringColor}" stroke-width="11"
+                  stroke-dasharray="${RING_CIRC.toFixed(2)}" stroke-dashoffset="${ringOffset.toFixed(2)}"
+                  stroke-linecap="round" transform="rotate(-90 65 65)"/>
+              </svg>
+              <div class="report-identity-ring-pct">
+                <div class="report-identity-ring-value">${Math.round(progress)}%</div>
+                <div class="report-identity-ring-label">del objetivo</div>
+              </div>
+            </div>
+            <div class="report-identity-name">${provincia.nombre}</div>
+            <div>
+              <div class="report-identity-monto">${formatMoneyCompact(provincia.monto)}</div>
+              <div class="report-identity-monto-label">aprobado · ${periodLabel(data)}</div>
+            </div>
+            <div class="report-identity-stats">
+              <div>
+                <div class="report-identity-stat-val">${provincia.cantidad || 0}</div>
+                <div class="report-identity-stat-label">créditos</div>
+              </div>
+              <div class="report-identity-stat-div"></div>
+              <div>
+                <div class="report-identity-stat-val">${formatMoneyCompact(avgTicket)}</div>
+                <div class="report-identity-stat-label">promedio</div>
+              </div>
+              <div class="report-identity-stat-div"></div>
+              <div>
+                <div class="report-identity-stat-val">#${rank}</div>
+                <div class="report-identity-stat-label">ranking</div>
+              </div>
+            </div>
+            <span class="report-identity-badge ${provincia.estado || 'verde'}">${provincia.mensaje || 'En seguimiento'}</span>
+            <div class="report-identity-cuatri">
+              <div class="report-identity-cuatri-label">Cuatrimestre JUL–OCT</div>
+              <div class="report-identity-cuatri-row">
+                <div class="report-identity-cuatri-pct">${cuatriPct}</div>
+                <span class="report-identity-badge ${cuatriEstado}" style="font-size:9px;padding:3px 10px;">${cuatriMsg}</span>
+              </div>
             </div>
           </div>
 
