@@ -1479,207 +1479,288 @@
       },
     ];
 
+    const W = REPORT_PAGE_WIDTH;
+    const H = REPORT_PAGE_HEIGHT;
+
+    // monthly evolution bars (page 1)
+    const monthBarH = 52;
+    const maxMonthlyMonto = Math.max(...monthly.map((m) => Number(m.monto || 0)), 1);
+    const nombresCortosMes = { Enero:'Ene', Febrero:'Feb', Marzo:'Mar', Abril:'Abr', Mayo:'May', Junio:'Jun', Julio:'Jul', Agosto:'Ago', Septiembre:'Sep', Octubre:'Oct', Noviembre:'Nov', Diciembre:'Dic' };
+
+    // semáforo pill color
+    const semPct = (n, t) => t ? Math.round((n / t) * 100) : 0;
+
     return `
-      ${reportStyles()}
-      <div class="report-page national-report national-report-page national-report-primary">
-        <div class="report-header">
+      <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        .rn { width: ${W}px; height: ${H}px; overflow: hidden; background: #f8fbfd; color: #1C2443; font-family: 'Raleway', sans-serif; display: flex; flex-direction: column; }
+        @media print { .rn { break-after: page; page-break-after: always; } .rn:last-child { break-after: avoid; page-break-after: avoid; } }
+
+        /* HEADER */
+        .rn-hdr { background: #1C2443; padding: 12px 28px; display: flex; align-items: center; justify-content: space-between; flex-shrink: 0; height: 56px; }
+        .rn-hdr-kicker { font-size: 9px; font-weight: 700; letter-spacing: 2px; color: #00A7E1; text-transform: uppercase; margin-bottom: 2px; }
+        .rn-hdr-title { font-size: 14px; font-weight: 700; color: #fff; line-height: 1; }
+        .rn-hdr-right { font-size: 10px; color: #96C9DA; text-align: right; line-height: 1.6; }
+
+        /* KPI ROW */
+        .rn-kpis { display: grid; gap: 10px; padding: 12px 28px 0; flex-shrink: 0; }
+        .rn-kpis-5 { grid-template-columns: repeat(5, 1fr); }
+        .rn-kpis-4 { grid-template-columns: repeat(4, 1fr); }
+        .rn-kpi { background: #fff; border: 1px solid #e0ecf2; border-radius: 8px; padding: 10px 12px; }
+        .rn-kpi-val { font-family: 'Bebas Neue', sans-serif; font-size: 22px; color: #1C2443; line-height: 1; }
+        .rn-kpi-val.accent { color: #00A7E1; }
+        .rn-kpi-label { font-size: 9px; font-weight: 700; letter-spacing: 1px; color: #96C9DA; text-transform: uppercase; margin-top: 3px; }
+        .rn-kpi-sub { font-size: 9px; color: #5E6A85; margin-top: 2px; }
+
+        /* PAGE 1 BODY: map + sidebar */
+        .rn-body { display: flex; gap: 14px; padding: 12px 28px; flex: 1; overflow: hidden; min-height: 0; }
+        .rn-map-col { display: flex; flex-direction: column; gap: 10px; width: 520px; flex-shrink: 0; }
+        .rn-map-block { background: #fff; border: 1px solid #e0ecf2; border-radius: 10px; padding: 12px 14px; flex: 1; overflow: hidden; display: flex; flex-direction: column; }
+        .rn-block-label { font-size: 9px; font-weight: 700; letter-spacing: 1.5px; color: #96C9DA; text-transform: uppercase; margin-bottom: 8px; flex-shrink: 0; }
+        .rn-map-stage { flex: 1; overflow: hidden; display: flex; align-items: center; justify-content: center; }
+        .rn-map-stage svg { max-width: 100%; max-height: 100%; }
+        .rn-map-legend { flex-shrink: 0; margin-top: 6px; }
+        .rn-sidebar { flex: 1; display: flex; flex-direction: column; gap: 10px; min-width: 0; overflow: hidden; }
+
+        /* STRATEGIC BULLETS */
+        .rn-bullets { background: #fff; border: 1px solid #e0ecf2; border-radius: 10px; padding: 12px 14px; flex-shrink: 0; }
+        .rn-bullet { display: flex; gap: 8px; padding: 6px 0; border-top: 1px solid #f0f4f7; }
+        .rn-bullet:first-of-type { border-top: 0; padding-top: 0; }
+        .rn-bullet-title { font-size: 10px; font-weight: 700; color: #1C2443; width: 70px; flex-shrink: 0; padding-top: 1px; }
+        .rn-bullet-text { font-size: 10px; color: #42506D; line-height: 1.4; }
+
+        /* SEMÁFORO */
+        .rn-sem { background: #fff; border: 1px solid #e0ecf2; border-radius: 10px; padding: 10px 14px; flex-shrink: 0; display: flex; align-items: center; gap: 10px; }
+        .rn-sem-pill { display: flex; align-items: center; gap: 5px; flex: 1; background: #f8fbfd; border-radius: 6px; padding: 6px 10px; }
+        .rn-sem-dot { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
+        .rn-sem-count { font-family: 'Bebas Neue', sans-serif; font-size: 22px; color: #1C2443; line-height: 1; }
+        .rn-sem-lbl { font-size: 9px; color: #96C9DA; font-weight: 700; letter-spacing: 0.8px; text-transform: uppercase; }
+
+        /* EVOLUCIÓN MENSUAL (sidebar bottom) */
+        .rn-evol { background: #fff; border: 1px solid #e0ecf2; border-radius: 10px; padding: 10px 14px; flex: 1; overflow: hidden; display: flex; flex-direction: column; }
+        .rn-evol-bars { display: flex; align-items: flex-end; gap: 5px; flex: 1; padding-top: 4px; }
+        .rn-evol-col { flex: 1; display: flex; flex-direction: column; align-items: center; gap: 3px; height: 100%; justify-content: flex-end; }
+        .rn-evol-bar { width: 100%; border-radius: 2px 2px 0 0; background: #b8d8e8; min-height: 3px; }
+        .rn-evol-bar.last { background: #00A7E1; }
+        .rn-evol-val { font-size: 8px; font-weight: 700; color: #42506D; text-align: center; }
+        .rn-evol-val.last { color: #00A7E1; }
+        .rn-evol-lbl { font-size: 8px; color: #96C9DA; }
+
+        /* FOOTER */
+        .rn-footer { background: #1C2443; padding: 8px 28px; display: flex; justify-content: space-between; align-items: center; flex-shrink: 0; height: 34px; }
+        .rn-footer-brand { font-size: 9px; font-weight: 700; letter-spacing: 1.5px; color: #96C9DA; text-transform: uppercase; }
+        .rn-footer-page { font-size: 9px; color: #4a5a7a; }
+
+        /* PAGE 2 */
+        .rn-stat-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; padding: 12px 28px 0; flex-shrink: 0; }
+        .rn-stat { background: #fff; border: 1px solid #e0ecf2; border-radius: 8px; padding: 10px 14px; border-top: 3px solid #00A7E1; }
+        .rn-stat-val { font-family: 'Bebas Neue', sans-serif; font-size: 26px; color: #1C2443; line-height: 1; }
+        .rn-stat-label { font-size: 9px; font-weight: 700; letter-spacing: 1px; color: #96C9DA; text-transform: uppercase; margin-top: 3px; }
+        .rn-stat-sub { font-size: 9px; color: #5E6A85; margin-top: 2px; }
+
+        .rn-p2-body { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; padding: 10px 28px; flex: 1; overflow: hidden; min-height: 0; }
+        .rn-block { background: #fff; border: 1px solid #e0ecf2; border-radius: 10px; padding: 12px 14px; overflow: hidden; display: flex; flex-direction: column; }
+
+        /* ranking rows */
+        .rn-rank-row { display: flex; align-items: center; gap: 8px; padding: 5px 0; border-top: 1px solid #f0f4f7; }
+        .rn-rank-row:first-of-type { border-top: 0; }
+        .rn-rank-pos { font-size: 9px; font-weight: 700; color: #96C9DA; width: 18px; flex-shrink: 0; }
+        .rn-rank-info { flex: 1; min-width: 0; }
+        .rn-rank-name { font-size: 10px; font-weight: 700; color: #1C2443; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+        .rn-rank-meta { font-size: 9px; color: #96C9DA; }
+        .rn-rank-val { font-size: 11px; font-weight: 700; color: #00A7E1; white-space: nowrap; flex-shrink: 0; }
+
+        /* participation */
+        .rn-part-row { display: flex; align-items: center; gap: 6px; padding: 5px 0; border-top: 1px solid #f0f4f7; }
+        .rn-part-row:first-of-type { border-top: 0; }
+        .rn-part-code { font-size: 10px; font-weight: 700; color: #1C2443; width: 28px; flex-shrink: 0; }
+        .rn-part-track { flex: 1; height: 8px; background: #eef3f6; border-radius: 4px; overflow: hidden; }
+        .rn-part-fill { height: 100%; border-radius: 4px; background: #00A7E1; }
+        .rn-part-pct { font-size: 10px; font-weight: 700; color: #42506D; width: 36px; text-align: right; flex-shrink: 0; }
+        .rn-part-monto { font-size: 9px; color: #96C9DA; width: 54px; text-align: right; flex-shrink: 0; }
+
+        /* focos */
+        .rn-foco-row { display: flex; align-items: center; justify-content: space-between; gap: 6px; padding: 5px 0; border-top: 1px solid #f0f4f7; }
+        .rn-foco-row:first-of-type { border-top: 0; }
+        .rn-foco-name { font-size: 10px; font-weight: 700; color: #1C2443; }
+        .rn-foco-meta { font-size: 9px; color: #96C9DA; }
+        .rn-foco-pct { font-family: 'Bebas Neue', sans-serif; font-size: 20px; color: #D84040; flex-shrink: 0; }
+
+        /* progress bar */
+        .rn-obj-track { height: 6px; background: #E5EEF2; border-radius: 3px; overflow: hidden; margin: 6px 0 4px; flex-shrink: 0; }
+        .rn-obj-fill { height: 100%; border-radius: 3px; background: #00A7E1; }
+        .rn-obj-row { display: flex; justify-content: space-between; font-size: 9px; color: #5E6A85; }
+      </style>
+
+      <!-- PAGE 1 -->
+      <div class="rn">
+        <div class="rn-hdr">
           <div>
-            <div class="report-kicker">Consejo Federal de Inversiones</div>
-            <h1 class="report-title">Informe Nacional de Créditos CFI</h1>
-            <p class="report-subtitle">${periodLabel(data)} · Actualizado al ${currentDateLabel(data)}</p>
+            <div class="rn-hdr-kicker">Consejo Federal de Inversiones</div>
+            <div class="rn-hdr-title">Informe Nacional · Financiamiento Productivo 2026</div>
           </div>
-          <div class="report-stamp">
-            <div class="report-stamp-label">AVANCE GENERAL</div>
-            <div class="report-stamp-value">${formatPercent(data.total?.porcentaje || 0)}</div>
-            <div class="report-stamp-sub">sobre el objetivo nacional 2026</div>
-          </div>
+          <div class="rn-hdr-right">${periodLabel(data)}<br>Actualizado ${currentDateLabel(data)}</div>
         </div>
 
-        <div class="report-hero">
-          <div class="report-goal-card">
-            <div class="report-goal-label">OBJETIVO NACIONAL 2026</div>
-            <div class="report-goal-value">${formatMoneyCompact(data.total?.meta || 0)}</div>
-            <div class="report-goal-sub">Monto faltante para cumplir: ${formatMoneyCompact(data.total?.falta || 0)}</div>
-          </div>
-          <div class="report-note-card">
-            <div class="report-note-label">LECTURA EJECUTIVA</div>
-            <div class="report-note-text">${note}</div>
-          </div>
+        <div class="rn-kpis rn-kpis-5">
+          <div class="rn-kpi"><div class="rn-kpi-val accent">${formatMoneyCompact(data.total?.monto || 0)}</div><div class="rn-kpi-label">Monto nacional</div><div class="rn-kpi-sub">${formatMoneyM(data.total?.monto || 0)}</div></div>
+          <div class="rn-kpi"><div class="rn-kpi-val">${data.total?.creditos || 0}</div><div class="rn-kpi-label">Créditos aprobados</div><div class="rn-kpi-sub">operaciones del período</div></div>
+          <div class="rn-kpi"><div class="rn-kpi-val">${active.length}</div><div class="rn-kpi-label">Provincias alcanzadas</div><div class="rn-kpi-sub">de ${provincias.length} en total</div></div>
+          <div class="rn-kpi"><div class="rn-kpi-val">${formatPercent(data.total?.porcentaje || 0)}</div><div class="rn-kpi-label">Avance objetivo</div><div class="rn-kpi-sub">meta: ${formatMoneyCompact(data.total?.meta || 0)}</div></div>
+          <div class="rn-kpi"><div class="rn-kpi-val">${formatMoneyCompact(data.total?.necesario_por_mes || 0)}</div><div class="rn-kpi-label">Necesario / mes</div><div class="rn-kpi-sub">${data.total?.meses_restantes || 0} meses restantes</div></div>
         </div>
 
-        <div class="report-kpi-grid">
-          ${buildKpiCard('Monto nacional', formatMoneyCompact(data.total?.monto || 0), formatMoneyM(data.total?.monto || 0))}
-          ${buildKpiCard('Créditos', `${data.total?.creditos || 0}`, formatCount(data.total?.creditos || 0))}
-          ${buildKpiCard('Provincias alcanzadas', `${active.length}`, 'Con aprobaciones en el período')}
-          ${buildKpiCard('Promedio nacional', formatMoneyCompact(avgNational), 'Monto medio por crédito')}
-          ${buildKpiCard('Necesario por mes', formatMoneyCompact(data.total?.necesario_por_mes || 0), `${data.total?.meses_restantes || 0} meses restantes`)}
-        </div>
-
-        <div class="report-main">
-          <div class="report-block">
-            <h2 class="report-block-title">Mapa federal y cobertura</h2>
-            <p class="report-block-subtitle">Distribución territorial del monto aprobado acumulado para ver concentración, alcance federal y escala relativa entre jurisdicciones.</p>
-            <div class="report-map-shell">
-              <div class="report-map-stage">${map.svg}</div>
-              <div class="report-legend">${map.legend}</div>
+        <div class="rn-body">
+          <div class="rn-map-col">
+            <div class="rn-map-block">
+              <div class="rn-block-label">Mapa federal — monto aprobado por provincia</div>
+              <div class="rn-map-stage">${map.svg}</div>
+              <div class="rn-map-legend">${map.legend}</div>
             </div>
           </div>
 
-          <div class="report-side-stack">
-            <div class="report-block">
-              <h2 class="report-block-title">Claves para decisión</h2>
-              <p class="report-block-subtitle">Tres señales que una autoridad nacional querría leer primero: concentración, capilaridad y ritmo.</p>
-              <div class="report-bullet-list">
-                ${strategicNotes.map((item) => `
-                  <div class="report-bullet-item">
-                    <div class="report-bullet-title">${item.title}</div>
-                    <div class="report-bullet-text">${item.text}</div>
-                  </div>
-                `).join('')}
-              </div>
-            </div>
-
-            <div class="report-block">
-              <h2 class="report-block-title">Evolución mensual</h2>
-              <p class="report-block-subtitle">Ritmo del monto aprobado mes a mes, para identificar aceleración, amesetamiento o necesidad de corrección.</p>
-              <div class="report-month-grid">
-                ${monthly.map((item) => `
-                  <div class="report-month-card">
-                    <div class="report-month-name">${item.nombre}</div>
-                    <div class="report-month-bar"><div class="report-month-fill" style="width:${Math.max(8, (Number(item.monto || 0) / maxMonthly) * 100)}%"></div></div>
-                    <div class="report-month-value">${formatMoneyCompact(item.monto || 0)}</div>
-                    <div class="report-month-sub">${item.cantidad || 0} créditos</div>
-                  </div>
-                `).join('')}
-              </div>
-            </div>
-
-            <div class="report-block">
-              <h2 class="report-block-title">Semáforo territorial</h2>
-              <p class="report-block-subtitle">Lectura agregada del avance provincial sobre metas anuales, útil para priorizar asistencia y seguimiento.</p>
-              <div class="report-chip-row">
-                <div class="report-chip"><strong>Verdes:</strong> ${greenCount}</div>
-                <div class="report-chip"><strong>Amarillas:</strong> ${yellowCount}</div>
-                <div class="report-chip"><strong>Rojas:</strong> ${redCount}</div>
-                <div class="report-chip"><strong>Top 2:</strong> ${topProvince ? topProvince.codigo : '-'}${secondProvince ? ` + ${secondProvince.codigo}` : ''}</div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="report-footer">
-          <div class="report-footer-brand">CFI · Financiamiento Productivo · Uso institucional</div>
-          <div>Página 1 de 2 · Foto nacional y contexto</div>
-        </div>
-      </div>
-
-      <div class="report-page national-report national-report-page national-report-secondary">
-        <div class="report-header">
-          <div>
-            <div class="report-kicker">Consejo Federal de Inversiones</div>
-            <h1 class="report-title">Apertura territorial y focos de gestión</h1>
-            <p class="report-subtitle">Desglose de liderazgo, concentración y rezagos provinciales sobre el mismo corte de información.</p>
-          </div>
-          <div class="report-stamp">
-            <div class="report-stamp-label">CONCENTRACIÓN TOP 3</div>
-            <div class="report-stamp-value">${formatPercent(topShare)}</div>
-            <div class="report-stamp-sub">del volumen nacional acumulado</div>
-          </div>
-        </div>
-
-        <div class="national-stat-grid">
-          <div class="national-stat-card">
-            <div class="national-stat-label">Promedio por provincia activa</div>
-            <div class="national-stat-value">${formatMoneyCompact(avgPerProvince)}</div>
-            <div class="national-stat-sub">${active.length} provincias con aprobaciones</div>
-          </div>
-          <div class="national-stat-card">
-            <div class="national-stat-label">Meta agregada activa</div>
-            <div class="national-stat-value">${formatMoneyCompact(totalActiveMeta)}</div>
-            <div class="national-stat-sub">Suma de metas provinciales con actividad</div>
-          </div>
-          <div class="national-stat-card">
-            <div class="national-stat-label">Provincia mediana</div>
-            <div class="national-stat-value">${medianProvince ? medianProvince.codigo : '-'}</div>
-            <div class="national-stat-sub">${medianProvince ? formatMoneyCompact(medianProvince.monto) : 'Sin datos suficientes'}</div>
-          </div>
-          <div class="national-stat-card">
-            <div class="national-stat-label">Cobertura operativa</div>
-            <div class="national-stat-value">${formatPercent((active.length / Math.max(provincias.length, 1)) * 100)}</div>
-            <div class="national-stat-sub">${active.length} de ${provincias.length} provincias con monto</div>
-          </div>
-        </div>
-
-        <div class="national-two-col">
-          <div class="report-block">
-            <h2 class="report-block-title">Ranking por monto</h2>
-            <p class="report-block-subtitle">Jurisdicciones con mayor volumen aprobado, combinando monto, cantidad y avance relativo.</p>
-            ${topByAmount.map((item, index) => `
-              <div class="report-rank-row">
-                <div>
-                  <div class="report-rank-name">#${index + 1} · ${item.nombre}</div>
-                  <div class="report-rank-meta">${formatCount(item.cantidad)} · ${formatPercent(item.porcentaje)} de avance</div>
-                </div>
-                <div class="report-rank-value">${formatMoneyCompact(item.monto)}</div>
-              </div>
-            `).join('')}
-          </div>
-
-          <div class="report-block">
-            <h2 class="report-block-title">Participación principal</h2>
-            <p class="report-block-subtitle">Peso relativo de las provincias líderes sobre el total nacional, para leer concentración de cartera.</p>
-            <div class="report-participation-list">
-              ${provinciasOrdenadas.slice(0, 5).map((item) => {
-                const share = data.total?.monto ? (Number(item.monto) / Number(data.total.monto)) * 100 : 0;
-                return `
-                  <div class="report-participation-row">
-                    <div class="report-participation-name">${item.codigo}</div>
-                    <div class="report-participation-bar"><div class="report-participation-fill" style="width:${Math.min(share, 100)}%"></div></div>
-                    <div class="report-participation-value">${formatPercent(share)}</div>
-                  </div>
-                `;
-              }).join('')}
-            </div>
-          </div>
-        </div>
-
-        <div class="report-section-divider"></div>
-
-        <div class="national-two-col">
-          <div class="report-block">
-            <h2 class="report-block-title">Mayor volumen operativo</h2>
-            <p class="report-block-subtitle">Provincias con más créditos aprobados, para ver dónde el instrumento está logrando mayor despliegue y capilaridad.</p>
-            ${topByCredits.map((item, index) => `
-              <div class="report-rank-row">
-                <div>
-                  <div class="report-rank-name">#${index + 1} · ${item.nombre}</div>
-                  <div class="report-rank-meta">${formatMoneyCompact(item.monto)} · ${formatPercent(data.total?.monto ? (Number(item.monto) / Number(data.total.monto)) * 100 : 0)} del total</div>
-                </div>
-                <div class="report-rank-value">${item.cantidad}</div>
-              </div>
-            `).join('')}
-          </div>
-
-          <div class="report-block">
-            <h2 class="report-block-title">Focos de gestión</h2>
-            <p class="report-block-subtitle">Provincias con menor nivel de avance y mayor necesidad de seguimiento sobre el tramo restante del año.</p>
-            <div class="report-warning-grid">
-              ${topBottom.map((item) => `
-                <div class="report-warning-row">
-                  <div>
-                    <div class="report-warning-name">${item.nombre}</div>
-                    <div class="report-warning-meta">${formatMoneyCompact(item.monto)} otorgados · brecha ${formatMoneyCompact(Math.abs(Number(item.diferencia || 0)))}</div>
-                  </div>
-                  <div class="report-warning-value">${formatPercent(item.porcentaje)}</div>
+          <div class="rn-sidebar">
+            <div class="rn-bullets">
+              <div class="rn-block-label">Claves para decisión</div>
+              ${strategicNotes.map((item) => `
+                <div class="rn-bullet">
+                  <div class="rn-bullet-title">${item.title}</div>
+                  <div class="rn-bullet-text">${item.text}</div>
                 </div>
               `).join('')}
             </div>
+
+            <div class="rn-sem">
+              <div class="rn-block-label" style="margin:0;flex-shrink:0;">Semáforo</div>
+              <div class="rn-sem-pill">
+                <div class="rn-sem-dot" style="background:#47B067"></div>
+                <div>
+                  <div class="rn-sem-count">${greenCount}</div>
+                  <div class="rn-sem-lbl">Verdes</div>
+                </div>
+              </div>
+              <div class="rn-sem-pill">
+                <div class="rn-sem-dot" style="background:#E5A020"></div>
+                <div>
+                  <div class="rn-sem-count">${yellowCount}</div>
+                  <div class="rn-sem-lbl">Amarillas</div>
+                </div>
+              </div>
+              <div class="rn-sem-pill">
+                <div class="rn-sem-dot" style="background:#D84040"></div>
+                <div>
+                  <div class="rn-sem-count">${redCount}</div>
+                  <div class="rn-sem-lbl">Rojas</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="rn-evol">
+              <div class="rn-block-label">Evolución mensual</div>
+              <div class="rn-evol-bars">
+                ${monthly.map((item, idx) => {
+                  const h = Math.max(Math.round((Number(item.monto || 0) / maxMonthlyMonto) * monthBarH), 3);
+                  const isLast = idx === monthly.length - 1;
+                  const shortName = nombresCortosMes[item.nombre] || item.nombre.slice(0,3);
+                  return `<div class="rn-evol-col">
+                    <div class="rn-evol-val${isLast ? ' last' : ''}">${formatMoneyCompact(item.monto || 0)}</div>
+                    <div class="rn-evol-bar${isLast ? ' last' : ''}" style="height:${h}px"></div>
+                    <div class="rn-evol-lbl" style="${isLast ? 'color:#00A7E1;font-weight:700' : ''}">${shortName}</div>
+                  </div>`;
+                }).join('')}
+              </div>
+            </div>
           </div>
         </div>
 
-        <div class="report-footer">
-          <div class="report-footer-brand">CFI · Financiamiento Productivo · Uso institucional</div>
-          <div>Página 2 de 2 · Apertura nacional</div>
+        <div class="rn-footer">
+          <div class="rn-footer-brand">CFI · Financiamiento Productivo · Uso institucional</div>
+          <div class="rn-footer-page">1 de 2</div>
+        </div>
+      </div>
+
+      <!-- PAGE 2 -->
+      <div class="rn">
+        <div class="rn-hdr">
+          <div>
+            <div class="rn-hdr-kicker">Consejo Federal de Inversiones</div>
+            <div class="rn-hdr-title">Apertura territorial · ${periodLabel(data)}</div>
+          </div>
+          <div class="rn-hdr-right">Concentración TOP 3: <strong style="color:#fff">${formatPercent(topShare)}</strong><br>del volumen nacional acumulado</div>
+        </div>
+
+        <div class="rn-stat-grid">
+          <div class="rn-stat"><div class="rn-stat-val">${formatMoneyCompact(avgPerProvince)}</div><div class="rn-stat-label">Promedio / provincia activa</div><div class="rn-stat-sub">${active.length} provincias con aprobaciones</div></div>
+          <div class="rn-stat"><div class="rn-stat-val">${formatMoneyCompact(totalActiveMeta)}</div><div class="rn-stat-label">Meta agregada activa</div><div class="rn-stat-sub">suma de metas con actividad</div></div>
+          <div class="rn-stat"><div class="rn-stat-val">${medianProvince ? medianProvince.codigo : '-'}</div><div class="rn-stat-label">Provincia mediana</div><div class="rn-stat-sub">${medianProvince ? formatMoneyCompact(medianProvince.monto) : '—'}</div></div>
+          <div class="rn-stat"><div class="rn-stat-val">${formatMoneyCompact(avgNational)}</div><div class="rn-stat-label">Promedio por crédito</div><div class="rn-stat-sub">${data.total?.creditos || 0} operaciones</div></div>
+        </div>
+
+        <div class="rn-p2-body">
+          <div class="rn-block">
+            <div class="rn-block-label">Ranking por monto</div>
+            ${topByAmount.map((item, i) => `
+              <div class="rn-rank-row">
+                <div class="rn-rank-pos">#${i + 1}</div>
+                <div class="rn-rank-info">
+                  <div class="rn-rank-name">${item.nombre}</div>
+                  <div class="rn-rank-meta">${formatCount(item.cantidad)} · ${formatPercent(item.porcentaje)} avance</div>
+                </div>
+                <div class="rn-rank-val">${formatMoneyCompact(item.monto)}</div>
+              </div>
+            `).join('')}
+          </div>
+
+          <div class="rn-block">
+            <div class="rn-block-label">Participación sobre total</div>
+            <div class="rn-obj-track" style="height:8px;margin-top:2px;margin-bottom:10px;">
+              <div class="rn-obj-fill" style="width:${Math.min(Number(data.total?.porcentaje || 0), 100)}%;background:#47B067"></div>
+            </div>
+            <div class="rn-obj-row" style="margin-bottom:12px;">
+              <span>Avance nac.: ${formatPercent(data.total?.porcentaje || 0)}</span>
+              <span>Meta: ${formatMoneyCompact(data.total?.meta || 0)}</span>
+            </div>
+            ${provinciasOrdenadas.slice(0, 8).map((item) => {
+              const share = data.total?.monto ? (Number(item.monto) / Number(data.total.monto)) * 100 : 0;
+              return `<div class="rn-part-row">
+                <div class="rn-part-code">${item.codigo}</div>
+                <div class="rn-part-track"><div class="rn-part-fill" style="width:${Math.min(share, 100)}%"></div></div>
+                <div class="rn-part-pct">${formatPercent(share)}</div>
+                <div class="rn-part-monto">${formatMoneyCompact(item.monto)}</div>
+              </div>`;
+            }).join('')}
+          </div>
+
+          <div class="rn-block">
+            <div class="rn-block-label">Focos de gestión</div>
+            <div style="font-size:9px;color:#5E6A85;margin-bottom:10px;">Provincias con menor avance · mayor necesidad de seguimiento</div>
+            ${topBottom.map((item) => `
+              <div class="rn-foco-row">
+                <div>
+                  <div class="rn-foco-name">${item.nombre}</div>
+                  <div class="rn-foco-meta">${formatMoneyCompact(item.monto)} · brecha ${formatMoneyCompact(Math.abs(Number(item.diferencia || 0)))}</div>
+                </div>
+                <div class="rn-foco-pct">${formatPercent(item.porcentaje)}</div>
+              </div>
+            `).join('')}
+            <div style="height:1px;background:#e0ecf2;margin:10px 0;flex-shrink:0"></div>
+            <div class="rn-block-label">Mayor volumen operativo</div>
+            ${topByCredits.slice(0, 4).map((item, i) => `
+              <div class="rn-rank-row">
+                <div class="rn-rank-pos">#${i + 1}</div>
+                <div class="rn-rank-info">
+                  <div class="rn-rank-name">${item.nombre}</div>
+                  <div class="rn-rank-meta">${formatMoneyCompact(item.monto)}</div>
+                </div>
+                <div class="rn-rank-val">${item.cantidad} créd.</div>
+              </div>
+            `).join('')}
+          </div>
+        </div>
+
+        <div class="rn-footer">
+          <div class="rn-footer-brand">CFI · Financiamiento Productivo · Uso institucional</div>
+          <div class="rn-footer-page">2 de 2</div>
         </div>
       </div>
     `;
@@ -1776,7 +1857,8 @@
               await new Promise((resolve) => requestAnimationFrame(() => requestAnimationFrame(resolve)));
               const shell = document.querySelector('.print-shell');
               const page = document.querySelector('.report-page');
-              if (!page || !shell) return;
+              if (!shell) return;
+              if (!page) { window.print(); return; }
 
               const isProvincial = page.classList.contains('provincial-report');
               shell.classList.add(isProvincial ? 'single-page' : 'multi-page');
