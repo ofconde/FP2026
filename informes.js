@@ -1295,10 +1295,12 @@
         .rp-evol { padding: 0 28px 14px; flex-shrink: 0; }
         .rp-sec-label { font-size: 9px; font-weight: 700; letter-spacing: 1.5px; color: #96C9DA; text-transform: uppercase; margin-bottom: 10px; }
         .rp-bars { display: flex; align-items: flex-end; gap: 8px; height: ${BAR_H}px; }
-        .rp-bar-col { flex: 1; display: flex; flex-direction: column; align-items: center; gap: 5px; height: 100%; justify-content: flex-end; }
+        .rp-bar-col { flex: 1; display: flex; flex-direction: column; align-items: center; gap: 3px; height: 100%; justify-content: flex-end; }
         .rp-bar { width: 100%; border-radius: 3px 3px 0 0; min-height: 3px; }
         .rp-bar.past { background: #b8d8e8; }
         .rp-bar.cur { background: #00A7E1; }
+        .rp-bar-val { font-size: 8px; font-weight: 700; color: #42506D; text-align: center; line-height: 1; white-space: nowrap; }
+        .rp-bar-val.cur { color: #00A7E1; }
         .rp-bar-lbl { font-size: 9px; color: #96C9DA; }
         .rp-axis { height: 1px; background: #e0ecf2; margin: 0 28px 14px; }
         .rp-ranking { padding: 0 28px; flex: 1; }
@@ -1416,6 +1418,7 @@
               const h = Math.max(Math.round((monto / maxEvol) * BAR_H), 3);
               const isCur = mes === ultimoMes;
               return `<div class="rp-bar-col">
+                <div class="rp-bar-val${isCur ? ' cur' : ''}">${formatMoneyCompact(monto)}</div>
                 <div class="rp-bar ${isCur ? 'cur' : 'past'}" style="height:${h}px"></div>
                 <div class="rp-bar-lbl" style="${isCur ? 'color:#00A7E1;font-weight:700' : ''}">${nombresCortos[mes]}</div>
               </div>`;
