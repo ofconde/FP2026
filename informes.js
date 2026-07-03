@@ -1,6 +1,8 @@
 (function () {
   const REPORT_PAGE_WIDTH = 1122;
   const REPORT_PAGE_HEIGHT = 794;
+  const REPORT_PAGE_WIDTH_P = 816;
+  const REPORT_PAGE_HEIGHT_P = 1056;
   const MM_PER_PX = 0.264583;
   const palette = ['#DDF3FA', '#A7E1EF', '#61C3DC', '#0C8395', '#1C2443'];
   const geoJsonState = { value: null, promise: null };
@@ -1154,147 +1156,283 @@
     `;
   }
 
+  function buildPortraitDocument({ title, reportHtml }) {
+    const W = REPORT_PAGE_WIDTH_P;
+    const H = REPORT_PAGE_HEIGHT_P;
+    return `<!doctype html>
+      <html lang="es">
+        <head>
+          <meta charset="utf-8">
+          <title>${title}</title>
+          <link rel="preconnect" href="https://fonts.googleapis.com">
+          <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+          <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Raleway:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+          <style>
+            @page { size: Letter portrait; margin: 0; }
+            html, body { margin: 0; padding: 0; background: #e8ecf0; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+            body { font-family: 'Raleway', sans-serif; }
+            .print-shell { width: ${W}px; min-height: ${H}px; margin: 0 auto; }
+            @media screen { body { padding: 18px; } .print-shell { box-shadow: 0 20px 40px rgba(28,36,67,0.14); } }
+            @media print { body { padding: 0; background: white; } .print-shell { box-shadow: none; width: ${W}px; height: ${H}px; overflow: hidden; } }
+          </style>
+        </head>
+        <body>
+          <div class="print-shell">${reportHtml}</div>
+          <script>
+            (async () => {
+              if (document.fonts && document.fonts.ready) try { await document.fonts.ready; } catch(e) {}
+              await new Promise(r => requestAnimationFrame(() => requestAnimationFrame(r)));
+              window.print();
+            })();
+          <\/script>
+        </body>
+      </html>`;
+  }
+
   async function renderProvincialReport(data, provinceCode) {
     const provincia = (data.provincias || []).find((item) => item.codigo === provinceCode);
     const detail = (data.detalles || []).find((item) => item.codigo === provinceCode) || provincia;
-    if (!provincia || !detail) {
-      throw new Error('No se encontró la provincia seleccionada en los datos disponibles.');
-    }
-    if (!(Number(provincia.meta_anual) > 0)) {
-      throw new Error(`No se puede generar el informe porque falta el objetivo provincial de ${provincia.nombre}.`);
-    }
+    if (!provincia || !detail) throw new Error('No se encontró la provincia seleccionada en los datos disponibles.');
+    if (!(Number(provincia.meta_anual) > 0)) throw new Error(`No se puede generar el informe porque falta el objetivo provincial de ${provincia.nombre}.`);
 
     const provinciasOrdenadas = [...(data.provincias || [])].sort((a, b) => Number(b.monto || 0) - Number(a.monto || 0));
     const rank = provinciasOrdenadas.findIndex((item) => item.codigo === provinceCode) + 1;
     const participation = data.total?.monto ? (Number(provincia.monto) / Number(data.total.monto)) * 100 : 0;
     const avgTicket = provincia.cantidad ? Number(provincia.monto) / Number(provincia.cantidad) : 0;
-    const progress = provincia.meta_anual ? (Number(provincia.monto) / Number(provincia.meta_anual)) * 100 : 0;
+    const progress = Math.min((Number(provincia.monto) / Number(provincia.meta_anual)) * 100, 100);
+    const cuatriProgress = Math.min(Number(detail.porcentaje_cuatrimestral || 0), 100);
 
-    const RING_R = 55;
-    const RING_CIRC = 2 * Math.PI * RING_R;
     const ringColors = { verde: '#47B067', amarillo: '#E5A020', rojo: '#D84040' };
-    const ringColor = ringColors[provincia.estado] || '#00A7E1';
-    const ringOffset = RING_CIRC * (1 - Math.min(progress, 100) / 100);
-    const cuatriEstado = detail.estado_cuatrimestral || 'rojo';
-    const cuatriMsg = detail.mensaje_cuatrimestral || '';
-    const cuatriPct = formatPercent(detail.porcentaje_cuatrimestral);
+    const ringAnualColor = ringColors[provincia.estado] || '#00A7E1';
+    const ringCuatriColor = ringColors[detail.estado_cuatrimestral] || '#D84040';
 
-    const note = `${provincia.nombre} representa el ${formatPercent(participation)} del total nacional otorgado durante el período informado y ocupa el puesto ${rank} dentro del ranking nacional por monto.`;
+    const RO = 86; const RI = 66;
+    const circO = 2 * Math.PI * RO; const circI = 2 * Math.PI * RI;
+    const offO = circO * (1 - progress / 100);
+    const offI = circI * (1 - cuatriProgress / 100);
+
+    const escudoExt = provinceCode === 'SL' ? 'png' : 'svg';
+    const escudoSrc = `./escudos/${provinceCode}.${escudoExt}`;
+
+    const evolucionProv = {};
+    (detail.items || []).forEach((item) => {
+      if (!item.fecha_resolucion) return;
+      const mes = parseInt(item.fecha_resolucion.split('-')[1], 10);
+      evolucionProv[mes] = (evolucionProv[mes] || 0) + Number(item.importe || 0);
+    });
+    const mesesConDatos = Object.keys(evolucionProv).map(Number).sort((a, b) => a - b);
+    const maxEvol = Math.max(...Object.values(evolucionProv), 1);
+    const nombresCortos = ['', 'Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic'];
+    const ultimoMes = mesesConDatos[mesesConDatos.length - 1] || 0;
+    const BAR_H = 80;
+
+    const topMax = Number(provinciasOrdenadas[0]?.monto || 1);
+    const topRows = provinciasOrdenadas.slice(0, 5).map((item, i) => {
+      const isMe = item.codigo === provinceCode;
+      const w = Math.round((Number(item.monto) / topMax) * 100);
+      return `<div class="rp-rank-row${isMe ? ' rp-rank-me' : ''}">
+        <div class="rp-rank-pos">#${i + 1}</div>
+        <div class="rp-rank-name">${item.nombre}</div>
+        <div class="rp-rank-bar-wrap"><div class="rp-rank-fill${isMe ? ' rp-rank-fill-me' : ''}" style="width:${w}%"></div></div>
+        <div class="rp-rank-val">${formatMoneyCompact(item.monto)}</div>
+      </div>`;
+    }).join('');
+
+    const badgeColors = {
+      verde: 'background:#e7f7ef;color:#1a7a45',
+      amarillo: 'background:#fef3e2;color:#8a5700',
+      rojo: 'background:#fde8e8;color:#9e2222',
+    };
+    const badgeAnual = badgeColors[provincia.estado] || badgeColors.verde;
+    const badgeCuatri = badgeColors[detail.estado_cuatrimestral] || badgeColors.rojo;
 
     return `
-      ${reportStyles()}
-      <div class="report-page provincial-report">
-        <div class="report-header">
+      <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        .rp { width: ${REPORT_PAGE_WIDTH_P}px; min-height: ${REPORT_PAGE_HEIGHT_P}px; background: #f8fbfd; color: #1C2443; font-family: 'Raleway', sans-serif; display: flex; flex-direction: column; }
+        .rp-hdr { background: #1C2443; padding: 14px 28px; display: flex; align-items: center; justify-content: space-between; flex-shrink: 0; }
+        .rp-hdr-kicker { font-size: 9px; font-weight: 700; letter-spacing: 2px; color: #00A7E1; text-transform: uppercase; margin-bottom: 3px; }
+        .rp-hdr-title { font-size: 13px; font-weight: 700; color: #fff; }
+        .rp-hdr-right { font-size: 10px; color: #96C9DA; text-align: right; line-height: 1.5; }
+        .rp-hero { display: flex; align-items: center; gap: 18px; padding: 16px 28px; border-bottom: 1px solid #e0ecf2; flex-shrink: 0; background: #fff; }
+        .rp-escudo { width: 64px; height: 74px; object-fit: contain; flex-shrink: 0; }
+        .rp-prov-info { flex: 1; }
+        .rp-prov-name { font-family: 'Bebas Neue', sans-serif; font-size: 42px; line-height: 1; color: #1C2443; letter-spacing: 0.5px; }
+        .rp-prov-sub { font-size: 11px; color: #5E6A85; margin-top: 3px; }
+        .rp-badge { display: inline-block; margin-top: 7px; font-size: 9px; font-weight: 700; padding: 4px 12px; border-radius: 20px; letter-spacing: 0.8px; text-transform: uppercase; }
+        .rp-rank-box { text-align: center; padding: 12px 18px; border-left: 1px solid #e0ecf2; flex-shrink: 0; }
+        .rp-rank-box-label { font-size: 9px; font-weight: 700; letter-spacing: 1.2px; color: #96C9DA; text-transform: uppercase; margin-bottom: 4px; }
+        .rp-rank-box-val { font-family: 'Bebas Neue', sans-serif; font-size: 44px; color: #1C2443; line-height: 1; }
+        .rp-rank-box-sub { font-size: 10px; color: #5E6A85; margin-top: 2px; }
+        .rp-ring-section { display: flex; align-items: center; gap: 28px; padding: 18px 28px; border-bottom: 1px solid #e0ecf2; flex-shrink: 0; background: #f8fbfd; }
+        .rp-ring-wrap { position: relative; width: 200px; height: 200px; flex-shrink: 0; }
+        .rp-ring-wrap svg { width: 200px; height: 200px; }
+        .rp-ring-inner { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 1px; }
+        .rp-ring-pct { font-family: 'Bebas Neue', sans-serif; font-size: 46px; line-height: 1; color: #1C2443; }
+        .rp-ring-sub { font-size: 9px; font-weight: 700; letter-spacing: 1px; color: #96C9DA; text-transform: uppercase; }
+        .rp-ring-sep { width: 32px; height: 1px; background: #e0ecf2; margin: 3px 0; }
+        .rp-ring-cpct { font-family: 'Bebas Neue', sans-serif; font-size: 28px; line-height: 1; color: #5E6A85; }
+        .rp-ring-csub { font-size: 9px; color: #96C9DA; letter-spacing: 0.8px; }
+        .rp-ring-info { flex: 1; display: flex; flex-direction: column; gap: 12px; }
+        .rp-ring-monto { font-family: 'Bebas Neue', sans-serif; font-size: 34px; color: #00A7E1; line-height: 1; }
+        .rp-ring-monto-label { font-size: 11px; color: #5E6A85; margin-top: 2px; }
+        .rp-ring-legend { display: flex; flex-direction: column; gap: 8px; margin-top: 4px; }
+        .rp-ring-legend-item { display: flex; align-items: center; gap: 8px; font-size: 11px; color: #42506D; }
+        .rp-ring-legend-dot { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
+        .rp-kpis { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; padding: 14px 28px; flex-shrink: 0; }
+        .rp-kpi { background: #fff; border: 1px solid #e0ecf2; border-radius: 10px; padding: 12px 14px; }
+        .rp-kpi-val { font-family: 'Bebas Neue', sans-serif; font-size: 24px; color: #1C2443; line-height: 1; }
+        .rp-kpi-label { font-size: 9px; font-weight: 700; letter-spacing: 1px; color: #96C9DA; text-transform: uppercase; margin-top: 4px; }
+        .rp-objs { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; padding: 0 28px 14px; flex-shrink: 0; }
+        .rp-obj { background: #fff; border: 1px solid #e0ecf2; border-radius: 10px; padding: 14px 16px; }
+        .rp-obj-label { font-size: 9px; font-weight: 700; letter-spacing: 1.2px; color: #96C9DA; text-transform: uppercase; margin-bottom: 6px; }
+        .rp-obj-meta { font-size: 11px; font-weight: 700; color: #1C2443; margin-bottom: 8px; }
+        .rp-obj-track { height: 10px; background: #E5EEF2; border-radius: 5px; overflow: hidden; margin-bottom: 8px; }
+        .rp-obj-fill { height: 100%; border-radius: 5px; }
+        .rp-obj-row { display: flex; align-items: baseline; justify-content: space-between; gap: 8px; }
+        .rp-obj-pct { font-family: 'Bebas Neue', sans-serif; font-size: 26px; line-height: 1; }
+        .rp-obj-brecha { font-size: 10px; color: #5E6A85; }
+        .rp-evol { padding: 0 28px 14px; flex-shrink: 0; }
+        .rp-sec-label { font-size: 9px; font-weight: 700; letter-spacing: 1.5px; color: #96C9DA; text-transform: uppercase; margin-bottom: 10px; }
+        .rp-bars { display: flex; align-items: flex-end; gap: 8px; height: ${BAR_H}px; }
+        .rp-bar-col { flex: 1; display: flex; flex-direction: column; align-items: center; gap: 5px; height: 100%; justify-content: flex-end; }
+        .rp-bar { width: 100%; border-radius: 3px 3px 0 0; min-height: 3px; }
+        .rp-bar.past { background: #b8d8e8; }
+        .rp-bar.cur { background: #00A7E1; }
+        .rp-bar-lbl { font-size: 9px; color: #96C9DA; }
+        .rp-axis { height: 1px; background: #e0ecf2; margin: 0 28px 14px; }
+        .rp-ranking { padding: 0 28px; flex: 1; }
+        .rp-rank-row { display: flex; align-items: center; gap: 10px; padding: 7px 0; border-top: 1px solid #f0f4f7; }
+        .rp-rank-row:first-child { border-top: 0; }
+        .rp-rank-me { background: #f0f8ff; margin: 0 -8px; padding: 7px 8px; border-radius: 6px; border-top: 0 !important; }
+        .rp-rank-pos { font-size: 10px; font-weight: 700; color: #96C9DA; width: 22px; flex-shrink: 0; }
+        .rp-rank-name { font-size: 11px; font-weight: 700; color: #1C2443; width: 130px; flex-shrink: 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+        .rp-rank-me .rp-rank-name { color: #00A7E1; }
+        .rp-rank-bar-wrap { flex: 1; height: 8px; background: #eef3f6; border-radius: 4px; overflow: hidden; }
+        .rp-rank-fill { height: 100%; border-radius: 4px; background: #1C2443; }
+        .rp-rank-fill-me { background: #00A7E1; }
+        .rp-rank-val { font-size: 11px; font-weight: 700; color: #1C2443; white-space: nowrap; width: 80px; text-align: right; flex-shrink: 0; }
+        .rp-rank-me .rp-rank-val { color: #00A7E1; }
+        .rp-footer { background: #1C2443; padding: 10px 28px; display: flex; justify-content: space-between; align-items: center; margin-top: auto; flex-shrink: 0; }
+        .rp-footer-brand { font-size: 9px; font-weight: 700; letter-spacing: 1.5px; color: #96C9DA; text-transform: uppercase; }
+        .rp-footer-page { font-size: 9px; color: #4a5a7a; }
+      </style>
+      <div class="rp">
+        <div class="rp-hdr">
           <div>
-            <div class="report-kicker">Consejo Federal de Inversiones</div>
-            <h1 class="report-title">Informe de Créditos CFI — ${provincia.nombre}</h1>
-            <p class="report-subtitle">${periodLabel(data)} · Actualizado al ${currentDateLabel(data)}</p>
+            <div class="rp-hdr-kicker">Consejo Federal de Inversiones</div>
+            <div class="rp-hdr-title">Informe Provincial · Financiamiento Productivo 2026</div>
           </div>
-          <div class="report-stamp">
-            <div class="report-stamp-label">RANKING NACIONAL</div>
-            <div class="report-stamp-value">#${rank}</div>
-            <div class="report-stamp-sub">según monto otorgado acumulado</div>
+          <div class="rp-hdr-right">${periodLabel(data)}<br>Actualizado ${currentDateLabel(data)}</div>
+        </div>
+
+        <div class="rp-hero">
+          <img class="rp-escudo" src="${escudoSrc}" alt="Escudo de ${provincia.nombre}" onerror="this.style.visibility='hidden'">
+          <div class="rp-prov-info">
+            <div class="rp-prov-name">${provincia.nombre}</div>
+            <div class="rp-prov-sub">Financiamiento Productivo · ${periodLabel(data)}</div>
+            <span class="rp-badge" style="${badgeAnual}">${provincia.mensaje || 'En seguimiento'}</span>
+          </div>
+          <div class="rp-rank-box">
+            <div class="rp-rank-box-label">Ranking nacional</div>
+            <div class="rp-rank-box-val">#${rank}</div>
+            <div class="rp-rank-box-sub">por monto aprobado</div>
           </div>
         </div>
 
-        <div class="report-hero">
-          <div class="report-goal-card">
-            <div class="report-goal-label">OBJETIVO PROVINCIAL 2026</div>
-            <div class="report-goal-value">${formatMoneyCompact(provincia.meta_anual)}</div>
-            <div class="report-goal-sub">Equivale a ${formatMoneyM(provincia.meta_anual)} como meta anual asignada.</div>
-          </div>
-          <div class="report-note-card">
-            <div class="report-note-label">LECTURA EJECUTIVA</div>
-            <div class="report-note-text">${note}</div>
-          </div>
-        </div>
-
-        <div class="report-kpi-grid">
-          ${buildKpiCard('Otorgado', formatMoneyCompact(provincia.monto), formatCount(provincia.cantidad))}
-          ${buildKpiCard('Participación nacional', formatPercent(participation), 'Sobre el monto total país')}
-          ${buildKpiCard('Avance objetivo', formatPercent(progress), `Brecha: ${formatMoneyCompact(Math.abs(Number(provincia.diferencia || 0)))}`)}
-          ${buildKpiCard('Promedio por crédito', formatMoneyCompact(avgTicket), formatMoneyM(avgTicket))}
-          ${buildKpiCard('Estado actual', formatPercent(provincia.porcentaje), provincia.mensaje || 'Seguimiento de meta')}
-        </div>
-
-        <div class="report-main">
-          <div class="report-block report-identity">
-            <div style="font-size:10px;font-weight:700;letter-spacing:1.2px;color:#96C9DA;text-transform:uppercase;">Cumplimiento anual 2026</div>
-            <div class="report-identity-ring">
-              <svg viewBox="0 0 130 130" xmlns="http://www.w3.org/2000/svg">
-                <circle cx="65" cy="65" r="${RING_R}" fill="none" stroke="#E5EEF2" stroke-width="11"/>
-                <circle cx="65" cy="65" r="${RING_R}" fill="none" stroke="${ringColor}" stroke-width="11"
-                  stroke-dasharray="${RING_CIRC.toFixed(2)}" stroke-dashoffset="${ringOffset.toFixed(2)}"
-                  stroke-linecap="round" transform="rotate(-90 65 65)"/>
-              </svg>
-              <div class="report-identity-ring-pct">
-                <div class="report-identity-ring-value">${Math.round(progress)}%</div>
-                <div class="report-identity-ring-label">del objetivo</div>
-              </div>
+        <div class="rp-ring-section">
+          <div class="rp-ring-wrap">
+            <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="100" cy="100" r="${RO}" fill="none" stroke="#E5EEF2" stroke-width="16"/>
+              <circle cx="100" cy="100" r="${RO}" fill="none" stroke="${ringAnualColor}" stroke-width="16"
+                stroke-dasharray="${circO.toFixed(2)}" stroke-dashoffset="${offO.toFixed(2)}"
+                stroke-linecap="round" transform="rotate(-90 100 100)"/>
+              <circle cx="100" cy="100" r="${RI}" fill="none" stroke="#E5EEF2" stroke-width="11"/>
+              <circle cx="100" cy="100" r="${RI}" fill="none" stroke="${ringCuatriColor}" stroke-width="11"
+                stroke-dasharray="${circI.toFixed(2)}" stroke-dashoffset="${offI.toFixed(2)}"
+                stroke-linecap="round" transform="rotate(-90 100 100)"/>
+            </svg>
+            <div class="rp-ring-inner">
+              <div class="rp-ring-pct">${Math.round(progress)}%</div>
+              <div class="rp-ring-sub">Obj. anual</div>
+              <div class="rp-ring-sep"></div>
+              <div class="rp-ring-cpct">${Math.round(cuatriProgress)}%</div>
+              <div class="rp-ring-csub">cuatrimestral</div>
             </div>
-            <div class="report-identity-name">${provincia.nombre}</div>
+          </div>
+          <div class="rp-ring-info">
             <div>
-              <div class="report-identity-monto">${formatMoneyCompact(provincia.monto)}</div>
-              <div class="report-identity-monto-label">aprobado · ${periodLabel(data)}</div>
+              <div class="rp-ring-monto">${formatMoneyCompact(provincia.monto)}</div>
+              <div class="rp-ring-monto-label">aprobado · ${periodLabel(data)}</div>
             </div>
-            <div class="report-identity-stats">
-              <div>
-                <div class="report-identity-stat-val">${provincia.cantidad || 0}</div>
-                <div class="report-identity-stat-label">créditos</div>
+            <div class="rp-ring-legend">
+              <div class="rp-ring-legend-item">
+                <div class="rp-ring-legend-dot" style="background:${ringAnualColor}"></div>
+                <span>Cumplimiento anual — ${formatPercent(progress)} del objetivo</span>
               </div>
-              <div class="report-identity-stat-div"></div>
-              <div>
-                <div class="report-identity-stat-val">${formatMoneyCompact(avgTicket)}</div>
-                <div class="report-identity-stat-label">promedio</div>
+              <div class="rp-ring-legend-item">
+                <div class="rp-ring-legend-dot" style="background:${ringCuatriColor}"></div>
+                <span>Cuatrimestre JUL–OCT — ${formatPercent(cuatriProgress)}</span>
+                <span class="rp-badge" style="${badgeCuatri};font-size:8px;padding:2px 8px;margin-left:4px;">${detail.mensaje_cuatrimestral || ''}</span>
               </div>
-              <div class="report-identity-stat-div"></div>
-              <div>
-                <div class="report-identity-stat-val">#${rank}</div>
-                <div class="report-identity-stat-label">ranking</div>
-              </div>
-            </div>
-            <span class="report-identity-badge ${provincia.estado || 'verde'}">${provincia.mensaje || 'En seguimiento'}</span>
-            <div class="report-identity-cuatri">
-              <div class="report-identity-cuatri-label">Cuatrimestre JUL–OCT</div>
-              <div class="report-identity-cuatri-row">
-                <div class="report-identity-cuatri-pct">${cuatriPct}</div>
-                <span class="report-identity-badge ${cuatriEstado}" style="font-size:9px;padding:3px 10px;">${cuatriMsg}</span>
-              </div>
-            </div>
-          </div>
-
-          <div class="report-side-stack">
-            <div class="report-block">
-              <h2 class="report-block-title">Avance contra objetivo</h2>
-              <p class="report-block-subtitle">Comparación directa entre monto aprobado acumulado y la meta provincial 2026.</p>
-              <div class="report-progress-track">
-                <div class="report-progress-fill" style="width:${Math.min(progress, 100)}%"></div>
-              </div>
-              <div class="report-progress-meta">
-                <span>Otorgado: ${formatMoneyCompact(provincia.monto)}</span>
-                <span>Meta: ${formatMoneyCompact(provincia.meta_anual)}</span>
-              </div>
-            </div>
-
-            <div class="report-block">
-              <h2 class="report-block-title">Top provincias</h2>
-              <p class="report-block-subtitle">Contexto nacional para leer la posición relativa de ${provincia.nombre}.</p>
-              ${provinciasOrdenadas.slice(0, 5).map((item, index) => `
-                <div class="report-rank-row">
-                  <div>
-                    <div class="report-rank-name">#${index + 1} · ${item.nombre}</div>
-                    <div class="report-rank-meta">${formatCount(item.cantidad)} · ${formatPercent(data.total?.monto ? (Number(item.monto) / Number(data.total.monto)) * 100 : 0)} del total</div>
-                  </div>
-                  <div class="report-rank-value">${formatMoneyCompact(item.monto)}</div>
-                </div>
-              `).join('')}
             </div>
           </div>
         </div>
 
-        <div class="report-footer">
-          <div class="report-footer-brand">CFI · Financiamiento Productivo · Uso institucional</div>
-          <div>Generado automáticamente desde el dashboard 2026</div>
+        <div class="rp-kpis">
+          <div class="rp-kpi"><div class="rp-kpi-val">${provincia.cantidad || 0}</div><div class="rp-kpi-label">Créditos aprobados</div></div>
+          <div class="rp-kpi"><div class="rp-kpi-val">${formatMoneyCompact(avgTicket)}</div><div class="rp-kpi-label">Promedio por crédito</div></div>
+          <div class="rp-kpi"><div class="rp-kpi-val">${formatPercent(participation)}</div><div class="rp-kpi-label">Participación nacional</div></div>
+          <div class="rp-kpi"><div class="rp-kpi-val">${formatMoneyCompact(Math.abs(Number(provincia.diferencia || 0)))}</div><div class="rp-kpi-label">Brecha al objetivo</div></div>
+        </div>
+
+        <div class="rp-objs">
+          <div class="rp-obj">
+            <div class="rp-obj-label">Objetivo anual 2026</div>
+            <div class="rp-obj-meta">Meta: ${formatMoneyCompact(provincia.meta_anual)}</div>
+            <div class="rp-obj-track"><div class="rp-obj-fill" style="width:${progress}%;background:${ringAnualColor}"></div></div>
+            <div class="rp-obj-row">
+              <div class="rp-obj-pct" style="color:${ringAnualColor}">${Math.round(progress)}%</div>
+              <div class="rp-obj-brecha">Brecha: ${formatMoneyCompact(Math.abs(Number(provincia.diferencia || 0)))}</div>
+            </div>
+          </div>
+          <div class="rp-obj">
+            <div class="rp-obj-label">Objetivo cuatrimestral JUL–OCT</div>
+            <div class="rp-obj-meta">Meta: ${formatMoneyCompact(detail.meta_cuatrimestral || 0)}</div>
+            <div class="rp-obj-track"><div class="rp-obj-fill" style="width:${cuatriProgress}%;background:${ringCuatriColor}"></div></div>
+            <div class="rp-obj-row">
+              <div class="rp-obj-pct" style="color:${ringCuatriColor}">${Math.round(cuatriProgress)}%</div>
+              <span class="rp-badge" style="${badgeCuatri};font-size:9px;padding:3px 10px;">${detail.mensaje_cuatrimestral || 'Sin inicio'}</span>
+            </div>
+          </div>
+        </div>
+
+        ${mesesConDatos.length > 0 ? `
+        <div class="rp-evol">
+          <div class="rp-sec-label">Evolución mensual — monto aprobado en ${provincia.nombre}</div>
+          <div class="rp-bars">
+            ${mesesConDatos.map((mes) => {
+              const monto = evolucionProv[mes] || 0;
+              const h = Math.max(Math.round((monto / maxEvol) * BAR_H), 3);
+              const isCur = mes === ultimoMes;
+              return `<div class="rp-bar-col">
+                <div class="rp-bar ${isCur ? 'cur' : 'past'}" style="height:${h}px"></div>
+                <div class="rp-bar-lbl" style="${isCur ? 'color:#00A7E1;font-weight:700' : ''}">${nombresCortos[mes]}</div>
+              </div>`;
+            }).join('')}
+          </div>
+        </div>
+        <div class="rp-axis"></div>
+        ` : ''}
+
+        <div class="rp-ranking">
+          <div class="rp-sec-label">Ranking nacional por monto aprobado</div>
+          ${topRows}
+        </div>
+
+        <div class="rp-footer">
+          <div class="rp-footer-brand">CFI · Financiamiento Productivo · Uso institucional</div>
+          <div class="rp-footer-page">1 de 1</div>
         </div>
       </div>
     `;
@@ -1682,7 +1820,7 @@
     const reportTitle = `Dashboard CFI - Financiamiento Productivo 2026 - ${provincia?.nombre || provinceCode}`;
     return {
       title: reportTitle,
-      documentHtml: buildPrintDocument({
+      documentHtml: buildPortraitDocument({
         title: reportTitle,
         reportHtml: html,
       }),
