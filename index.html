@@ -661,7 +661,7 @@
         {
           label: 'Debajo del 10%',
           value: `${belowTen}`,
-          meta: 'jurisdicciones en zona crítica'
+          meta: 'jurisdicciones con bajo avance'
         },
         {
           label: 'Mejor avance',
@@ -690,7 +690,7 @@
           : provincia.estado_cuatrimestral === 'amarillo'
             ? 'Seguimiento'
             : provincia.estado_cuatrimestral === 'rojo'
-              ? 'Crítico'
+              ? 'Bajo avance'
               : 'Referencia';
 
         return `
@@ -725,7 +725,7 @@
           : provincia.estado_cuatrimestral === 'amarillo'
             ? 'Seguimiento'
             : provincia.estado_cuatrimestral === 'rojo'
-              ? 'Crítico'
+              ? 'Bajo avance'
               : 'Referencia';
         return `
           <tr>
