@@ -98,6 +98,38 @@
     .badge-status { background: #47B067; color: #FFFFFF; font-size: 9px; font-weight: 700; padding: 6px 14px; border-radius: 20px; margin-left: auto; }
     .semaforo-note { font-size: 10px; color: #96C9DA; margin-bottom: 20px; font-style: italic; }
     .semaforo-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 20px; margin-bottom: 30px; }
+    .section-title-inline { font-family: 'Bebas Neue', sans-serif; font-size: 22px; color: #1C2443; margin-bottom: 8px; }
+    .section-subtitle-inline { font-size: 11px; color: #96C9DA; margin-bottom: 18px; }
+    .four-month-shell { background: #FFFFFF; border: 1px solid #DBDCDE; border-radius: 12px; padding: 24px; margin-bottom: 30px; }
+    .four-month-summary { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 16px; margin-bottom: 22px; }
+    .four-month-kpi { background: linear-gradient(180deg, #F8FBFD 0%, #F1F7FA 100%); border: 1px solid #E0EBF0; border-radius: 12px; padding: 16px; }
+    .four-month-kpi-label { font-size: 10px; font-weight: 700; letter-spacing: 0.9px; color: #96C9DA; margin-bottom: 8px; text-transform: uppercase; }
+    .four-month-kpi-value { font-family: 'Bebas Neue', sans-serif; font-size: 32px; line-height: 1; color: #1C2443; }
+    .four-month-kpi-meta { font-size: 10px; color: #1C2443; opacity: 0.72; margin-top: 6px; line-height: 1.4; }
+    .four-month-columns { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 20px; }
+    .four-month-panel { border: 1px solid #E5EEF3; border-radius: 12px; padding: 18px; background: #FCFDFE; }
+    .four-month-list { display: grid; gap: 12px; }
+    .four-month-item { border: 1px solid #E3EDF2; border-radius: 12px; padding: 14px 16px; background: #FFFFFF; }
+    .four-month-item-header { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 8px; }
+    .four-month-item-name { font-size: 12px; font-weight: 700; color: #1C2443; text-transform: uppercase; }
+    .four-month-badge { border-radius: 999px; padding: 5px 10px; font-size: 9px; font-weight: 700; letter-spacing: 0.7px; text-transform: uppercase; }
+    .four-month-badge.rojo { background: #FFF1ED; color: #E6431A; }
+    .four-month-badge.amarillo { background: #FFF6E6; color: #E99505; }
+    .four-month-badge.verde { background: #EBF8EF; color: #47B067; }
+    .four-month-badge.gris { background: #EEF4F7; color: #6F8293; }
+    .four-month-item-main { display: grid; grid-template-columns: auto 1fr auto; gap: 12px; align-items: center; margin-bottom: 10px; }
+    .four-month-item-percent { font-family: 'Bebas Neue', sans-serif; font-size: 34px; color: #1C2443; line-height: 1; min-width: 72px; }
+    .four-month-track { height: 10px; border-radius: 999px; background: #E6EEF3; overflow: hidden; }
+    .four-month-fill { height: 100%; border-radius: 999px; }
+    .four-month-item-amount { font-size: 10px; color: #1C2443; opacity: 0.75; text-align: right; min-width: 110px; }
+    .four-month-item-meta { display: flex; gap: 14px; flex-wrap: wrap; font-size: 10px; color: #1C2443; opacity: 0.74; }
+    .four-month-full { border-top: 1px solid #E5EEF3; padding-top: 18px; }
+    .four-month-table { width: 100%; border-collapse: collapse; }
+    .four-month-table th { text-align: left; font-size: 10px; letter-spacing: 0.8px; color: #96C9DA; text-transform: uppercase; padding: 0 0 10px; }
+    .four-month-table td { padding: 12px 0; border-top: 1px solid #EEF3F6; font-size: 11px; color: #1C2443; vertical-align: middle; }
+    .four-month-table tr:first-child td { border-top: 1px solid #DCE8EE; }
+    .four-month-order { width: 34px; font-family: 'Bebas Neue', sans-serif; font-size: 20px; color: #96C9DA; }
+    .four-month-state-text { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.6px; }
     .provincia-card { background: #FFFFFF; border: 1px solid #DBDCDE; border-radius: 10px; overflow: hidden; transition: transform 0.2s; }
     .provincia-card:hover { transform: translateY(-2px); box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08); }
     .provincia-accent { height: 6px; }
@@ -160,12 +192,14 @@
       .score-value { font-size: 64px; }
       .view-actions { justify-content: stretch; }
       .view-button { width: 100%; }
-      .kpi-grid, .semaforo-grid, .detail-summary, .chart-shell { grid-template-columns: 1fr; }
+      .kpi-grid, .semaforo-grid, .detail-summary, .chart-shell, .four-month-summary, .four-month-columns { grid-template-columns: 1fr; }
       .detail-shell { padding: 20px; }
       .chart-bar-wrap { max-width: none; height: 70px; width: 100%; }
       .chart-col { align-items: stretch; }
       .rank-item, .gap-item { grid-template-columns: 1fr; }
       .rank-meta, .gap-value { text-align: left; }
+      .four-month-item-main { grid-template-columns: 1fr; align-items: flex-start; }
+      .four-month-item-amount { text-align: left; min-width: 0; }
     }
   </style>
 </head>
@@ -266,8 +300,39 @@
         <div id="semaforoGrid" class="semaforo-grid"></div>
 
         <div class="section-title">🗓️ SEMÁFORO CUATRIMESTRAL</div>
-        <div class="semaforo-note">Ventana 01/07/2026 al 31/10/2026 • si el período no inició, se muestra en ⚫ como referencia de meta.</div>
-        <div id="semaforoGridFour" class="semaforo-grid"></div>
+        <div class="section-subtitle">Lectura priorizada de la ventana julio-octubre, ordenada para ver primero dónde hace falta intervenir.</div>
+        <div class="four-month-shell">
+          <div id="fourMonthSummary" class="four-month-summary"></div>
+          <div class="four-month-columns">
+            <div class="four-month-panel">
+              <div class="section-title-inline">Focos de gestión</div>
+              <div class="section-subtitle-inline">Provincias con menor avance relativo dentro de la ventana cuatrimestral.</div>
+              <div id="fourMonthFocusList" class="four-month-list"></div>
+            </div>
+            <div class="four-month-panel">
+              <div class="section-title-inline">Mejores avances</div>
+              <div class="section-subtitle-inline">Jurisdicciones que hoy muestran mejor tracción sobre la meta jul-oct.</div>
+              <div id="fourMonthBestList" class="four-month-list"></div>
+            </div>
+          </div>
+          <div class="four-month-full">
+            <div class="section-title-inline">Ranking completo ordenado</div>
+            <div class="section-subtitle-inline">De menor a mayor cumplimiento cuatrimestral, para leer rápidamente criticidad y progreso.</div>
+            <table class="four-month-table">
+              <thead>
+                <tr>
+                  <th style="width:34px;">#</th>
+                  <th>Provincia</th>
+                  <th>%</th>
+                  <th>Otorgado / Meta</th>
+                  <th>Brecha</th>
+                  <th>Estado</th>
+                </tr>
+              </thead>
+              <tbody id="fourMonthOrderedBody"></tbody>
+            </table>
+          </div>
+        </div>
 
         <div class="vitals-panel">
           <div class="vitals-title">INDICADORES DE CUMPLIMIENTO</div>
@@ -304,7 +369,7 @@
 
   <div id="footer" class="footer">Consejo Federal de Inversiones • Financiamiento Productivo • Actualizado: -</div>
 
-  <script src="./informes.js"></script>
+  <script src="./informes-20260702.js?v=20260702b"></script>
   <script>
     const COLOR_BY_STATUS = {
       verde: 'verde',
@@ -564,25 +629,113 @@
     }
 
     function renderFourMonthProvinces(provincias) {
-      document.getElementById('semaforoGridFour').innerHTML = provincias.map((provincia) => {
+      const ordered = [...provincias].sort((a, b) => {
+        const aPct = Number(a.porcentaje_cuatrimestral || 0);
+        const bPct = Number(b.porcentaje_cuatrimestral || 0);
+        if (aPct !== bPct) return aPct - bPct;
+        return Number(b.meta_cuatrimestral || 0) - Number(a.meta_cuatrimestral || 0);
+      });
+      const active = ordered.filter((provincia) => Number(provincia.meta_cuatrimestral || 0) > 0);
+      const focus = active.slice(0, 5);
+      const best = [...active]
+        .sort((a, b) => {
+          const aPct = Number(a.porcentaje_cuatrimestral || 0);
+          const bPct = Number(b.porcentaje_cuatrimestral || 0);
+          if (aPct !== bPct) return bPct - aPct;
+          return Number(b.monto_cuatrimestral || 0) - Number(a.monto_cuatrimestral || 0);
+        })
+        .slice(0, 5);
+      const withoutProgress = active.filter((provincia) => Number(provincia.monto_cuatrimestral || 0) <= 0).length;
+      const belowTen = active.filter((provincia) => Number(provincia.porcentaje_cuatrimestral || 0) < 10).length;
+      const bestProvince = best[0] || null;
+      const averagePct = active.length
+        ? active.reduce((sum, provincia) => sum + Number(provincia.porcentaje_cuatrimestral || 0), 0) / active.length
+        : 0;
+
+      document.getElementById('fourMonthSummary').innerHTML = [
+        {
+          label: 'Sin avance',
+          value: `${withoutProgress}`,
+          meta: 'provincias sin monto en la ventana'
+        },
+        {
+          label: 'Debajo del 10%',
+          value: `${belowTen}`,
+          meta: 'jurisdicciones en zona crítica'
+        },
+        {
+          label: 'Mejor avance',
+          value: bestProvince ? `${bestProvince.codigo} · ${formatPercent(bestProvince.porcentaje_cuatrimestral || 0)}` : 'Sin datos',
+          meta: bestProvince ? `${formatMoney(bestProvince.monto_cuatrimestral || 0)} sobre ${formatMoney(bestProvince.meta_cuatrimestral || 0)}` : 'sin actividad'
+        },
+        {
+          label: 'Promedio simple',
+          value: formatPercent(averagePct),
+          meta: 'cumplimiento promedio provincial'
+        }
+      ].map((item) => `
+        <div class="four-month-kpi">
+          <div class="four-month-kpi-label">${item.label}</div>
+          <div class="four-month-kpi-value">${item.value}</div>
+          <div class="four-month-kpi-meta">${item.meta}</div>
+        </div>
+      `).join('');
+
+      const renderList = (items) => items.map((provincia) => {
         const color = COLOR_BY_STATUS[provincia.estado_cuatrimestral] || 'gris';
-        const gap = Number(provincia.meta_cuatrimestral || 0) - Number(provincia.monto_cuatrimestral || 0);
-        const diffSymbol = gap > 0 ? '↓' : '↑';
-        const diffClass = gap > 0 ? color : 'verde';
+        const pct = Number(provincia.porcentaje_cuatrimestral || 0);
+        const gap = Math.max(0, Number(provincia.meta_cuatrimestral || 0) - Number(provincia.monto_cuatrimestral || 0));
+        const statusText = provincia.estado_cuatrimestral === 'verde'
+          ? 'En trayectoria'
+          : provincia.estado_cuatrimestral === 'amarillo'
+            ? 'Seguimiento'
+            : provincia.estado_cuatrimestral === 'rojo'
+              ? 'Crítico'
+              : 'Referencia';
 
         return `
-          <div class="provincia-card">
-            <div class="provincia-accent color-${color}"></div>
-            <div class="provincia-content">
-              <div class="provincia-nombre">${provincia.nombre}</div>
-              <div class="provincia-icono">${provincia.icono_cuatrimestral || '⚫'}</div>
-              <div class="provincia-mensaje text-${color}">${provincia.mensaje_cuatrimestral || 'Sin datos'}</div>
-              <div class="provincia-monto">${formatMoney(provincia.monto_cuatrimestral || 0)} otorgados</div>
-              <div class="provincia-cantidad">Meta jul-oct: ${formatMoney(provincia.meta_cuatrimestral || 0)}</div>
-              <div class="provincia-cantidad">${formatCredits(provincia.cantidad_cuatrimestral || 0)}</div>
-              <div class="provincia-diferencia text-${diffClass}">${diffSymbol} ${formatMoney(Math.abs(gap))} contra meta jul-oct</div>
+          <div class="four-month-item">
+            <div class="four-month-item-header">
+              <div class="four-month-item-name">${provincia.nombre}</div>
+              <div class="four-month-badge ${color}">${statusText}</div>
+            </div>
+            <div class="four-month-item-main">
+              <div class="four-month-item-percent">${formatPercent(pct)}</div>
+              <div class="four-month-track"><div class="four-month-fill color-${color}" style="width: ${clampPercent(pct)}%"></div></div>
+              <div class="four-month-item-amount">${formatMoney(provincia.monto_cuatrimestral || 0)} / ${formatMoney(provincia.meta_cuatrimestral || 0)}</div>
+            </div>
+            <div class="four-month-item-meta">
+              <span>${formatCredits(provincia.cantidad_cuatrimestral || 0)}</span>
+              <span>Brecha: ${formatMoney(gap)}</span>
+              <span>${provincia.mensaje_cuatrimestral || 'Sin datos'}</span>
             </div>
           </div>
+        `;
+      }).join('');
+
+      document.getElementById('fourMonthFocusList').innerHTML = renderList(focus);
+      document.getElementById('fourMonthBestList').innerHTML = renderList(best);
+
+      document.getElementById('fourMonthOrderedBody').innerHTML = ordered.map((provincia, index) => {
+        const color = COLOR_BY_STATUS[provincia.estado_cuatrimestral] || 'gris';
+        const pct = Number(provincia.porcentaje_cuatrimestral || 0);
+        const gap = Math.max(0, Number(provincia.meta_cuatrimestral || 0) - Number(provincia.monto_cuatrimestral || 0));
+        const statusText = provincia.estado_cuatrimestral === 'verde'
+          ? 'En trayectoria'
+          : provincia.estado_cuatrimestral === 'amarillo'
+            ? 'Seguimiento'
+            : provincia.estado_cuatrimestral === 'rojo'
+              ? 'Crítico'
+              : 'Referencia';
+        return `
+          <tr>
+            <td class="four-month-order">${index + 1}</td>
+            <td><strong>${provincia.nombre}</strong></td>
+            <td><span class="text-${color}"><strong>${formatPercent(pct)}</strong></span></td>
+            <td>${formatMoney(provincia.monto_cuatrimestral || 0)} / ${formatMoney(provincia.meta_cuatrimestral || 0)}</td>
+            <td>${formatMoney(gap)}</td>
+            <td class="four-month-state-text text-${color}">${statusText}</td>
+          </tr>
         `;
       }).join('');
     }
@@ -657,8 +810,25 @@
       return match ? match[1] : null;
     }
 
+    function buildReportTimestamp() {
+      const now = new Date();
+      const yyyy = now.getFullYear();
+      const mm = String(now.getMonth() + 1).padStart(2, '0');
+      const dd = String(now.getDate()).padStart(2, '0');
+      const hh = String(now.getHours()).padStart(2, '0');
+      const mi = String(now.getMinutes()).padStart(2, '0');
+      return `${yyyy}${mm}${dd}-${hh}${mi}`;
+    }
+
     async function requestPdfDownload(url, fallbackName, options = {}) {
-      const response = await fetch(url, options);
+      const response = await fetch(url, {
+        cache: 'no-store',
+        ...options,
+        headers: {
+          ...(options.headers || {}),
+          'Cache-Control': 'no-store'
+        }
+      });
       if (!response.ok) {
         let message = 'No se pudo generar el PDF.';
         try {
@@ -679,17 +849,32 @@
       setTimeout(() => URL.revokeObjectURL(objectUrl), 1500);
     }
 
-    function requestRenderedPdf(preview, fallbackName) {
-      const html = preview.documentHtml;
-      const tab = window.open('', '_blank');
-      if (!tab) {
-        throw new Error('El navegador bloqueó la apertura de la pestaña. Habilitá pop-ups para este sitio y volvé a intentarlo.');
+    async function requestRenderedPdf(preview, fallbackName) {
+      if (preview.pages && Array.isArray(preview.pages)) {
+        return requestPdfDownload(`${PDF_SERVICE_BASE}/render-batch`, fallbackName, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ pages: preview.pages, filename: fallbackName })
+        });
       }
-      tab.document.open();
-      tab.document.write(html);
-      tab.document.close();
+      return requestPdfDownload(`${PDF_SERVICE_BASE}/render`, fallbackName, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ html: preview.documentHtml, filename: fallbackName })
+      });
     }
 
+    async function requestProvincialDirectPdf(data, provinceCode, fallbackName) {
+      return requestPdfDownload(`${PDF_SERVICE_BASE}/render-provincial-direct`, fallbackName, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          data,
+          provinceCode,
+          filename: fallbackName
+        })
+      });
+    }
 
     function closeReportPreview() {
       const overlay = document.getElementById('reportPreviewOverlay');
@@ -755,11 +940,12 @@
       try {
         setReportButtonsLoading(true);
         showReportMessage(`Generando PDF provincial de ${selected.nombre}...`, 'info');
-        const preview = await window.CFIReports.generateProvincialReport({
-          data: dashboardData,
-          provinceCode: selected.codigo
-        });
-        await requestRenderedPdf(preview, `Dashboard CFI - Financiamiento Productivo 2026 - ${selected.nombre}.pdf`);
+        const timestamp = buildReportTimestamp();
+        await requestProvincialDirectPdf(
+          dashboardData,
+          selected.codigo,
+          `Dashboard CFI - Financiamiento Productivo 2026 - ${selected.nombre} - ${timestamp}.pdf`
+        );
         clearReportMessage();
       } catch (error) {
         console.error('Error generando informe provincial:', error);
