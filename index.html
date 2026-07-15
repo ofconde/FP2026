@@ -629,6 +629,21 @@
     }
 
     function renderFourMonthProvinces(provincias) {
+      const getFourMonthStage = (provincia) => {
+        const pct = Number(provincia.porcentaje_cuatrimestral || 0);
+        const amount = Number(provincia.monto_cuatrimestral || 0);
+        if (amount <= 0) {
+          return { color: 'gris', text: 'Sin avance' };
+        }
+        if (pct < 10) {
+          return { color: 'rojo', text: 'Bajo avance' };
+        }
+        if (pct < 25) {
+          return { color: 'amarillo', text: 'Avance intermedio' };
+        }
+        return { color: 'verde', text: 'Avance sólido' };
+      };
+
       const ordered = [...provincias].sort((a, b) => {
         const aPct = Number(a.porcentaje_cuatrimestral || 0);
         const bPct = Number(b.porcentaje_cuatrimestral || 0);
@@ -659,9 +674,9 @@
           meta: 'provincias sin monto en la ventana'
         },
         {
-          label: 'Debajo del 10%',
+          label: 'Bajo avance',
           value: `${belowTen}`,
-          meta: 'jurisdicciones con bajo avance'
+          meta: 'jurisdicciones por debajo del 10%'
         },
         {
           label: 'Mejor avance',
@@ -682,16 +697,11 @@
       `).join('');
 
       const renderList = (items) => items.map((provincia) => {
-        const color = COLOR_BY_STATUS[provincia.estado_cuatrimestral] || 'gris';
+        const stage = getFourMonthStage(provincia);
+        const color = stage.color;
         const pct = Number(provincia.porcentaje_cuatrimestral || 0);
         const gap = Math.max(0, Number(provincia.meta_cuatrimestral || 0) - Number(provincia.monto_cuatrimestral || 0));
-        const statusText = provincia.estado_cuatrimestral === 'verde'
-          ? 'En trayectoria'
-          : provincia.estado_cuatrimestral === 'amarillo'
-            ? 'Seguimiento'
-            : provincia.estado_cuatrimestral === 'rojo'
-              ? 'Bajo avance'
-              : 'Referencia';
+        const statusText = stage.text;
 
         return `
           <div class="four-month-item">
@@ -717,16 +727,11 @@
       document.getElementById('fourMonthBestList').innerHTML = renderList(best);
 
       document.getElementById('fourMonthOrderedBody').innerHTML = ordered.map((provincia, index) => {
-        const color = COLOR_BY_STATUS[provincia.estado_cuatrimestral] || 'gris';
+        const stage = getFourMonthStage(provincia);
+        const color = stage.color;
         const pct = Number(provincia.porcentaje_cuatrimestral || 0);
         const gap = Math.max(0, Number(provincia.meta_cuatrimestral || 0) - Number(provincia.monto_cuatrimestral || 0));
-        const statusText = provincia.estado_cuatrimestral === 'verde'
-          ? 'En trayectoria'
-          : provincia.estado_cuatrimestral === 'amarillo'
-            ? 'Seguimiento'
-            : provincia.estado_cuatrimestral === 'rojo'
-              ? 'Bajo avance'
-              : 'Referencia';
+        const statusText = stage.text;
         return `
           <tr>
             <td class="four-month-order">${index + 1}</td>
