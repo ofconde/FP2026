@@ -431,7 +431,8 @@ def build_provincial_pdf(data: dict, province_code: str) -> bytes:
     pdf.drawString(note_x + 18, hero_y + 60, "LECTURA EJECUTIVA")
     draw_text_block(pdf, note, note_x + 18, hero_y + 42, note_w - 32, font_size=10.1, color=colors.white, leading=14)
 
-    kpi_y = hero_y - 104
+    kpi_h = 72
+    kpi_y = hero_y - 14 - kpi_h
     total_w = content_w - 36
     kpi_gap = 10
     kpi_w = (total_w - kpi_gap * 4) / 5
@@ -443,18 +444,18 @@ def build_provincial_pdf(data: dict, province_code: str) -> bytes:
         ("Avance cuatrimestral", format_percent(cuatr_progress), str(provincia.get("mensaje_cuatrimestral") or "Seguimiento cuatrimestral")),
     ]
     for idx, (label, value, sub) in enumerate(kpi_labels):
-        draw_kpi_card(pdf, content_x + 18 + idx * (kpi_w + kpi_gap), kpi_y, kpi_w, 86, label, value, sub, dark=True)
+        draw_kpi_card(pdf, content_x + 18 + idx * (kpi_w + kpi_gap), kpi_y, kpi_w, kpi_h, label, value, sub, dark=True)
 
     bottom_y = content_y + 72
-    bottom_h = kpi_y - bottom_y - 16
+    bottom_h = kpi_y - bottom_y - 12
     left_main_w = 420
     right_main_w = content_w - left_main_w - 32
     left_x = content_x + 18
     right_x = left_x + left_main_w + 14
 
     draw_round_rect(pdf, left_x, bottom_y, left_main_w, bottom_h, radius=18, fill=CARD_DARK, stroke=BORDER_DARK)
-    draw_round_rect(pdf, right_x, bottom_y + bottom_h - 112, right_main_w, 112, radius=18, fill=CARD_DARK, stroke=BORDER_DARK)
-    draw_round_rect(pdf, right_x, bottom_y, right_main_w, bottom_h - 126, radius=18, fill=CARD_DARK, stroke=BORDER_DARK)
+    draw_round_rect(pdf, right_x, bottom_y, right_main_w, bottom_h, radius=18, fill=CARD_DARK, stroke=BORDER_DARK)
+    right_top = bottom_y + bottom_h
 
     pdf.setFillColor(TEXT_LIGHT)
     pdf.setFont("Helvetica-Bold", 18)
@@ -529,71 +530,59 @@ def build_provincial_pdf(data: dict, province_code: str) -> bytes:
     pdf.setFont("Helvetica", 9.2)
     pdf.drawString(summary_right_x, summary_y + 8, f"Ticket promedio: {format_money_compact(avg_ticket)}")
 
-    top_card_y = bottom_y + bottom_h - 112
+    leader = ordered[0] if ordered else provincia
+
     pdf.setFillColor(TEXT_LIGHT)
     pdf.setFont("Helvetica-Bold", 16)
-    pdf.drawString(right_x + 18, top_card_y + 78, "AVANCE CONTRA OBJETIVOS")
+    pdf.drawString(right_x + 18, right_top - 28, "AVANCE CONTRA OBJETIVOS")
+
     pdf.setFillColor(TEXT_SOFT)
     pdf.setFont("Helvetica-Bold", 8.7)
-    pdf.drawString(right_x + 18, top_card_y + 52, "CUATRIM.")
-    draw_progress(pdf, right_x + 68, top_card_y + 48, right_main_w - 86, cuatr_progress, dark=True)
+    pdf.drawString(right_x + 18, right_top - 52, "CUATRIM.")
+    draw_progress(pdf, right_x + 68, right_top - 56, right_main_w - 86, cuatr_progress, dark=True)
     pdf.setFont("Helvetica", 9)
-    pdf.drawString(right_x + 18, top_card_y + 34, f"{format_money_compact(cuatr_monto)} sobre {format_money_compact(cuatr_meta)}")
+    pdf.drawString(right_x + 18, right_top - 70, f"{format_money_compact(cuatr_monto)} sobre {format_money_compact(cuatr_meta)}")
+
     pdf.setFont("Helvetica-Bold", 8.7)
-    pdf.drawString(right_x + 18, top_card_y + 20, "ANUAL")
-    draw_progress(pdf, right_x + 68, top_card_y + 16, right_main_w - 86, progress, dark=True)
+    pdf.drawString(right_x + 18, right_top - 88, "ANUAL")
+    draw_progress(pdf, right_x + 68, right_top - 92, right_main_w - 86, progress, dark=True)
     pdf.setFont("Helvetica", 9)
-    pdf.drawString(right_x + 18, top_card_y + 2, f"{format_money_compact(float(provincia.get('monto') or 0))} sobre {format_money_compact(float(provincia.get('meta_anual') or 0))}")
+    pdf.drawString(right_x + 18, right_top - 106, f"{format_money_compact(float(provincia.get('monto') or 0))} sobre {format_money_compact(float(provincia.get('meta_anual') or 0))}")
 
-    leader = ordered[0] if ordered else provincia
-    prev_item = ordered[rank - 2] if rank > 1 and len(ordered) >= rank - 1 else None
-    next_item = ordered[rank] if rank > 0 and len(ordered) > rank else None
-
-    panel_top = bottom_y + bottom_h - 148
-    panel_inner_w = right_main_w - 36
-    tile_gap = 10
-    tile_w = (panel_inner_w - tile_gap) / 2
+    pdf.setStrokeColor(colors.HexColor("#223650"))
+    pdf.setLineWidth(1)
+    pdf.line(right_x + 18, right_top - 122, right_x + right_main_w - 18, right_top - 122)
 
     pdf.setFillColor(TEXT_LIGHT)
-    pdf.setFont("Helvetica-Bold", 18)
-    pdf.drawString(right_x + 18, panel_top, "CONTEXTO NACIONAL")
-    draw_text_block(
-        pdf,
-        f"Lectura rapida para ubicar a {provincia.get('nombre')} dentro del total pais.",
-        right_x + 18,
-        panel_top - 22,
-        panel_inner_w,
-        font_size=10.6,
-        color=TEXT_SOFT,
-    )
-
-    details_y = panel_top - 52
-    annual_gap = max(float(provincia.get("meta_anual") or 0) - float(provincia.get("monto") or 0), 0)
+    pdf.setFont("Helvetica-Bold", 16)
+    pdf.drawString(right_x + 18, right_top - 144, "CONTEXTO NACIONAL")
 
     lines = [
         ("Lider nacional", f"{str(leader.get('nombre') or '-').upper()} · {format_money_compact(float(leader.get('monto') or 0))}"),
         ("Posicion provincial", f"#{rank} · {format_percent(participation)} del total nacional"),
     ]
 
+    details_y = right_top - 168
     for idx, (label, value) in enumerate(lines):
-        row_y = details_y - idx * 22
-        pdf.setStrokeColor(colors.HexColor("#223650"))
-        pdf.setLineWidth(1)
-        pdf.line(right_x + 18, row_y - 10, right_x + right_main_w - 18, row_y - 10)
+        row_y = details_y - idx * 24
         pdf.setFillColor(colors.HexColor("#8EDBF3"))
         pdf.setFont("Helvetica-Bold", 8.8)
-        pdf.drawString(right_x + 18, row_y + 3, label.upper())
+        pdf.drawString(right_x + 18, row_y, label.upper())
         pdf.setFillColor(TEXT_LIGHT)
         draw_text_block(
             pdf,
             value,
             right_x + 132,
-            row_y + 3,
+            row_y,
             right_main_w - 150,
             font_size=9.2,
             color=TEXT_LIGHT,
             leading=10,
         )
+        if idx < len(lines) - 1:
+            pdf.setStrokeColor(colors.HexColor("#223650"))
+            pdf.setLineWidth(1)
+            pdf.line(right_x + 18, row_y - 12, right_x + right_main_w - 18, row_y - 12)
 
     pdf.setFillColor(TEXT_FAINT)
     pdf.setFont("Helvetica-Bold", 9.5)
