@@ -7,7 +7,7 @@ import subprocess
 import tempfile
 from http.server import BaseHTTPRequestHandler, HTTPServer
 from pathlib import Path
-from urllib.parse import urlparse
+from urllib.parse import urlparse, parse_qs
 from PIL import Image
 from reportlab.lib.pagesizes import landscape, A4
 from reportlab.lib.utils import ImageReader
@@ -109,14 +109,21 @@ def render_pdf_batch(pages: list[str]) -> bytes:
 class Handler(BaseHTTPRequestHandler):
     server_version = 'CFIPDF/3.0'
 
+    def _send_cors_headers(self):
+        origin = self.headers.get('Origin')
+        self.send_header('Access-Control-Allow-Origin', origin or '*')
+        self.send_header('Vary', 'Origin, Access-Control-Request-Private-Network')
+        self.send_header('Access-Control-Allow-Headers', 'Content-Type')
+        self.send_header('Access-Control-Allow-Methods', 'GET, POST, OPTIONS')
+        self.send_header('Access-Control-Allow-Private-Network', 'true')
+        self.send_header('Access-Control-Max-Age', '600')
+
     def _send_json(self, payload: dict, status: int = 200):
         data = json.dumps(payload).encode('utf-8')
         self.send_response(status)
         self.send_header('Content-Type', 'application/json; charset=utf-8')
         self.send_header('Content-Length', str(len(data)))
-        self.send_header('Access-Control-Allow-Origin', '*')
-        self.send_header('Access-Control-Allow-Headers', 'Content-Type')
-        self.send_header('Access-Control-Allow-Methods', 'GET, POST, OPTIONS')
+        self._send_cors_headers()
         self.end_headers()
         self.wfile.write(data)
 
@@ -125,7 +132,7 @@ class Handler(BaseHTTPRequestHandler):
         self.send_response(status)
         self.send_header('Content-Type', 'text/html; charset=utf-8')
         self.send_header('Content-Length', str(len(data)))
-        self.send_header('Access-Control-Allow-Origin', '*')
+        self._send_cors_headers()
         self.end_headers()
         self.wfile.write(data)
 
@@ -134,18 +141,38 @@ class Handler(BaseHTTPRequestHandler):
         self.send_header('Content-Type', 'application/pdf')
         self.send_header('Content-Length', str(len(pdf_bytes)))
         self.send_header('Content-Disposition', f'attachment; filename="{filename}"')
-        self.send_header('Access-Control-Allow-Origin', '*')
-        self.send_header('Access-Control-Allow-Headers', 'Content-Type')
-        self.send_header('Access-Control-Allow-Methods', 'GET, POST, OPTIONS')
+        self._send_cors_headers()
         self.end_headers()
         self.wfile.write(pdf_bytes)
 
     def do_OPTIONS(self):
         self.send_response(204)
-        self.send_header('Access-Control-Allow-Origin', '*')
-        self.send_header('Access-Control-Allow-Headers', 'Content-Type')
-        self.send_header('Access-Control-Allow-Methods', 'GET, POST, OPTIONS')
+        self._send_cors_headers()
+        self.send_header('Content-Length', '0')
         self.end_headers()
+
+    def _read_payload(self):
+        length = int(self.headers.get('Content-Length', '0') or 0)
+        raw = self.rfile.read(length)
+        content_type = (self.headers.get('Content-Type') or '').split(';', 1)[0].strip().lower()
+
+        if content_type == 'application/json' or not content_type:
+            try:
+                return json.loads(raw.decode('utf-8'))
+            except Exception:
+                raise ValueError('No se pudo leer el cuerpo JSON.')
+
+        if content_type == 'application/x-www-form-urlencoded':
+            parsed = parse_qs(raw.decode('utf-8'), keep_blank_values=True)
+            payload = {key: values[-1] if values else '' for key, values in parsed.items()}
+            if 'data' in payload:
+                try:
+                    payload['data'] = json.loads(payload['data'])
+                except Exception:
+                    raise ValueError('No se pudo leer el campo data enviado por formulario.')
+            return payload
+
+        raise ValueError(f'Tipo de contenido no soportado: {content_type or "desconocido"}.')
 
     def do_GET(self):
         path = urlparse(self.path).path
@@ -154,11 +181,34 @@ class Handler(BaseHTTPRequestHandler):
             return
         if path == '/':
             self._send_html(
-                '<!doctype html><html lang="es"><meta charset="utf-8"><title>Servicio PDF activo</title>'
-                '<body style="font-family:Arial,sans-serif;padding:32px;background:#f4f7fb;color:#1c2443">'
-                '<h1>Servicio PDF activo</h1><p>Motor: navegador local en modo headless</p>'
-                '<ul><li><code>GET /health</code></li><li><code>POST /render</code></li></ul>'
-                '</body></html>'
+                '<!doctype html><html lang="es"><head><meta charset="utf-8"><title>Servicio PDF FP2026</title>'
+                '<meta name="viewport" content="width=device-width, initial-scale=1">'
+                '<style>'
+                'body{margin:0;font-family:Arial,sans-serif;background:#0b1422;color:#f5f8fc;}'
+                '.wrap{max-width:860px;margin:0 auto;padding:48px 24px 56px;}'
+                '.card{background:#111d30;border:1px solid #223650;border-radius:20px;padding:28px 30px;box-shadow:0 18px 42px rgba(0,0,0,.18);}'
+                '.eyebrow{font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:#c7a45c;font-weight:700;}'
+                'h1{font-size:40px;line-height:1.05;margin:10px 0 8px;color:#f5f8fc;}'
+                'p{font-size:18px;line-height:1.6;color:#93a6c4;margin:0 0 18px;}'
+                '.ok{display:inline-block;margin-top:6px;padding:8px 14px;border-radius:999px;background:#12314a;color:#8fe4ff;font-weight:700;font-size:14px;}'
+                '.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px;margin-top:24px;}'
+                '.item{background:#16253a;border:1px solid #223650;border-radius:16px;padding:16px 18px;}'
+                '.item b{display:block;color:#f5f8fc;font-size:15px;margin-bottom:6px;}'
+                '.item code{color:#8fe4ff;font-size:14px;}'
+                '.note{margin-top:18px;font-size:14px;color:#637793;}'
+                '</style></head><body><div class="wrap"><div class="card">'
+                '<div class="eyebrow">CFI · Financiamiento Productivo</div>'
+                '<h1>Servicio local de PDF activo</h1>'
+                '<p>Este endpoint no es el dashboard. Es el motor interno que usa FP2026 para generar y descargar informes en PDF.</p>'
+                '<span class="ok">127.0.0.1:8765 funcionando</span>'
+                '<div class="grid">'
+                '<div class="item"><b>Chequeo de estado</b><code>GET /health</code></div>'
+                '<div class="item"><b>PDF HTML simple</b><code>POST /render</code></div>'
+                '<div class="item"><b>PDF por páginas</b><code>POST /render-batch</code></div>'
+                '<div class="item"><b>PDF provincial directo</b><code>POST /render-provincial-direct</code></div>'
+                '</div>'
+                '<div class="note">La interfaz principal del tablero sigue estando en ofconde.github.io/FP2026.</div>'
+                '</div></div></body></html>'
             )
             return
         self._send_json({'error': 'Ruta no encontrada.'}, 404)
@@ -169,12 +219,10 @@ class Handler(BaseHTTPRequestHandler):
             self._send_json({'error': 'Ruta no encontrada.'}, 404)
             return
 
-        length = int(self.headers.get('Content-Length', '0') or 0)
-        raw = self.rfile.read(length)
         try:
-            payload = json.loads(raw.decode('utf-8'))
-        except Exception:
-            self._send_json({'error': 'No se pudo leer el cuerpo JSON.'}, 400)
+            payload = self._read_payload()
+        except ValueError as exc:
+            self._send_json({'error': str(exc)}, 400)
             return
 
         pages = None

@@ -1045,15 +1045,28 @@
     }
 
     async function requestProvincialDirectPdf(data, provinceCode, fallbackName) {
-      return requestPdfDownload(`${PDF_SERVICE_BASE}/render-provincial-direct`, fallbackName, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          data,
-          provinceCode,
-          filename: fallbackName
-        })
-      });
+      const form = document.createElement('form');
+      form.method = 'POST';
+      form.action = `${PDF_SERVICE_BASE}/render-provincial-direct`;
+      form.target = '_blank';
+      form.style.display = 'none';
+
+      const appendField = (name, value) => {
+        const input = document.createElement('input');
+        input.type = 'hidden';
+        input.name = name;
+        input.value = value;
+        form.appendChild(input);
+      };
+
+      appendField('provinceCode', provinceCode);
+      appendField('filename', fallbackName);
+      appendField('data', JSON.stringify(data));
+
+      document.body.appendChild(form);
+      form.submit();
+      setTimeout(() => form.remove(), 1500);
+      return Promise.resolve();
     }
 
     function closeReportPreview() {
