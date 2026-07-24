@@ -1,351 +1,390 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-Script para procesar Excel de CFI y generar datos.json para dashboard GitHub Pages
-Autor: CFI - Omar Conde
-Fecha: Abril 2026
+Actualiza el tablero FP2026 a partir del reporte de otorgamientos.
+
+- Usa solo resoluciones del año 2026.
+- Respeta el corte cuatrimestral jul-oct 2026.
+- Mantiene el formato real de datos.json usado por la web actual.
 """
 
-import openpyxl
-import json
-from datetime import datetime
-from collections import defaultdict
+from __future__ import annotations
+
 import glob
+import json
 import os
+import sys
+from collections import defaultdict
+from datetime import datetime
+from pathlib import Path
 
-# ============================================================================
-# CONFIGURACIÓN
-# ============================================================================
+import openpyxl
 
-# Metas 2026 por provincia (millones de pesos - ANUAL)
-METAS_2026 = {
-    'BA': 56830, 'SF': 21510, 'CO': 20755, 'CB': 20755, 'ER': 13066,
-    'MZ': 11812, 'CT': 10326, 'CS': 10326, 'NQ': 9053, 'SL': 5743, 
-    'LR': 5373, 'MI': 4435, 'CH': 4334, 'HA': 4334, 'TU': 4310, 
-    'LP': 4206, 'SA': 4143, 'TF': 4118, 'RN': 3565, 'HU': 3527, 
-    'JU': 3430, 'CA': 2937, 'SJ': 2418, 'SE': 1660, 'SC': 1350, 
-    'FO': 1098
+
+METAS_ANUALES = {
+    "BA": 57000.0,
+    "ER": 13100.0,
+    "CO": 21000.0,
+    "SF": 22000.0,
+    "MZ": 12000.0,
+    "SA": 4100.0,
+    "MI": 4500.0,
+    "TU": 4300.0,
+    "RN": 15000.0,
+    "NQ": 9100.0,
+    "CT": 10000.0,
+    "CH": 4300.0,
+    "LR": 6000.0,
+    "CA": 3000.0,
+    "JU": 3500.0,
+    "SL": 6000.0,
+    "LP": 4200.0,
+    "SJ": 4000.0,
+    "TF": 4100.0,
+    "CB": 3500.0,
+    "SC": 1300.0,
+    "SE": 1300.0,
+    "FO": 1000.0,
 }
 
-NOMBRES_PROVINCIAS = {
-    'BA': 'Buenos Aires', 'SF': 'Santa Fe', 'CO': 'Córdoba', 'CB': 'Córdoba',
-    'ER': 'Entre Ríos', 'MZ': 'Mendoza', 'CT': 'Corrientes', 'CS': 'Corrientes',
-    'NQ': 'Neuquén', 'SL': 'San Luis', 'LR': 'La Rioja', 'MI': 'Misiones',
-    'CH': 'Chaco', 'HA': 'Chaco', 'TU': 'Tucumán', 'LP': 'La Pampa',
-    'SA': 'Salta', 'TF': 'Tierra del Fuego', 'RN': 'Río Negro',
-    'HU': 'Chubut', 'JU': 'Jujuy', 'CA': 'Catamarca', 'SJ': 'San Juan',
-    'SE': 'Santiago del Estero', 'SC': 'Santa Cruz', 'FO': 'Formosa'
+METAS_CUATRI = {
+    "BA": 19333.3,
+    "ER": 6666.7,
+    "CO": 7333.3,
+    "SF": 7333.3,
+    "MZ": 4000.0,
+    "SA": 1333.3,
+    "MI": 1833.3,
+    "TU": 1500.0,
+    "RN": 5000.0,
+    "NQ": 3033.3,
+    "CT": 5000.0,
+    "CH": 1433.3,
+    "LR": 2000.0,
+    "CA": 1333.3,
+    "JU": 1333.3,
+    "SL": 2000.0,
+    "LP": 1500.0,
+    "SJ": 1333.3,
+    "TF": 1333.3,
+    "CB": 1333.3,
+    "SC": 433.3,
+    "SE": 3333.3,
+    "FO": 333.3,
 }
 
-META_TOTAL = 207006  # Millones de pesos
+NOMBRES = {
+    "BA": "Buenos Aires",
+    "ER": "Entre Ríos",
+    "CO": "Córdoba",
+    "SF": "Santa Fe",
+    "MZ": "Mendoza",
+    "SA": "Salta",
+    "MI": "Misiones",
+    "TU": "Tucumán",
+    "RN": "Río Negro",
+    "NQ": "Neuquén",
+    "CT": "Corrientes",
+    "CH": "Chaco",
+    "LR": "La Rioja",
+    "CA": "Catamarca",
+    "JU": "Jujuy",
+    "SL": "San Luis",
+    "LP": "La Pampa",
+    "SJ": "San Juan",
+    "TF": "Tierra del Fuego",
+    "CB": "Chubut",
+    "SC": "Santa Cruz",
+    "SE": "Santiago del Estero",
+    "FO": "Formosa",
+}
 
-# ============================================================================
-# FUNCIONES
-# ============================================================================
+CODIGOS_VALIDOS = list(METAS_ANUALES.keys())
+MAPEO_CODIGOS = {codigo: codigo for codigo in CODIGOS_VALIDOS}
+CUATRI_DESDE = datetime(2026, 7, 1)
+CUATRI_HASTA = datetime(2026, 10, 31, 23, 59, 59)
+META_TOTAL_ANUAL = round(sum(METAS_ANUALES.values()), 1)
+META_TOTAL_CUATRI = 80066.7
 
-def buscar_excel_mas_reciente():
-    """Busca el archivo Excel más reciente que coincida con el patrón"""
-    patron = "CircuitoOtorgamiento-Reporte_export_*.xlsx"
-    archivos = glob.glob(patron)
-    
-    if not archivos:
-        print(f"❌ No se encontró ningún archivo con el patrón: {patron}")
-        print(f"📂 Directorio actual: {os.getcwd()}")
-        print(f"📄 Archivos disponibles:")
-        for f in glob.glob("*.xlsx"):
-            print(f"   - {f}")
+
+def round1(value: float) -> float:
+    return round(float(value or 0), 1)
+
+
+def format_pct(value: float) -> str:
+    return f"{round1(value):.0f}%"
+
+
+def buscar_excel_mas_reciente() -> str | None:
+    if len(sys.argv) > 1 and Path(sys.argv[1]).exists():
+        return sys.argv[1]
+
+    patrones = [
+        "CircuitoOtorgamiento-Reporte_export_*.xlsx",
+        "/Users/omarconde/Downloads/CircuitoOtorgamiento-Reporte_export_*.xlsx",
+    ]
+    candidatos: list[str] = []
+    for patron in patrones:
+        candidatos.extend(glob.glob(patron))
+    if not candidatos:
         return None
-    
-    # Ordenar por fecha de modificación (más reciente primero)
-    archivo_mas_reciente = max(archivos, key=os.path.getmtime)
-    print(f"✓ Archivo encontrado: {archivo_mas_reciente}")
-    return archivo_mas_reciente
+    return max(candidatos, key=os.path.getmtime)
 
-def extraer_codigo_provincia(denominacion):
-    """Extrae el código de provincia de denominacionSolicitud"""
+
+def parse_fecha(value) -> datetime | None:
+    if not value:
+        return None
+    if isinstance(value, datetime):
+        return value.replace(tzinfo=None)
+    text = str(value).replace("Z", "+00:00")
+    try:
+        return datetime.fromisoformat(text).replace(tzinfo=None)
+    except ValueError:
+        return None
+
+
+def extraer_codigo(denominacion: str | None) -> str | None:
     if not denominacion:
         return None
-    
-    # Formato: 2023-CR-LR-000005
-    partes = str(denominacion).split('-')
-    if len(partes) >= 3:
-        return partes[2].upper()
-    return None
+    partes = str(denominacion).split("-")
+    if len(partes) < 3:
+        return None
+    return MAPEO_CODIGOS.get(partes[2].upper())
 
-def procesar_excel(ruta_archivo):
-    """Procesa el Excel y devuelve los datos estructurados"""
-    print(f"\n📊 Procesando archivo: {ruta_archivo}")
-    
-    # Abrir Excel
+
+def estado_anual(pct: float, monto: float) -> tuple[str, str, str]:
+    if monto <= 0:
+        return "gris", "⚫", "Sin monto aprobado"
+    if pct >= 100:
+        return "verde", "🟢", f"Cumplimiento anual {format_pct(pct)}"
+    if pct >= 50:
+        return "amarillo", "🟡", f"Cumplimiento anual {format_pct(pct)}"
+    return "rojo", "🔴", f"Cumplimiento anual {format_pct(pct)}"
+
+
+def estado_cuatrimestral(pct: float, monto: float) -> tuple[str, str, str]:
+    if monto <= 0:
+        return "rojo", "🔴", "Cumplimiento cuatrimestral 0%"
+    if pct >= 80:
+        return "verde", "🟢", f"Cumplimiento cuatrimestral {format_pct(pct)}"
+    if pct >= 50:
+        return "amarillo", "🟡", f"Cumplimiento cuatrimestral {format_pct(pct)}"
+    return "rojo", "🔴", f"Cumplimiento cuatrimestral {format_pct(pct)}"
+
+
+def procesar_excel(ruta_archivo: str):
     wb = openpyxl.load_workbook(ruta_archivo, read_only=True, data_only=True)
-    sheet = wb.active
-    
-    # Leer todas las filas
-    datos_2026 = []
-    por_provincia = defaultdict(lambda: {'monto': 0, 'cantidad': 0})
-    por_mes = defaultdict(lambda: {'monto': 0, 'cantidad': 0})
-    
-    total_filas = 0
+    ws = wb.active
+
+    por_provincia = {
+        codigo: {
+            "monto": 0.0,
+            "cantidad": 0,
+            "monto_cuatrimestral": 0.0,
+            "cantidad_cuatrimestral": 0,
+            "items": [],
+        }
+        for codigo in CODIGOS_VALIDOS
+    }
+    por_mes = defaultdict(lambda: {"monto": 0.0, "cantidad": 0})
+    fecha_max = None
     filas_2026 = 0
-    
-    for row in sheet.iter_rows(min_row=2, values_only=True):
-        total_filas += 1
-        
-        # Columnas (0-indexed):
-        # 0: denominacionSolicitud
-        # 5: fechaResolucion
-        # 7: importeSolicitado
-        
+
+    for row in ws.iter_rows(min_row=2, values_only=True):
         denominacion = row[0] if len(row) > 0 else None
-        fecha_resolucion = row[5] if len(row) > 5 else None
-        importe = row[7] if len(row) > 7 else 0
-        
-        # Filtrar solo 2026
-        if fecha_resolucion:
-            try:
-                if isinstance(fecha_resolucion, str):
-                    fecha = datetime.fromisoformat(fecha_resolucion.replace('Z', '+00:00'))
-                else:
-                    fecha = fecha_resolucion
-                
-                año = fecha.year
-                mes = fecha.month
-                
-                if año == 2026:
-                    filas_2026 += 1
-                    
-                    # Convertir monto a float
-                    try:
-                        monto = float(importe) if importe else 0
-                    except:
-                        monto = 0
-                    
-                    # Extraer provincia
-                    cod_provincia = extraer_codigo_provincia(denominacion)
-                    
-                    if cod_provincia:
-                        por_provincia[cod_provincia]['monto'] += monto
-                        por_provincia[cod_provincia]['cantidad'] += 1
-                    
-                    # Agrupar por mes
-                    mes_key = f"{año}-{mes:02d}"
-                    por_mes[mes_key]['monto'] += monto
-                    por_mes[mes_key]['cantidad'] += 1
-                    
-            except Exception as e:
-                pass  # Ignorar filas con fechas inválidas
-    
+        fecha = parse_fecha(row[5] if len(row) > 5 else None)
+        if not fecha or fecha.year != 2026:
+            continue
+
+        codigo = extraer_codigo(denominacion)
+        if not codigo:
+            continue
+
+        filas_2026 += 1
+        fecha_max = fecha if fecha_max is None or fecha > fecha_max else fecha_max
+
+        importe = round1((row[7] if len(row) > 7 else 0) / 1_000_000)
+        provincia = por_provincia[codigo]
+        provincia["monto"] = round1(provincia["monto"] + importe)
+        provincia["cantidad"] += 1
+
+        if CUATRI_DESDE <= fecha <= CUATRI_HASTA:
+            provincia["monto_cuatrimestral"] = round1(provincia["monto_cuatrimestral"] + importe)
+            provincia["cantidad_cuatrimestral"] += 1
+
+        mes_key = f"{fecha.year}-{fecha.month:02d}"
+        por_mes[mes_key]["monto"] = round1(por_mes[mes_key]["monto"] + importe)
+        por_mes[mes_key]["cantidad"] += 1
+
+        provincia["items"].append(
+            {
+                "denominacion": denominacion,
+                "razon_social": row[2] if len(row) > 2 else None,
+                "fecha_resolucion": fecha.strftime("%Y-%m-%d"),
+                "usuario_resolucion": row[6] if len(row) > 6 else None,
+                "importe": importe,
+                "linea": row[9] if len(row) > 9 else None,
+                "sublinea": row[10] if len(row) > 10 else None,
+                "programa": row[11] if len(row) > 11 else None,
+                "tipo_contragarantia": row[12] if len(row) > 12 else None,
+            }
+        )
+
     wb.close()
-    
-    print(f"✓ Total filas procesadas: {total_filas}")
-    print(f"✓ Filas 2026: {filas_2026}")
-    print(f"✓ Provincias con datos: {len(por_provincia)}")
-    
-    return por_provincia, por_mes
+    return por_provincia, por_mes, fecha_max, filas_2026
 
-def calcular_indicadores(por_provincia, por_mes):
-    """Calcula todos los indicadores del dashboard"""
-    
-    # Calcular totales
-    monto_total = sum(p['monto'] for p in por_provincia.values())
-    creditos_total = sum(p['cantidad'] for p in por_provincia.values())
-    
-    # Convertir a millones
-    monto_total_m = monto_total / 1_000_000
-    
-    # Calcular progreso
-    porcentaje = (monto_total_m / META_TOTAL) * 100
-    falta = META_TOTAL - monto_total_m
-    
-    # Mes actual (detectar automáticamente del último mes con datos)
-    meses_con_datos = sorted([k for k in por_mes.keys()])
-    if meses_con_datos:
-        ultimo_mes = int(meses_con_datos[-1].split('-')[1])
-    else:
-        ultimo_mes = 4  # Default: Abril
-    
-    meses_transcurridos = ultimo_mes
-    meses_restantes = 12 - ultimo_mes
-    
-    # Promedio mensual
-    promedio_mensual = monto_total_m / meses_transcurridos if meses_transcurridos > 0 else 0
-    
-    # Necesario por mes
-    necesario_por_mes = falta / meses_restantes if meses_restantes > 0 else 0
-    
-    # Ritmo
-    ritmo_ok = promedio_mensual >= necesario_por_mes
-    
-    return {
-        'monto': round(monto_total_m, 1),
-        'creditos': creditos_total,
-        'porcentaje': round(porcentaje, 1),
-        'meta': META_TOTAL,
-        'falta': round(falta, 1),
-        'meses_restantes': meses_restantes,
-        'promedio_mensual': round(promedio_mensual, 1),
-        'necesario_por_mes': round(necesario_por_mes, 1),
-        'ritmo_ok': ritmo_ok,
-        'ultimo_mes': ultimo_mes
+
+def build_evolucion(por_mes):
+    nombres = {
+        1: "Enero",
+        2: "Febrero",
+        3: "Marzo",
+        4: "Abril",
+        5: "Mayo",
+        6: "Junio",
+        7: "Julio",
+        8: "Agosto",
+        9: "Septiembre",
+        10: "Octubre",
+        11: "Noviembre",
+        12: "Diciembre",
     }
-
-def generar_semaforo_provincias(por_provincia, mes_actual):
-    """Genera los datos del semáforo por provincia"""
-    
-    provincias_data = []
-    
-    # Procesar todas las provincias con meta
-    todas_provincias = set(METAS_2026.keys())
-    
-    for cod_prov in todas_provincias:
-        data = por_provincia.get(cod_prov, {'monto': 0, 'cantidad': 0})
-        
-        monto_m = data['monto'] / 1_000_000
-        cantidad = data['cantidad']
-        
-        meta_anual = METAS_2026.get(cod_prov, 0)
-        objetivo_mes = (meta_anual / 12) * mes_actual
-        
-        # Calcular estado
-        if meta_anual > 0 and objetivo_mes > 0:
-            diff = monto_m - objetivo_mes
-            pct = (monto_m / objetivo_mes) * 100
-            diff_pct = (diff / objetivo_mes) * 100
-            
-            if pct >= 110:
-                estado = 'verde'
-                icono = '🟢'
-                mensaje = f"Superó el objetivo en {abs(diff_pct):.0f}%"
-            elif pct >= 90:
-                estado = 'amarillo'
-                icono = '🟡'
-                if diff >= 0:
-                    mensaje = f"Cumplió el objetivo (+{diff_pct:.0f}%)"
-                else:
-                    mensaje = f"Falta {abs(diff_pct):.0f}% para el objetivo"
-            elif pct > 0:
-                estado = 'rojo'
-                icono = '🔴'
-                mensaje = f"Falta {abs(diff_pct):.0f}% para el objetivo"
-            else:
-                estado = 'gris'
-                icono = '⚫'
-                mensaje = "Sin aprobaciones en 2026"
-        else:
-            estado = 'gris'
-            icono = '⚫'
-            mensaje = "Sin meta asignada"
-            diff = 0
-        
-        provincias_data.append({
-            'codigo': cod_prov,
-            'nombre': NOMBRES_PROVINCIAS.get(cod_prov, cod_prov),
-            'monto': round(monto_m, 1),
-            'cantidad': cantidad,
-            'meta_anual': meta_anual,
-            'objetivo_mes': round(objetivo_mes, 1),
-            'diferencia': round(diff, 1),
-            'estado': estado,
-            'icono': icono,
-            'mensaje': mensaje
-        })
-    
-    # Ordenar por monto descendente
-    provincias_data.sort(key=lambda x: x['monto'], reverse=True)
-    
-    return provincias_data
-
-def generar_evolucion_mensual(por_mes):
-    """Genera datos de evolución mensual"""
-    
-    meses_nombres = {
-        1: 'Enero', 2: 'Febrero', 3: 'Marzo', 4: 'Abril',
-        5: 'Mayo', 6: 'Junio', 7: 'Julio', 8: 'Agosto',
-        9: 'Septiembre', 10: 'Octubre', 11: 'Noviembre', 12: 'Diciembre'
-    }
-    
     evolucion = []
-    for mes_key in sorted(por_mes.keys()):
-        año, mes = mes_key.split('-')
-        mes_num = int(mes)
-        
-        data = por_mes[mes_key]
-        monto_m = data['monto'] / 1_000_000
-        
-        evolucion.append({
-            'mes': mes_num,
-            'nombre': meses_nombres[mes_num],
-            'monto': round(monto_m, 1),
-            'cantidad': data['cantidad']
-        })
-    
+    for key in sorted(por_mes.keys()):
+        year, month = key.split("-")
+        month_num = int(month)
+        evolucion.append(
+            {
+                "mes": month_num,
+                "nombre": nombres[month_num],
+                "monto": round1(por_mes[key]["monto"]),
+                "cantidad": int(por_mes[key]["cantidad"]),
+            }
+        )
     return evolucion
 
-def generar_json(por_provincia, por_mes):
-    """Genera el JSON final para el dashboard"""
-    
-    # Calcular indicadores
-    indicadores = calcular_indicadores(por_provincia, por_mes)
-    
-    # Generar semáforo
-    provincias = generar_semaforo_provincias(por_provincia, indicadores['ultimo_mes'])
-    
-    # Generar evolución mensual
-    evolucion = generar_evolucion_mensual(por_mes)
-    
-    # Estructura final
-    datos = {
-        'fecha_actualizacion': datetime.now().strftime('%Y-%m-%d %H:%M:%S'),
-        'total': indicadores,
-        'provincias': provincias,
-        'evolucion': evolucion
-    }
-    
-    return datos
 
-# ============================================================================
-# MAIN
-# ============================================================================
+def build_json(por_provincia, por_mes, fecha_max):
+    ultimo_mes = max((item["mes"] for item in build_evolucion(por_mes)), default=1)
+    monto_total = round1(sum(item["monto"] for item in por_provincia.values()))
+    creditos_total = sum(item["cantidad"] for item in por_provincia.values())
+    monto_cuatri = round1(sum(item["monto_cuatrimestral"] for item in por_provincia.values()))
+    creditos_cuatri = sum(item["cantidad_cuatrimestral"] for item in por_provincia.values())
+    falta = round1(META_TOTAL_ANUAL - monto_total)
+    meses_restantes = max(0, 12 - ultimo_mes)
+    promedio_mensual = round1(monto_total / ultimo_mes if ultimo_mes else 0)
+    necesario_por_mes = round1(falta / meses_restantes if meses_restantes else 0)
+
+    provincias = []
+    detalles = []
+    for codigo in CODIGOS_VALIDOS:
+        monto = round1(por_provincia[codigo]["monto"])
+        cantidad = int(por_provincia[codigo]["cantidad"])
+        meta_anual = METAS_ANUALES[codigo]
+        pct_anual = round1((monto / meta_anual) * 100 if meta_anual else 0)
+        estado, icono, mensaje = estado_anual(pct_anual, monto)
+
+        monto_c = round1(por_provincia[codigo]["monto_cuatrimestral"])
+        cantidad_c = int(por_provincia[codigo]["cantidad_cuatrimestral"])
+        meta_c = METAS_CUATRI[codigo]
+        pct_c = round1((monto_c / meta_c) * 100 if meta_c else 0)
+        estado_c, icono_c, mensaje_c = estado_cuatrimestral(pct_c, monto_c)
+
+        resumen = {
+            "codigo": codigo,
+            "nombre": NOMBRES[codigo],
+            "monto": monto,
+            "cantidad": cantidad,
+            "meta_anual": meta_anual,
+            "diferencia": round1(monto - meta_anual),
+            "porcentaje": pct_anual,
+            "estado": estado,
+            "icono": icono,
+            "mensaje": mensaje,
+            "meta_cuatrimestral": meta_c,
+            "monto_cuatrimestral": monto_c,
+            "cantidad_cuatrimestral": cantidad_c,
+            "porcentaje_cuatrimestral": pct_c,
+            "estado_cuatrimestral": estado_c,
+            "icono_cuatrimestral": icono_c,
+            "mensaje_cuatrimestral": mensaje_c,
+        }
+        provincias.append(resumen)
+
+        items = sorted(
+            por_provincia[codigo]["items"],
+            key=lambda item: (item["fecha_resolucion"], item["denominacion"] or ""),
+            reverse=True,
+        )
+        detalles.append(
+            {
+                "codigo": codigo,
+                "nombre": NOMBRES[codigo],
+                "monto": monto,
+                "cantidad": cantidad,
+                "meta_anual": meta_anual,
+                "porcentaje": pct_anual,
+                "meta_cuatrimestral": meta_c,
+                "monto_cuatrimestral": monto_c,
+                "cantidad_cuatrimestral": cantidad_c,
+                "porcentaje_cuatrimestral": pct_c,
+                "estado_cuatrimestral": estado_c,
+                "mensaje_cuatrimestral": mensaje_c,
+                "items": items,
+            }
+        )
+
+    provincias.sort(key=lambda item: item["monto"], reverse=True)
+    detalles.sort(key=lambda item: item["monto"], reverse=True)
+
+    return {
+        "fecha_actualizacion": (fecha_max or datetime.now()).strftime("%Y-%m-%d %H:%M:%S"),
+        "total": {
+            "monto": monto_total,
+            "creditos": creditos_total,
+            "porcentaje": round1((monto_total / META_TOTAL_ANUAL) * 100 if META_TOTAL_ANUAL else 0),
+            "meta": META_TOTAL_ANUAL,
+            "falta": falta,
+            "meses_restantes": meses_restantes,
+            "promedio_mensual": promedio_mensual,
+            "necesario_por_mes": necesario_por_mes,
+            "ritmo_ok": promedio_mensual >= necesario_por_mes if meses_restantes else True,
+            "ultimo_mes": ultimo_mes,
+            "meta_cuatrimestral": META_TOTAL_CUATRI,
+            "monto_cuatrimestral": monto_cuatri,
+            "creditos_cuatrimestral": creditos_cuatri,
+            "porcentaje_cuatrimestral": round1((monto_cuatri / META_TOTAL_CUATRI) * 100 if META_TOTAL_CUATRI else 0),
+            "cuatrimestre_iniciado": True,
+            "cuatrimestre_desde": "2026-07-01",
+            "cuatrimestre_hasta": "2026-10-31",
+        },
+        "provincias": provincias,
+        "evolucion": build_evolucion(por_mes),
+        "detalles": detalles,
+    }
+
 
 def main():
-    print("=" * 80)
-    print("🏦 CFI - PROCESADOR DE DATOS PARA DASHBOARD")
-    print("=" * 80)
-    
-    # Buscar archivo Excel
     archivo = buscar_excel_mas_reciente()
     if not archivo:
-        print("\n❌ No se pudo procesar. Verificá que el archivo Excel esté en la carpeta.")
-        return
-    
-    # Procesar Excel
-    por_provincia, por_mes = procesar_excel(archivo)
-    
-    # Generar JSON
-    datos = generar_json(por_provincia, por_mes)
-    
-    # Guardar JSON
-    nombre_json = "datos.json"
-    with open(nombre_json, 'w', encoding='utf-8') as f:
-        json.dump(datos, f, ensure_ascii=False, indent=2)
-    
-    print(f"\n✅ Archivo generado: {nombre_json}")
-    print(f"📊 Resumen:")
-    print(f"   - Monto total: ${datos['total']['monto']}M")
-    print(f"   - Créditos: {datos['total']['creditos']}")
-    print(f"   - Progreso: {datos['total']['porcentaje']}%")
-    print(f"   - Provincias: {len([p for p in datos['provincias'] if p['cantidad'] > 0])}")
-    print(f"   - Meses con datos: {len(datos['evolucion'])}")
-    
-    print("\n" + "=" * 80)
-    print("✓ PROCESO COMPLETADO")
-    print("=" * 80)
-    print("\n📤 Próximo paso: Subir 'datos.json' a GitHub")
-    print("   1. Copiá datos.json al repositorio")
-    print("   2. git add datos.json")
-    print("   3. git commit -m 'Actualización datos'")
-    print("   4. git push")
-    print("\n")
+        print("No encontré un Excel para procesar.")
+        sys.exit(1)
+
+    por_provincia, por_mes, fecha_max, filas_2026 = procesar_excel(archivo)
+    datos = build_json(por_provincia, por_mes, fecha_max)
+    Path("datos.json").write_text(json.dumps(datos, ensure_ascii=False, indent=2), encoding="utf-8")
+
+    print(f"Excel procesado: {archivo}")
+    print(f"Filas 2026: {filas_2026}")
+    print(f"Actualización: {datos['fecha_actualizacion']}")
+    print(
+        "Total:",
+        f"${datos['total']['monto']}M",
+        f"{datos['total']['creditos']} créditos",
+        f"Jul-Oct ${datos['total']['monto_cuatrimestral']}M",
+        f"{datos['total']['creditos_cuatrimestral']} créditos",
+    )
+
 
 if __name__ == "__main__":
     main()
