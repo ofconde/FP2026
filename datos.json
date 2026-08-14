@@ -1,20 +1,20 @@
 {
-  "fecha_actualizacion": "2026-08-12 19:46:07",
+  "fecha_actualizacion": "2026-08-13 14:39:46",
   "total": {
-    "monto": 59757.9,
-    "creditos": 693,
-    "porcentaje": 27.9,
+    "monto": 60137.9,
+    "creditos": 694,
+    "porcentaje": 28.1,
     "meta": 214300.0,
-    "falta": 154542.1,
+    "falta": 154162.1,
     "meses_restantes": 4,
-    "promedio_mensual": 7469.7,
-    "necesario_por_mes": 38635.5,
+    "promedio_mensual": 7517.2,
+    "necesario_por_mes": 38540.5,
     "ritmo_ok": false,
     "ultimo_mes": 8,
     "meta_cuatrimestral": 80066.7,
-    "monto_cuatrimestral": 15059.5,
-    "creditos_cuatrimestral": 154,
-    "porcentaje_cuatrimestral": 18.8,
+    "monto_cuatrimestral": 15439.5,
+    "creditos_cuatrimestral": 155,
+    "porcentaje_cuatrimestral": 19.3,
     "cuatrimestre_iniciado": true,
     "cuatrimestre_desde": "2026-07-01",
     "cuatrimestre_hasta": "2026-10-31"
@@ -154,6 +154,25 @@
       "mensaje_cuatrimestral": "Cumplimiento cuatrimestral 25%"
     },
     {
+      "codigo": "TU",
+      "nombre": "Tucumán",
+      "monto": 2304.9,
+      "cantidad": 16,
+      "meta_anual": 4300.0,
+      "diferencia": -1995.1,
+      "porcentaje": 53.6,
+      "estado": "amarillo",
+      "icono": "🟡",
+      "mensaje": "Cumplimiento anual 54%",
+      "meta_cuatrimestral": 1500.0,
+      "monto_cuatrimestral": 580.0,
+      "cantidad_cuatrimestral": 2,
+      "porcentaje_cuatrimestral": 38.7,
+      "estado_cuatrimestral": "rojo",
+      "icono_cuatrimestral": "🔴",
+      "mensaje_cuatrimestral": "Cumplimiento cuatrimestral 39%"
+    },
+    {
       "codigo": "CT",
       "nombre": "Corrientes",
       "monto": 2233.1,
@@ -171,25 +190,6 @@
       "estado_cuatrimestral": "rojo",
       "icono_cuatrimestral": "🔴",
       "mensaje_cuatrimestral": "Cumplimiento cuatrimestral 20%"
-    },
-    {
-      "codigo": "TU",
-      "nombre": "Tucumán",
-      "monto": 1924.9,
-      "cantidad": 15,
-      "meta_anual": 4300.0,
-      "diferencia": -2375.1,
-      "porcentaje": 44.8,
-      "estado": "rojo",
-      "icono": "🔴",
-      "mensaje": "Cumplimiento anual 45%",
-      "meta_cuatrimestral": 1500.0,
-      "monto_cuatrimestral": 200.0,
-      "cantidad_cuatrimestral": 1,
-      "porcentaje_cuatrimestral": 13.3,
-      "estado_cuatrimestral": "rojo",
-      "icono_cuatrimestral": "🔴",
-      "mensaje_cuatrimestral": "Cumplimiento cuatrimestral 13%"
     },
     {
       "codigo": "JU",
@@ -504,8 +504,8 @@
     {
       "mes": 8,
       "nombre": "Agosto",
-      "monto": 4492.3,
-      "cantidad": 43
+      "monto": 4872.3,
+      "cantidad": 44
     }
   ],
   "detalles": [
@@ -5341,6 +5341,198 @@
       ]
     },
     {
+      "codigo": "TU",
+      "nombre": "Tucumán",
+      "monto": 2304.9,
+      "cantidad": 16,
+      "meta_anual": 4300.0,
+      "porcentaje": 53.6,
+      "meta_cuatrimestral": 1500.0,
+      "monto_cuatrimestral": 580.0,
+      "cantidad_cuatrimestral": 2,
+      "porcentaje_cuatrimestral": 38.7,
+      "estado_cuatrimestral": "rojo",
+      "mensaje_cuatrimestral": "Cumplimiento cuatrimestral 39%",
+      "items": [
+        {
+          "denominacion": "2025-CR-TU-002396",
+          "razon_social": "SINER S.A.",
+          "fecha_resolucion": "2026-08-13",
+          "usuario_resolucion": "Rodriguez, Esteban Manuel",
+          "importe": 380.0,
+          "linea": "2025 - Programática",
+          "sublinea": "Programatica",
+          "programa": "Financiamiento Verde",
+          "tipo_contragarantia": "Garantia SGR / FPG - Garantizar SGR"
+        },
+        {
+          "denominacion": "2025-CR-TU-002367",
+          "razon_social": "GEOTECNOLOGIA S.R.L.",
+          "fecha_resolucion": "2026-08-10",
+          "usuario_resolucion": "Rodriguez, Esteban Manuel",
+          "importe": 200.0,
+          "linea": "2025 - Programática",
+          "sublinea": "Programatica",
+          "programa": "Mujeres",
+          "tipo_contragarantia": "Garantia SGR / FPG - Garantizar SGR"
+        },
+        {
+          "denominacion": "2025-CR-TU-002209",
+          "razon_social": "ALEM 500 S.A.",
+          "fecha_resolucion": "2026-06-25",
+          "usuario_resolucion": "Rodriguez, Esteban Manuel",
+          "importe": 200.0,
+          "linea": "2025 - Programática",
+          "sublinea": "Programatica",
+          "programa": "Mujeres",
+          "tipo_contragarantia": "Garantia SGR / FPG - Garantizar SGR"
+        },
+        {
+          "denominacion": "2025-CR-TU-002072",
+          "razon_social": "AGRO ENERGIA S.A.",
+          "fecha_resolucion": "2026-05-19",
+          "usuario_resolucion": "Rodriguez, Esteban Manuel",
+          "importe": 100.0,
+          "linea": "2025 - Competitividad Pyme",
+          "sublinea": "Tradicional",
+          "programa": null,
+          "tipo_contragarantia": "Garantia SGR / FPG - Garantizar SGR"
+        },
+        {
+          "denominacion": "2025-CR-TU-002019",
+          "razon_social": "FRUTEX S.A.S.",
+          "fecha_resolucion": "2026-04-30",
+          "usuario_resolucion": "Rodriguez, Esteban Manuel",
+          "importe": 200.0,
+          "linea": "2025 - Programática",
+          "sublinea": "Programatica",
+          "programa": "Mujeres",
+          "tipo_contragarantia": "Garantia SGR / FPG - Garantizar SGR"
+        },
+        {
+          "denominacion": "2025-CR-TU-001924",
+          "razon_social": "TUCU SNACK S.R.L.",
+          "fecha_resolucion": "2026-04-27",
+          "usuario_resolucion": "Rodriguez, Esteban Manuel",
+          "importe": 100.0,
+          "linea": "2025 - Competitividad Pyme",
+          "sublinea": "Tradicional",
+          "programa": null,
+          "tipo_contragarantia": "Garantia SGR / FPG - Garantizar SGR"
+        },
+        {
+          "denominacion": "2025-CR-TU-001969",
+          "razon_social": "BUCHET HUGO ALEJANDRO",
+          "fecha_resolucion": "2026-04-20",
+          "usuario_resolucion": "Rodriguez, Esteban Manuel",
+          "importe": 37.3,
+          "linea": "2025 - Competitividad Pyme",
+          "sublinea": "Tradicional",
+          "programa": null,
+          "tipo_contragarantia": "Prenda, Prenda, Fianza"
+        },
+        {
+          "denominacion": "2025-CR-TU-001974",
+          "razon_social": "BAC S.R.L.",
+          "fecha_resolucion": "2026-04-16",
+          "usuario_resolucion": "Rodriguez, Esteban Manuel",
+          "importe": 55.0,
+          "linea": "2025 - Competitividad Pyme",
+          "sublinea": "Tradicional",
+          "programa": null,
+          "tipo_contragarantia": "Garantia SGR / FPG - Garantizar SGR"
+        },
+        {
+          "denominacion": "2025-CR-TU-001944",
+          "razon_social": "AGROPECUARIA SAN NICOLAS S.R.L.",
+          "fecha_resolucion": "2026-04-10",
+          "usuario_resolucion": "Rodriguez, Esteban Manuel",
+          "importe": 200.0,
+          "linea": "2025 - Programática",
+          "sublinea": "Programatica",
+          "programa": "Mujeres",
+          "tipo_contragarantia": "Garantia SGR / FPG - Garantizar SGR"
+        },
+        {
+          "denominacion": "2025-CR-TU-001917",
+          "razon_social": "COSTAL GROUP S.R.L.",
+          "fecha_resolucion": "2026-04-07",
+          "usuario_resolucion": "Rodriguez, Esteban Manuel",
+          "importe": 200.0,
+          "linea": "2025 - Programática",
+          "sublinea": "Programatica",
+          "programa": "Mujeres",
+          "tipo_contragarantia": "Garantia SGR / FPG - UNION SGR"
+        },
+        {
+          "denominacion": "2025-CR-TU-001876",
+          "razon_social": "MAURICIO MOSSE S.R.L.",
+          "fecha_resolucion": "2026-04-01",
+          "usuario_resolucion": "Cevela, Nicolás",
+          "importe": 188.0,
+          "linea": "2025 - Programática",
+          "sublinea": "Programatica",
+          "programa": "Mujeres",
+          "tipo_contragarantia": "Garantia SGR / FPG - Garantizar SGR"
+        },
+        {
+          "denominacion": "2025-CR-TU-001880",
+          "razon_social": "PUERTO FRIO S.R.L.",
+          "fecha_resolucion": "2026-03-30",
+          "usuario_resolucion": "Cevela, Nicolás",
+          "importe": 104.2,
+          "linea": "2025 - Programática",
+          "sublinea": "Programatica",
+          "programa": "Financiamiento Verde",
+          "tipo_contragarantia": "Garantia SGR / FPG - Garantizar SGR"
+        },
+        {
+          "denominacion": "2025-CR-TU-001829",
+          "razon_social": "VIDRIAL S.R.L.",
+          "fecha_resolucion": "2026-03-17",
+          "usuario_resolucion": "Rodriguez, Esteban Manuel",
+          "importe": 192.4,
+          "linea": "2025 - Programática",
+          "sublinea": "Programatica",
+          "programa": "Mujeres",
+          "tipo_contragarantia": "Garantia SGR / FPG - AFB AVALES SGR"
+        },
+        {
+          "denominacion": "2025-CR-TU-001796",
+          "razon_social": "BARROS SOSA MARIA EUGENIA",
+          "fecha_resolucion": "2026-03-06",
+          "usuario_resolucion": "Rodriguez, Esteban Manuel",
+          "importe": 18.0,
+          "linea": "2025 - Programática",
+          "sublinea": "Programatica",
+          "programa": "Mujeres",
+          "tipo_contragarantia": "Garantia SGR / FPG - CASFOG Serie II (TREND SGR)"
+        },
+        {
+          "denominacion": "2023-CR-TU-001666",
+          "razon_social": "BUCHET HUGO ALEJANDRO",
+          "fecha_resolucion": "2026-02-14",
+          "usuario_resolucion": "Rodriguez, Esteban Manuel",
+          "importe": 50.0,
+          "linea": "2023 - Reactivación Productiva",
+          "sublinea": "Programatica",
+          "programa": "Cadena de Valor",
+          "tipo_contragarantia": "Prenda, Fianza"
+        },
+        {
+          "denominacion": "2025-CR-TU-001716",
+          "razon_social": "DISTRIBUIDORA LAMADRID S.A.",
+          "fecha_resolucion": "2026-01-15",
+          "usuario_resolucion": "Rodriguez, Esteban Manuel",
+          "importe": 80.0,
+          "linea": "2025 - Competitividad Pyme",
+          "sublinea": "Tradicional",
+          "programa": null,
+          "tipo_contragarantia": "Garantia SGR / FPG - UNION SGR"
+        }
+      ]
+    },
+    {
       "codigo": "CT",
       "nombre": "Corrientes",
       "monto": 2233.1,
@@ -5892,187 +6084,6 @@
           "sublinea": "Tradicional",
           "programa": null,
           "tipo_contragarantia": "Fianza"
-        }
-      ]
-    },
-    {
-      "codigo": "TU",
-      "nombre": "Tucumán",
-      "monto": 1924.9,
-      "cantidad": 15,
-      "meta_anual": 4300.0,
-      "porcentaje": 44.8,
-      "meta_cuatrimestral": 1500.0,
-      "monto_cuatrimestral": 200.0,
-      "cantidad_cuatrimestral": 1,
-      "porcentaje_cuatrimestral": 13.3,
-      "estado_cuatrimestral": "rojo",
-      "mensaje_cuatrimestral": "Cumplimiento cuatrimestral 13%",
-      "items": [
-        {
-          "denominacion": "2025-CR-TU-002367",
-          "razon_social": "GEOTECNOLOGIA S.R.L.",
-          "fecha_resolucion": "2026-08-10",
-          "usuario_resolucion": "Rodriguez, Esteban Manuel",
-          "importe": 200.0,
-          "linea": "2025 - Programática",
-          "sublinea": "Programatica",
-          "programa": "Mujeres",
-          "tipo_contragarantia": "Garantia SGR / FPG - Garantizar SGR"
-        },
-        {
-          "denominacion": "2025-CR-TU-002209",
-          "razon_social": "ALEM 500 S.A.",
-          "fecha_resolucion": "2026-06-25",
-          "usuario_resolucion": "Rodriguez, Esteban Manuel",
-          "importe": 200.0,
-          "linea": "2025 - Programática",
-          "sublinea": "Programatica",
-          "programa": "Mujeres",
-          "tipo_contragarantia": "Garantia SGR / FPG - Garantizar SGR"
-        },
-        {
-          "denominacion": "2025-CR-TU-002072",
-          "razon_social": "AGRO ENERGIA S.A.",
-          "fecha_resolucion": "2026-05-19",
-          "usuario_resolucion": "Rodriguez, Esteban Manuel",
-          "importe": 100.0,
-          "linea": "2025 - Competitividad Pyme",
-          "sublinea": "Tradicional",
-          "programa": null,
-          "tipo_contragarantia": "Garantia SGR / FPG - Garantizar SGR"
-        },
-        {
-          "denominacion": "2025-CR-TU-002019",
-          "razon_social": "FRUTEX S.A.S.",
-          "fecha_resolucion": "2026-04-30",
-          "usuario_resolucion": "Rodriguez, Esteban Manuel",
-          "importe": 200.0,
-          "linea": "2025 - Programática",
-          "sublinea": "Programatica",
-          "programa": "Mujeres",
-          "tipo_contragarantia": "Garantia SGR / FPG - Garantizar SGR"
-        },
-        {
-          "denominacion": "2025-CR-TU-001924",
-          "razon_social": "TUCU SNACK S.R.L.",
-          "fecha_resolucion": "2026-04-27",
-          "usuario_resolucion": "Rodriguez, Esteban Manuel",
-          "importe": 100.0,
-          "linea": "2025 - Competitividad Pyme",
-          "sublinea": "Tradicional",
-          "programa": null,
-          "tipo_contragarantia": "Garantia SGR / FPG - Garantizar SGR"
-        },
-        {
-          "denominacion": "2025-CR-TU-001969",
-          "razon_social": "BUCHET HUGO ALEJANDRO",
-          "fecha_resolucion": "2026-04-20",
-          "usuario_resolucion": "Rodriguez, Esteban Manuel",
-          "importe": 37.3,
-          "linea": "2025 - Competitividad Pyme",
-          "sublinea": "Tradicional",
-          "programa": null,
-          "tipo_contragarantia": "Prenda, Prenda, Fianza"
-        },
-        {
-          "denominacion": "2025-CR-TU-001974",
-          "razon_social": "BAC S.R.L.",
-          "fecha_resolucion": "2026-04-16",
-          "usuario_resolucion": "Rodriguez, Esteban Manuel",
-          "importe": 55.0,
-          "linea": "2025 - Competitividad Pyme",
-          "sublinea": "Tradicional",
-          "programa": null,
-          "tipo_contragarantia": "Garantia SGR / FPG - Garantizar SGR"
-        },
-        {
-          "denominacion": "2025-CR-TU-001944",
-          "razon_social": "AGROPECUARIA SAN NICOLAS S.R.L.",
-          "fecha_resolucion": "2026-04-10",
-          "usuario_resolucion": "Rodriguez, Esteban Manuel",
-          "importe": 200.0,
-          "linea": "2025 - Programática",
-          "sublinea": "Programatica",
-          "programa": "Mujeres",
-          "tipo_contragarantia": "Garantia SGR / FPG - Garantizar SGR"
-        },
-        {
-          "denominacion": "2025-CR-TU-001917",
-          "razon_social": "COSTAL GROUP S.R.L.",
-          "fecha_resolucion": "2026-04-07",
-          "usuario_resolucion": "Rodriguez, Esteban Manuel",
-          "importe": 200.0,
-          "linea": "2025 - Programática",
-          "sublinea": "Programatica",
-          "programa": "Mujeres",
-          "tipo_contragarantia": "Garantia SGR / FPG - UNION SGR"
-        },
-        {
-          "denominacion": "2025-CR-TU-001876",
-          "razon_social": "MAURICIO MOSSE S.R.L.",
-          "fecha_resolucion": "2026-04-01",
-          "usuario_resolucion": "Cevela, Nicolás",
-          "importe": 188.0,
-          "linea": "2025 - Programática",
-          "sublinea": "Programatica",
-          "programa": "Mujeres",
-          "tipo_contragarantia": "Garantia SGR / FPG - Garantizar SGR"
-        },
-        {
-          "denominacion": "2025-CR-TU-001880",
-          "razon_social": "PUERTO FRIO S.R.L.",
-          "fecha_resolucion": "2026-03-30",
-          "usuario_resolucion": "Cevela, Nicolás",
-          "importe": 104.2,
-          "linea": "2025 - Programática",
-          "sublinea": "Programatica",
-          "programa": "Financiamiento Verde",
-          "tipo_contragarantia": "Garantia SGR / FPG - Garantizar SGR"
-        },
-        {
-          "denominacion": "2025-CR-TU-001829",
-          "razon_social": "VIDRIAL S.R.L.",
-          "fecha_resolucion": "2026-03-17",
-          "usuario_resolucion": "Rodriguez, Esteban Manuel",
-          "importe": 192.4,
-          "linea": "2025 - Programática",
-          "sublinea": "Programatica",
-          "programa": "Mujeres",
-          "tipo_contragarantia": "Garantia SGR / FPG - AFB AVALES SGR"
-        },
-        {
-          "denominacion": "2025-CR-TU-001796",
-          "razon_social": "BARROS SOSA MARIA EUGENIA",
-          "fecha_resolucion": "2026-03-06",
-          "usuario_resolucion": "Rodriguez, Esteban Manuel",
-          "importe": 18.0,
-          "linea": "2025 - Programática",
-          "sublinea": "Programatica",
-          "programa": "Mujeres",
-          "tipo_contragarantia": "Garantia SGR / FPG - CASFOG Serie II (TREND SGR)"
-        },
-        {
-          "denominacion": "2023-CR-TU-001666",
-          "razon_social": "BUCHET HUGO ALEJANDRO",
-          "fecha_resolucion": "2026-02-14",
-          "usuario_resolucion": "Rodriguez, Esteban Manuel",
-          "importe": 50.0,
-          "linea": "2023 - Reactivación Productiva",
-          "sublinea": "Programatica",
-          "programa": "Cadena de Valor",
-          "tipo_contragarantia": "Prenda, Fianza"
-        },
-        {
-          "denominacion": "2025-CR-TU-001716",
-          "razon_social": "DISTRIBUIDORA LAMADRID S.A.",
-          "fecha_resolucion": "2026-01-15",
-          "usuario_resolucion": "Rodriguez, Esteban Manuel",
-          "importe": 80.0,
-          "linea": "2025 - Competitividad Pyme",
-          "sublinea": "Tradicional",
-          "programa": null,
-          "tipo_contragarantia": "Garantia SGR / FPG - UNION SGR"
         }
       ]
     },
