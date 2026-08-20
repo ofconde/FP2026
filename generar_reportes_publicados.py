@@ -5,11 +5,12 @@ import re
 import unicodedata
 from pathlib import Path
 
-from direct_pdf_reports import build_provincial_pdf
+from direct_pdf_reports import build_national_pdf, build_provincial_pdf
 
 ROOT = Path(__file__).resolve().parent
 DATA_PATH = ROOT / "datos.json"
 REPORTS_DIR = ROOT / "reportes" / "2026" / "provincias"
+NATIONAL_DIR = ROOT / "reportes" / "2026" / "nacional"
 MANIFEST_PATH = ROOT / "reportes" / "2026" / "manifest.json"
 
 
@@ -29,6 +30,7 @@ def build_filename(provincia: dict) -> str:
 def main() -> None:
     data = json.loads(DATA_PATH.read_text(encoding="utf-8"))
     REPORTS_DIR.mkdir(parents=True, exist_ok=True)
+    NATIONAL_DIR.mkdir(parents=True, exist_ok=True)
 
     generated = []
     for provincia in data.get("provincias") or []:
@@ -50,9 +52,17 @@ def main() -> None:
             }
         )
 
+    national_filename = "nacional.pdf"
+    national_path = NATIONAL_DIR / national_filename
+    national_path.write_bytes(build_national_pdf(data))
+
     manifest = {
         "fecha_actualizacion": data.get("fecha_actualizacion"),
         "total_provincias": len(generated),
+        "nacional": {
+            "filename": national_filename,
+            "updated_at": data.get("fecha_actualizacion"),
+        },
         "reportes": generated,
     }
     MANIFEST_PATH.parent.mkdir(parents=True, exist_ok=True)

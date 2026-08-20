@@ -1,6 +1,10 @@
 {
   "fecha_actualizacion": "2026-08-18 16:10:15",
   "total_provincias": 23,
+  "nacional": {
+    "filename": "nacional.pdf",
+    "updated_at": "2026-08-18 16:10:15"
+  },
   "reportes": [
     {
       "codigo": "BA",

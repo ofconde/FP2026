@@ -263,6 +263,326 @@ def draw_progress(pdf: canvas.Canvas, x: float, y: float, w: float, progress: fl
     pdf.roundRect(x, y, fill_w, 14, 7, fill=1, stroke=0)
 
 
+def _sort_active_provincias(provincias: list[dict]) -> list[dict]:
+    active = [item for item in provincias if float(item.get("monto") or 0) > 0]
+    return sorted(active, key=lambda item: float(item.get("monto") or 0), reverse=True)
+
+
+def _draw_dual_progress(pdf: canvas.Canvas, x: float, y: float, w: float, annual_progress: float, cuatr_progress: float):
+    pdf.setFillColor(colors.HexColor("#8EDBF3"))
+    pdf.setFont("Helvetica-Bold", 8.7)
+    pdf.drawString(x, y + 18, "ANUAL")
+    draw_progress(pdf, x + 48, y + 14, w - 48, annual_progress, dark=True)
+
+    pdf.setFillColor(colors.HexColor("#8EDBF3"))
+    pdf.setFont("Helvetica-Bold", 8.7)
+    pdf.drawString(x, y - 8, "JUL-OCT")
+    draw_progress(pdf, x + 48, y - 12, w - 48, cuatr_progress, dark=True)
+
+
+def build_national_pdf(data: dict) -> bytes:
+    provincias = data.get("provincias") or []
+    active = _sort_active_provincias(provincias)
+    total = data.get("total") or {}
+
+    total_monto = float(total.get("monto") or 0)
+    total_creditos = int(total.get("creditos") or 0)
+    total_meta = float(total.get("meta") or 0)
+    total_falta = float(total.get("falta") or 0)
+    total_porcentaje = float(total.get("porcentaje") or 0)
+    promedio_mensual = float(total.get("promedio_mensual") or 0)
+    necesario_mes = float(total.get("necesario_por_mes") or 0)
+    meses_restantes = int(total.get("meses_restantes") or 0)
+    meta_cuatr = float(total.get("meta_cuatrimestral") or 0)
+    monto_cuatr = float(total.get("monto_cuatrimestral") or 0)
+    creditos_cuatr = int(total.get("creditos_cuatrimestral") or 0)
+    porcentaje_cuatr = float(total.get("porcentaje_cuatrimestral") or 0)
+    avg_national = total_monto / max(total_creditos, 1)
+    active_count = len(active)
+    top_five = active[:5]
+    top_three_share = sum((float(item.get("monto") or 0) / total_monto * 100) for item in active[:3]) if total_monto > 0 else 0
+    top_by_credits = sorted(active, key=lambda item: int(item.get("cantidad") or 0), reverse=True)[:5]
+    low_progress = sorted(active, key=lambda item: float(item.get("porcentaje_cuatrimestral") or 0))[:5]
+    monthly = list(data.get("evolucion") or [])
+    max_monthly = max([float(item.get("monto") or 0) for item in monthly] or [1])
+
+    leader = active[0] if active else {}
+    second = active[1] if len(active) > 1 else {}
+    note = (
+        f"El sistema acumula {format_money_compact(total_monto)} en {total_creditos} creditos, "
+        f"con {active_count} provincias con aprobaciones. El top 3 concentra {format_percent(top_three_share)} "
+        f"del volumen nacional y el tramo jul-oct muestra {format_percent(porcentaje_cuatr)} de avance."
+    )
+
+    packet = io.BytesIO()
+    pdf = canvas.Canvas(packet, pagesize=(PAGE_WIDTH, PAGE_HEIGHT))
+
+    def setup_page(page_title: str, page_subtitle: str, stamp_label: str, stamp_value: str, stamp_sub: str):
+        pdf.setFillColor(BG_DARK)
+        pdf.rect(0, 0, PAGE_WIDTH, PAGE_HEIGHT, fill=1, stroke=0)
+        pdf.setFillColor(colors.HexColor("#102038"))
+        pdf.rect(0, PAGE_HEIGHT - 56, PAGE_WIDTH, 56, fill=1, stroke=0)
+        pdf.setStrokeColor(colors.HexColor("#1B2C46"))
+        pdf.line(0, PAGE_HEIGHT - 56, PAGE_WIDTH, PAGE_HEIGHT - 56)
+
+        content_x = 18
+        content_y = 16
+        content_w = PAGE_WIDTH - 36
+        content_h = PAGE_HEIGHT - 72
+        draw_round_rect(pdf, content_x, content_y, content_w, content_h, radius=18, fill=PANEL_DARK, stroke=BORDER_DARK)
+
+        logo_reader = load_image_reader(LOGO)
+        if logo_reader:
+            pdf.drawImage(logo_reader, content_x + 18, PAGE_HEIGHT - 44, width=30, height=32, mask="auto")
+
+        pdf.setFillColor(ACCENT_GOLD)
+        pdf.setFont("Helvetica-Bold", 7)
+        pdf.drawString(content_x + 18, content_y + content_h - 22, "CONSEJO FEDERAL DE INVERSIONES · FINANCIAMIENTO PRODUCTIVO")
+        pdf.setFillColor(TEXT_LIGHT)
+        pdf.setFont("Helvetica-Bold", 20)
+        pdf.drawString(content_x + 18, content_y + content_h - 50, page_title)
+        pdf.setFillColor(TEXT_SOFT)
+        pdf.setFont("Helvetica", 10)
+        pdf.drawString(content_x + 18, content_y + content_h - 68, page_subtitle)
+
+        badge_w, badge_h = 148, 58
+        badge_x = content_x + content_w - badge_w - 18
+        badge_y = content_y + content_h - badge_h - 14
+        draw_round_rect(pdf, badge_x, badge_y, badge_w, badge_h, radius=16, fill=CARD_DARK, stroke=BORDER_DARK)
+        pdf.setFillColor(colors.HexColor("#9DDCF2"))
+        pdf.setFont("Helvetica-Bold", 9)
+        pdf.drawString(badge_x + 12, badge_y + 40, stamp_label.upper())
+        pdf.setFillColor(TEXT_LIGHT)
+        pdf.setFont("Helvetica-Bold", 22)
+        pdf.drawString(badge_x + 12, badge_y + 16, stamp_value)
+        pdf.setFillColor(TEXT_SOFT)
+        pdf.setFont("Helvetica", 8.8)
+        pdf.drawString(badge_x + 12, badge_y + 6, stamp_sub)
+        return content_x, content_y, content_w, content_h
+
+    content_x, content_y, content_w, content_h = setup_page(
+        "INFORME NACIONAL DE CREDITOS CFI",
+        f"Enero / {month_name(total.get('ultimo_mes') or 1)} 2026 · Actualizado al {current_date_label(data)}",
+        "AVANCE GENERAL",
+        format_percent(total_porcentaje),
+        "sobre el objetivo nacional 2026",
+    )
+
+    hero_y = content_y + content_h - 174
+    left_w = 330
+    mid_w = 200
+    note_w = content_w - left_w - mid_w - 46
+    left_x = content_x + 18
+    mid_x = left_x + left_w + 14
+    note_x = mid_x + mid_w + 14
+
+    draw_round_rect(pdf, left_x, hero_y, left_w, 88, radius=18, fill=CARD_DARK, stroke=BORDER_DARK)
+    draw_round_rect(pdf, mid_x, hero_y, mid_w, 88, radius=18, fill=CARD_DARK, stroke=BORDER_DARK)
+    draw_round_rect(pdf, note_x, hero_y, note_w, 88, radius=18, fill=colors.HexColor("#0F97BC"), stroke=colors.HexColor("#0F97BC"))
+
+    pdf.setFillColor(colors.HexColor("#9DDCF2"))
+    pdf.setFont("Helvetica-Bold", 10)
+    pdf.drawString(left_x + 16, hero_y + 60, "OBJETIVO NACIONAL 2026")
+    pdf.setFillColor(TEXT_LIGHT)
+    pdf.setFont("Helvetica-Bold", 22)
+    pdf.drawString(left_x + 16, hero_y + 24, format_money_compact(total_meta))
+    draw_text_block(pdf, f"Monto faltante para cumplir: {format_money_compact(total_falta)}", left_x + 16, hero_y + 10, left_w - 28, font_size=9.5, color=TEXT_SOFT)
+
+    pdf.setFillColor(colors.HexColor("#9DDCF2"))
+    pdf.setFont("Helvetica-Bold", 10)
+    pdf.drawString(mid_x + 16, hero_y + 60, "OBJETIVO CUATRIMESTRAL")
+    pdf.setFillColor(TEXT_LIGHT)
+    pdf.setFont("Helvetica-Bold", 22)
+    pdf.drawString(mid_x + 16, hero_y + 24, format_money_compact(meta_cuatr))
+    draw_text_block(pdf, f"Jul-Oct 2026 · {format_money_compact(monto_cuatr)} otorgados", mid_x + 16, hero_y + 10, mid_w - 28, font_size=9.5, color=TEXT_SOFT)
+
+    pdf.setFillColor(colors.white)
+    pdf.setFont("Helvetica-Bold", 10)
+    pdf.drawString(note_x + 18, hero_y + 60, "LECTURA EJECUTIVA")
+    draw_text_block(pdf, note, note_x + 18, hero_y + 42, note_w - 32, font_size=10.1, color=colors.white, leading=14)
+
+    kpi_h = 86
+    kpi_y = hero_y - 10 - kpi_h
+    total_w = content_w - 36
+    kpi_gap = 10
+    kpi_w = (total_w - kpi_gap * 4) / 5
+    kpi_cards = [
+        ("Otorgado", format_money_compact(total_monto), format_count(total_creditos)),
+        ("Cuatrimestre", format_money_compact(monto_cuatr), format_count(creditos_cuatr)),
+        ("Provincias activas", str(active_count), "Con aprobaciones en el periodo"),
+        ("Promedio nacional", format_money_compact(avg_national), "Monto medio por credito"),
+        ("Necesario por mes", format_money_compact(necesario_mes), f"{meses_restantes} meses restantes"),
+    ]
+    for idx, (label, value, sub) in enumerate(kpi_cards):
+        draw_kpi_card(pdf, content_x + 18 + idx * (kpi_w + kpi_gap), kpi_y, kpi_w, kpi_h, label, value, sub, dark=True)
+
+    lower_y = content_y + 28
+    lower_h = kpi_y - lower_y - 8
+    left_col_w = 382
+    center_col_w = 248
+    right_col_w = content_w - left_col_w - center_col_w - 46
+    col1_x = content_x + 18
+    col2_x = col1_x + left_col_w + 14
+    col3_x = col2_x + center_col_w + 14
+
+    draw_round_rect(pdf, col1_x, lower_y, left_col_w, lower_h, radius=18, fill=CARD_DARK, stroke=BORDER_DARK)
+    draw_round_rect(pdf, col2_x, lower_y, center_col_w, lower_h, radius=18, fill=CARD_DARK, stroke=BORDER_DARK)
+    draw_round_rect(pdf, col3_x, lower_y, right_col_w, lower_h, radius=18, fill=CARD_DARK, stroke=BORDER_DARK)
+
+    pdf.setFillColor(TEXT_LIGHT)
+    pdf.setFont("Helvetica-Bold", 16)
+    pdf.drawString(col1_x + 18, lower_y + lower_h - 26, "RANKING POR MONTO")
+    draw_text_block(pdf, "Jurisdicciones con mayor volumen aprobado en el acumulado anual.", col1_x + 18, lower_y + lower_h - 44, left_col_w - 36, font_size=10, color=TEXT_SOFT)
+    row_y = lower_y + lower_h - 72
+    for idx, item in enumerate(top_five):
+        share = (float(item.get("monto") or 0) / total_monto * 100) if total_monto > 0 else 0
+        pdf.setStrokeColor(colors.HexColor("#223650"))
+        pdf.setLineWidth(1)
+        pdf.line(col1_x + 18, row_y - 4, col1_x + left_col_w - 18, row_y - 4)
+        pdf.setFillColor(TEXT_LIGHT)
+        pdf.setFont("Helvetica-Bold", 10.5)
+        pdf.drawString(col1_x + 18, row_y - 18, f"#{idx + 1} · {str(item.get('nombre') or '').upper()}")
+        pdf.setFillColor(TEXT_SOFT)
+        pdf.setFont("Helvetica", 8.8)
+        pdf.drawString(col1_x + 18, row_y - 32, f"{int(item.get('cantidad') or 0)} creditos · {format_percent(share)} del total")
+        pdf.setFillColor(TEXT_LIGHT)
+        pdf.setFont("Helvetica-Bold", 13)
+        value = format_money_compact(float(item.get("monto") or 0))
+        pdf.drawRightString(col1_x + left_col_w - 18, row_y - 22, value)
+        row_y -= 44
+
+    pdf.setFillColor(TEXT_LIGHT)
+    pdf.setFont("Helvetica-Bold", 16)
+    pdf.drawString(col2_x + 18, lower_y + lower_h - 26, "CLAVES PARA DECISION")
+    draw_text_block(pdf, "Lectura rapida del frente nacional para decidir seguimiento, ritmo y concentracion.", col2_x + 18, lower_y + lower_h - 44, center_col_w - 36, font_size=10, color=TEXT_SOFT)
+    notes = [
+        ("Lider", f"{str(leader.get('nombre') or '-').upper()} explica {format_percent((float(leader.get('monto') or 0) / total_monto * 100) if total_monto > 0 else 0)} del total."),
+        ("Top 2", f"{str(leader.get('codigo') or '-')} + {str(second.get('codigo') or '-')} concentran referencias del periodo."),
+        ("Ritmo", f"Promedio mensual: {format_money_compact(promedio_mensual)} vs necesidad de {format_money_compact(necesario_mes)}."),
+        ("Cuatrimestre", f"{format_money_compact(monto_cuatr)} otorgados en {creditos_cuatr} creditos · avance {format_percent(porcentaje_cuatr)}."),
+    ]
+    note_y = lower_y + lower_h - 86
+    for title, text in notes:
+        box_h = 54
+        draw_round_rect(pdf, col2_x + 18, note_y - box_h, center_col_w - 36, box_h, radius=14, fill=colors.HexColor("#0F1C2F"), stroke=BORDER_DARK)
+        pdf.setFillColor(colors.HexColor("#8EDBF3"))
+        pdf.setFont("Helvetica-Bold", 9)
+        pdf.drawString(col2_x + 30, note_y - 18, title.upper())
+        draw_text_block(pdf, text, col2_x + 30, note_y - 34, center_col_w - 60, font_size=9.1, color=TEXT_LIGHT, leading=11)
+        note_y -= 62
+
+    pdf.setFillColor(TEXT_LIGHT)
+    pdf.setFont("Helvetica-Bold", 16)
+    pdf.drawString(col3_x + 18, lower_y + lower_h - 26, "SEMafORO JUL-OCT")
+    draw_text_block(pdf, "Provincias con menor avance cuatrimestral para priorizar seguimiento.", col3_x + 18, lower_y + lower_h - 44, right_col_w - 36, font_size=10, color=TEXT_SOFT)
+    focus_y = lower_y + lower_h - 76
+    for item in low_progress:
+        annual_progress = float(item.get("porcentaje") or 0)
+        cuatr_progress = float(item.get("porcentaje_cuatrimestral") or 0)
+        box_h = 58
+        draw_round_rect(pdf, col3_x + 18, focus_y - box_h, right_col_w - 36, box_h, radius=14, fill=colors.HexColor("#0F1C2F"), stroke=BORDER_DARK)
+        pdf.setFillColor(TEXT_LIGHT)
+        pdf.setFont("Helvetica-Bold", 10)
+        pdf.drawString(col3_x + 30, focus_y - 18, str(item.get("nombre") or "").upper())
+        pdf.setFillColor(TEXT_SOFT)
+        pdf.setFont("Helvetica", 8.4)
+        pdf.drawString(col3_x + 30, focus_y - 31, f"{format_money_compact(float(item.get('monto') or 0))} otorgados · brecha {format_money_compact(abs(float(item.get('diferencia') or 0)))}")
+        _draw_dual_progress(pdf, col3_x + 30, focus_y - 48, right_col_w - 60, annual_progress, cuatr_progress)
+        pdf.setFillColor(TEXT_LIGHT)
+        pdf.setFont("Helvetica-Bold", 9.4)
+        pdf.drawRightString(col3_x + right_col_w - 28, focus_y - 18, format_percent(cuatr_progress))
+        focus_y -= 66
+
+    pdf.setFillColor(TEXT_FAINT)
+    pdf.setFont("Helvetica-Bold", 9.5)
+    pdf.drawString(content_x + 18, content_y + 8, "CFI · FINANCIAMIENTO PRODUCTIVO · USO INSTITUCIONAL")
+    pdf.drawRightString(content_x + content_w - 18, content_y + 8, "Informe nacional publicado")
+    pdf.showPage()
+
+    content_x, content_y, content_w, content_h = setup_page(
+        "APERTURA OPERATIVA Y EVOLUCION MENSUAL",
+        "Lectura complementaria del ritmo y la distribucion territorial del periodo 2026",
+        "TOP 3",
+        format_percent(top_three_share),
+        "participacion acumulada",
+    )
+
+    top_band_y = content_y + content_h - 120
+    stat_gap = 10
+    stat_w = (content_w - 36 - stat_gap * 3) / 4
+    stat_cards = [
+        ("Promedio provincia activa", format_money_compact(total_monto / max(active_count, 1)), f"{active_count} provincias con monto"),
+        ("Meta agregada activa", format_money_compact(sum(float(item.get('meta_anual') or 0) for item in active)), "suma de metas con actividad"),
+        ("Mejor avance jul-oct", f"{max(active, key=lambda item: float(item.get('porcentaje_cuatrimestral') or 0)).get('codigo', '-') if active else '-'} · {format_percent(max([float(item.get('porcentaje_cuatrimestral') or 0) for item in active] or [0]))}", "lider cuatrimestral"),
+        ("Cobertura operativa", format_percent((active_count / max(len(provincias), 1)) * 100), f"{active_count} de {len(provincias)} provincias"),
+    ]
+    for idx, (label, value, sub) in enumerate(stat_cards):
+        draw_kpi_card(pdf, content_x + 18 + idx * (stat_w + stat_gap), top_band_y, stat_w, 76, label, value, sub, dark=True)
+
+    bottom_area_y = content_y + 28
+    bottom_area_h = top_band_y - bottom_area_y - 12
+    left_w = 446
+    right_w = content_w - left_w - 32
+    left_x = content_x + 18
+    right_x = left_x + left_w + 14
+    draw_round_rect(pdf, left_x, bottom_area_y, left_w, bottom_area_h, radius=18, fill=CARD_DARK, stroke=BORDER_DARK)
+    draw_round_rect(pdf, right_x, bottom_area_y, right_w, bottom_area_h, radius=18, fill=CARD_DARK, stroke=BORDER_DARK)
+
+    pdf.setFillColor(TEXT_LIGHT)
+    pdf.setFont("Helvetica-Bold", 16)
+    pdf.drawString(left_x + 18, bottom_area_y + bottom_area_h - 26, "EVOLUCION MENSUAL")
+    draw_text_block(pdf, "Montos aprobados mes a mes para leer aceleracion, estabilidad y traccion reciente.", left_x + 18, bottom_area_y + bottom_area_h - 44, left_w - 36, font_size=10, color=TEXT_SOFT)
+
+    month_y = bottom_area_y + bottom_area_h - 86
+    month_card_gap = 8
+    month_card_w = (left_w - 36 - month_card_gap * 3) / 4
+    month_card_h = 78
+    for idx, item in enumerate(monthly[:8]):
+        col = idx % 4
+        row = idx // 4
+        card_x = left_x + 18 + col * (month_card_w + month_card_gap)
+        card_y = month_y - row * (month_card_h + 12)
+        draw_round_rect(pdf, card_x, card_y - month_card_h, month_card_w, month_card_h, radius=14, fill=colors.HexColor("#0F1C2F"), stroke=BORDER_DARK)
+        pdf.setFillColor(colors.HexColor("#8EDBF3"))
+        pdf.setFont("Helvetica-Bold", 8.8)
+        pdf.drawString(card_x + 12, card_y - 18, str(item.get("nombre") or "").upper())
+        draw_progress(pdf, card_x + 12, card_y - 34, month_card_w - 24, (float(item.get("monto") or 0) / max_monthly) * 100, dark=True)
+        pdf.setFillColor(TEXT_LIGHT)
+        pdf.setFont("Helvetica-Bold", 14)
+        pdf.drawString(card_x + 12, card_y - 54, format_money_compact(float(item.get("monto") or 0)))
+        pdf.setFillColor(TEXT_SOFT)
+        pdf.setFont("Helvetica", 8.5)
+        pdf.drawString(card_x + 12, card_y - 66, f"{int(item.get('cantidad') or 0)} creditos")
+
+    pdf.setFillColor(TEXT_LIGHT)
+    pdf.setFont("Helvetica-Bold", 16)
+    pdf.drawString(right_x + 18, bottom_area_y + bottom_area_h - 26, "MAYOR VOLUMEN OPERATIVO")
+    draw_text_block(pdf, "Provincias con mas creditos aprobados para ver despliegue operativo y capilaridad.", right_x + 18, bottom_area_y + bottom_area_h - 44, right_w - 36, font_size=10, color=TEXT_SOFT)
+
+    credits_y = bottom_area_y + bottom_area_h - 76
+    for idx, item in enumerate(top_by_credits):
+        draw_round_rect(pdf, right_x + 18, credits_y - 46, right_w - 36, 46, radius=12, fill=colors.HexColor("#0F1C2F"), stroke=BORDER_DARK)
+        pdf.setFillColor(TEXT_LIGHT)
+        pdf.setFont("Helvetica-Bold", 9.8)
+        pdf.drawString(right_x + 30, credits_y - 18, f"#{idx + 1} · {str(item.get('nombre') or '').upper()}")
+        pdf.setFillColor(TEXT_SOFT)
+        pdf.setFont("Helvetica", 8.5)
+        pdf.drawString(right_x + 30, credits_y - 31, f"{format_money_compact(float(item.get('monto') or 0))} · {format_percent((float(item.get('monto') or 0) / total_monto * 100) if total_monto > 0 else 0)} del total")
+        pdf.setFillColor(TEXT_LIGHT)
+        pdf.setFont("Helvetica-Bold", 14)
+        pdf.drawRightString(right_x + right_w - 28, credits_y - 24, str(int(item.get("cantidad") or 0)))
+        credits_y -= 54
+
+    pdf.setFillColor(TEXT_FAINT)
+    pdf.setFont("Helvetica-Bold", 9.5)
+    pdf.drawString(content_x + 18, content_y + 8, "CFI · FINANCIAMIENTO PRODUCTIVO · USO INSTITUCIONAL")
+    pdf.drawRightString(content_x + content_w - 18, content_y + 8, "Informe nacional publicado")
+
+    pdf.showPage()
+    pdf.save()
+    return packet.getvalue()
+
+
 def draw_map(pdf: canvas.Canvas, provincias: list[dict], selected_code: str, x: float, y: float, w: float, h: float):
     geojson = load_geojson()
     by_id = map_province_by_id(provincias)

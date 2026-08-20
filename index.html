@@ -496,6 +496,7 @@
     let currentReportDocument = '';
     const PDF_SERVICE_BASE = 'http://127.0.0.1:8765';
     const PUBLISHED_PROVINCIAL_REPORTS_BASE = './reportes/2026/provincias';
+    const PUBLISHED_NATIONAL_REPORT_PATH = './reportes/2026/nacional/nacional.pdf';
 
     function formatMoney(value) {
       return `$${Number(value || 0).toFixed(1)}M`;
@@ -1088,6 +1089,12 @@
       return requestPdfDownload(url, fallbackName, { method: 'GET' });
     }
 
+    async function requestPublishedNationalPdf(fallbackName) {
+      const cacheKey = encodeURIComponent(String(dashboardData?.fecha_actualizacion || Date.now()));
+      const url = `${PUBLISHED_NATIONAL_REPORT_PATH}?v=${cacheKey}`;
+      return requestPdfDownload(url, fallbackName, { method: 'GET' });
+    }
+
     function closeReportPreview() {
       const overlay = document.getElementById('reportPreviewOverlay');
       const frame = document.getElementById('reportPreviewFrame');
@@ -1173,15 +1180,14 @@
       try {
         setReportButtonsLoading(true);
         showReportMessage('Generando PDF nacional...', 'info');
-        const preview = await window.CFIReports.generateNationalReport({
-          data: dashboardData
-        });
-        await requestRenderedPdf(preview, 'Dashboard CFI - Financiamiento Productivo 2026 - Nacional.pdf');
+        const timestamp = buildReportTimestamp();
+        const filename = `Dashboard CFI - Financiamiento Productivo 2026 - Nacional - ${timestamp}.pdf`;
+        await requestPublishedNationalPdf(filename);
         clearReportMessage();
       } catch (error) {
         console.error('Error generando informe nacional:', error);
         showReportMessage(
-          `${error.message || 'No se pudo generar el informe nacional.'} Iniciá el servicio local de PDF para descargar la versión final.`,
+          `${error.message || 'No se pudo descargar el informe nacional publicado.'} Si el corte se actualizó recién, esperá uno o dos minutos y volvé a intentar.`,
           'error'
         );
       } finally {
