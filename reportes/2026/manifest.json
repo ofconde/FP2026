@@ -1,148 +1,148 @@
 {
-  "fecha_actualizacion": "2026-08-24 18:53:12",
+  "fecha_actualizacion": "2026-08-26 11:30:18",
   "total_provincias": 23,
   "nacional": {
     "filename": "nacional.pdf",
-    "updated_at": "2026-08-24 18:53:12"
+    "updated_at": "2026-08-26 11:30:18"
   },
   "reportes": [
     {
       "codigo": "BA",
       "nombre": "Buenos Aires",
       "filename": "BA-buenos-aires.pdf",
-      "updated_at": "2026-08-24 18:53:12"
+      "updated_at": "2026-08-26 11:30:18"
     },
     {
       "codigo": "CO",
       "nombre": "Córdoba",
       "filename": "CO-cordoba.pdf",
-      "updated_at": "2026-08-24 18:53:12"
+      "updated_at": "2026-08-26 11:30:18"
     },
     {
       "codigo": "ER",
       "nombre": "Entre Ríos",
       "filename": "ER-entre-rios.pdf",
-      "updated_at": "2026-08-24 18:53:12"
+      "updated_at": "2026-08-26 11:30:18"
     },
     {
       "codigo": "SF",
       "nombre": "Santa Fe",
       "filename": "SF-santa-fe.pdf",
-      "updated_at": "2026-08-24 18:53:12"
+      "updated_at": "2026-08-26 11:30:18"
     },
     {
       "codigo": "MZ",
       "nombre": "Mendoza",
       "filename": "MZ-mendoza.pdf",
-      "updated_at": "2026-08-24 18:53:12"
+      "updated_at": "2026-08-26 11:30:18"
     },
     {
       "codigo": "MI",
       "nombre": "Misiones",
       "filename": "MI-misiones.pdf",
-      "updated_at": "2026-08-24 18:53:12"
+      "updated_at": "2026-08-26 11:30:18"
     },
     {
       "codigo": "SA",
       "nombre": "Salta",
       "filename": "SA-salta.pdf",
-      "updated_at": "2026-08-24 18:53:12"
-    },
-    {
-      "codigo": "TU",
-      "nombre": "Tucumán",
-      "filename": "TU-tucuman.pdf",
-      "updated_at": "2026-08-24 18:53:12"
-    },
-    {
-      "codigo": "RN",
-      "nombre": "Río Negro",
-      "filename": "RN-rio-negro.pdf",
-      "updated_at": "2026-08-24 18:53:12"
+      "updated_at": "2026-08-26 11:30:18"
     },
     {
       "codigo": "CT",
       "nombre": "Corrientes",
       "filename": "CT-corrientes.pdf",
-      "updated_at": "2026-08-24 18:53:12"
+      "updated_at": "2026-08-26 11:30:18"
+    },
+    {
+      "codigo": "TU",
+      "nombre": "Tucumán",
+      "filename": "TU-tucuman.pdf",
+      "updated_at": "2026-08-26 11:30:18"
+    },
+    {
+      "codigo": "RN",
+      "nombre": "Río Negro",
+      "filename": "RN-rio-negro.pdf",
+      "updated_at": "2026-08-26 11:30:18"
     },
     {
       "codigo": "NQ",
       "nombre": "Neuquén",
       "filename": "NQ-neuquen.pdf",
-      "updated_at": "2026-08-24 18:53:12"
+      "updated_at": "2026-08-26 11:30:18"
     },
     {
       "codigo": "JU",
       "nombre": "Jujuy",
       "filename": "JU-jujuy.pdf",
-      "updated_at": "2026-08-24 18:53:12"
+      "updated_at": "2026-08-26 11:30:18"
     },
     {
       "codigo": "LR",
       "nombre": "La Rioja",
       "filename": "LR-la-rioja.pdf",
-      "updated_at": "2026-08-24 18:53:12"
+      "updated_at": "2026-08-26 11:30:18"
     },
     {
       "codigo": "CH",
       "nombre": "Chaco",
       "filename": "CH-chaco.pdf",
-      "updated_at": "2026-08-24 18:53:12"
+      "updated_at": "2026-08-26 11:30:18"
     },
     {
       "codigo": "CA",
       "nombre": "Catamarca",
       "filename": "CA-catamarca.pdf",
-      "updated_at": "2026-08-24 18:53:12"
+      "updated_at": "2026-08-26 11:30:18"
     },
     {
       "codigo": "SL",
       "nombre": "San Luis",
       "filename": "SL-san-luis.pdf",
-      "updated_at": "2026-08-24 18:53:12"
+      "updated_at": "2026-08-26 11:30:18"
     },
     {
       "codigo": "LP",
       "nombre": "La Pampa",
       "filename": "LP-la-pampa.pdf",
-      "updated_at": "2026-08-24 18:53:12"
+      "updated_at": "2026-08-26 11:30:18"
     },
     {
       "codigo": "FO",
       "nombre": "Formosa",
       "filename": "FO-formosa.pdf",
-      "updated_at": "2026-08-24 18:53:12"
+      "updated_at": "2026-08-26 11:30:18"
     },
     {
       "codigo": "CB",
       "nombre": "Chubut",
       "filename": "CB-chubut.pdf",
-      "updated_at": "2026-08-24 18:53:12"
+      "updated_at": "2026-08-26 11:30:18"
     },
     {
       "codigo": "SJ",
       "nombre": "San Juan",
       "filename": "SJ-san-juan.pdf",
-      "updated_at": "2026-08-24 18:53:12"
+      "updated_at": "2026-08-26 11:30:18"
     },
     {
       "codigo": "TF",
       "nombre": "Tierra del Fuego",
       "filename": "TF-tierra-del-fuego.pdf",
-      "updated_at": "2026-08-24 18:53:12"
+      "updated_at": "2026-08-26 11:30:18"
     },
     {
       "codigo": "SC",
       "nombre": "Santa Cruz",
       "filename": "SC-santa-cruz.pdf",
-      "updated_at": "2026-08-24 18:53:12"
+      "updated_at": "2026-08-26 11:30:18"
     },
     {
       "codigo": "SE",
       "nombre": "Santiago del Estero",
       "filename": "SE-santiago-del-estero.pdf",
-      "updated_at": "2026-08-24 18:53:12"
+      "updated_at": "2026-08-26 11:30:18"
     }
   ]
 }
