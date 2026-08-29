@@ -1,0 +1,62 @@
+name: Actualizar FP2026 desde PEI
+
+on:
+  schedule:
+    - cron: "*/30 * * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+concurrency:
+  group: fp2026-pei-update
+  cancel-in-progress: false
+
+jobs:
+  update-data:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install reportlab pillow
+
+      - name: Update data and static reports
+        env:
+          PEI_BASE_URL: ${{ secrets.PEI_BASE_URL }}
+          PEI_ESTADO_ID: ${{ secrets.PEI_ESTADO_ID }}
+          PEI_TARGET_YEAR: "2026"
+          PEI_EMAIL: ${{ secrets.PEI_EMAIL }}
+          PEI_USERNAME: ${{ secrets.PEI_EMAIL }}
+          PEI_DISPLAY_NAME: ${{ secrets.PEI_DISPLAY_NAME }}
+          PEI_NOMBRE: ${{ secrets.PEI_NOMBRE }}
+          PEI_APELLIDO: ${{ secrets.PEI_APELLIDO }}
+          PEI_CLIENT_API_KEY: ${{ secrets.PEI_CLIENT_API_KEY }}
+          PEI_CLIENT_SECURITY_ID: ${{ secrets.PEI_CLIENT_SECURITY_ID }}
+          PEI_ACCESS_TOKEN: ${{ secrets.PEI_ACCESS_TOKEN }}
+        run: python actualizar_desde_pei_api.py
+
+      - name: Commit changes
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add datos.json reportes/2026
+          if git diff --cached --quiet; then
+            echo "Sin cambios para publicar."
+            exit 0
+          fi
+          git commit -m "Actualizar FP2026 desde PEI"
+          git push
