@@ -2,7 +2,7 @@ name: Actualizar FP2026 desde PEI
 
 on:
   schedule:
-    - cron: "*/30 * * * *"
+    - cron: "3,13,23,33,43,53 * * * *"
   workflow_dispatch:
 
 permissions:

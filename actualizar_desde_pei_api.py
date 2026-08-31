@@ -277,7 +277,17 @@ def main() -> int:
     por_provincia, por_mes, fecha_max = build_from_api(items, target_year)
     datos = build_json(por_provincia, por_mes, fecha_max)
 
-    Path("datos.json").write_text(json.dumps(datos, ensure_ascii=False, indent=2), encoding="utf-8")
+    data_path = Path("datos.json")
+    if data_path.exists():
+        try:
+            datos_previos = json.loads(data_path.read_text(encoding="utf-8"))
+        except json.JSONDecodeError:
+            datos_previos = None
+        if datos_previos == datos:
+            print("Sin cambios en datos.json; no se regeneran reportes.")
+            return 0
+
+    data_path.write_text(json.dumps(datos, ensure_ascii=False, indent=2), encoding="utf-8")
     print(
         "Datos generados:",
         datos["fecha_actualizacion"],
