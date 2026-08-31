@@ -78,8 +78,10 @@
     .progress-bar { height: 8px; background: rgba(255,255,255,.08); border-radius: 5px; margin-bottom: 12px; overflow: hidden; }
     .progress-fill { height: 100%; background: linear-gradient(90deg, var(--cyan), var(--teal)); border-radius: 5px; width: 0; transition: width 1s ease-out; }
     #progressFillFour.progress-fill { background: linear-gradient(90deg, #E68A3C, var(--amber)); }
-    .view-actions { display: flex; gap: 12px; justify-content: flex-start; align-items: center; margin: 8px 0 28px; flex-wrap: wrap; border-bottom: 1px solid var(--bg-border); padding-bottom: 20px; }
+    .view-actions { display: flex; gap: 12px; justify-content: space-between; align-items: center; margin: 8px 0 28px; flex-wrap: wrap; border-bottom: 1px solid var(--bg-border); padding-bottom: 20px; }
     .view-tabs { display: flex; gap: 10px; flex-wrap: wrap; }
+    .last-update-pill { display: inline-flex; align-items: center; gap: 8px; border: 1px solid rgba(95,224,208,.20); background: rgba(95,224,208,.08); color: var(--text-soft); padding: 10px 14px; border-radius: 999px; font-size: 10px; font-family: var(--mono); letter-spacing: .4px; white-space: nowrap; }
+    .last-update-pill strong { color: var(--teal); font-weight: 700; text-transform: uppercase; letter-spacing: .8px; }
     .report-actions { display: flex; gap: 10px; flex-wrap: wrap; justify-content: flex-end; margin-bottom: 18px; }
     .view-button, .detail-chip, .four-month-sort-button { border: 1px solid rgba(255,255,255,.14); background: transparent; color: #9AA7BA; padding: 10px 20px; border-radius: 999px; font-size: 11px; font-weight: 600; letter-spacing: .6px; cursor: pointer; transition: all .2s ease; font-family: var(--mono); }
     .view-button.active, .view-button:hover, .detail-chip.active, .four-month-sort-button:hover { border-color: var(--cyan); background: var(--cyan); color: var(--bg); }
@@ -293,6 +295,7 @@
       .score-value { font-size: 58px; }
       .view-actions { justify-content: stretch; }
       .view-button { width: 100%; }
+      .last-update-pill { width: 100%; justify-content: center; white-space: normal; text-align: center; }
       .kpi-grid, .semaforo-grid, .detail-summary, .chart-shell, .four-month-summary, .four-month-columns { grid-template-columns: 1fr; }
       .four-month-full-header { flex-direction: column; }
       .detail-shell { padding: 20px; }
@@ -353,6 +356,7 @@
           <button id="viewDetalle" class="view-button" type="button">Detalle</button>
           <button id="viewMapa" class="view-button" type="button">Mapa</button>
         </div>
+        <div id="lastUpdatePill" class="last-update-pill"><strong>Última actualización</strong><span>-</span></div>
       </div>
       <div id="reportStage" class="report-stage" aria-hidden="true"></div>
       <div id="reportPreviewOverlay" class="report-preview-overlay hidden" aria-hidden="true">
@@ -1369,6 +1373,7 @@
       document.getElementById('scoreValue').textContent = formatPercent(total.porcentaje);
       document.getElementById('scoreSubtitle').textContent = `de ${formatMoney(total.meta)}`;
       document.getElementById('scoreUpdate').textContent = `Actualizado: ${updatedText} • Director Rec. Financieros`;
+      document.getElementById('lastUpdatePill').innerHTML = `<strong>Última actualización</strong><span>${updatedText}</span>`;
       document.getElementById('scoreFourValue').textContent = formatPercent(total.porcentaje_cuatrimestral || 0);
       document.getElementById('scoreFourSubtitle').textContent = `de ${formatMoney(total.meta_cuatrimestral || 0)}`;
       document.getElementById('scoreFourUpdate').textContent = fourStarted
