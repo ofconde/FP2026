@@ -49,15 +49,15 @@
       "updated_at": "2026-09-18 21:44:23"
     },
     {
-      "codigo": "TU",
-      "nombre": "Tucumán",
-      "filename": "TU-tucuman.pdf",
-      "updated_at": "2026-09-18 21:44:23"
-    },
-    {
       "codigo": "RN",
       "nombre": "Río Negro",
       "filename": "RN-rio-negro.pdf",
+      "updated_at": "2026-09-18 21:44:23"
+    },
+    {
+      "codigo": "TU",
+      "nombre": "Tucumán",
+      "filename": "TU-tucuman.pdf",
       "updated_at": "2026-09-18 21:44:23"
     },
     {
@@ -67,21 +67,9 @@
       "updated_at": "2026-09-18 21:44:23"
     },
     {
-      "codigo": "JU",
-      "nombre": "Jujuy",
-      "filename": "JU-jujuy.pdf",
-      "updated_at": "2026-09-18 21:44:23"
-    },
-    {
       "codigo": "CH",
       "nombre": "Chaco",
       "filename": "CH-chaco.pdf",
-      "updated_at": "2026-09-18 21:44:23"
-    },
-    {
-      "codigo": "NQ",
-      "nombre": "Neuquén",
-      "filename": "NQ-neuquen.pdf",
       "updated_at": "2026-09-18 21:44:23"
     },
     {
@@ -91,9 +79,21 @@
       "updated_at": "2026-09-18 21:44:23"
     },
     {
+      "codigo": "JU",
+      "nombre": "Jujuy",
+      "filename": "JU-jujuy.pdf",
+      "updated_at": "2026-09-18 21:44:23"
+    },
+    {
       "codigo": "CA",
       "nombre": "Catamarca",
       "filename": "CA-catamarca.pdf",
+      "updated_at": "2026-09-18 21:44:23"
+    },
+    {
+      "codigo": "NQ",
+      "nombre": "Neuquén",
+      "filename": "NQ-neuquen.pdf",
       "updated_at": "2026-09-18 21:44:23"
     },
     {
@@ -121,9 +121,9 @@
       "updated_at": "2026-09-18 21:44:23"
     },
     {
-      "codigo": "CB",
-      "nombre": "Chubut",
-      "filename": "CB-chubut.pdf",
+      "codigo": "TF",
+      "nombre": "Tierra del Fuego",
+      "filename": "TF-tierra-del-fuego.pdf",
       "updated_at": "2026-09-18 21:44:23"
     },
     {
@@ -133,9 +133,9 @@
       "updated_at": "2026-09-18 21:44:23"
     },
     {
-      "codigo": "TF",
-      "nombre": "Tierra del Fuego",
-      "filename": "TF-tierra-del-fuego.pdf",
+      "codigo": "CB",
+      "nombre": "Chubut",
+      "filename": "CB-chubut.pdf",
       "updated_at": "2026-09-18 21:44:23"
     },
     {
