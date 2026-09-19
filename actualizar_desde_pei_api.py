@@ -170,6 +170,25 @@ def fetch_workflow_items(base_url: str, token: str, estado_id: int, fecha_desde:
     raise RuntimeError("No se pudo obtener WorkflowAnalisisRiesgos: " + " | ".join(errors))
 
 
+def fetch_exclusiones_sigi(base_url: str, api_key: str) -> set[str]:
+    """Expedientes que SIGI no cuenta como aprobados (retirados o cancelados
+    —). El reporte del PEI no trae el estado del expediente, así que sin esta
+    lista el dashboard sumaba créditos que ya no existen. Si SIGI no responde,
+    se corta la corrida: mejor no publicar que publicar un número inflado."""
+    url = f"{base_url.rstrip('/')}/api/sigi/fp2026-exclusiones"
+    req = request.Request(url, headers={"X-API-Key": api_key, "Accept": "application/json"}, method="GET")
+    try:
+        with request.urlopen(req, timeout=60) as resp:
+            data = json.loads(resp.read().decode("utf-8"))
+    except error.HTTPError as exc:
+        raise RuntimeError(f"HTTP {exc.code} consultando exclusiones en SIGI ({url})") from exc
+    except error.URLError as exc:
+        raise RuntimeError(f"No se pudo conectar con SIGI ({url}): {exc}") from exc
+    excluidos = {str(e.get("expediente") or "").strip().upper() for e in data.get("expedientes", [])}
+    print(f"Exclusiones SIGI ({data.get('generado', '?')}): {len(excluidos)} expedientes retirados/cancelados/mora")
+    return excluidos
+
+
 def unique_key(item: dict[str, Any]) -> tuple[str, str, str, float, str]:
     return (
         str(item.get("denominacionSolicitud") or "").strip().upper(),
@@ -180,7 +199,7 @@ def unique_key(item: dict[str, Any]) -> tuple[str, str, str, float, str]:
     )
 
 
-def build_from_api(items: list[dict[str, Any]], target_year: int):
+def build_from_api(items: list[dict[str, Any]], target_year: int, excluidos: set[str] | None = None):
     por_provincia = {
         codigo: {
             "monto": 0.0,
@@ -197,10 +216,23 @@ def build_from_api(items: list[dict[str, Any]], target_year: int):
     filas_2026 = 0
     duplicados = 0
     omitidos = 0
+    excluidos = excluidos or set()
+    retirados = 0
+    en_dolares = 0
 
     for item in items:
         fecha = parse_fecha(item.get("fechaResolucion"))
         if not fecha or fecha.year != target_year:
+            continue
+        denominacion = str(item.get("denominacionSolicitud") or "").strip().upper()
+        # Misma definición de "aprobado" que SIGI Móvil y el panel de Jefatura:
+        # sin retirados/cancelados/mora y sin la línea de exportación 2002 (es
+        # en dólares: sumarla a valor nominal como pesos no tiene sentido).
+        if denominacion in excluidos:
+            retirados += 1
+            continue
+        if denominacion.startswith("2002-"):
+            en_dolares += 1
             continue
         key = unique_key(item)
         if key in vistos:
@@ -246,6 +278,8 @@ def build_from_api(items: list[dict[str, Any]], target_year: int):
     print(f"Items PEI recibidos: {len(items)}")
     print(f"Filas {target_year} usadas: {filas_2026}")
     print(f"Duplicados omitidos: {duplicados}")
+    print(f"Retirados/cancelados omitidos (según SIGI): {retirados}")
+    print(f"Línea 2002 (USD) omitidos: {en_dolares}")
     print(f"Omitidos por provincia/datos: {omitidos}")
     return por_provincia, por_mes, fecha_max
 
@@ -274,7 +308,10 @@ def main() -> int:
     print(f"Token PEI listo: {token_mode}")
 
     items = fetch_workflow_items(base_url, token, estado_id, fecha_desde.isoformat(), fecha_hasta.isoformat())
-    por_provincia, por_mes, fecha_max = build_from_api(items, target_year)
+    sigi_url = get_env("SIGI_BASE_URL", "https://cfi-fp.up.railway.app")
+    sigi_key = get_env("SIGI_API_KEY", required=True)
+    excluidos = fetch_exclusiones_sigi(sigi_url, sigi_key)
+    por_provincia, por_mes, fecha_max = build_from_api(items, target_year, excluidos)
     datos = build_json(por_provincia, por_mes, fecha_max)
 
     data_path = Path("datos.json")

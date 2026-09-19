@@ -47,6 +47,8 @@ jobs:
           PEI_CLIENT_API_KEY: ${{ secrets.PEI_CLIENT_API_KEY }}
           PEI_CLIENT_SECURITY_ID: ${{ secrets.PEI_CLIENT_SECURITY_ID }}
           PEI_ACCESS_TOKEN: ${{ secrets.PEI_ACCESS_TOKEN }}
+          SIGI_BASE_URL: ${{ secrets.SIGI_BASE_URL }}
+          SIGI_API_KEY: ${{ secrets.SIGI_API_KEY }}
         run: python actualizar_desde_pei_api.py
 
       - name: Commit changes
