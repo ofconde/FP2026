@@ -1,7 +1,7 @@
 {
   "version": 1,
   "actualizado": "2026-09-26T12:24:42-03:00",
-  "resumen": "15 alternativas de 7 entidades: inversión, capital de trabajo y leasing. CFI excluido. Las incorporaciones amplían la base; no implican lanzamientos recientes.",
+  "resumen": "15 alternativas, 7 entidades. Comparación con tasas completas y revisión separada de datos pendientes.",
   "cobertura": "Revisión ampliada: Provincia (tarifario y oferta vigente), Macro/Misiones (anuncio oficial fechado), BICE (3 fichas), Chaco, Corrientes y Santiago del Estero. Nación conserva la consulta de hoy a las 12:12. Pendientes: tasa cotizada de Nación y BICE; extracción del tarifario Chaco; verificación completa de Ciudad y Formosa. Los anuncios de junio se muestran para seguimiento, sin afirmar vigencia actual.",
   "lineas": [
     {
@@ -19,7 +19,18 @@
       "consultado": "2026-09-26T12:24:42-03:00",
       "vigencia": "Oferta hasta 30/09/2026",
       "fuente": "https://www.bancoprovincia.com.ar/web/capital_de_trabajo_expres",
-      "observacion": "Exige acreditación de ventas o recaudaciones en el banco. Sujeto a evaluación; no es una oferta universal."
+      "observacion": "Exige acreditación de ventas o recaudaciones en el banco. Sujeto a evaluación; no es una oferta universal.",
+      "destino": "Capital de trabajo",
+      "monto_max_ars": 150000000,
+      "plazo_max_meses": 12,
+      "gracia_meses": 0,
+      "tipo_tasa": "Fija",
+      "moneda": "ARS",
+      "vence": "2026-09-30",
+      "tasa_completa": true,
+      "fecha_vigencia": null,
+      "fecha_anuncio": null,
+      "pendiente": ""
     },
     {
       "id": "prov-repyme-fija",
@@ -36,7 +47,18 @@
       "consultado": "2026-09-26T12:24:42-03:00",
       "vigencia": "Tarifario desde 04/09/2026",
       "fuente": "https://www.bancoprovincia.com.ar/CDN/Get/A5388_Banca_Empresa_tasas_costos_condiciones_vigentes",
-      "observacion": "Validar elegibilidad y costos de la operación concreta."
+      "observacion": "Validar elegibilidad y costos de la operación concreta.",
+      "destino": "Inversión",
+      "monto_max_ars": null,
+      "plazo_max_meses": 60,
+      "gracia_meses": null,
+      "tipo_tasa": "Fija",
+      "moneda": "ARS",
+      "vence": null,
+      "tasa_completa": true,
+      "fecha_vigencia": "2026-09-04",
+      "fecha_anuncio": null,
+      "pendiente": ""
     },
     {
       "id": "prov-repyme-variable",
@@ -53,7 +75,18 @@
       "consultado": "2026-09-26T12:24:42-03:00",
       "vigencia": "Tarifario desde 04/09/2026",
       "fuente": "https://www.bancoprovincia.com.ar/CDN/Get/A5388_Banca_Empresa_tasas_costos_condiciones_vigentes",
-      "observacion": "No usar el valor porcentual de referencia del tarifario como tasa fija ni como valor actualizado de TAMAR."
+      "observacion": "No usar el valor porcentual de referencia del tarifario como tasa fija ni como valor actualizado de TAMAR.",
+      "destino": "Inversión",
+      "monto_max_ars": null,
+      "plazo_max_meses": 72,
+      "gracia_meses": null,
+      "tipo_tasa": "Variable",
+      "moneda": "ARS",
+      "vence": null,
+      "tasa_completa": true,
+      "fecha_vigencia": "2026-09-04",
+      "fecha_anuncio": null,
+      "pendiente": ""
     },
     {
       "id": "macro-misiones-ct",
@@ -70,7 +103,18 @@
       "consultado": "2026-09-26T12:24:42-03:00",
       "vigencia": "Anuncio 05/06/2026; confirmar tasa y cupo",
       "fuente": "https://hacienda.gob.ar/creditosproductivos/",
-      "observacion": "Subsidio de 7 puntos; tasa sujeta a cambios del banco."
+      "observacion": "Subsidio de 7 puntos; tasa sujeta a cambios del banco.",
+      "destino": "Capital de trabajo",
+      "monto_max_ars": 80000000,
+      "plazo_max_meses": 12,
+      "gracia_meses": null,
+      "tipo_tasa": "Bonificada",
+      "moneda": "ARS",
+      "vence": null,
+      "tasa_completa": false,
+      "fecha_vigencia": null,
+      "fecha_anuncio": "2026-06-05",
+      "pendiente": "Confirmar continuidad, cupo y tasa del anuncio de junio."
     },
     {
       "id": "macro-misiones-inv",
@@ -87,7 +131,18 @@
       "consultado": "2026-09-26T12:24:42-03:00",
       "vigencia": "Anuncio 05/06/2026; confirmar tasa y cupo",
       "fuente": "https://hacienda.gob.ar/creditosproductivos/",
-      "observacion": "Bonificación de 12 puntos; cifras del anuncio, no tasa vigente confirmada."
+      "observacion": "Bonificación de 12 puntos; cifras del anuncio, no tasa vigente confirmada.",
+      "destino": "Inversión",
+      "monto_max_ars": 500000000,
+      "plazo_max_meses": 48,
+      "gracia_meses": null,
+      "tipo_tasa": "Bonificada",
+      "moneda": "ARS",
+      "vence": null,
+      "tasa_completa": false,
+      "fecha_vigencia": null,
+      "fecha_anuncio": "2026-06-05",
+      "pendiente": "Confirmar continuidad, cupo y tasa del anuncio de junio."
     },
     {
       "id": "macro-mandioca",
@@ -104,7 +159,18 @@
       "consultado": "2026-09-26T12:24:42-03:00",
       "vigencia": "Anuncio 05/06/2026; cupo a confirmar",
       "fuente": "https://hacienda.gob.ar/creditosproductivos/",
-      "observacion": "Elegibilidad sectorial y disponibilidad por verificar."
+      "observacion": "Elegibilidad sectorial y disponibilidad por verificar.",
+      "destino": "Capital de trabajo",
+      "monto_max_ars": 800000000,
+      "plazo_max_meses": 12,
+      "gracia_meses": null,
+      "tipo_tasa": "Fija",
+      "moneda": "ARS",
+      "vence": null,
+      "tasa_completa": false,
+      "fecha_vigencia": null,
+      "fecha_anuncio": "2026-06-05",
+      "pendiente": "Confirmar continuidad, cupo y tasa del anuncio de junio."
     },
     {
       "id": "bice-inversion",
@@ -121,7 +187,18 @@
       "consultado": "2026-09-26T12:24:42-03:00",
       "vigencia": "Sin fecha explícita en la ficha",
       "fuente": "https://www.bice.com.ar/productos/inversion/inversion-productiva-a-largo-plazo/",
-      "observacion": "Solicitar cotización de tasa, costo total y garantías; plazo según proyecto."
+      "observacion": "Solicitar cotización de tasa, costo total y garantías; plazo según proyecto.",
+      "destino": "Inversión",
+      "monto_max_ars": 6500000000,
+      "plazo_max_meses": 120,
+      "gracia_meses": 24,
+      "tipo_tasa": "A cotizar",
+      "moneda": "ARS",
+      "vence": null,
+      "tasa_completa": false,
+      "fecha_vigencia": null,
+      "fecha_anuncio": null,
+      "pendiente": "Obtener tasa, margen o cotización y confirmar vigencia."
     },
     {
       "id": "bice-leasing",
@@ -138,7 +215,18 @@
       "consultado": "2026-09-26T12:24:42-03:00",
       "vigencia": "Sin fecha explícita en la ficha",
       "fuente": "https://www.bice.com.ar/productos/leasing/leasing-productivo-bienes-nuevos/",
-      "observacion": "Bienes nacionales o importados nacionalizados. Revisar canon, opción de compra y costo total."
+      "observacion": "Bienes nacionales o importados nacionalizados. Revisar canon, opción de compra y costo total.",
+      "destino": "Leasing",
+      "monto_max_ars": 6500000000,
+      "plazo_max_meses": 60,
+      "gracia_meses": null,
+      "tipo_tasa": "A cotizar",
+      "moneda": "ARS",
+      "vence": null,
+      "tasa_completa": false,
+      "fecha_vigencia": null,
+      "fecha_anuncio": null,
+      "pendiente": "Obtener tasa, margen o cotización y confirmar vigencia."
     },
     {
       "id": "bice-capital",
@@ -155,7 +243,18 @@
       "consultado": "2026-09-26T12:24:42-03:00",
       "vigencia": "Sin fecha explícita en la ficha",
       "fuente": "https://www.bice.com.ar/productos/capital-de-trabajo/capital-de-trabajo/",
-      "observacion": "Insumos, materias primas y combustible. Excluye impuestos y cancelación de pasivos; dólares con tope y requisitos propios."
+      "observacion": "Insumos, materias primas y combustible. Excluye impuestos y cancelación de pasivos; dólares con tope y requisitos propios.",
+      "destino": "Capital de trabajo",
+      "monto_max_ars": null,
+      "plazo_max_meses": 36,
+      "gracia_meses": 6,
+      "tipo_tasa": "A cotizar",
+      "moneda": "ARS / USD",
+      "vence": null,
+      "tasa_completa": false,
+      "fecha_vigencia": null,
+      "fecha_anuncio": null,
+      "pendiente": "Obtener tasa por moneda y categoría PyME. El tope depende del tamaño de empresa."
     },
     {
       "id": "bna-inversion",
@@ -170,7 +269,18 @@
       "consultado": "2026-09-26T12:12:20-03:00",
       "vigencia": "Sin fecha explícita en la ficha",
       "fuente": "https://www.bna.com.ar/Empresas/Pymes/CreditoInversionProductivaINV",
-      "observacion": "Consultar tasa y costo total aplicables; la ficha no constituye una oferta crediticia."
+      "observacion": "Consultar tasa y costo total aplicables; la ficha no constituye una oferta crediticia.",
+      "destino": "Inversión",
+      "monto_max_ars": null,
+      "plazo_max_meses": 72,
+      "gracia_meses": 6,
+      "tipo_tasa": "A cotizar",
+      "moneda": "ARS",
+      "vence": null,
+      "tasa_completa": false,
+      "fecha_vigencia": null,
+      "fecha_anuncio": null,
+      "pendiente": "Obtener tasa, margen o cotización y confirmar vigencia."
     },
     {
       "id": "nbch-inversion",
@@ -187,7 +297,18 @@
       "consultado": "2026-09-26T12:24:42-03:00",
       "vigencia": "Sin fecha explícita en la ficha",
       "fuente": "https://www.nbch.com.ar/empresas/financiamiento/nbch-prestamos/prestamos",
-      "observacion": "La ficha no completa el margen. Se localizó tarifario del 25/09/2026, pero no se pudo extraer el archivo: solicitar tasa aplicable."
+      "observacion": "La ficha no completa el margen. Se localizó tarifario del 25/09/2026, pero no se pudo extraer el archivo: solicitar tasa aplicable.",
+      "destino": "Inversión",
+      "monto_max_ars": null,
+      "plazo_max_meses": 60,
+      "gracia_meses": 12,
+      "tipo_tasa": "Variable",
+      "moneda": "ARS",
+      "vence": null,
+      "tasa_completa": false,
+      "fecha_vigencia": null,
+      "fecha_anuncio": null,
+      "pendiente": "Validar el margen sobre BADLAR en el tarifario vigente."
     },
     {
       "id": "nbch-capital",
@@ -204,7 +325,18 @@
       "consultado": "2026-09-26T12:24:42-03:00",
       "vigencia": "Sin fecha explícita en la ficha",
       "fuente": "https://www.nbch.com.ar/empresas/financiamiento/nbch-prestamos/prestamos",
-      "observacion": "No se pudo extraer el tarifario vinculado; confirmar margen y costo total."
+      "observacion": "No se pudo extraer el tarifario vinculado; confirmar margen y costo total.",
+      "destino": "Capital de trabajo",
+      "monto_max_ars": null,
+      "plazo_max_meses": 36,
+      "gracia_meses": 6,
+      "tipo_tasa": "Variable",
+      "moneda": "ARS",
+      "vence": null,
+      "tasa_completa": false,
+      "fecha_vigencia": null,
+      "fecha_anuncio": null,
+      "pendiente": "Validar el margen sobre BADLAR en el tarifario vigente."
     },
     {
       "id": "corr-hacedores",
@@ -221,7 +353,22 @@
       "consultado": "2026-09-26T12:24:42-03:00",
       "vigencia": "Sin fecha explícita en la ficha",
       "fuente": "https://www.bancodecorrientes.com.ar/empresas/prestamos/lineas-generales/otros-prestamos",
-      "observacion": "Confirmar condiciones aplicables al solicitante."
+      "observacion": "Confirmar condiciones aplicables al solicitante.",
+      "destino": "Inversión / Capital de trabajo",
+      "monto_max_ars": null,
+      "plazo_max_meses": 36,
+      "gracia_meses": 3,
+      "tipo_tasa": "Bonificada",
+      "moneda": "ARS",
+      "vence": null,
+      "tasa_completa": false,
+      "fecha_vigencia": null,
+      "fecha_anuncio": null,
+      "pendiente": "Obtener tasa, margen o cotización y confirmar vigencia.",
+      "plazos_por_destino": {
+        "Inversión": 36,
+        "Capital de trabajo": 12
+      }
     },
     {
       "id": "corr-verdes",
@@ -238,7 +385,18 @@
       "consultado": "2026-09-26T12:24:42-03:00",
       "vigencia": "Sin fecha explícita en la ficha",
       "fuente": "https://www.bancodecorrientes.com.ar/empresas/prestamos/lineas-generales/otros-prestamos",
-      "observacion": "Consultar tasa y condiciones de proveedores adheridos."
+      "observacion": "Consultar tasa y condiciones de proveedores adheridos.",
+      "destino": "Inversión",
+      "monto_max_ars": null,
+      "plazo_max_meses": 36,
+      "gracia_meses": 6,
+      "tipo_tasa": "Combinada",
+      "moneda": "ARS",
+      "vence": null,
+      "tasa_completa": false,
+      "fecha_vigencia": null,
+      "fecha_anuncio": null,
+      "pendiente": "Obtener tasa, margen o cotización y confirmar vigencia."
     },
     {
       "id": "bse-inversion",
@@ -255,7 +413,18 @@
       "consultado": "2026-09-26T12:24:42-03:00",
       "vigencia": "Sin fecha explícita en la ficha",
       "fuente": "https://www.bse.com.ar/page/24/empresas/asistencia-crediticia/prestamos-inversion-productiva",
-      "observacion": "La ficha remite genéricamente al BCRA, sin tasa ni vigencia. No permite cotizar: solicitar propuesta actual."
+      "observacion": "La ficha remite genéricamente al BCRA, sin tasa ni vigencia. No permite cotizar: solicitar propuesta actual.",
+      "destino": "Inversión / Capital de trabajo",
+      "monto_max_ars": null,
+      "plazo_max_meses": null,
+      "gracia_meses": null,
+      "tipo_tasa": "A cotizar",
+      "moneda": "ARS",
+      "vence": null,
+      "tasa_completa": false,
+      "fecha_vigencia": null,
+      "fecha_anuncio": null,
+      "pendiente": "Confirmar disponibilidad de la línea, plazo, monto y tasa: la ficha no los precisa."
     }
   ],
   "novedades": [
@@ -567,5 +736,6 @@
         }
       ]
     }
-  ]
+  ],
+  "schema_detalle": 2
 }
