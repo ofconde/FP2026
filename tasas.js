@@ -11,11 +11,8 @@ function rows(){
  $('rows').innerHTML=items.map(x=>`<tr><td><strong>${esc(x.entidad)}</strong><p>${esc(x.linea)}</p><small>${esc(x.region)}</small></td><td><strong>${esc(x.tasa)}</strong><small>TEA: ${esc(x.tea||'No informada')} · CFT: ${esc(x.cft||'No informado')}</small><p>${esc(x.modalidad)}</p></td><td>${esc(x.condiciones)}<p><small>Garantías: ${esc(x.garantias)}</small></p></td><td><span class="badge">${esc(x.estado)}</span><small>Consultado: ${date(x.consultado)}</small><small>Vigencia: ${esc(x.vigencia||'No explicitada')}</small>${link(x.fuente)}<p class="warning">${esc(x.observacion)}</p></td></tr>`).join('');
  $('empty').hidden=items.length>0;
 }
-async function load(){
- $('reload').disabled=true;
- try{
-  const response=await fetch('./tasas-datos.json?v='+Date.now(),{cache:'no-store'});if(!response.ok)throw Error('HTTP '+response.status);
-  const data=await response.json();if(data.version!==1||!Array.isArray(data.lineas)||!Array.isArray(data.historial)||!Array.isArray(data.novedades))throw Error('Formato inválido');report=data;
+function render(data){
+  if(data.version!==1||!Array.isArray(data.lineas)||!Array.isArray(data.historial)||!Array.isArray(data.novedades))throw Error('Formato inválido');report=data;
   $('status').textContent='Última consulta: '+date(report.actualizado);
   $('summary').textContent=report.resumen;$('coverage').textContent=report.cobertura;
   $('stale').hidden=Number.isFinite(Date.parse(report.actualizado))&&Date.now()-Date.parse(report.actualizado)<48*3600000;
@@ -23,6 +20,13 @@ async function load(){
   rows();
   $('news').innerHTML=report.novedades.length?report.novedades.map(x=>`<article><small>${esc(x.tipo)} · ${date(x.fecha)}</small><h3>${esc(x.titulo)}</h3><p>${esc(x.detalle)}</p><p><strong>Revisar:</strong> ${esc(x.impacto)}</p>${link(x.fuente)}</article>`).join(''):'<p class="empty">Sin novedades verificadas en esta revisión.</p>';
   $('history').innerHTML=report.historial.slice().reverse().map(x=>`<details><summary>${date(x.fecha)} · ${esc(x.resumen)}</summary><p>${esc(x.detalle)}</p>${(x.lineas||[]).map(l=>`<p><strong>${esc(l.entidad)} — ${esc(l.linea)}:</strong> ${esc(l.tasa)}. ${esc(l.condiciones)} ${link(l.fuente)}</p>`).join('')}</details>`).join('')||'<p>Sin revisiones anteriores.</p>';
- }catch(error){$('status').textContent='No se pudo cargar la revisión. '+(report?'Se mantienen los datos anteriores; pueden estar desactualizados.':'Probá recargar en unos minutos.');$('status').classList.add('warning');}finally{$('reload').disabled=false;}
 }
-['query','entity','state'].forEach(id=>$(id).addEventListener(id==='query'?'input':'change',()=>{if(report)rows();}));$('reload').addEventListener('click',load);load();
+async function load(){
+ $('reload').disabled=true;
+ const controller=new AbortController();const timeout=setTimeout(()=>controller.abort(),10000);
+ try{
+  const response=await fetch('./tasas-datos.json',{cache:'no-store',signal:controller.signal});if(!response.ok)throw Error('HTTP '+response.status);
+  const data=await response.json(); render(data); $('status').classList.remove('warning');
+ }catch(error){$('status').textContent='No se pudo cargar la revisión. '+(report?'Se mantienen los datos anteriores; pueden estar desactualizados.':'Probá recargar en unos minutos.');$('status').classList.add('warning');}finally{clearTimeout(timeout);$('reload').disabled=false;}
+}
+['query','entity','state'].forEach(id=>$(id).addEventListener(id==='query'?'input':'change',()=>{if(report)rows();}));$('reload').addEventListener('click',load);try{const saved=document.getElementById('saved-report');if(saved)render(JSON.parse(saved.textContent));}catch(error){console.error('Datos iniciales inválidos',error);}load();
