@@ -1,0 +1,57 @@
+[
+  {
+    "id": "prov-express",
+    "nombre": "Banco Provincia · Capital de Trabajo Exprés",
+    "url": "https://www.bancoprovincia.com.ar/web/capital_de_trabajo_expres"
+  },
+  {
+    "id": "prov-repyme-fija",
+    "nombre": "Banco Provincia · Tarifario de empresas",
+    "url": "https://www.bancoprovincia.com.ar/CDN/Get/A5388_Banca_Empresa_tasas_costos_condiciones_vigentes"
+  },
+  {
+    "id": "macro-misiones-ct",
+    "nombre": "Banco Macro · Capital de trabajo bonificado",
+    "url": "https://hacienda.gob.ar/creditosproductivos/"
+  },
+  {
+    "id": "bice-inversion",
+    "nombre": "BICE · Inversión productiva a largo plazo",
+    "url": "https://www.bice.com.ar/productos/inversion/inversion-productiva-a-largo-plazo/"
+  },
+  {
+    "id": "bice-leasing",
+    "nombre": "BICE · Leasing de bienes nuevos",
+    "url": "https://www.bice.com.ar/productos/leasing/leasing-productivo-bienes-nuevos/"
+  },
+  {
+    "id": "bice-capital",
+    "nombre": "BICE · Capital de trabajo",
+    "url": "https://www.bice.com.ar/productos/capital-de-trabajo/capital-de-trabajo/"
+  },
+  {
+    "id": "bna-inversion",
+    "nombre": "Banco Nación · Régimen de Inversión Productiva",
+    "url": "https://www.bna.com.ar/Empresas/Pymes/CreditoInversionProductivaINV"
+  },
+  {
+    "id": "nbch-inversion",
+    "nombre": "Nuevo Banco del Chaco · Activos fijos e inversión",
+    "url": "https://www.nbch.com.ar/empresas/financiamiento/nbch-prestamos/prestamos"
+  },
+  {
+    "id": "corr-hacedores",
+    "nombre": "Banco de Corrientes · Hacedores Correntinos",
+    "url": "https://www.bancodecorrientes.com.ar/empresas/prestamos/lineas-generales/otros-prestamos"
+  },
+  {
+    "id": "bse-inversion",
+    "nombre": "Banco Santiago del Estero · Inversión productiva",
+    "url": "https://www.bse.com.ar/page/24/empresas/asistencia-crediticia/prestamos-inversion-productiva"
+  },
+  {
+    "id": "nbch-tarifario",
+    "nombre": "Nuevo Banco del Chaco · Tasas activas",
+    "url": "https://www.nbch.com.ar/DesktopModules/EasyDNNNews/DocumentDownload.ashx?articleid=45&documentid=43&moduleid=935&portalid=0"
+  }
+]
