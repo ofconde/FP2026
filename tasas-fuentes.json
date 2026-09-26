@@ -53,5 +53,40 @@
     "id": "nbch-tarifario",
     "nombre": "Nuevo Banco del Chaco · Tasas activas",
     "url": "https://www.nbch.com.ar/DesktopModules/EasyDNNNews/DocumentDownload.ashx?articleid=45&documentid=43&moduleid=935&portalid=0"
+  },
+  {
+    "id": "ciudad-ct-mipyme",
+    "nombre": "Banco Ciudad · Financiamiento PyME",
+    "url": "https://www.bancociudad.com.ar/institucional/micrositio/Pymes"
+  },
+  {
+    "id": "bna-ganar-inversion",
+    "nombre": "Banco Nación · Plan GanAR",
+    "url": "https://www.bna.com.ar/Empresas/Grandes/GEPlanGanar"
+  },
+  {
+    "id": "bna-online-ct",
+    "nombre": "Banco Nación · Crédito comercial 100% online",
+    "url": "https://www.bna.com.ar/Empresas/Pymes/CreditosOnline"
+  },
+  {
+    "id": "bna-comercios",
+    "nombre": "Banco Nación · Crédito Comercios BNA+",
+    "url": "https://www.bna.com.ar/Empresas/Novedades/CreditoComerciosBNAMAS"
+  },
+  {
+    "id": "santander-pyme-promo",
+    "nombre": "Santander · Financiamiento para PyME",
+    "url": "https://www.santander.com.ar/empresas/financiamiento"
+  },
+  {
+    "id": "bbva-pyme-simulador",
+    "nombre": "BBVA · Créditos para PyME",
+    "url": "https://www.bbva.com.ar/empresas/productos/financiacion/prestamos-para-pymes.html"
+  },
+  {
+    "id": "credicoop-inversion",
+    "nombre": "Banco Credicoop · Créditos para negocios y profesionales",
+    "url": "https://www.bancocredicoop.coop/personas/negocios-y-profesionales/creditos"
   }
 ]
