@@ -1,0 +1,87 @@
+{
+  "version": 1,
+  "actualizado": "2026-09-26T12:12:20-03:00",
+  "resumen": "Relevamiento inicial parcial. Todavía no hay una revisión anterior para medir variaciones.",
+  "cobertura": "Fichas consultadas: CFI Mujeres y Nación Inversión Productiva. BICE: catálogo identificado, condiciones pendientes. Bancos provinciales: pendientes de primera revisión. La tarea diaria ampliará la cobertura.",
+  "lineas": [
+    {
+      "id": "cfi-mujeres",
+      "entidad": "CFI",
+      "linea": "Desarrollo Productivo y Financiero de Mujeres",
+      "region": "Nacional",
+      "tasa": "21% TNA en años 1 y 2; TAMAR + 2 puntos desde el año 3",
+      "modalidad": "Combinada · Pesos",
+      "condiciones": "$4 a $200 millones; hasta 48 meses, incluidos hasta 6 de gracia de capital. Hasta 80% de la inversión.",
+      "garantias": "Fianza, prenda, hipoteca o aval SGR/FGP según condiciones.",
+      "estado": "Requiere revisión",
+      "consultado": "2026-09-26T12:12:20-03:00",
+      "vigencia": "Sin fecha explícita en la ficha",
+      "fuente": "https://cfi.org.ar/desarrollo_productivo_financiero_mujeres",
+      "observacion": "La sección de garantías menciona hasta $500 millones, pero la sección de montos fija $200 millones. Confirmar criterio antes de instrumentar."
+    },
+    {
+      "id": "bna-inversion",
+      "entidad": "Banco Nación",
+      "linea": "Régimen de Inversión Productiva",
+      "region": "Nacional",
+      "tasa": "No informada en la ficha consultada",
+      "modalidad": "Pesos; modalidad de tasa a confirmar",
+      "condiciones": "50 a 72 meses; hasta 6 meses de gracia de capital. Monto sujeto a calificación. Sistema alemán.",
+      "garantias": "Según calificación crediticia",
+      "estado": "Publicado sin vigencia explícita",
+      "consultado": "2026-09-26T12:12:20-03:00",
+      "vigencia": "Sin fecha explícita en la ficha",
+      "fuente": "https://www.bna.com.ar/Empresas/Pymes/CreditoInversionProductivaINV",
+      "observacion": "Consultar tasa y costo total aplicables; la ficha no constituye una oferta crediticia."
+    }
+  ],
+  "novedades": [
+    {
+      "tipo": "Punto a verificar · no es un cambio confirmado",
+      "fecha": "2026-09-26T12:12:20-03:00",
+      "titulo": "CFI Mujeres: diferencia entre montos y garantías",
+      "detalle": "La ficha consultada contiene topes distintos según la sección.",
+      "impacto": "Confirmar el monto aplicable con la documentación vigente antes de instrumentar.",
+      "fuente": "https://cfi.org.ar/desarrollo_productivo_financiero_mujeres"
+    }
+  ],
+  "historial": [
+    {
+      "fecha": "2026-09-26T12:12:20-03:00",
+      "resumen": "Primera base de comparación",
+      "detalle": "Dos fichas consultadas. No se infieren cambios ni fecha de entrada en vigencia.",
+      "lineas": [
+        {
+          "id": "cfi-mujeres",
+          "entidad": "CFI",
+          "linea": "Desarrollo Productivo y Financiero de Mujeres",
+          "region": "Nacional",
+          "tasa": "21% TNA en años 1 y 2; TAMAR + 2 puntos desde el año 3",
+          "modalidad": "Combinada · Pesos",
+          "condiciones": "$4 a $200 millones; hasta 48 meses, incluidos hasta 6 de gracia de capital. Hasta 80% de la inversión.",
+          "garantias": "Fianza, prenda, hipoteca o aval SGR/FGP según condiciones.",
+          "estado": "Requiere revisión",
+          "consultado": "2026-09-26T12:12:20-03:00",
+          "vigencia": "Sin fecha explícita en la ficha",
+          "fuente": "https://cfi.org.ar/desarrollo_productivo_financiero_mujeres",
+          "observacion": "La sección de garantías menciona hasta $500 millones, pero la sección de montos fija $200 millones. Confirmar criterio antes de instrumentar."
+        },
+        {
+          "id": "bna-inversion",
+          "entidad": "Banco Nación",
+          "linea": "Régimen de Inversión Productiva",
+          "region": "Nacional",
+          "tasa": "No informada en la ficha consultada",
+          "modalidad": "Pesos; modalidad de tasa a confirmar",
+          "condiciones": "50 a 72 meses; hasta 6 meses de gracia de capital. Monto sujeto a calificación. Sistema alemán.",
+          "garantias": "Según calificación crediticia",
+          "estado": "Publicado sin vigencia explícita",
+          "consultado": "2026-09-26T12:12:20-03:00",
+          "vigencia": "Sin fecha explícita en la ficha",
+          "fuente": "https://www.bna.com.ar/Empresas/Pymes/CreditoInversionProductivaINV",
+          "observacion": "Consultar tasa y costo total aplicables; la ficha no constituye una oferta crediticia."
+        }
+      ]
+    }
+  ]
+}
