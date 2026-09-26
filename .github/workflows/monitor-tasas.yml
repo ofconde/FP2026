@@ -1,0 +1,51 @@
+name: Control diario de fuentes de financiamiento
+on:
+  schedule:
+    - cron: '17 11 * * *'
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - 'monitor_tasas.py'
+      - 'tasas-fuentes.json'
+      - '.github/workflows/monitor-tasas.yml'
+permissions:
+  contents: write
+concurrency:
+  group: fp2026-monitor-tasas
+  cancel-in-progress: false
+jobs:
+  monitor:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Instalar lector de PDF
+        run: python -m pip install 'pypdf>=5,<7'
+      - name: Consultar fuentes y registrar resultados
+        run: python monitor_tasas.py
+      - name: Guardar control sin modificar las condiciones financieras
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add monitor-fuentes.json
+          if git diff --cached --quiet; then exit 0; fi
+          git commit -m 'Actualizar control de fuentes públicas'
+          for attempt in 1 2 3; do
+            git pull --rebase origin main
+            if git push origin HEAD:main; then exit 0; fi
+          done
+          exit 1
+      - name: Informar si ninguna fuente respondió
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          d=json.loads(Path('monitor-fuentes.json').read_text())
+          assert any(s['estado']=='ok' for s in d['fuentes']), 'Ninguna fuente pudo verificarse; se conservaron las huellas previas.'
+          PY
