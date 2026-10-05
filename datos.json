@@ -1,20 +1,20 @@
 {
   "fecha_actualizacion": "2026-10-01 12:00:08",
   "total": {
-    "monto": 83539.7,
-    "creditos": 881,
+    "monto": 83499.7,
+    "creditos": 880,
     "porcentaje": 39.0,
     "meta": 214300.0,
-    "falta": 130760.3,
+    "falta": 130800.3,
     "meses_restantes": 2,
-    "promedio_mensual": 8354.0,
-    "necesario_por_mes": 65380.2,
+    "promedio_mensual": 8350.0,
+    "necesario_por_mes": 65400.2,
     "ritmo_ok": false,
     "ultimo_mes": 10,
     "meta_cuatrimestral": 80066.7,
-    "monto_cuatrimestral": 44342.9,
-    "creditos_cuatrimestral": 411,
-    "porcentaje_cuatrimestral": 55.4,
+    "monto_cuatrimestral": 44302.9,
+    "creditos_cuatrimestral": 410,
+    "porcentaje_cuatrimestral": 55.3,
     "cuatrimestre_iniciado": true,
     "cuatrimestre_desde": "2026-07-01",
     "cuatrimestre_hasta": "2026-10-31"
@@ -289,21 +289,21 @@
     {
       "codigo": "SL",
       "nombre": "San Luis",
-      "monto": 1708.0,
-      "cantidad": 33,
+      "monto": 1668.0,
+      "cantidad": 32,
       "meta_anual": 6000.0,
-      "diferencia": -4292.0,
-      "porcentaje": 28.5,
+      "diferencia": -4332.0,
+      "porcentaje": 27.8,
       "estado": "rojo",
       "icono": "🔴",
       "mensaje": "Cumplimiento anual 28%",
       "meta_cuatrimestral": 2000.0,
-      "monto_cuatrimestral": 987.6,
-      "cantidad_cuatrimestral": 14,
-      "porcentaje_cuatrimestral": 49.4,
+      "monto_cuatrimestral": 947.6,
+      "cantidad_cuatrimestral": 13,
+      "porcentaje_cuatrimestral": 47.4,
       "estado_cuatrimestral": "rojo",
       "icono_cuatrimestral": "🔴",
-      "mensaje_cuatrimestral": "Cumplimiento cuatrimestral 49%"
+      "mensaje_cuatrimestral": "Cumplimiento cuatrimestral 47%"
     },
     {
       "codigo": "CA",
@@ -516,8 +516,8 @@
     {
       "mes": 10,
       "nombre": "Octubre",
-      "monto": 2796.5,
-      "cantidad": 28
+      "monto": 2756.5,
+      "cantidad": 27
     }
   ],
   "detalles": [
@@ -9119,28 +9119,17 @@
     {
       "codigo": "SL",
       "nombre": "San Luis",
-      "monto": 1708.0,
-      "cantidad": 33,
+      "monto": 1668.0,
+      "cantidad": 32,
       "meta_anual": 6000.0,
-      "porcentaje": 28.5,
+      "porcentaje": 27.8,
       "meta_cuatrimestral": 2000.0,
-      "monto_cuatrimestral": 987.6,
-      "cantidad_cuatrimestral": 14,
-      "porcentaje_cuatrimestral": 49.4,
+      "monto_cuatrimestral": 947.6,
+      "cantidad_cuatrimestral": 13,
+      "porcentaje_cuatrimestral": 47.4,
       "estado_cuatrimestral": "rojo",
-      "mensaje_cuatrimestral": "Cumplimiento cuatrimestral 49%",
+      "mensaje_cuatrimestral": "Cumplimiento cuatrimestral 47%",
       "items": [
-        {
-          "denominacion": "2025-CR-SL-002683",
-          "razon_social": "AGROINDUSTRIA SAN IGNACIO S.R.L.",
-          "fecha_resolucion": "2026-10-01",
-          "usuario_resolucion": "Rodriguez, Esteban Manuel",
-          "importe": 40.0,
-          "linea": "2025 - Competitividad Pyme",
-          "sublinea": "Tradicional",
-          "programa": null,
-          "tipo_contragarantia": "Fianza"
-        },
         {
           "denominacion": "2025-CR-SL-002667",
           "razon_social": "LOS PALOMITOS S.R.L.",
