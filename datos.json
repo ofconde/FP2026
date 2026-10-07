@@ -1,20 +1,20 @@
 {
   "fecha_actualizacion": "2026-10-05 18:40:40",
   "total": {
-    "monto": 84164.0,
-    "creditos": 892,
+    "monto": 84114.0,
+    "creditos": 891,
     "porcentaje": 39.3,
     "meta": 214300.0,
-    "falta": 130136.0,
+    "falta": 130186.0,
     "meses_restantes": 2,
-    "promedio_mensual": 8416.4,
-    "necesario_por_mes": 65068.0,
+    "promedio_mensual": 8411.4,
+    "necesario_por_mes": 65093.0,
     "ritmo_ok": false,
     "ultimo_mes": 10,
     "meta_cuatrimestral": 80066.7,
-    "monto_cuatrimestral": 44967.2,
-    "creditos_cuatrimestral": 422,
-    "porcentaje_cuatrimestral": 56.2,
+    "monto_cuatrimestral": 44917.2,
+    "creditos_cuatrimestral": 421,
+    "porcentaje_cuatrimestral": 56.1,
     "cuatrimestre_iniciado": true,
     "cuatrimestre_desde": "2026-07-01",
     "cuatrimestre_hasta": "2026-10-31"
@@ -365,21 +365,21 @@
     {
       "codigo": "FO",
       "nombre": "Formosa",
-      "monto": 559.7,
-      "cantidad": 12,
+      "monto": 509.7,
+      "cantidad": 11,
       "meta_anual": 1000.0,
-      "diferencia": -440.3,
-      "porcentaje": 56.0,
+      "diferencia": -490.3,
+      "porcentaje": 51.0,
       "estado": "amarillo",
       "icono": "🟡",
-      "mensaje": "Cumplimiento anual 56%",
+      "mensaje": "Cumplimiento anual 51%",
       "meta_cuatrimestral": 333.3,
-      "monto_cuatrimestral": 529.7,
-      "cantidad_cuatrimestral": 9,
-      "porcentaje_cuatrimestral": 158.9,
+      "monto_cuatrimestral": 479.7,
+      "cantidad_cuatrimestral": 8,
+      "porcentaje_cuatrimestral": 143.9,
       "estado_cuatrimestral": "verde",
       "icono_cuatrimestral": "🟢",
-      "mensaje_cuatrimestral": "Cumplimiento cuatrimestral 159%"
+      "mensaje_cuatrimestral": "Cumplimiento cuatrimestral 144%"
     },
     {
       "codigo": "SJ",
@@ -498,8 +498,8 @@
     {
       "mes": 7,
       "nombre": "Julio",
-      "monto": 9645.3,
-      "cantidad": 100
+      "monto": 9595.3,
+      "cantidad": 99
     },
     {
       "mes": 8,
@@ -10283,16 +10283,16 @@
     {
       "codigo": "FO",
       "nombre": "Formosa",
-      "monto": 559.7,
-      "cantidad": 12,
+      "monto": 509.7,
+      "cantidad": 11,
       "meta_anual": 1000.0,
-      "porcentaje": 56.0,
+      "porcentaje": 51.0,
       "meta_cuatrimestral": 333.3,
-      "monto_cuatrimestral": 529.7,
-      "cantidad_cuatrimestral": 9,
-      "porcentaje_cuatrimestral": 158.9,
+      "monto_cuatrimestral": 479.7,
+      "cantidad_cuatrimestral": 8,
+      "porcentaje_cuatrimestral": 143.9,
       "estado_cuatrimestral": "verde",
-      "mensaje_cuatrimestral": "Cumplimiento cuatrimestral 159%",
+      "mensaje_cuatrimestral": "Cumplimiento cuatrimestral 144%",
       "items": [
         {
           "denominacion": "2025-CR-FO-002682",
@@ -10381,17 +10381,6 @@
           "sublinea": "Tradicional",
           "programa": null,
           "tipo_contragarantia": "Fianza"
-        },
-        {
-          "denominacion": "2025-CR-FO-002157",
-          "razon_social": "CABALLERO RENE ORLANDO",
-          "fecha_resolucion": "2026-07-03",
-          "usuario_resolucion": "Rodriguez, Esteban Manuel",
-          "importe": 50.0,
-          "linea": "2025 - Competitividad Pyme",
-          "sublinea": "Tradicional",
-          "programa": null,
-          "tipo_contragarantia": "Prenda"
         },
         {
           "denominacion": "2025-CR-FO-002107",
