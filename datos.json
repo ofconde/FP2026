@@ -1,20 +1,20 @@
 {
   "fecha_actualizacion": "2026-10-07 20:01:01",
   "total": {
-    "monto": 85638.5,
-    "creditos": 904,
-    "porcentaje": 40.0,
+    "monto": 85238.5,
+    "creditos": 903,
+    "porcentaje": 39.8,
     "meta": 214300.0,
-    "falta": 128661.5,
+    "falta": 129061.5,
     "meses_restantes": 2,
-    "promedio_mensual": 8563.9,
-    "necesario_por_mes": 64330.8,
+    "promedio_mensual": 8523.9,
+    "necesario_por_mes": 64530.8,
     "ritmo_ok": false,
     "ultimo_mes": 10,
     "meta_cuatrimestral": 80066.7,
-    "monto_cuatrimestral": 46441.7,
-    "creditos_cuatrimestral": 434,
-    "porcentaje_cuatrimestral": 58.0,
+    "monto_cuatrimestral": 46041.7,
+    "creditos_cuatrimestral": 433,
+    "porcentaje_cuatrimestral": 57.5,
     "cuatrimestre_iniciado": true,
     "cuatrimestre_desde": "2026-07-01",
     "cuatrimestre_hasta": "2026-10-31"
@@ -61,21 +61,21 @@
     {
       "codigo": "ER",
       "nombre": "Entre Ríos",
-      "monto": 10611.7,
-      "cantidad": 83,
+      "monto": 10211.7,
+      "cantidad": 82,
       "meta_anual": 13100.0,
-      "diferencia": -2488.3,
-      "porcentaje": 81.0,
+      "diferencia": -2888.3,
+      "porcentaje": 78.0,
       "estado": "amarillo",
       "icono": "🟡",
-      "mensaje": "Cumplimiento anual 81%",
+      "mensaje": "Cumplimiento anual 78%",
       "meta_cuatrimestral": 6666.7,
-      "monto_cuatrimestral": 5557.0,
-      "cantidad_cuatrimestral": 42,
-      "porcentaje_cuatrimestral": 83.4,
-      "estado_cuatrimestral": "verde",
-      "icono_cuatrimestral": "🟢",
-      "mensaje_cuatrimestral": "Cumplimiento cuatrimestral 83%"
+      "monto_cuatrimestral": 5157.0,
+      "cantidad_cuatrimestral": 41,
+      "porcentaje_cuatrimestral": 77.4,
+      "estado_cuatrimestral": "amarillo",
+      "icono_cuatrimestral": "🟡",
+      "mensaje_cuatrimestral": "Cumplimiento cuatrimestral 77%"
     },
     {
       "codigo": "SF",
@@ -510,8 +510,8 @@
     {
       "mes": 9,
       "nombre": "Septiembre",
-      "monto": 16198.5,
-      "cantidad": 149
+      "monto": 15798.5,
+      "cantidad": 148
     },
     {
       "mes": 10,
@@ -2921,16 +2921,16 @@
     {
       "codigo": "ER",
       "nombre": "Entre Ríos",
-      "monto": 10611.7,
-      "cantidad": 83,
+      "monto": 10211.7,
+      "cantidad": 82,
       "meta_anual": 13100.0,
-      "porcentaje": 81.0,
+      "porcentaje": 78.0,
       "meta_cuatrimestral": 6666.7,
-      "monto_cuatrimestral": 5557.0,
-      "cantidad_cuatrimestral": 42,
-      "porcentaje_cuatrimestral": 83.4,
-      "estado_cuatrimestral": "verde",
-      "mensaje_cuatrimestral": "Cumplimiento cuatrimestral 83%",
+      "monto_cuatrimestral": 5157.0,
+      "cantidad_cuatrimestral": 41,
+      "porcentaje_cuatrimestral": 77.4,
+      "estado_cuatrimestral": "amarillo",
+      "mensaje_cuatrimestral": "Cumplimiento cuatrimestral 77%",
       "items": [
         {
           "denominacion": "2025-CR-ER-002710",
@@ -3052,17 +3052,6 @@
           "sublinea": "Programatica",
           "programa": "Mujeres",
           "tipo_contragarantia": "Hipoteca, Fianza"
-        },
-        {
-          "denominacion": "2025-CR-ER-002537",
-          "razon_social": "DIAMOND PROTEIN S.A.",
-          "fecha_resolucion": "2026-09-08",
-          "usuario_resolucion": "Rodriguez, Esteban Manuel",
-          "importe": 400.0,
-          "linea": "2025 - Programática",
-          "sublinea": "Programatica",
-          "programa": "Financiamiento Verde",
-          "tipo_contragarantia": "Garantia SGR / FPG - CASFOG Serie V (ARGENPYMES SGR)"
         },
         {
           "denominacion": "2025-CR-ER-002533",
