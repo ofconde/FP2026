@@ -1,20 +1,20 @@
 {
   "fecha_actualizacion": "2026-10-12 20:08:51",
   "total": {
-    "monto": 86329.4,
-    "creditos": 911,
-    "porcentaje": 40.3,
+    "monto": 86244.4,
+    "creditos": 909,
+    "porcentaje": 40.2,
     "meta": 214300.0,
-    "falta": 127970.6,
+    "falta": 128055.6,
     "meses_restantes": 2,
-    "promedio_mensual": 8632.9,
-    "necesario_por_mes": 63985.3,
+    "promedio_mensual": 8624.4,
+    "necesario_por_mes": 64027.8,
     "ritmo_ok": false,
     "ultimo_mes": 10,
     "meta_cuatrimestral": 80066.7,
-    "monto_cuatrimestral": 47132.6,
-    "creditos_cuatrimestral": 441,
-    "porcentaje_cuatrimestral": 58.9,
+    "monto_cuatrimestral": 47047.6,
+    "creditos_cuatrimestral": 439,
+    "porcentaje_cuatrimestral": 58.8,
     "cuatrimestre_iniciado": true,
     "cuatrimestre_desde": "2026-07-01",
     "cuatrimestre_hasta": "2026-10-31"
@@ -23,18 +23,18 @@
     {
       "codigo": "BA",
       "nombre": "Buenos Aires",
-      "monto": 18107.7,
-      "cantidad": 136,
+      "monto": 18072.7,
+      "cantidad": 135,
       "meta_anual": 57000.0,
-      "diferencia": -38892.3,
-      "porcentaje": 31.8,
+      "diferencia": -38927.3,
+      "porcentaje": 31.7,
       "estado": "rojo",
       "icono": "🔴",
       "mensaje": "Cumplimiento anual 32%",
       "meta_cuatrimestral": 19333.3,
-      "monto_cuatrimestral": 9433.5,
-      "cantidad_cuatrimestral": 56,
-      "porcentaje_cuatrimestral": 48.8,
+      "monto_cuatrimestral": 9398.5,
+      "cantidad_cuatrimestral": 55,
+      "porcentaje_cuatrimestral": 48.6,
       "estado_cuatrimestral": "rojo",
       "icono_cuatrimestral": "🔴",
       "mensaje_cuatrimestral": "Cumplimiento cuatrimestral 49%"
@@ -232,21 +232,21 @@
     {
       "codigo": "JU",
       "nombre": "Jujuy",
-      "monto": 2179.7,
-      "cantidad": 27,
+      "monto": 2129.7,
+      "cantidad": 26,
       "meta_anual": 3500.0,
-      "diferencia": -1320.3,
-      "porcentaje": 62.3,
+      "diferencia": -1370.3,
+      "porcentaje": 60.8,
       "estado": "amarillo",
       "icono": "🟡",
-      "mensaje": "Cumplimiento anual 62%",
+      "mensaje": "Cumplimiento anual 61%",
       "meta_cuatrimestral": 1333.3,
-      "monto_cuatrimestral": 1520.7,
-      "cantidad_cuatrimestral": 15,
-      "porcentaje_cuatrimestral": 114.1,
+      "monto_cuatrimestral": 1470.7,
+      "cantidad_cuatrimestral": 14,
+      "porcentaje_cuatrimestral": 110.3,
       "estado_cuatrimestral": "verde",
       "icono_cuatrimestral": "🟢",
-      "mensaje_cuatrimestral": "Cumplimiento cuatrimestral 114%"
+      "mensaje_cuatrimestral": "Cumplimiento cuatrimestral 110%"
     },
     {
       "codigo": "NQ",
@@ -510,28 +510,28 @@
     {
       "mes": 9,
       "nombre": "Septiembre",
-      "monto": 15748.5,
-      "cantidad": 147
+      "monto": 15713.5,
+      "cantidad": 146
     },
     {
       "mes": 10,
       "nombre": "Octubre",
-      "monto": 6102.2,
-      "cantidad": 62
+      "monto": 6052.2,
+      "cantidad": 61
     }
   ],
   "detalles": [
     {
       "codigo": "BA",
       "nombre": "Buenos Aires",
-      "monto": 18107.7,
-      "cantidad": 136,
+      "monto": 18072.7,
+      "cantidad": 135,
       "meta_anual": 57000.0,
-      "porcentaje": 31.8,
+      "porcentaje": 31.7,
       "meta_cuatrimestral": 19333.3,
-      "monto_cuatrimestral": 9433.5,
-      "cantidad_cuatrimestral": 56,
-      "porcentaje_cuatrimestral": 48.8,
+      "monto_cuatrimestral": 9398.5,
+      "cantidad_cuatrimestral": 55,
+      "porcentaje_cuatrimestral": 48.6,
       "estado_cuatrimestral": "rojo",
       "mensaje_cuatrimestral": "Cumplimiento cuatrimestral 49%",
       "items": [
@@ -710,17 +710,6 @@
           "sublinea": "Programatica",
           "programa": "Financiamiento Verde",
           "tipo_contragarantia": "Garantia SGR / FPG - ARGENPYMES"
-        },
-        {
-          "denominacion": "2025-CR-BA-002575",
-          "razon_social": "AM CALZADOS S.R.L.",
-          "fecha_resolucion": "2026-09-16",
-          "usuario_resolucion": "Rodriguez, Esteban Manuel",
-          "importe": 35.0,
-          "linea": "2025 - Programática",
-          "sublinea": "Programatica",
-          "programa": "Mujeres",
-          "tipo_contragarantia": "Garantia SGR / FPG - FO.GA.BA"
         },
         {
           "denominacion": "2025-CR-BA-002580",
@@ -8499,16 +8488,16 @@
     {
       "codigo": "JU",
       "nombre": "Jujuy",
-      "monto": 2179.7,
-      "cantidad": 27,
+      "monto": 2129.7,
+      "cantidad": 26,
       "meta_anual": 3500.0,
-      "porcentaje": 62.3,
+      "porcentaje": 60.8,
       "meta_cuatrimestral": 1333.3,
-      "monto_cuatrimestral": 1520.7,
-      "cantidad_cuatrimestral": 15,
-      "porcentaje_cuatrimestral": 114.1,
+      "monto_cuatrimestral": 1470.7,
+      "cantidad_cuatrimestral": 14,
+      "porcentaje_cuatrimestral": 110.3,
       "estado_cuatrimestral": "verde",
-      "mensaje_cuatrimestral": "Cumplimiento cuatrimestral 114%",
+      "mensaje_cuatrimestral": "Cumplimiento cuatrimestral 110%",
       "items": [
         {
           "denominacion": "2025-CR-JU-002721",
@@ -8531,17 +8520,6 @@
           "sublinea": "Tradicional",
           "programa": null,
           "tipo_contragarantia": "Fianza"
-        },
-        {
-          "denominacion": "2025-CR-JU-002680",
-          "razon_social": "FABIANI FRANCO RENATO",
-          "fecha_resolucion": "2026-10-01",
-          "usuario_resolucion": "Rodriguez, Esteban Manuel",
-          "importe": 50.0,
-          "linea": "2025 - Competitividad Pyme",
-          "sublinea": "Tradicional",
-          "programa": null,
-          "tipo_contragarantia": "Hipoteca"
         },
         {
           "denominacion": "2025-CR-JU-002679",
