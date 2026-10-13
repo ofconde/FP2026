@@ -1,19 +1,19 @@
 {
   "fecha_actualizacion": "2026-10-12 20:08:51",
   "total": {
-    "monto": 86379.4,
-    "creditos": 912,
+    "monto": 86329.4,
+    "creditos": 911,
     "porcentaje": 40.3,
     "meta": 214300.0,
-    "falta": 127920.6,
+    "falta": 127970.6,
     "meses_restantes": 2,
-    "promedio_mensual": 8637.9,
-    "necesario_por_mes": 63960.3,
+    "promedio_mensual": 8632.9,
+    "necesario_por_mes": 63985.3,
     "ritmo_ok": false,
     "ultimo_mes": 10,
     "meta_cuatrimestral": 80066.7,
-    "monto_cuatrimestral": 47182.6,
-    "creditos_cuatrimestral": 442,
+    "monto_cuatrimestral": 47132.6,
+    "creditos_cuatrimestral": 441,
     "porcentaje_cuatrimestral": 58.9,
     "cuatrimestre_iniciado": true,
     "cuatrimestre_desde": "2026-07-01",
@@ -99,21 +99,21 @@
     {
       "codigo": "MZ",
       "nombre": "Mendoza",
-      "monto": 6551.7,
-      "cantidad": 56,
+      "monto": 6501.7,
+      "cantidad": 55,
       "meta_anual": 12000.0,
-      "diferencia": -5448.3,
-      "porcentaje": 54.6,
+      "diferencia": -5498.3,
+      "porcentaje": 54.2,
       "estado": "amarillo",
       "icono": "🟡",
-      "mensaje": "Cumplimiento anual 55%",
+      "mensaje": "Cumplimiento anual 54%",
       "meta_cuatrimestral": 4000.0,
-      "monto_cuatrimestral": 4311.5,
-      "cantidad_cuatrimestral": 36,
-      "porcentaje_cuatrimestral": 107.8,
+      "monto_cuatrimestral": 4261.5,
+      "cantidad_cuatrimestral": 35,
+      "porcentaje_cuatrimestral": 106.5,
       "estado_cuatrimestral": "verde",
       "icono_cuatrimestral": "🟢",
-      "mensaje_cuatrimestral": "Cumplimiento cuatrimestral 108%"
+      "mensaje_cuatrimestral": "Cumplimiento cuatrimestral 106%"
     },
     {
       "codigo": "MI",
@@ -510,8 +510,8 @@
     {
       "mes": 9,
       "nombre": "Septiembre",
-      "monto": 15798.5,
-      "cantidad": 148
+      "monto": 15748.5,
+      "cantidad": 147
     },
     {
       "mes": 10,
@@ -4636,16 +4636,16 @@
     {
       "codigo": "MZ",
       "nombre": "Mendoza",
-      "monto": 6551.7,
-      "cantidad": 56,
+      "monto": 6501.7,
+      "cantidad": 55,
       "meta_anual": 12000.0,
-      "porcentaje": 54.6,
+      "porcentaje": 54.2,
       "meta_cuatrimestral": 4000.0,
-      "monto_cuatrimestral": 4311.5,
-      "cantidad_cuatrimestral": 36,
-      "porcentaje_cuatrimestral": 107.8,
+      "monto_cuatrimestral": 4261.5,
+      "cantidad_cuatrimestral": 35,
+      "porcentaje_cuatrimestral": 106.5,
       "estado_cuatrimestral": "verde",
-      "mensaje_cuatrimestral": "Cumplimiento cuatrimestral 108%",
+      "mensaje_cuatrimestral": "Cumplimiento cuatrimestral 106%",
       "items": [
         {
           "denominacion": "2025-CR-MZ-002730",
@@ -4800,17 +4800,6 @@
           "sublinea": "Programatica",
           "programa": "Riego y Eficiencia Hídrica",
           "tipo_contragarantia": "Garantia SGR / FPG - CUYO AVAL FAE Mendoza"
-        },
-        {
-          "denominacion": "2025-CR-MZ-002506",
-          "razon_social": "GENOUD NATALIA ALICIA MARIA",
-          "fecha_resolucion": "2026-09-01",
-          "usuario_resolucion": "Rodriguez, Esteban Manuel",
-          "importe": 50.0,
-          "linea": "2025 - Programática",
-          "sublinea": "Programatica",
-          "programa": "Mujeres",
-          "tipo_contragarantia": "Garantia SGR / FPG - CUYO AVAL SGR"
         },
         {
           "denominacion": "2025-CR-MZ-002499",
