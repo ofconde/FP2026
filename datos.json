@@ -1,20 +1,20 @@
 {
   "fecha_actualizacion": "2026-10-13 21:23:34",
   "total": {
-    "monto": 86434.4,
-    "creditos": 914,
-    "porcentaje": 40.3,
+    "monto": 86219.4,
+    "creditos": 912,
+    "porcentaje": 40.2,
     "meta": 214300.0,
-    "falta": 127865.6,
+    "falta": 128080.6,
     "meses_restantes": 2,
-    "promedio_mensual": 8643.4,
-    "necesario_por_mes": 63932.8,
+    "promedio_mensual": 8621.9,
+    "necesario_por_mes": 64040.3,
     "ritmo_ok": false,
     "ultimo_mes": 10,
     "meta_cuatrimestral": 80066.7,
-    "monto_cuatrimestral": 47237.6,
-    "creditos_cuatrimestral": 444,
-    "porcentaje_cuatrimestral": 59.0,
+    "monto_cuatrimestral": 47022.6,
+    "creditos_cuatrimestral": 442,
+    "porcentaje_cuatrimestral": 58.7,
     "cuatrimestre_iniciado": true,
     "cuatrimestre_desde": "2026-07-01",
     "cuatrimestre_hasta": "2026-10-31"
@@ -118,21 +118,21 @@
     {
       "codigo": "MI",
       "nombre": "Misiones",
-      "monto": 4557.4,
-      "cantidad": 67,
+      "monto": 4357.4,
+      "cantidad": 66,
       "meta_anual": 4500.0,
-      "diferencia": 57.4,
-      "porcentaje": 101.3,
-      "estado": "verde",
-      "icono": "🟢",
-      "mensaje": "Cumplimiento anual 101%",
+      "diferencia": -142.6,
+      "porcentaje": 96.8,
+      "estado": "amarillo",
+      "icono": "🟡",
+      "mensaje": "Cumplimiento anual 97%",
       "meta_cuatrimestral": 1833.3,
-      "monto_cuatrimestral": 2429.6,
-      "cantidad_cuatrimestral": 33,
-      "porcentaje_cuatrimestral": 132.5,
+      "monto_cuatrimestral": 2229.6,
+      "cantidad_cuatrimestral": 32,
+      "porcentaje_cuatrimestral": 121.6,
       "estado_cuatrimestral": "verde",
       "icono_cuatrimestral": "🟢",
-      "mensaje_cuatrimestral": "Cumplimiento cuatrimestral 132%"
+      "mensaje_cuatrimestral": "Cumplimiento cuatrimestral 122%"
     },
     {
       "codigo": "SA",
@@ -384,21 +384,21 @@
     {
       "codigo": "SJ",
       "nombre": "San Juan",
-      "monto": 458.7,
-      "cantidad": 5,
+      "monto": 443.7,
+      "cantidad": 4,
       "meta_anual": 4000.0,
-      "diferencia": -3541.3,
-      "porcentaje": 11.5,
+      "diferencia": -3556.3,
+      "porcentaje": 11.1,
       "estado": "rojo",
       "icono": "🔴",
-      "mensaje": "Cumplimiento anual 12%",
+      "mensaje": "Cumplimiento anual 11%",
       "meta_cuatrimestral": 1333.3,
-      "monto_cuatrimestral": 293.7,
-      "cantidad_cuatrimestral": 3,
-      "porcentaje_cuatrimestral": 22.0,
+      "monto_cuatrimestral": 278.7,
+      "cantidad_cuatrimestral": 2,
+      "porcentaje_cuatrimestral": 20.9,
       "estado_cuatrimestral": "rojo",
       "icono_cuatrimestral": "🔴",
-      "mensaje_cuatrimestral": "Cumplimiento cuatrimestral 22%"
+      "mensaje_cuatrimestral": "Cumplimiento cuatrimestral 21%"
     },
     {
       "codigo": "TF",
@@ -510,8 +510,8 @@
     {
       "mes": 9,
       "nombre": "Septiembre",
-      "monto": 15713.5,
-      "cantidad": 146
+      "monto": 15498.5,
+      "cantidad": 144
     },
     {
       "mes": 10,
@@ -5246,16 +5246,16 @@
     {
       "codigo": "MI",
       "nombre": "Misiones",
-      "monto": 4557.4,
-      "cantidad": 67,
+      "monto": 4357.4,
+      "cantidad": 66,
       "meta_anual": 4500.0,
-      "porcentaje": 101.3,
+      "porcentaje": 96.8,
       "meta_cuatrimestral": 1833.3,
-      "monto_cuatrimestral": 2429.6,
-      "cantidad_cuatrimestral": 33,
-      "porcentaje_cuatrimestral": 132.5,
+      "monto_cuatrimestral": 2229.6,
+      "cantidad_cuatrimestral": 32,
+      "porcentaje_cuatrimestral": 121.6,
       "estado_cuatrimestral": "verde",
-      "mensaje_cuatrimestral": "Cumplimiento cuatrimestral 132%",
+      "mensaje_cuatrimestral": "Cumplimiento cuatrimestral 122%",
       "items": [
         {
           "denominacion": "2025-CR-MI-002737",
@@ -5421,17 +5421,6 @@
           "sublinea": "Tradicional",
           "programa": null,
           "tipo_contragarantia": "Garantia SGR / FPG - FOGAMI"
-        },
-        {
-          "denominacion": "2025-CR-MI-002500",
-          "razon_social": "OBERCOM S.R.L.",
-          "fecha_resolucion": "2026-09-08",
-          "usuario_resolucion": "Rodriguez, Esteban Manuel",
-          "importe": 200.0,
-          "linea": "2025 - Competitividad Pyme",
-          "sublinea": "Tradicional",
-          "programa": null,
-          "tipo_contragarantia": "Hipoteca, Fianza"
         },
         {
           "denominacion": "2025-CR-MI-002460",
@@ -10673,16 +10662,16 @@
     {
       "codigo": "SJ",
       "nombre": "San Juan",
-      "monto": 458.7,
-      "cantidad": 5,
+      "monto": 443.7,
+      "cantidad": 4,
       "meta_anual": 4000.0,
-      "porcentaje": 11.5,
+      "porcentaje": 11.1,
       "meta_cuatrimestral": 1333.3,
-      "monto_cuatrimestral": 293.7,
-      "cantidad_cuatrimestral": 3,
-      "porcentaje_cuatrimestral": 22.0,
+      "monto_cuatrimestral": 278.7,
+      "cantidad_cuatrimestral": 2,
+      "porcentaje_cuatrimestral": 20.9,
       "estado_cuatrimestral": "rojo",
-      "mensaje_cuatrimestral": "Cumplimiento cuatrimestral 22%",
+      "mensaje_cuatrimestral": "Cumplimiento cuatrimestral 21%",
       "items": [
         {
           "denominacion": "2025-CR-SJ-002700",
@@ -10705,17 +10694,6 @@
           "sublinea": "Programatica",
           "programa": "Financiamiento Verde",
           "tipo_contragarantia": "Garantia SGR / FPG - Garantizar SGR"
-        },
-        {
-          "denominacion": "2025-CR-SJ-002508",
-          "razon_social": "BERRIDO ALFREDO LUIS",
-          "fecha_resolucion": "2026-09-03",
-          "usuario_resolucion": "Rodriguez, Esteban Manuel",
-          "importe": 15.0,
-          "linea": "2025 - Competitividad Pyme",
-          "sublinea": "Tradicional",
-          "programa": null,
-          "tipo_contragarantia": "Garantia SGR / FPG - GARANTIA SAN JUAN SAPEM"
         },
         {
           "denominacion": "2025-CR-SJ-002088",
