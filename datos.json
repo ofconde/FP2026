@@ -1,20 +1,20 @@
 {
   "fecha_actualizacion": "2026-10-23 07:39:51",
   "total": {
-    "monto": 94799.7,
-    "creditos": 970,
-    "porcentaje": 44.2,
+    "monto": 94611.7,
+    "creditos": 969,
+    "porcentaje": 44.1,
     "meta": 214300.0,
-    "falta": 119500.3,
+    "falta": 119688.3,
     "meses_restantes": 2,
-    "promedio_mensual": 9480.0,
-    "necesario_por_mes": 59750.2,
+    "promedio_mensual": 9461.2,
+    "necesario_por_mes": 59844.2,
     "ritmo_ok": false,
     "ultimo_mes": 10,
     "meta_cuatrimestral": 80066.7,
-    "monto_cuatrimestral": 55602.9,
-    "creditos_cuatrimestral": 500,
-    "porcentaje_cuatrimestral": 69.4,
+    "monto_cuatrimestral": 55414.9,
+    "creditos_cuatrimestral": 499,
+    "porcentaje_cuatrimestral": 69.2,
     "cuatrimestre_iniciado": true,
     "cuatrimestre_desde": "2026-07-01",
     "cuatrimestre_hasta": "2026-10-31"
@@ -80,21 +80,21 @@
     {
       "codigo": "SF",
       "nombre": "Santa Fe",
-      "monto": 7963.5,
-      "cantidad": 71,
+      "monto": 7775.5,
+      "cantidad": 70,
       "meta_anual": 22000.0,
-      "diferencia": -14036.5,
-      "porcentaje": 36.2,
+      "diferencia": -14224.5,
+      "porcentaje": 35.3,
       "estado": "rojo",
       "icono": "🔴",
-      "mensaje": "Cumplimiento anual 36%",
+      "mensaje": "Cumplimiento anual 35%",
       "meta_cuatrimestral": 7333.3,
-      "monto_cuatrimestral": 4119.7,
-      "cantidad_cuatrimestral": 27,
-      "porcentaje_cuatrimestral": 56.2,
+      "monto_cuatrimestral": 3931.7,
+      "cantidad_cuatrimestral": 26,
+      "porcentaje_cuatrimestral": 53.6,
       "estado_cuatrimestral": "amarillo",
       "icono_cuatrimestral": "🟡",
-      "mensaje_cuatrimestral": "Cumplimiento cuatrimestral 56%"
+      "mensaje_cuatrimestral": "Cumplimiento cuatrimestral 54%"
     },
     {
       "codigo": "MZ",
@@ -516,8 +516,8 @@
     {
       "mes": 10,
       "nombre": "Octubre",
-      "monto": 15049.8,
-      "cantidad": 128
+      "monto": 14861.8,
+      "cantidad": 127
     }
   ],
   "detalles": [
@@ -3993,16 +3993,16 @@
     {
       "codigo": "SF",
       "nombre": "Santa Fe",
-      "monto": 7963.5,
-      "cantidad": 71,
+      "monto": 7775.5,
+      "cantidad": 70,
       "meta_anual": 22000.0,
-      "porcentaje": 36.2,
+      "porcentaje": 35.3,
       "meta_cuatrimestral": 7333.3,
-      "monto_cuatrimestral": 4119.7,
-      "cantidad_cuatrimestral": 27,
-      "porcentaje_cuatrimestral": 56.2,
+      "monto_cuatrimestral": 3931.7,
+      "cantidad_cuatrimestral": 26,
+      "porcentaje_cuatrimestral": 53.6,
       "estado_cuatrimestral": "amarillo",
-      "mensaje_cuatrimestral": "Cumplimiento cuatrimestral 56%",
+      "mensaje_cuatrimestral": "Cumplimiento cuatrimestral 54%",
       "items": [
         {
           "denominacion": "2025-CR-SF-002765",
@@ -4036,17 +4036,6 @@
           "sublinea": "Tradicional",
           "programa": null,
           "tipo_contragarantia": "Garantia SGR / FPG - Garantizar SGR"
-        },
-        {
-          "denominacion": "2025-CR-SF-002614",
-          "razon_social": "VAN HOUTEN S.R.L.",
-          "fecha_resolucion": "2026-10-01",
-          "usuario_resolucion": "Rodriguez, Esteban Manuel",
-          "importe": 188.0,
-          "linea": "2025 - Competitividad Pyme",
-          "sublinea": "Tradicional",
-          "programa": null,
-          "tipo_contragarantia": "Garantia SGR / FPG - CASFOG Serie V (ARGENPYMES SGR)"
         },
         {
           "denominacion": "2025-CR-SF-002599",
