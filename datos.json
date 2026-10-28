@@ -1,20 +1,20 @@
 {
   "fecha_actualizacion": "2026-10-27 10:13:10",
   "total": {
-    "monto": 95739.9,
-    "creditos": 977,
-    "porcentaje": 44.7,
+    "monto": 95661.2,
+    "creditos": 976,
+    "porcentaje": 44.6,
     "meta": 214300.0,
-    "falta": 118560.1,
+    "falta": 118638.8,
     "meses_restantes": 2,
-    "promedio_mensual": 9574.0,
-    "necesario_por_mes": 59280.1,
+    "promedio_mensual": 9566.1,
+    "necesario_por_mes": 59319.4,
     "ritmo_ok": false,
     "ultimo_mes": 10,
     "meta_cuatrimestral": 80066.7,
-    "monto_cuatrimestral": 56543.1,
-    "creditos_cuatrimestral": 507,
-    "porcentaje_cuatrimestral": 70.6,
+    "monto_cuatrimestral": 56464.4,
+    "creditos_cuatrimestral": 506,
+    "porcentaje_cuatrimestral": 70.5,
     "cuatrimestre_iniciado": true,
     "cuatrimestre_desde": "2026-07-01",
     "cuatrimestre_hasta": "2026-10-31"
@@ -346,21 +346,21 @@
     {
       "codigo": "LP",
       "nombre": "La Pampa",
-      "monto": 1588.4,
-      "cantidad": 26,
+      "monto": 1509.7,
+      "cantidad": 25,
       "meta_anual": 4200.0,
-      "diferencia": -2611.6,
-      "porcentaje": 37.8,
+      "diferencia": -2690.3,
+      "porcentaje": 35.9,
       "estado": "rojo",
       "icono": "🔴",
-      "mensaje": "Cumplimiento anual 38%",
+      "mensaje": "Cumplimiento anual 36%",
       "meta_cuatrimestral": 1500.0,
-      "monto_cuatrimestral": 834.4,
-      "cantidad_cuatrimestral": 14,
-      "porcentaje_cuatrimestral": 55.6,
+      "monto_cuatrimestral": 755.7,
+      "cantidad_cuatrimestral": 13,
+      "porcentaje_cuatrimestral": 50.4,
       "estado_cuatrimestral": "amarillo",
       "icono_cuatrimestral": "🟡",
-      "mensaje_cuatrimestral": "Cumplimiento cuatrimestral 56%"
+      "mensaje_cuatrimestral": "Cumplimiento cuatrimestral 50%"
     },
     {
       "codigo": "CB",
@@ -504,8 +504,8 @@
     {
       "mes": 8,
       "nombre": "Agosto",
-      "monto": 15686.6,
-      "cantidad": 133
+      "monto": 15607.9,
+      "cantidad": 132
     },
     {
       "mes": 9,
@@ -10883,16 +10883,16 @@
     {
       "codigo": "LP",
       "nombre": "La Pampa",
-      "monto": 1588.4,
-      "cantidad": 26,
+      "monto": 1509.7,
+      "cantidad": 25,
       "meta_anual": 4200.0,
-      "porcentaje": 37.8,
+      "porcentaje": 35.9,
       "meta_cuatrimestral": 1500.0,
-      "monto_cuatrimestral": 834.4,
-      "cantidad_cuatrimestral": 14,
-      "porcentaje_cuatrimestral": 55.6,
+      "monto_cuatrimestral": 755.7,
+      "cantidad_cuatrimestral": 13,
+      "porcentaje_cuatrimestral": 50.4,
       "estado_cuatrimestral": "amarillo",
-      "mensaje_cuatrimestral": "Cumplimiento cuatrimestral 56%",
+      "mensaje_cuatrimestral": "Cumplimiento cuatrimestral 50%",
       "items": [
         {
           "denominacion": "2025-CR-LP-002816",
@@ -10970,17 +10970,6 @@
           "sublinea": "Tradicional",
           "programa": null,
           "tipo_contragarantia": "Garantia SGR / FPG - CASFOG Serie II (TREND SGR)"
-        },
-        {
-          "denominacion": "2025-CR-LP-002453",
-          "razon_social": "ASCHERI Y CIA. S.A.C.I.F.A.I.",
-          "fecha_resolucion": "2026-08-26",
-          "usuario_resolucion": "Rodriguez, Esteban Manuel",
-          "importe": 78.7,
-          "linea": "2025 - Triple Impacto",
-          "sublinea": "Programatica",
-          "programa": "Gestión Energética",
-          "tipo_contragarantia": "Garantia SGR / FPG - FOGAPAM"
         },
         {
           "denominacion": "2025-CR-LP-002427",
