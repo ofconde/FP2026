@@ -1,19 +1,19 @@
 {
   "fecha_actualizacion": "2026-11-03 21:43:11",
   "total": {
-    "monto": 105570.6,
-    "creditos": 1048,
-    "porcentaje": 49.3,
+    "monto": 105525.6,
+    "creditos": 1047,
+    "porcentaje": 49.2,
     "meta": 214300.0,
-    "falta": 108729.4,
+    "falta": 108774.4,
     "meses_restantes": 1,
-    "promedio_mensual": 9597.3,
-    "necesario_por_mes": 108729.4,
+    "promedio_mensual": 9593.2,
+    "necesario_por_mes": 108774.4,
     "ritmo_ok": false,
     "ultimo_mes": 11,
     "meta_cuatrimestral": 80066.7,
-    "monto_cuatrimestral": 64226.3,
-    "creditos_cuatrimestral": 562,
+    "monto_cuatrimestral": 64181.3,
+    "creditos_cuatrimestral": 561,
     "porcentaje_cuatrimestral": 80.2,
     "cuatrimestre_iniciado": true,
     "cuatrimestre_desde": "2026-07-01",
@@ -23,21 +23,21 @@
     {
       "codigo": "BA",
       "nombre": "Buenos Aires",
-      "monto": 21694.9,
-      "cantidad": 152,
+      "monto": 21649.9,
+      "cantidad": 151,
       "meta_anual": 57000.0,
-      "diferencia": -35305.1,
-      "porcentaje": 38.1,
+      "diferencia": -35350.1,
+      "porcentaje": 38.0,
       "estado": "rojo",
       "icono": "🔴",
       "mensaje": "Cumplimiento anual 38%",
       "meta_cuatrimestral": 19333.3,
-      "monto_cuatrimestral": 12520.7,
-      "cantidad_cuatrimestral": 71,
-      "porcentaje_cuatrimestral": 64.8,
+      "monto_cuatrimestral": 12475.7,
+      "cantidad_cuatrimestral": 70,
+      "porcentaje_cuatrimestral": 64.5,
       "estado_cuatrimestral": "amarillo",
       "icono_cuatrimestral": "🟡",
-      "mensaje_cuatrimestral": "Cumplimiento cuatrimestral 65%"
+      "mensaje_cuatrimestral": "Cumplimiento cuatrimestral 64%"
     },
     {
       "codigo": "CO",
@@ -516,8 +516,8 @@
     {
       "mes": 10,
       "nombre": "Octubre",
-      "monto": 23751.9,
-      "cantidad": 191
+      "monto": 23706.9,
+      "cantidad": 190
     },
     {
       "mes": 11,
@@ -530,16 +530,16 @@
     {
       "codigo": "BA",
       "nombre": "Buenos Aires",
-      "monto": 21694.9,
-      "cantidad": 152,
+      "monto": 21649.9,
+      "cantidad": 151,
       "meta_anual": 57000.0,
-      "porcentaje": 38.1,
+      "porcentaje": 38.0,
       "meta_cuatrimestral": 19333.3,
-      "monto_cuatrimestral": 12520.7,
-      "cantidad_cuatrimestral": 71,
-      "porcentaje_cuatrimestral": 64.8,
+      "monto_cuatrimestral": 12475.7,
+      "cantidad_cuatrimestral": 70,
+      "porcentaje_cuatrimestral": 64.5,
       "estado_cuatrimestral": "amarillo",
-      "mensaje_cuatrimestral": "Cumplimiento cuatrimestral 65%",
+      "mensaje_cuatrimestral": "Cumplimiento cuatrimestral 64%",
       "items": [
         {
           "denominacion": "2025-CR-BA-002884",
@@ -628,17 +628,6 @@
           "sublinea": "Programatica",
           "programa": "Financiamiento Verde",
           "tipo_contragarantia": "Garantia SGR / FPG - CASFOG Serie V (ARGENPYMES SGR)"
-        },
-        {
-          "denominacion": "2025-CR-BA-002843",
-          "razon_social": "ESTEBAN JUAN JOSE",
-          "fecha_resolucion": "2026-10-28",
-          "usuario_resolucion": "Rodriguez, Esteban Manuel",
-          "importe": 45.0,
-          "linea": "2025 - Competitividad Pyme",
-          "sublinea": "Tradicional",
-          "programa": null,
-          "tipo_contragarantia": "Garantia SGR / FPG - FO.GA.BA"
         },
         {
           "denominacion": "2025-CR-BA-002798",
