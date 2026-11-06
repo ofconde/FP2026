@@ -43,15 +43,15 @@
       "updated_at": "2026-11-05 17:20:10"
     },
     {
-      "codigo": "SA",
-      "nombre": "Salta",
-      "filename": "SA-salta.pdf",
-      "updated_at": "2026-11-05 17:20:10"
-    },
-    {
       "codigo": "RN",
       "nombre": "Río Negro",
       "filename": "RN-rio-negro.pdf",
+      "updated_at": "2026-11-05 17:20:10"
+    },
+    {
+      "codigo": "SA",
+      "nombre": "Salta",
+      "filename": "SA-salta.pdf",
       "updated_at": "2026-11-05 17:20:10"
     },
     {
