@@ -1,20 +1,20 @@
 {
   "fecha_actualizacion": "2026-11-06 18:32:34",
   "total": {
-    "monto": 107046.3,
-    "creditos": 1067,
-    "porcentaje": 50.0,
+    "monto": 106996.3,
+    "creditos": 1066,
+    "porcentaje": 49.9,
     "meta": 214300.0,
-    "falta": 107253.7,
+    "falta": 107303.7,
     "meses_restantes": 1,
-    "promedio_mensual": 9731.5,
-    "necesario_por_mes": 107253.7,
+    "promedio_mensual": 9726.9,
+    "necesario_por_mes": 107303.7,
     "ritmo_ok": false,
     "ultimo_mes": 11,
     "meta_cuatrimestral": 80066.7,
-    "monto_cuatrimestral": 63240.1,
-    "creditos_cuatrimestral": 558,
-    "porcentaje_cuatrimestral": 79.0,
+    "monto_cuatrimestral": 63190.1,
+    "creditos_cuatrimestral": 557,
+    "porcentaje_cuatrimestral": 78.9,
     "cuatrimestre_iniciado": true,
     "cuatrimestre_desde": "2026-07-01",
     "cuatrimestre_hasta": "2026-10-31"
@@ -175,21 +175,21 @@
     {
       "codigo": "CT",
       "nombre": "Corrientes",
-      "monto": 3817.9,
-      "cantidad": 104,
+      "monto": 3767.9,
+      "cantidad": 103,
       "meta_anual": 10000.0,
-      "diferencia": -6182.1,
-      "porcentaje": 38.2,
+      "diferencia": -6232.1,
+      "porcentaje": 37.7,
       "estado": "rojo",
       "icono": "🔴",
       "mensaje": "Cumplimiento anual 38%",
       "meta_cuatrimestral": 5000.0,
-      "monto_cuatrimestral": 2456.8,
-      "cantidad_cuatrimestral": 61,
-      "porcentaje_cuatrimestral": 49.1,
+      "monto_cuatrimestral": 2406.8,
+      "cantidad_cuatrimestral": 60,
+      "porcentaje_cuatrimestral": 48.1,
       "estado_cuatrimestral": "rojo",
       "icono_cuatrimestral": "🔴",
-      "mensaje_cuatrimestral": "Cumplimiento cuatrimestral 49%"
+      "mensaje_cuatrimestral": "Cumplimiento cuatrimestral 48%"
     },
     {
       "codigo": "TU",
@@ -516,8 +516,8 @@
     {
       "mes": 10,
       "nombre": "Octubre",
-      "monto": 23256.9,
-      "cantidad": 189
+      "monto": 23206.9,
+      "cantidad": 188
     },
     {
       "mes": 11,
@@ -7929,16 +7929,16 @@
     {
       "codigo": "CT",
       "nombre": "Corrientes",
-      "monto": 3817.9,
-      "cantidad": 104,
+      "monto": 3767.9,
+      "cantidad": 103,
       "meta_anual": 10000.0,
-      "porcentaje": 38.2,
+      "porcentaje": 37.7,
       "meta_cuatrimestral": 5000.0,
-      "monto_cuatrimestral": 2456.8,
-      "cantidad_cuatrimestral": 61,
-      "porcentaje_cuatrimestral": 49.1,
+      "monto_cuatrimestral": 2406.8,
+      "cantidad_cuatrimestral": 60,
+      "porcentaje_cuatrimestral": 48.1,
       "estado_cuatrimestral": "rojo",
-      "mensaje_cuatrimestral": "Cumplimiento cuatrimestral 49%",
+      "mensaje_cuatrimestral": "Cumplimiento cuatrimestral 48%",
       "items": [
         {
           "denominacion": "2025-CR-CT-002918",
@@ -8093,17 +8093,6 @@
           "sublinea": "Programatica",
           "programa": "Mujeres",
           "tipo_contragarantia": "Fianza"
-        },
-        {
-          "denominacion": "2025-CR-CT-002775",
-          "razon_social": "KARABIN MARIA ELISABET",
-          "fecha_resolucion": "2026-10-21",
-          "usuario_resolucion": "Rodriguez, Esteban Manuel",
-          "importe": 50.0,
-          "linea": "2025 - Programática",
-          "sublinea": "Programatica",
-          "programa": "Mujeres",
-          "tipo_contragarantia": "Garantia SGR / FPG - CASFOG Serie II (TREND SGR)"
         },
         {
           "denominacion": "2025-CR-CT-002771",
