@@ -1,20 +1,20 @@
 {
   "fecha_actualizacion": "2026-11-17 06:46:33",
   "total": {
-    "monto": 110621.4,
-    "creditos": 1090,
-    "porcentaje": 51.6,
+    "monto": 110449.6,
+    "creditos": 1089,
+    "porcentaje": 51.5,
     "meta": 214300.0,
-    "falta": 103678.6,
+    "falta": 103850.4,
     "meses_restantes": 1,
-    "promedio_mensual": 10056.5,
-    "necesario_por_mes": 103678.6,
+    "promedio_mensual": 10040.9,
+    "necesario_por_mes": 103850.4,
     "ritmo_ok": false,
     "ultimo_mes": 11,
     "meta_cuatrimestral": 80066.7,
-    "monto_cuatrimestral": 63190.1,
-    "creditos_cuatrimestral": 557,
-    "porcentaje_cuatrimestral": 78.9,
+    "monto_cuatrimestral": 63018.3,
+    "creditos_cuatrimestral": 556,
+    "porcentaje_cuatrimestral": 78.7,
     "cuatrimestre_iniciado": true,
     "cuatrimestre_desde": "2026-07-01",
     "cuatrimestre_hasta": "2026-10-31"
@@ -194,21 +194,21 @@
     {
       "codigo": "TU",
       "nombre": "Tucumán",
-      "monto": 3625.0,
-      "cantidad": 25,
+      "monto": 3453.2,
+      "cantidad": 24,
       "meta_anual": 4300.0,
-      "diferencia": -675.0,
-      "porcentaje": 84.3,
+      "diferencia": -846.8,
+      "porcentaje": 80.3,
       "estado": "amarillo",
       "icono": "🟡",
-      "mensaje": "Cumplimiento anual 84%",
+      "mensaje": "Cumplimiento anual 80%",
       "meta_cuatrimestral": 1500.0,
-      "monto_cuatrimestral": 2055.0,
-      "cantidad_cuatrimestral": 12,
-      "porcentaje_cuatrimestral": 137.0,
+      "monto_cuatrimestral": 1883.2,
+      "cantidad_cuatrimestral": 11,
+      "porcentaje_cuatrimestral": 125.5,
       "estado_cuatrimestral": "verde",
       "icono_cuatrimestral": "🟢",
-      "mensaje_cuatrimestral": "Cumplimiento cuatrimestral 137%"
+      "mensaje_cuatrimestral": "Cumplimiento cuatrimestral 126%"
     },
     {
       "codigo": "SL",
@@ -516,8 +516,8 @@
     {
       "mes": 10,
       "nombre": "Octubre",
-      "monto": 23206.9,
-      "cantidad": 188
+      "monto": 23035.1,
+      "cantidad": 187
     },
     {
       "mes": 11,
@@ -9265,16 +9265,16 @@
     {
       "codigo": "TU",
       "nombre": "Tucumán",
-      "monto": 3625.0,
-      "cantidad": 25,
+      "monto": 3453.2,
+      "cantidad": 24,
       "meta_anual": 4300.0,
-      "porcentaje": 84.3,
+      "porcentaje": 80.3,
       "meta_cuatrimestral": 1500.0,
-      "monto_cuatrimestral": 2055.0,
-      "cantidad_cuatrimestral": 12,
-      "porcentaje_cuatrimestral": 137.0,
+      "monto_cuatrimestral": 1883.2,
+      "cantidad_cuatrimestral": 11,
+      "porcentaje_cuatrimestral": 125.5,
       "estado_cuatrimestral": "verde",
-      "mensaje_cuatrimestral": "Cumplimiento cuatrimestral 137%",
+      "mensaje_cuatrimestral": "Cumplimiento cuatrimestral 126%",
       "items": [
         {
           "denominacion": "2025-CR-TU-002910",
@@ -9297,17 +9297,6 @@
           "sublinea": "Programatica",
           "programa": "Mujeres",
           "tipo_contragarantia": "Fianza"
-        },
-        {
-          "denominacion": "2025-CR-TU-002811",
-          "razon_social": "ALBACLARA S.R.L.",
-          "fecha_resolucion": "2026-10-27",
-          "usuario_resolucion": "Rodriguez, Esteban Manuel",
-          "importe": 171.8,
-          "linea": "2025 - Programática",
-          "sublinea": "Programatica",
-          "programa": "Mujeres",
-          "tipo_contragarantia": "Garantia SGR / FPG - Garantizar SGR"
         },
         {
           "denominacion": "2025-CR-TU-002763",
