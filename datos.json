@@ -1,20 +1,20 @@
 {
   "fecha_actualizacion": "2026-11-17 06:46:33",
   "total": {
-    "monto": 110449.6,
-    "creditos": 1089,
+    "monto": 110266.2,
+    "creditos": 1087,
     "porcentaje": 51.5,
     "meta": 214300.0,
-    "falta": 103850.4,
+    "falta": 104033.8,
     "meses_restantes": 1,
-    "promedio_mensual": 10040.9,
-    "necesario_por_mes": 103850.4,
+    "promedio_mensual": 10024.2,
+    "necesario_por_mes": 104033.8,
     "ritmo_ok": false,
     "ultimo_mes": 11,
     "meta_cuatrimestral": 80066.7,
-    "monto_cuatrimestral": 63018.3,
-    "creditos_cuatrimestral": 556,
-    "porcentaje_cuatrimestral": 78.7,
+    "monto_cuatrimestral": 62834.9,
+    "creditos_cuatrimestral": 554,
+    "porcentaje_cuatrimestral": 78.5,
     "cuatrimestre_iniciado": true,
     "cuatrimestre_desde": "2026-07-01",
     "cuatrimestre_hasta": "2026-10-31"
@@ -61,21 +61,21 @@
     {
       "codigo": "ER",
       "nombre": "Entre Ríos",
-      "monto": 11667.9,
-      "cantidad": 94,
+      "monto": 11484.5,
+      "cantidad": 92,
       "meta_anual": 13100.0,
-      "diferencia": -1432.1,
-      "porcentaje": 89.1,
+      "diferencia": -1615.5,
+      "porcentaje": 87.7,
       "estado": "amarillo",
       "icono": "🟡",
-      "mensaje": "Cumplimiento anual 89%",
+      "mensaje": "Cumplimiento anual 88%",
       "meta_cuatrimestral": 6666.7,
-      "monto_cuatrimestral": 6214.9,
-      "cantidad_cuatrimestral": 49,
-      "porcentaje_cuatrimestral": 93.2,
+      "monto_cuatrimestral": 6031.5,
+      "cantidad_cuatrimestral": 47,
+      "porcentaje_cuatrimestral": 90.5,
       "estado_cuatrimestral": "verde",
       "icono_cuatrimestral": "🟢",
-      "mensaje_cuatrimestral": "Cumplimiento cuatrimestral 93%"
+      "mensaje_cuatrimestral": "Cumplimiento cuatrimestral 90%"
     },
     {
       "codigo": "SF",
@@ -504,14 +504,14 @@
     {
       "mes": 8,
       "nombre": "Agosto",
-      "monto": 15231.7,
-      "cantidad": 131
+      "monto": 15091.7,
+      "cantidad": 130
     },
     {
       "mes": 9,
       "nombre": "Septiembre",
-      "monto": 15156.2,
-      "cantidad": 139
+      "monto": 15112.8,
+      "cantidad": 138
     },
     {
       "mes": 10,
@@ -3345,16 +3345,16 @@
     {
       "codigo": "ER",
       "nombre": "Entre Ríos",
-      "monto": 11667.9,
-      "cantidad": 94,
+      "monto": 11484.5,
+      "cantidad": 92,
       "meta_anual": 13100.0,
-      "porcentaje": 89.1,
+      "porcentaje": 87.7,
       "meta_cuatrimestral": 6666.7,
-      "monto_cuatrimestral": 6214.9,
-      "cantidad_cuatrimestral": 49,
-      "porcentaje_cuatrimestral": 93.2,
+      "monto_cuatrimestral": 6031.5,
+      "cantidad_cuatrimestral": 47,
+      "porcentaje_cuatrimestral": 90.5,
       "estado_cuatrimestral": "verde",
-      "mensaje_cuatrimestral": "Cumplimiento cuatrimestral 93%",
+      "mensaje_cuatrimestral": "Cumplimiento cuatrimestral 90%",
       "items": [
         {
           "denominacion": "2025-CR-ER-002924",
@@ -3555,17 +3555,6 @@
           "tipo_contragarantia": "Garantia SGR / FPG - FOGAER S.A.P.E.M"
         },
         {
-          "denominacion": "2025-CR-ER-002609",
-          "razon_social": "ASENSIO MARIA ALEJANDRA",
-          "fecha_resolucion": "2026-09-18",
-          "usuario_resolucion": "Rodriguez, Esteban Manuel",
-          "importe": 43.4,
-          "linea": "2025 - Programática",
-          "sublinea": "Programatica",
-          "programa": "Mujeres",
-          "tipo_contragarantia": "Garantia SGR / FPG - FOGAER S.A.P.E.M"
-        },
-        {
           "denominacion": "2025-CR-ER-002607",
           "razon_social": "SUINO S.A.",
           "fecha_resolucion": "2026-09-18",
@@ -3706,17 +3695,6 @@
           "linea": "2025 - Competitividad Pyme",
           "sublinea": "Tradicional",
           "programa": null,
-          "tipo_contragarantia": "Garantia SGR / FPG - FOGAER S.A.P.E.M"
-        },
-        {
-          "denominacion": "2025-CR-ER-002467",
-          "razon_social": "GONZALEZ MARIA RAMONA",
-          "fecha_resolucion": "2026-08-28",
-          "usuario_resolucion": "Rodriguez, Esteban Manuel",
-          "importe": 140.0,
-          "linea": "2025 - Programática",
-          "sublinea": "Programatica",
-          "programa": "Mujeres",
           "tipo_contragarantia": "Garantia SGR / FPG - FOGAER S.A.P.E.M"
         },
         {
