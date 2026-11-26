@@ -1,20 +1,20 @@
 {
   "fecha_actualizacion": "2026-11-25 23:01:05",
   "total": {
-    "monto": 117003.0,
-    "creditos": 1135,
-    "porcentaje": 54.6,
+    "monto": 116703.0,
+    "creditos": 1133,
+    "porcentaje": 54.5,
     "meta": 214300.0,
-    "falta": 97297.0,
+    "falta": 97597.0,
     "meses_restantes": 1,
-    "promedio_mensual": 10636.6,
-    "necesario_por_mes": 97297.0,
+    "promedio_mensual": 10609.4,
+    "necesario_por_mes": 97597.0,
     "ritmo_ok": false,
     "ultimo_mes": 11,
     "meta_cuatrimestral": 80066.7,
-    "monto_cuatrimestral": 62834.9,
-    "creditos_cuatrimestral": 554,
-    "porcentaje_cuatrimestral": 78.5,
+    "monto_cuatrimestral": 62684.9,
+    "creditos_cuatrimestral": 553,
+    "porcentaje_cuatrimestral": 78.3,
     "cuatrimestre_iniciado": true,
     "cuatrimestre_desde": "2026-07-01",
     "cuatrimestre_hasta": "2026-10-31"
@@ -42,21 +42,21 @@
     {
       "codigo": "CO",
       "nombre": "Córdoba",
-      "monto": 14530.5,
-      "cantidad": 105,
+      "monto": 14380.5,
+      "cantidad": 104,
       "meta_anual": 21000.0,
-      "diferencia": -6469.5,
-      "porcentaje": 69.2,
+      "diferencia": -6619.5,
+      "porcentaje": 68.5,
       "estado": "amarillo",
       "icono": "🟡",
-      "mensaje": "Cumplimiento anual 69%",
+      "mensaje": "Cumplimiento anual 68%",
       "meta_cuatrimestral": 7333.3,
-      "monto_cuatrimestral": 7949.6,
-      "cantidad_cuatrimestral": 48,
-      "porcentaje_cuatrimestral": 108.4,
+      "monto_cuatrimestral": 7799.6,
+      "cantidad_cuatrimestral": 47,
+      "porcentaje_cuatrimestral": 106.4,
       "estado_cuatrimestral": "verde",
       "icono_cuatrimestral": "🟢",
-      "mensaje_cuatrimestral": "Cumplimiento cuatrimestral 108%"
+      "mensaje_cuatrimestral": "Cumplimiento cuatrimestral 106%"
     },
     {
       "codigo": "ER",
@@ -118,14 +118,14 @@
     {
       "codigo": "MI",
       "nombre": "Misiones",
-      "monto": 6406.4,
-      "cantidad": 86,
+      "monto": 6256.4,
+      "cantidad": 85,
       "meta_anual": 4500.0,
-      "diferencia": 1906.4,
-      "porcentaje": 142.4,
+      "diferencia": 1756.4,
+      "porcentaje": 139.0,
       "estado": "verde",
       "icono": "🟢",
-      "mensaje": "Cumplimiento anual 142%",
+      "mensaje": "Cumplimiento anual 139%",
       "meta_cuatrimestral": 1833.3,
       "monto_cuatrimestral": 3270.4,
       "cantidad_cuatrimestral": 43,
@@ -516,14 +516,14 @@
     {
       "mes": 10,
       "nombre": "Octubre",
-      "monto": 23035.1,
-      "cantidad": 187
+      "monto": 22885.1,
+      "cantidad": 186
     },
     {
       "mes": 11,
       "nombre": "Noviembre",
-      "monto": 14971.3,
-      "cantidad": 111
+      "monto": 14821.3,
+      "cantidad": 110
     }
   ],
   "detalles": [
@@ -693,7 +693,7 @@
           "linea": "2025 - Triple Impacto",
           "sublinea": "Programatica",
           "programa": "Triple Impacto",
-          "tipo_contragarantia": "Garantia SGR / FPG - AFB AVALES SGR"
+          "tipo_contragarantia": "Garantia SGR / FPG - ARGENTINA SGR"
         },
         {
           "denominacion": "2025-CR-BA-002797",
@@ -2251,16 +2251,16 @@
     {
       "codigo": "CO",
       "nombre": "Córdoba",
-      "monto": 14530.5,
-      "cantidad": 105,
+      "monto": 14380.5,
+      "cantidad": 104,
       "meta_anual": 21000.0,
-      "porcentaje": 69.2,
+      "porcentaje": 68.5,
       "meta_cuatrimestral": 7333.3,
-      "monto_cuatrimestral": 7949.6,
-      "cantidad_cuatrimestral": 48,
-      "porcentaje_cuatrimestral": 108.4,
+      "monto_cuatrimestral": 7799.6,
+      "cantidad_cuatrimestral": 47,
+      "porcentaje_cuatrimestral": 106.4,
       "estado_cuatrimestral": "verde",
-      "mensaje_cuatrimestral": "Cumplimiento cuatrimestral 108%",
+      "mensaje_cuatrimestral": "Cumplimiento cuatrimestral 106%",
       "items": [
         {
           "denominacion": "2025-CR-CO-002970",
@@ -2448,17 +2448,6 @@
           "sublinea": "Programatica",
           "programa": "Financiamiento Verde",
           "tipo_contragarantia": "Garantia SGR / FPG - Garantizar SGR"
-        },
-        {
-          "denominacion": "2025-CR-CO-002837",
-          "razon_social": "VERTRAUEN S.R.L.",
-          "fecha_resolucion": "2026-10-28",
-          "usuario_resolucion": "Rodriguez, Esteban Manuel",
-          "importe": 150.0,
-          "linea": "2025 - Competitividad Pyme",
-          "sublinea": "Tradicional",
-          "programa": null,
-          "tipo_contragarantia": "Garantia SGR / FPG - CASFOG Serie V (ARGENPYMES SGR)"
         },
         {
           "denominacion": "2025-CR-CO-002834",
@@ -6154,10 +6143,10 @@
     {
       "codigo": "MI",
       "nombre": "Misiones",
-      "monto": 6406.4,
-      "cantidad": 86,
+      "monto": 6256.4,
+      "cantidad": 85,
       "meta_anual": 4500.0,
-      "porcentaje": 142.4,
+      "porcentaje": 139.0,
       "meta_cuatrimestral": 1833.3,
       "monto_cuatrimestral": 3270.4,
       "cantidad_cuatrimestral": 43,
@@ -6215,17 +6204,6 @@
           "fecha_resolucion": "2026-11-17",
           "usuario_resolucion": "Rodriguez, Esteban Manuel",
           "importe": 175.0,
-          "linea": "2025 - Programática",
-          "sublinea": "Programatica",
-          "programa": "Financiamiento Verde",
-          "tipo_contragarantia": "Garantia SGR / FPG - Garantizar SGR"
-        },
-        {
-          "denominacion": "2025-CR-MI-002927",
-          "razon_social": "MIMAT MATERIALES S.A.",
-          "fecha_resolucion": "2026-11-17",
-          "usuario_resolucion": "Rodriguez, Esteban Manuel",
-          "importe": 150.0,
           "linea": "2025 - Programática",
           "sublinea": "Programatica",
           "programa": "Financiamiento Verde",
