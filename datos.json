@@ -1,19 +1,19 @@
 {
   "fecha_actualizacion": "2026-11-25 23:01:05",
   "total": {
-    "monto": 116703.0,
-    "creditos": 1133,
+    "monto": 116688.4,
+    "creditos": 1132,
     "porcentaje": 54.5,
     "meta": 214300.0,
-    "falta": 97597.0,
+    "falta": 97611.6,
     "meses_restantes": 1,
-    "promedio_mensual": 10609.4,
-    "necesario_por_mes": 97597.0,
+    "promedio_mensual": 10608.0,
+    "necesario_por_mes": 97611.6,
     "ritmo_ok": false,
     "ultimo_mes": 11,
     "meta_cuatrimestral": 80066.7,
-    "monto_cuatrimestral": 62684.9,
-    "creditos_cuatrimestral": 553,
+    "monto_cuatrimestral": 62670.3,
+    "creditos_cuatrimestral": 552,
     "porcentaje_cuatrimestral": 78.3,
     "cuatrimestre_iniciado": true,
     "cuatrimestre_desde": "2026-07-01",
@@ -42,18 +42,18 @@
     {
       "codigo": "CO",
       "nombre": "Córdoba",
-      "monto": 14380.5,
-      "cantidad": 104,
+      "monto": 14365.9,
+      "cantidad": 103,
       "meta_anual": 21000.0,
-      "diferencia": -6619.5,
-      "porcentaje": 68.5,
+      "diferencia": -6634.1,
+      "porcentaje": 68.4,
       "estado": "amarillo",
       "icono": "🟡",
       "mensaje": "Cumplimiento anual 68%",
       "meta_cuatrimestral": 7333.3,
-      "monto_cuatrimestral": 7799.6,
-      "cantidad_cuatrimestral": 47,
-      "porcentaje_cuatrimestral": 106.4,
+      "monto_cuatrimestral": 7785.0,
+      "cantidad_cuatrimestral": 46,
+      "porcentaje_cuatrimestral": 106.2,
       "estado_cuatrimestral": "verde",
       "icono_cuatrimestral": "🟢",
       "mensaje_cuatrimestral": "Cumplimiento cuatrimestral 106%"
@@ -516,8 +516,8 @@
     {
       "mes": 10,
       "nombre": "Octubre",
-      "monto": 22885.1,
-      "cantidad": 186
+      "monto": 22870.5,
+      "cantidad": 185
     },
     {
       "mes": 11,
@@ -693,7 +693,7 @@
           "linea": "2025 - Triple Impacto",
           "sublinea": "Programatica",
           "programa": "Triple Impacto",
-          "tipo_contragarantia": "Garantia SGR / FPG - ARGENTINA SGR"
+          "tipo_contragarantia": "Garantia SGR / FPG - ARGENTINA CIUDAD SGR"
         },
         {
           "denominacion": "2025-CR-BA-002797",
@@ -2251,14 +2251,14 @@
     {
       "codigo": "CO",
       "nombre": "Córdoba",
-      "monto": 14380.5,
-      "cantidad": 104,
+      "monto": 14365.9,
+      "cantidad": 103,
       "meta_anual": 21000.0,
-      "porcentaje": 68.5,
+      "porcentaje": 68.4,
       "meta_cuatrimestral": 7333.3,
-      "monto_cuatrimestral": 7799.6,
-      "cantidad_cuatrimestral": 47,
-      "porcentaje_cuatrimestral": 106.4,
+      "monto_cuatrimestral": 7785.0,
+      "cantidad_cuatrimestral": 46,
+      "porcentaje_cuatrimestral": 106.2,
       "estado_cuatrimestral": "verde",
       "mensaje_cuatrimestral": "Cumplimiento cuatrimestral 106%",
       "items": [
@@ -2437,17 +2437,6 @@
           "sublinea": "Programatica",
           "programa": "Financiamiento Verde",
           "tipo_contragarantia": "Hipoteca"
-        },
-        {
-          "denominacion": "2025-CR-CO-002844",
-          "razon_social": "LA GALLEGA S.A.",
-          "fecha_resolucion": "2026-10-28",
-          "usuario_resolucion": "Rodriguez, Esteban Manuel",
-          "importe": 14.6,
-          "linea": "2025 - Programática",
-          "sublinea": "Programatica",
-          "programa": "Financiamiento Verde",
-          "tipo_contragarantia": "Garantia SGR / FPG - Garantizar SGR"
         },
         {
           "denominacion": "2025-CR-CO-002834",
